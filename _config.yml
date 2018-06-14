@@ -24,6 +24,7 @@ url: "https://crab2died.github.io" # the base hostname & protocol for your site,
 port: 8181
 twitter_username: Crab2Died
 github_username: Crab2Died
+encoding: UTF-8
 
 # Build settings
 markdown: kramdown

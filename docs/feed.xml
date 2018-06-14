@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-14T12:48:02+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">JAVA性能监控与调优</title><link href="https://crab2died.github.io/jekyll-blog/java/2018/06/14/java%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7.html" rel="alternate" type="text/html" title="JAVA性能监控与调优" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/java/2018/06/14/java%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/java/2018/06/14/java%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7.html">&lt;h1 id=&quot;java性能监控与调优&quot;&gt;JAVA性能监控与调优&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:8181/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:8181/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-14T17:44:40+08:00</updated><id>http://localhost:8181/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Ruby Install with source on CentOS</title><link href="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html" rel="alternate" type="text/html" title="Ruby Install with source on CentOS" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html">&lt;h1 id=&quot;ruby-install-with-source-on-centos&quot;&gt;Ruby Install with source on CentOS&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;h3 id=&quot;1-install-openssl&quot;&gt;1. Install OpenSSL&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.openssl.org/source/&quot;&gt;Download OpenSSL Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install OpenSSL&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-zxvf&lt;/span&gt; openssl-1.1.1-pre7.tar.gz
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;openssl-1.1.1-pre7
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./config &lt;span class=&quot;nt&quot;&gt;-fPIC&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/openssl enable-shared
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./config &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt;
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check install&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openssl version
+ OpenSSL 1.0.2k-fips  26 Jan 2017
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;2-install-ruby&quot;&gt;2. Install Ruby&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;Download Ruby Source&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Install Ruby&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-zxvf&lt;/span&gt; ruby-2.5.1.tar.gz
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ruby-2.5.1
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/ruby &lt;span class=&quot;nt&quot;&gt;--with-opessl-dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/openssl     // important
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Configure environment variable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;vi /etc/profile
+ 
+ append -&amp;gt; &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/ruby/bin:&lt;span class=&quot;nv&quot;&gt;$PATH&lt;/span&gt;
+ 
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;source&lt;/span&gt; /etc/profile
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Check install&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;ruby &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+ ruby 2.5.1p57 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;2018-03-29 revision 63029&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;x86_64-linux]
+ 
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
+ 2.7.6
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Crab2Died</name></author><category term="Ruby" /><category term="Install" /><category term="CentOS" /><summary type="html">Ruby Install with source on CentOS</summary></entry><entry><title type="html">JAVA性能监控与调优</title><link href="http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html" rel="alternate" type="text/html" title="JAVA性能监控与调优" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">&lt;h1 id=&quot;java性能监控与调优&quot;&gt;JAVA性能监控与调优&lt;/h1&gt;
 &lt;hr /&gt;
 &lt;h2 id=&quot;一-jpsjvm-process-status-tool&quot;&gt;一. jps(JVM Process Status Tool)&lt;/h2&gt;
 &lt;h3 id=&quot;1-介绍&quot;&gt;1. 介绍&lt;/h3&gt;
@@ -165,7 +221,7 @@
   &lt;li&gt;用jstack获取线程堆栈信息&lt;code class=&quot;highlighter-rouge&quot;&gt;jstack 14232 |grep 37ad&lt;/code&gt;打印如下信息:&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;VM Periodic Task Thread&quot; os_prio=0 tid=0x00007f772c00f800 nid=0x37ad waiting on condition &lt;/code&gt;&lt;br /&gt;
 通过该日志分析表示该线程在等待某个资源来唤醒&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="java" /><category term="监控工具" /><summary type="html">JAVA性能监控与调优 一. jps(JVM Process Status Tool) 1. 介绍 类似UNIX的ps命令，列出虚拟机正在运行的进程信息 2. 参数 -q: 只输出进程ID -m: 输出主类启动时的参数 -l: 输出主类全名，如果是jar则输出jar路径 -v: 输出虚拟机启动时的JVM参数</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="https://crab2died.github.io/jekyll-blog/java/2018/06/13/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-06-13T21:54:27+08:00</published><updated>2018-06-13T21:54:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/java/2018/06/13/welcome-to-jekyll</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/java/2018/06/13/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="java" /><category term="监控工具" /><summary type="html">JAVA性能监控与调优 一. jps(JVM Process Status Tool) 1. 介绍 类似UNIX的ps命令，列出虚拟机正在运行的进程信息 2. 参数 -q: 只输出进程ID -m: 输出主类启动时的参数 -l: 输出主类全名，如果是jar则输出jar路径 -v: 输出虚拟机启动时的JVM参数</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-06-13T21:54:27+08:00</published><updated>2018-06-13T21:54:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 
@@ -177,4 +233,4 @@
 &lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Crab2Died</name></author><category term="tag1" /><category term="tag2" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Crab2Died</name></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>

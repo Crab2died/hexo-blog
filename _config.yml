@@ -30,6 +30,9 @@ rss: RSS
 paginate: 5
 paginate_path: "/content/page/:num"
 
+show_excerpts: true
+# excerpt_separator:
+
 # Build settings
 markdown: kramdown
 # theme: minima

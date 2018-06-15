@@ -4,10 +4,17 @@
 
 @import "minima";
 
-.post-tag{
+.post-tag {
   margin-right: 10px;
-  padding: 0 2px;
-  font-size: 12px;
-  color: rgba(17, 43, 68, 0.44);
-  background-color: rgba(39, 112, 173, 0.22);
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: inherit;
+  color: rgba(0, 0, 0, 0.67);
+  background-color: rgba(0, 1, 1, 0.12);
+}
+
+.post-excerpt {
+  color: rgba(0, 0, 0, 0.51);
+  font-size: 14px;
+  background-color: rgba(0, 1, 1, 0.05);
 }

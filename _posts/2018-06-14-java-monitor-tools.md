@@ -5,11 +5,9 @@ title:  "JAVA Monitor Tools"
 date:   2018-06-14 12:45:27 +0800
 author: Crab2Died
 categories: content java
-tags: java monitor
+tags: [Java Monitor]
 ---
 
-#                                                   JAVA性能监控与调优
----
 ## 一. jps(JVM Process Status Tool)
 ### 1. 介绍
    类似UNIX的ps命令，列出虚拟机正在运行的进程信息

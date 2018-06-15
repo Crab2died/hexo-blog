@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Java Collection Frame | Crab2Died Blog</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Java Collection Frame" />
+<meta name="author" content="Crab2Died" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="1. JAVA集合框架图 集合框架 集合框架-简图" />
+<meta property="og:description" content="1. JAVA集合框架图 集合框架 集合框架-简图" />
+<link rel="canonical" href="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame.html" />
+<meta property="og:url" content="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame.html" />
+<meta property="og:site_name" content="Crab2Died Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-15T13:15:27+08:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame.html","headline":"Java Collection Frame","dateModified":"2018-06-15T13:15:27+08:00","datePublished":"2018-06-15T13:15:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. JAVA集合框架图 集合框架 集合框架-简图","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:8181/jekyll-blog/feed.xml" title="Crab2Died Blog" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/jekyll-blog/">Crab2Died Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/jekyll-blog/about.html">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Java Collection Frame</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-06-15T13:15:27+08:00" itemprop="datePublished">Jun 15, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Crab2Died</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="1-java集合框架图">1. JAVA集合框架图</h2>
+<ul>
+  <li>集合框架
+   <img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.jpg" alt="集合框架" /></li>
+  <li>集合框架-简图
+   <img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6-%E7%AE%80%E5%9B%BE.jpg" alt="集合框架-简图" /></li>
+</ul>
+
+<h2 id="2-arraylistlinkedlistvectorstack">2. ArrayList、LinkedList、Vector、Stack</h2>
+<ol>
+  <li>都是java的可存储重复元素的集合容器,都实现了Collection、List接口</li>
+  <li>ArrayList是基于数组的可动态扩展的、可存储重复元素的、有默认顺序的集合，非线程安全的，最大元素个数为<code class="highlighter-rouge">Integer.MAX_VALUE</code>个
+由于是基于数组的所以add(E)、get(i)效率较高，set(i,E)、remove(i)、add(i,E)效率较低</li>
+  <li>LinkedList是基于双向链表的可动态扩展的、可存储重复元素的、非线程安全的有序集合。
+由于是基于链表的所以add(E)、add(i,E)、set(i,E)、remove(i)效率较高，get(i)效率较低</li>
+  <li>Vector是基于数组的可动态扩展的、可存储重复元素的、线程安全的有序集合
+由于是线程安全的所以效率比上诉的都要低</li>
+  <li>Stack(栈),继承了Vector,只有push(入栈)、pop(出栈)、peek(查看)等方法实现</li>
+</ol>
+
+<h2 id="3-hashsetlinkedhashsettreeset">3. HashSet、LinkedHashSet、TreeSet</h2>
+<ol>
+  <li>都是java的不可存储重复元素的集合容器,都实现了Collection、Set接口</li>
+  <li>HashSet是不重复的(hashcode去重)、非线程安全的无序集合
+只能放一个null</li>
+  <li>LinkedHashSet是不重复的(hashcode去重)、非线程安全的有序集合</li>
+  <li>TreeSet是SortedSet唯一实现类，TreeSet可实现自定义排序(实现Comparable接口)</li>
+</ol>
+
+<h2 id="4-hashmaphashtableconcurrenthashmapidentityhashmap">4. HashMap、HashTable、ConcurrentHashMap、IdentityHashMap</h2>
+<ol>
+  <li>都是存储形如key-value集合的容器，都实现了Map接口</li>
+  <li>HashMap是非线程安全的、按key值得hashcode去重的、无序的集合, 能接受key为null</li>
+  <li>HashTable与HashTable类似，区别在于其实现了同步，效率也相较于HashMap低，不能接受key为null的情况</li>
+  <li>ConcurrentHashMap是线程安全的、引入了分割(segmentation)，不论它变得多么大，仅仅需要锁定map的某个部分，而其它的线程不需
+要等到迭代完成才能访问map。简而言之在迭代的过程中，ConcurrentHashMap仅仅锁定map的某个部分，而Hashtable则会锁定整个map,
+所以ConcurrentHashMap效率高于HashTable, 不能接受key为null的情况 <br />
+ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Segment[]分锁，每个Segment内部存放一个或多个HashEntry[]
+每个HashEntry又是一个链表，具体的数据结构如图：<br />
+<img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/ConcurrentHashMap.jpg" alt="ConcurrentHashMap结构图" /></li>
+  <li>IdentityHashMap基于数组的、区别于HashMap的是比较key值是比较引用相等(形如<code class="highlighter-rouge">object1 == object2</code>)的，HashMap是equals()
+判断是否相等的，能接受key为null</li>
+</ol>
+
+  </div><a class="u-url" href="/jekyll-blog/content/java/2018/06/15/java-collection-frame.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-blog/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Crab2Died Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">©2018 Crab2Died</li><li><a class="u-email" href="mailto:Crab2Died@126.com">Crab2Died@126.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>RSS</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Crab2Died&#39;s personal blog website.</p>
+      </div>
+    </div>
+
+  </div>
+<script>
+    // baidu tongji
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?669141ef93f4209be04bb674c56cba17";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</footer>
+</body>
+
+</html>

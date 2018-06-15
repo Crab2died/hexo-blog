@@ -9,15 +9,15 @@
 <meta property="og:title" content="Ruby Install With Source On CentOS" />
 <meta name="author" content="Crab2Died" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Ruby Install with source on CentOS" />
-<meta property="og:description" content="Ruby Install with source on CentOS" />
+<meta name="description" content="1. Install OpenSSL Download OpenSSL Source Install OpenSSL $ tar -zxvf openssl-1.1.1-pre7.tar.gz $ cd openssl-1.1.1-pre7 $ ./config -fPIC --prefix=/usr/local/openssl enable-shared $ ./config -t $ make &amp;&amp; make install Check install $ openssl version OpenSSL 1.0.2k-fips 26 Jan 2017 2. Install Ruby Download Ruby Source Install Ruby $ tar -zxvf ruby-2.5.1.tar.gz $ cd ruby-2.5.1 $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl // important $ make &amp;&amp; make install Configure environment variable $ vi /etc/profile append -&gt; export PATH=/usr/local/ruby/bin:$PATH $ source /etc/profile Check install $ ruby -v ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux] $ gem -v 2.7.6" />
+<meta property="og:description" content="1. Install OpenSSL Download OpenSSL Source Install OpenSSL $ tar -zxvf openssl-1.1.1-pre7.tar.gz $ cd openssl-1.1.1-pre7 $ ./config -fPIC --prefix=/usr/local/openssl enable-shared $ ./config -t $ make &amp;&amp; make install Check install $ openssl version OpenSSL 1.0.2k-fips 26 Jan 2017 2. Install Ruby Download Ruby Source Install Ruby $ tar -zxvf ruby-2.5.1.tar.gz $ cd ruby-2.5.1 $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl // important $ make &amp;&amp; make install Configure environment variable $ vi /etc/profile append -&gt; export PATH=/usr/local/ruby/bin:$PATH $ source /etc/profile Check install $ ruby -v ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux] $ gem -v 2.7.6" />
 <link rel="canonical" href="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html" />
 <meta property="og:url" content="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html" />
 <meta property="og:site_name" content="Crab2Died Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-06-14T12:45:27+08:00" />
 <script type="application/ld+json">
-{"url":"http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html","headline":"Ruby Install With Source On CentOS","dateModified":"2018-06-14T12:45:27+08:00","datePublished":"2018-06-14T12:45:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"Ruby Install with source on CentOS","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html","headline":"Ruby Install With Source On CentOS","dateModified":"2018-06-14T12:45:27+08:00","datePublished":"2018-06-14T12:45:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. Install OpenSSL Download OpenSSL Source Install OpenSSL $ tar -zxvf openssl-1.1.1-pre7.tar.gz $ cd openssl-1.1.1-pre7 $ ./config -fPIC --prefix=/usr/local/openssl enable-shared $ ./config -t $ make &amp;&amp; make install Check install $ openssl version OpenSSL 1.0.2k-fips 26 Jan 2017 2. Install Ruby Download Ruby Source Install Ruby $ tar -zxvf ruby-2.5.1.tar.gz $ cd ruby-2.5.1 $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl // important $ make &amp;&amp; make install Configure environment variable $ vi /etc/profile append -&gt; export PATH=/usr/local/ruby/bin:$PATH $ source /etc/profile Check install $ ruby -v ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux] $ gem -v 2.7.6","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:8181/jekyll-blog/feed.xml" title="Crab2Died Blog" /></head>
@@ -48,10 +48,7 @@
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
-    <h1 id="ruby-install-with-source-on-centos">Ruby Install with source on CentOS</h1>
-
-<hr />
-<h3 id="1-install-openssl">1. Install OpenSSL</h3>
+    <h2 id="1-install-openssl">1. Install OpenSSL</h2>
 <ul>
   <li><a href="https://www.openssl.org/source/">Download OpenSSL Source</a></li>
   <li>Install OpenSSL</li>
@@ -72,7 +69,7 @@
  OpenSSL 1.0.2k-fips  26 Jan 2017
  </code></pre></figure>
 
-<h3 id="2-install-ruby">2. Install Ruby</h3>
+<h2 id="2-install-ruby">2. Install Ruby</h2>
 <ul>
   <li><a href="http://www.ruby-lang.org/en/downloads/">Download Ruby Source</a></li>
   <li>Install Ruby</li>
@@ -133,7 +130,16 @@
     </div>
 
   </div>
-
+<script>
+    // baidu tongji
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?669141ef93f4209be04bb674c56cba17";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 </footer>
 </body>
 

@@ -5,13 +5,10 @@ title:  "Ruby Install With Source On CentOS"
 date:   2018-06-14 12:45:27 +0800
 author: Crab2Died
 categories: content ruby
-tags: Ruby Install CentOS
+tags: [Ruby Install, CentOS]
 ---
 
-# Ruby Install with source on CentOS
-
----
-### 1. Install OpenSSL
+## 1. Install OpenSSL
  - [Download OpenSSL Source](https://www.openssl.org/source/)
  - Install OpenSSL
  {% highlight bash %}
@@ -26,7 +23,8 @@ tags: Ruby Install CentOS
  $ openssl version
  OpenSSL 1.0.2k-fips  26 Jan 2017
  {% endhighlight %}
-### 2. Install Ruby
+ 
+## 2. Install Ruby
  - [Download Ruby Source](http://www.ruby-lang.org/en/downloads/)
  - Install Ruby
  {% highlight bash %}

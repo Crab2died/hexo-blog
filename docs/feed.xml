@@ -1,7 +1,656 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:8181/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:8181/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-15T12:33:50+08:00</updated><id>http://localhost:8181/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>©2018 Crab2Died</name></author><entry><title type="html">Ruby Install With Source On CentOS</title><link href="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html" rel="alternate" type="text/html" title="Ruby Install With Source On CentOS" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html">&lt;h1 id=&quot;ruby-install-with-source-on-centos&quot;&gt;Ruby Install with source on CentOS&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:8181/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:8181/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-15T13:41:17+08:00</updated><id>http://localhost:8181/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>©2018 Crab2Died</name></author><entry><title type="html">Java GC</title><link href="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-gc.html" rel="alternate" type="text/html" title="Java GC" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-gc</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-gc.html">&lt;h2 id=&quot;一-java虚拟机内存区域&quot;&gt;一. Java虚拟机内存区域&lt;/h2&gt;
+&lt;h3 id=&quot;1-运行时数据区&quot;&gt;1. 运行时数据区&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png&quot; alt=&quot;java运行时数据区&quot; /&gt;&lt;/p&gt;
 
-&lt;hr /&gt;
-&lt;h3 id=&quot;1-install-openssl&quot;&gt;1. Install OpenSSL&lt;/h3&gt;
+&lt;h3 id=&quot;2-程序计数器program-counter-register&quot;&gt;2. 程序计数器(Program Counter Register)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、程序计数器是线程内(每个线程都有唯一的、封闭的)一小块内存区域&lt;/li&gt;
+  &lt;li&gt;2、计数器指定的是当前虚拟机执行指令的地址&lt;/li&gt;
+  &lt;li&gt;3、当虚拟机执行的是Native方法时,计数器值为空(Undefined),此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError
+   情况的区域.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-java虚拟机栈java-virtual-machine-stacks&quot;&gt;3. Java虚拟机栈(Java Virtual Machine Stacks)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、虚拟机栈是线程内部的、封闭的&lt;/li&gt;
+  &lt;li&gt;2、虚拟机栈描述的是java方法执行的内存模型&lt;/li&gt;
+  &lt;li&gt;3、每个方法在执行的同时都会创建一个栈帧(Stack Frame)用于存储局部变量表、 操作数栈、 动态链接、 方法出口等信息&lt;/li&gt;
+  &lt;li&gt;4、java方法的执行就是入栈与出栈的过程&lt;/li&gt;
+  &lt;li&gt;5、如果虚拟机栈深度超出了虚拟机允许深度将会抛出StackOverflowError异常,现代虚拟机大多数支持动态扩展(也允许固定长度),当虚拟机申
+   请扩展时申请不到足够的内存时,将会抛出OutOfMemoryError异常&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-本地方法栈native-method-stack&quot;&gt;4. 本地方法栈(Native Method Stack)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、为虚拟机调用本地Native方法提供服务&lt;/li&gt;
+  &lt;li&gt;2、也有虚拟机(譬如Sun HotSpot虚拟机)直接就把本地方法栈和虚拟机栈合二为一&lt;/li&gt;
+  &lt;li&gt;3、也会抛出StackOverflowError异常和OutOfMemoryError异常&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-java堆java-heap-gc堆&quot;&gt;5. Java堆(Java Heap) GC堆&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、线程共享的最大一块内存区域&lt;/li&gt;
+  &lt;li&gt;2、此内存区域的唯一目的就是存放对象实例,几乎所有的对象实例都在这里分配内存,虚拟机规范所有的对象实例与数据都在堆上分配&lt;/li&gt;
+  &lt;li&gt;3、随着JIT编译器的发展与逃逸分析技术逐渐成熟,栈上分配、 标量替换优化技术将会导致一些微妙的变化发生,所有的对象都分配在堆上也渐渐
+   变得不是那么“绝对”了&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;6-方法区method-area&quot;&gt;6. 方法区(Method Area)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、存储已被虚拟机加载的类信息、 常量、 静态变量、 即时编译器编译后的代码等数据&lt;/li&gt;
+  &lt;li&gt;2、这区域的内存回收目标主要是针对常量池的回收和对类型的卸载&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;7-运行时常量池runtime-constant-pool&quot;&gt;7. 运行时常量池(Runtime Constant Pool)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、Class文件中除了有类的版本、 字段、 方法、 接口等描述信息外,还有一项信息是常量池(Constant Pool Table),用于存放编译期生成
+   的各种字面量和符号引用,这部分内容将在类加载后进入方法区的运行时常量池中存放&lt;/li&gt;
+  &lt;li&gt;2、String.intern()也会放入运行时常量池中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;8-直接内存direct-memory&quot;&gt;8. 直接内存(Direct Memory)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、NIO的DirectByteBuffer对象使用直接内存,这样能在一些场景中显著提高性能,因为避免了在Java堆和Native堆中来回复制数据&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;二-java对象&quot;&gt;二. Java对象&lt;/h2&gt;
+&lt;h3 id=&quot;1-对象的创建&quot;&gt;1. 对象的创建&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、指针碰撞(Bump the Pointer)&lt;/li&gt;
+  &lt;li&gt;2、空闲列表(Free List)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-对象再内存中的布局&quot;&gt;2. 对象再内存中的布局&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、分为3块区域:对象头(Header)、实例数据(Instance Data)和对齐填充(Padding)&lt;/li&gt;
+  &lt;li&gt;2、对象头包含:轻量级锁定、 重量级锁定、 GC标记、 可偏向&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-对象的访问定位&quot;&gt;3. 对象的访问定位&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、句柄访问&lt;br /&gt;
+ &lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/gc/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.png&quot; alt=&quot;句柄访问对象&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;2、直接指针访问 &lt;br /&gt;
+ &lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/gc/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE.png&quot; alt=&quot;直接指针访问&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;三-垃圾回收与内存分配&quot;&gt;三. 垃圾回收与内存分配&lt;/h2&gt;
+&lt;h3 id=&quot;1-引用计数法虚拟机未使用&quot;&gt;1. 引用计数法(虚拟机未使用)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、互相引用将无法得到正常回收&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-可达性分析算法reachability-analysis&quot;&gt;2. 可达性分析算法(Reachability Analysis)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、通过GC Root节点向下搜索,搜索走过的路径称为引用链(Reference Chain),当一个对象没有一个引用链经过,则表示该对象是不可用的,可以回收&lt;/li&gt;
+  &lt;li&gt;2、可作为GC Root对象的有:
+    &lt;ul&gt;
+      &lt;li&gt;虚拟机栈(栈帧中的本地变量表)中引用的对象&lt;/li&gt;
+      &lt;li&gt;方法区中类静态属性引用的对象&lt;/li&gt;
+      &lt;li&gt;方法区中常量引用的对象&lt;/li&gt;
+      &lt;li&gt;本地方法栈中JNI(即一般说的Native方法)引用的对象&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-引用&quot;&gt;3. 引用&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、强引用(Strong Reference): new 关键字&lt;/li&gt;
+  &lt;li&gt;2、软引用(Soft Reference):当要发生内存溢出时会将软引用对象加入回收队列中&lt;/li&gt;
+  &lt;li&gt;3、弱引用(Weak Reference):只能活到下次GC前&lt;/li&gt;
+  &lt;li&gt;4、虚引用(Phantom Reference):幽灵引用或者幻影引用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-回收方法区&quot;&gt;4. 回收方法区&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、主要回收永久代的废弃的常量和无用的类&lt;/li&gt;
+  &lt;li&gt;2、无用的类判定条件:
+    &lt;ul&gt;
+      &lt;li&gt;该类所有的实例都已经被回收,也就是Java堆中不存在该类的任何实例.&lt;/li&gt;
+      &lt;li&gt;加载该类的ClassLoader已经被回收.&lt;/li&gt;
+      &lt;li&gt;该类对应的java.lang.Class对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;四-垃圾回收算法&quot;&gt;四. 垃圾回收算法&lt;/h2&gt;
+&lt;h3 id=&quot;1-标记-清除算法mark-sweep&quot;&gt;1. 标记-清除算法(Mark-Sweep)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、标记与清除2个过程&lt;/li&gt;
+  &lt;li&gt;2、标记与清除效率都不高,还可能产生大量空间碎片导致大对象找不到连续可用的空间&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-复制算法copying&quot;&gt;2. 复制算法(Copying)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、将堆内存分为大小相等的2块,每次只是用其中一块,当一块内存用完时将还活着的对象移动到另一块,然后清理该块内存&lt;/li&gt;
+  &lt;li&gt;2、消除了内存碎片化,代价是牺牲了一半可用堆内存&lt;/li&gt;
+  &lt;li&gt;3、商用虚拟机都采用这种,但并不是按1:1来划分空间而是将内存分为一块较大的Eden空间和两块较小的Survivor空间,每次使用Eden和其中
+   一块Survivor.当回收时,将Eden和Survivor中还存活着的对象一次性地复制到另外一块Survivor空间上,最后清理掉Eden和刚才用过的
+   Survivor空间. HotSpot虚拟机默认Eden和Survivor的大小比例是8:1,也就是每次新生代中可用内存空间为整个新生代容量的
+   90%(80%+10%),只有10%的内存会被“浪费”. 当然,98%的对象可回收只是一般场景下的数据,我们没有办法保证每次回收都只有不多于
+   10%的对象存活,当Survivor空间不够用时,需要依赖其他内存(这里指老年代)进行分配担保(Handle Promotion).&lt;/li&gt;
+  &lt;li&gt;4、当存活率高时将会出现大量的内存复制操作还有可能导致进行分配担保&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-标记-整理算法mark-compact&quot;&gt;3. 标记-整理算法(Mark-Compact)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、老年代内存,标记可回收对象之后,将存活的对象移向一端,然后清理掉端边界以外的内存&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-分代收集算法generational-collection&quot;&gt;4. 分代收集算法(Generational Collection)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、将堆内存分为老年代和新生代&lt;/li&gt;
+  &lt;li&gt;2、老年代对象存活率高,再采用标记-清理或标记-整理算法进行GC&lt;/li&gt;
+  &lt;li&gt;3、新生代存活率低,采用复制算法将少量的存活对象进行复制操作&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;五-hotspot算法实现&quot;&gt;五. HotSpot算法实现&lt;/h2&gt;
+&lt;h3 id=&quot;1-枚举根节点&quot;&gt;1. 枚举根节点&lt;/h3&gt;
+&lt;p&gt;  - 1、虚拟机内OopMap存有对象引用信息，可以得到GC Root根节点&lt;/p&gt;
+
+&lt;h3 id=&quot;2-安全点&quot;&gt;2. 安全点&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、虚拟机会在如方法调用、 循环跳转、 异常跳转等，所以具有这些功能的指令才会产生Safepoint&lt;/li&gt;
+  &lt;li&gt;2、中断方式
+    &lt;ul&gt;
+      &lt;li&gt;抢先式中断(基本弃用): 给出中断指令，有线程发现未到达安全点则继续执行至下一个安全点&lt;/li&gt;
+      &lt;li&gt;主动式中断: 给定一个中断标志，每个线程都会去轮询该标志，为真时中断&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-安全区域&quot;&gt;3. 安全区域&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、安全区域是指在一段代码片段之中，引用关系不会发生变化。 在这个区域中的任意地方开始GC都是安全的&lt;/li&gt;
+  &lt;li&gt;2、在线程执行到安全区域时首先会标记自己进入安全区域，出安全区域前必须等到枚举根节点或整个GC完成，没有则都等到可以出安全区域信号为止&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;六-垃圾回收器&quot;&gt;六. 垃圾回收器&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/gc/HotSpot%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8.png&quot; alt=&quot;HotSpot虚拟机垃圾回收器&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-serial收集器&quot;&gt;1. Serial收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、JDK1.3.1之前是虚拟机新生代收集的唯一选择&lt;/li&gt;
+  &lt;li&gt;2、单线程、Stop The World(STW)、复制算法&lt;/li&gt;
+  &lt;li&gt;3、Client模式下新生代默认的垃圾收集器&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-pernew收集器&quot;&gt;2. PerNew收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、Serial收集器的多线程版,其他一样&lt;/li&gt;
+  &lt;li&gt;2、是许多虚拟机Server模式下新生代的首选收集器&lt;/li&gt;
+  &lt;li&gt;3、ParNew收集器也是使用-XX:+UseConcMarkSweepGC选项后的默认新生代收集器,也可以使用-XX:+UseParNewGC选项来强制指定它&lt;/li&gt;
+  &lt;li&gt;4、单核下效果不一定比Serial效果好,多核更适合,-XX:ParallelGCThreads参数来限制垃圾收集的线程数&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-parallel-scavenge收集器&quot;&gt;3. Parallel Scavenge收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、新生代收集器,采用复制算法,并行的多线程收集器,吞吐量优先&lt;/li&gt;
+  &lt;li&gt;2、追求可控的吞吐量, 吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)&lt;/li&gt;
+  &lt;li&gt;3、控制最大垃圾收集停顿时间的-XX:MaxGCPauseMillis参数以及直接设置吞吐量大小的-XX:GCTimeRatio参数.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-serial-old收集器&quot;&gt;4. Serial Old收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、Serial老年代版本、单线程、标记-整理算法&lt;/li&gt;
+  &lt;li&gt;2、给Client模式下虚拟机用&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-parallel-old收集器&quot;&gt;5. Parallel Old收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、Parallel Scavenge收集器的老年代版本,使用多线程和“标记-整理”算法,JDK1.6开始提供&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;6-cms收集器&quot;&gt;6. CMS收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、CMS(Concurrent Mark Sweep)收集器是一种以获取最短回收停顿时间为目标的收集器.&lt;/li&gt;
+  &lt;li&gt;2、标记-清除算法实现
+    &lt;ul&gt;
+      &lt;li&gt;初始标记(CMS initial mark)，有短时的STW&lt;/li&gt;
+      &lt;li&gt;并发标记(CMS concurrent mark)&lt;/li&gt;
+      &lt;li&gt;重新标记(CMS remark)，有短时的STW&lt;/li&gt;
+      &lt;li&gt;并发清除(CMS concurrent sweep)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;3、并发收集、 低停顿,Sun公司的一些官方文档中也称之为并发低停顿收集器&lt;/li&gt;
+  &lt;li&gt;4、-XX：+UseCMSCompactAtFullCollection默认开启，表示CMS进行Full GC的时候开启内存碎片的合并整理，该过程无法并发停顿时间变长&lt;/li&gt;
+  &lt;li&gt;5、-XX：CMSFullGCsBeforeCompaction表示执行多少次不压缩的Full GC后跟着来一次压缩的Full GC，默认是0，每次都压缩&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;7-g1收集器&quot;&gt;7. G1收集器&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1、G1(Garbage-First)收集器是当今收集器技术发展的最前沿成果之一,面向服务端应用&lt;/li&gt;
+  &lt;li&gt;2、特点:
+    &lt;ul&gt;
+      &lt;li&gt;并发与并行:充分利用cpu与多核等硬件优势&lt;/li&gt;
+      &lt;li&gt;分代收集:&lt;/li&gt;
+      &lt;li&gt;空间整理:标记-整理算法&lt;/li&gt;
+      &lt;li&gt;可预测的停顿:将堆内存分为多个区域(Region),还保留有老年代与新生代&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;3、不计算维护Remembered Set的操作,G1收集器的运作大致可划分为以下几个步骤:
+    &lt;ul&gt;
+      &lt;li&gt;初始标记(Initial Marking)&lt;/li&gt;
+      &lt;li&gt;并发标记(Concurrent Marking)&lt;/li&gt;
+      &lt;li&gt;最终标记(Final Marking)&lt;/li&gt;
+      &lt;li&gt;筛选回收(Live Data Counting and Evacuation)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;8-垃圾收集器参数&quot;&gt;8. 垃圾收集器参数&lt;/h3&gt;
+&lt;p&gt;|        参数            |                      描述                                      |
+  |:———————–|:————————————————————–|
+  |UseSerialGC             |Client模式下默认,使用Serial+Serial Old组合                       |
+  |UseParNewGC             |ParNew+Serial Old组合                                          |
+  |UseConMarkSweepGC       |ParNew+CMS+Serial Old组合,Serial Old作为CMS失败后备用            |
+  |UseParallelGC           |Server模式默认,Parallel Scavenge+Serial Old(PS Mark Sweep)组合  |
+  |UseParallelOldGC        |Parallel Scavenge+Parallel Old组合                             |
+  |UseG1GC                 |使用G1                                                         |&lt;/p&gt;
+
+&lt;h2 id=&quot;七-内存分配与回收策略&quot;&gt;七. 内存分配与回收策略&lt;/h2&gt;
+&lt;h3 id=&quot;1-对象优先在eden分配&quot;&gt;1. 对象优先在Eden分配&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;对象优先在Eden新生代分配,内存不足将发生一次Minor GC&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2-大对象直接进入老年代&quot;&gt;2. 大对象直接进入老年代&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;-XX:PretenureSizeThreshold参数,令大于这个设置值的对象直接在老年代分配,避免大量内存复制&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-长期存活的对象将进入老年代&quot;&gt;3. 长期存活的对象将进入老年代&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;对象晋升老年代的年龄阈值,可以通过参数-XX:MaxTenuringThreshold设置,默认15,每次Minor GC对象没死+1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-动态对象年龄判定&quot;&gt;4. 动态对象年龄判定&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一半,年龄大于或等于该年龄的对象就可以直接进入老年代,无须等
+到MaxTenuringThreshold中要求的年龄&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-空间分配担保&quot;&gt;5. 空间分配担保&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Minor GC前先判断老年代可用空间是否大于新生代对象总空间,如果大于则确保安全,如果小于则查看HandlePromotionFailure设置的值是否
+允许担保失败,若允许则会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小,如果大于,将尝试着进行一次Minor 
+GC,尽管这次Minor GC是有风险的;如果小于,或者HandlePromotionFailure设置不允许冒险,那这时也要改为进行一次Full GC.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;八-minor-gcmajor-gc与full-gc&quot;&gt;八. Minor GC、Major GC与Full GC&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Minor GC表示新生代GC、Major GC是指老年代GC、Full GC为全部堆内存GC。&lt;/li&gt;
+  &lt;li&gt;往往他们之间相互影响，相互触发&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="GC" /><summary type="html">一. Java虚拟机内存区域 1. 运行时数据区</summary></entry><entry><title type="html">Java Concurrent</title><link href="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-concurrent.html" rel="alternate" type="text/html" title="Java Concurrent" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-concurrent</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-concurrent.html">&lt;h2 id=&quot;1-java与线程&quot;&gt;1. JAVA与线程&lt;/h2&gt;
+&lt;h3 id=&quot;11-线程的实现&quot;&gt;1.1 线程的实现&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现.&lt;/li&gt;
+  &lt;li&gt;JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;12-java线程调度&quot;&gt;1.2 Java线程调度&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling)
+和抢占式线程调度(Preemptive ThreadsScheduling)&lt;/li&gt;
+  &lt;li&gt;协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上;
+优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞&lt;/li&gt;
+  &lt;li&gt;每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时
+间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题.&lt;/li&gt;
+  &lt;li&gt;JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;13-线程转换状态&quot;&gt;1.3 线程转换状态&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;JAVA线程定义了6个状态:
+    &lt;ul&gt;
+      &lt;li&gt;新建(New):创建后尚未启动的线程处于这种状态.&lt;/li&gt;
+      &lt;li&gt;运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在
+等待着CPU为它分配执行时间.&lt;/li&gt;
+      &lt;li&gt;无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被&lt;br /&gt;
+    其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态:&lt;br /&gt;
+    ●没有设置Timeout参数的Object.wait()方法.&lt;br /&gt;
+    ●没有设置Timeout参数的Thread.join()方法.&lt;br /&gt;
+    ●LockSupport.park()方法.&lt;/li&gt;
+      &lt;li&gt;限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后
+它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态:&lt;br /&gt;
+    ●Thread.sleep()方法.&lt;br /&gt;
+    ●设置了Timeout参数的Object.wait()方法.&lt;br /&gt;
+    ●设置了Timeout参数的Thread.join()方法.&lt;br /&gt;
+    ●LockSupport.parkNanos()方法.&lt;br /&gt;
+    ●LockSupport.parkUntil()方法&lt;/li&gt;
+      &lt;li&gt;阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态&lt;/li&gt;
+      &lt;li&gt;结束(Terminated):已终止线程的线程状态,线程已经结束执行.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;线程状态转换关系图&lt;br /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/concurrent/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%85%B3%E7%B3%BB.png&quot; alt=&quot;线程状态转换关系&quot; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;2-线程安全与锁优化&quot;&gt;2. 线程安全与锁优化&lt;/h2&gt;
+&lt;h3 id=&quot;21-java中的线程安全&quot;&gt;2.1 JAVA中的线程安全&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;共享数据分类
+    &lt;ul&gt;
+      &lt;li&gt;不可变(Immutable):不可变对象一定是线程安全的,典型的final&lt;/li&gt;
+      &lt;li&gt;绝对线程安全:&lt;/li&gt;
+      &lt;li&gt;相对线程安全: java大部分的线程安全都是相对线程安全的&lt;/li&gt;
+      &lt;li&gt;线程兼容:&lt;/li&gt;
+      &lt;li&gt;线程对立:&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;22-synchronized的优化&quot;&gt;2.2 synchronized的优化&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;synchronized自JDK1.6后引入偏向锁和轻量级锁后大大提升了并发的性能&lt;/li&gt;
+  &lt;li&gt;synchronized锁升级&lt;code class=&quot;highlighter-rouge&quot;&gt;偏向锁 -&amp;gt; 轻量级锁 -&amp;gt; 重量级锁&lt;/code&gt; 所以在锁高竞争下Lock性能更高&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;3-锁介绍&quot;&gt;3. 锁介绍&lt;/h2&gt;
+&lt;h3 id=&quot;31-自旋锁&quot;&gt;3.1 自旋锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;自旋锁可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环，（即所谓的自旋，就是自己执行空循环），若在若干个空循环后，线程
+如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加强。因
+此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发程序，自旋
+锁在自旋等待后，往往毅然无法获得对应的锁，不仅仅白白浪费了CPU时间，最终还是免不了被挂起的操作 ，反而浪费了系统的资源。在JDK1.6中，
+Java虚拟机提供-XX:+UseSpinning参数来开启自旋锁，使用-XX:PreBlockSpin参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被
+取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。&lt;/li&gt;
+  &lt;li&gt;问题：
+    &lt;ul&gt;
+      &lt;li&gt;可能白占用CPU时间&lt;/li&gt;
+      &lt;li&gt;死锁问题，自己占用锁，还在等待锁释放&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;32-阻塞锁&quot;&gt;3.2 阻塞锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;让线程进入阻塞状态进行等待，当获得相应的信号（唤醒，时间） 时，才可以进入线程的准备就绪状态，准备就绪状态的所有线程，通过竞争，进
+入运行状态。JAVA中，能够进入\退出、阻塞状态或包含阻塞锁的方法有 ，synchronized 关键字（其中的重量锁），ReentrantLock，
+Object.wait()\notify()&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;33-可重入锁&quot;&gt;3.3 可重入锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;可重入锁，也叫做递归锁，指的是同一线程 外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，但不受影响。  &lt;br /&gt;
+在JAVA环境下 ReentrantLock 和synchronized 都是 可重入锁&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;34-乐观锁和悲观锁&quot;&gt;3.4 乐观锁和悲观锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;悲观锁: 每次拿数据都上锁，如行锁、表锁、读锁、写锁&lt;/li&gt;
+  &lt;li&gt;乐观锁: 每次拿数据都不上锁，只是在修改前验证下数据在此期间有无更新，如版本号控制&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;35-轮询锁和定时锁&quot;&gt;3.5 轮询锁和定时锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;由tryLock实现，与无条件获取锁模式相比，它们具有更完善的错误恢复机制。可避免死锁的发生：&lt;br /&gt;
+boolean tryLock()：仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值 true。
+如果锁不可用，则此方法将立即返回值 false。
+boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
+如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;36-显示锁和内置锁&quot;&gt;3.6 显示锁和内置锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;显示锁用Lock来定义、内置锁用synchronized。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;37-对象锁和类锁&quot;&gt;3.7 对象锁和类锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;对象锁是用于实例对象(可有多个实例对象)方法上的&lt;/li&gt;
+  &lt;li&gt;类锁是作用于对象的静态方法和Class(一个类只有一个Class对象)对象上的&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;38-互斥锁&quot;&gt;3.8 互斥锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;互斥锁, 指的是一次最多只能有一个线程持有的锁。如Java的Lock&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;39-锁粗化&quot;&gt;3.9 锁粗化&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;将多个连续的锁操作合并成一个整体的锁&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;310-锁消除&quot;&gt;3.10 锁消除&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;通过逃逸分析，能证明堆上数据不会逃逸出当前线程，则认为是线程安全的，不必要加锁操作&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;4-java线程池&quot;&gt;4. java线程池&lt;/h2&gt;
+&lt;h3 id=&quot;41-线程池实现类&quot;&gt;4.1 线程池实现类&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      (C)ThreadPoolExecutor ---&amp;gt;  (AC)AbstractExecutorService ---&amp;gt; (I)ExecutorService ---&amp;gt; (I)Executor
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;42-threadpoolexecutor构造参数说明&quot;&gt;4.2 ThreadPoolExecutor构造参数说明&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
+    # maximunPoolSize 线程池最大线程数
+    # keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
+    # unit 线程等待时间的单位级
+    # workQueue 任务缓冲队列
+    # threadFactory 线程工厂，用于创建线程
+    # handler 表示拒接处理任务的策略有一下4种：
+    #  - ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
+    #  - ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
+    #  - ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
+    #  - ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+    
+    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
+            BlockingQueue&amp;lt;Runnable&amp;gt; workQueue);
+ 
+    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
+            BlockingQueue&amp;lt;Runnable&amp;gt; workQueue,ThreadFactory threadFactory);
+ 
+    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
+            BlockingQueue&amp;lt;Runnable&amp;gt; workQueue,RejectedExecutionHandler handler);
+ 
+    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
+        BlockingQueue&amp;lt;Runnable&amp;gt; workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;43-实现原理&quot;&gt;4.3 实现原理&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;线程池状态：
+    &lt;ul&gt;
+      &lt;li&gt;RUNNING: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
+   &lt;code class=&quot;highlighter-rouge&quot;&gt;prestartAllCoreThreads() #创建核心线程&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;prestartCoreThread() #创建一个核心线程&lt;/code&gt;来初始化线程数)&lt;/li&gt;
+      &lt;li&gt;SHUTDOWN: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用&lt;code class=&quot;highlighter-rouge&quot;&gt;shutdown()&lt;/code&gt;时从&lt;code class=&quot;highlighter-rouge&quot;&gt;RUNNING-&amp;gt; SHUTDOWN&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;STOP: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用&lt;code class=&quot;highlighter-rouge&quot;&gt;shutdownNow()&lt;/code&gt;时从
+&lt;code class=&quot;highlighter-rouge&quot;&gt;RUNNING or SHUTDOWN -&amp;gt; STOP&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;TIDYING: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数&lt;code class=&quot;highlighter-rouge&quot;&gt;terminated()&lt;/code&gt;，用户可重载该方法
+实现自己的业务逻辑;状态切换是所有任务终止就进入TIDYING状态&lt;/li&gt;
+      &lt;li&gt;TERMINATED: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;任务执行过程
+    &lt;ul&gt;
+      &lt;li&gt;当任务提交给线程池时，线程首先判断当前池内线程数是否大于corePoolSize(核心线程数)，如果小于这值就会创建一个新的线程来执行该任务；&lt;/li&gt;
+      &lt;li&gt;当线程数大于核心线程数时，则会尝试将任务放入缓冲队列(workQueue)内，若添加成功，则该任务会被等待的空闲线程取去执行，若添加失败，
+则会尝试创建新的线程去执行该任务；&lt;/li&gt;
+      &lt;li&gt;如果线程池内线程数达到了maximumPoolSize(最大线程数)时，则会采取handler(拒绝策略)处理&lt;/li&gt;
+      &lt;li&gt;如果线程池内的线程数大于corePoolSize时，当线程空闲超时keepAliveTime时，线程将被终止，直到线程数等于corePoolSize；如果允许核心
+线程数也有超时时间，则当核心线程数内的线程超时时也会被终止，直至线程数为0&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;线程池中的线程初始化
+    &lt;ul&gt;
+      &lt;li&gt;prestartCoreThread()：初始化一个核心线程&lt;/li&gt;
+      &lt;li&gt;prestartAllCoreThreads()：初始化所有核心线程&lt;/li&gt;
+      &lt;li&gt;初始化后线程会执行workQueue的&lt;code class=&quot;highlighter-rouge&quot;&gt;take()&lt;/code&gt;方法，该方法是阻塞的，直到有任务提交&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;任务缓存队列及排队策略
+    &lt;ul&gt;
+      &lt;li&gt;ArrayBlockingQueue：基于数组的FIFO阻塞队列,必须有最大容量的参数&lt;/li&gt;
+      &lt;li&gt;LinkedBlockingQueue: 基于链表的FIFO阻塞队列,容量动态扩展&lt;/li&gt;
+      &lt;li&gt;SynchronousQueue: 该队列不保存提交的任务，而是直接新建队列来执行任务&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;任务拒绝策略
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
+    ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
+    ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
+    ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;线程池的关闭
+    &lt;ul&gt;
+      &lt;li&gt;shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务&lt;/li&gt;
+      &lt;li&gt;shutdownNow(): 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;线程池容量动态调整
+    &lt;ul&gt;
+      &lt;li&gt;setCorePoolSize()：设置核心池大小&lt;/li&gt;
+      &lt;li&gt;setMaximumPoolSize()：设置线程池最大能创建的线程数目大小&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;44-executors&quot;&gt;4.4 Executors&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;newFixedThreadPool: 定容量的线程池，核心线程数与最大线程数相等&lt;/li&gt;
+  &lt;li&gt;newSingleThreadExecutor: 单线程线程池，线程池内核心线程数与最大线程数为1&lt;/li&gt;
+  &lt;li&gt;newCachedThreadPool: 无线大小线程池，核心线程数为0，最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;, 缓冲队列为&lt;code class=&quot;highlighter-rouge&quot;&gt;SynchronousQueue&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;newScheduledThreadPool：创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;,内部是
+一个DelayedWorkQueue实现&lt;/li&gt;
+  &lt;li&gt;newSingleThreadScheduledExecutor: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;,
+内部是一个DelayedWorkQueue实现&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;5-abstractqueuedsynchronizer&quot;&gt;5. AbstractQueuedSynchronizer&lt;/h2&gt;
+&lt;p&gt;内部类：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;ConditionObject：&lt;/li&gt;
+  &lt;li&gt;Node：存放线程信息队列&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;51-aqs之reentrantlock独占锁源码分析&quot;&gt;5.1 AQS之ReentrantLock独占锁源码分析&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/jdk1.8-abstractqueuedsynchronizer&quot;&gt;AbstractQueuedSynchronizer独占锁&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ReentrantLock.lock()&lt;/code&gt;保证在&lt;code class=&quot;highlighter-rouge&quot;&gt;ReentrantLock.unlock()&lt;/code&gt;之间的代码只有一个线程在执行；ReentrantLock为可重入锁，它有一个与
+锁相关的获取计数器，如果拥有锁的某个线程再次得到锁，那么获取计数器就加1，然后锁需要被释放两次才能获得真正释放。&lt;/li&gt;
+  &lt;li&gt;内部类&lt;code class=&quot;highlighter-rouge&quot;&gt;Syn&lt;/code&gt;实现了&lt;code class=&quot;highlighter-rouge&quot;&gt;AbstractQueuedSynchronizer&lt;/code&gt;接口&lt;/li&gt;
+  &lt;li&gt;构造方法有公平锁和非公平锁，公平锁与非公平锁的区别在于公平锁在尝试获取锁时会放入等待队列的后面，获取锁的顺序是按先后顺序执行的，
+而非公平锁在尝试获取锁时首先会去尝试获取锁，若获取失败在进入等待队列按顺序执行。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;52-aqs之countdownlatch共享锁源码分析&quot;&gt;5.2 AQS之CountDownLatch共享锁源码分析&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/java8-abstractqueuedsynchronizer&quot;&gt;AbstractQueuedSynchronizer共享锁&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;CountDownLatch.countDown()&lt;/code&gt;实现锁计数-1，直到减至0是，唤醒&lt;code class=&quot;highlighter-rouge&quot;&gt;CountDownLatch.await()&lt;/code&gt;等待线程&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;53-公平锁和非公平锁&quot;&gt;5.3 公平锁和非公平锁&lt;/h3&gt;
+&lt;p&gt;公平锁是严格按照FIFO队列获得锁，但带来了大量的线程切换的消耗，非公平锁极大的降低了线程切换带来的消耗，虽然可能造成线程饥饿的情况，
+   但也提高了吞吐量。&lt;/p&gt;
+
+&lt;h2 id=&quot;6-synchronized与lock比较&quot;&gt;6. &lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;比较&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;是JVM层面实现的’重量级锁’，可通过监控工具监控&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;的锁定，而且代码出现异常时会自动释放锁&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;是纯JAVA实现的，为多种实现留下空间，可以实现不同的调度算法、性能特性或者锁定语义，&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;必须自己手动的释放锁
+形如&lt;code class=&quot;highlighter-rouge&quot;&gt;finally{lock.unlock();}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;当锁竞争激烈时用&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;,锁竞争较弱时用&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;7-阻塞队列blockingqueue&quot;&gt;7. 阻塞队列&lt;code class=&quot;highlighter-rouge&quot;&gt;BlockingQueue&lt;/code&gt;&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;阻塞队列是一个FIFO队列&lt;/li&gt;
+  &lt;li&gt;主要方法&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Ops&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Throws Exception&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Special Value&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Blocks Times Out&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Insert&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;add(o)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;offer(o)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;put(o) &amp;amp; offer(o, timeout, timeUnit)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Remove&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;remove(o)&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;poll()&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;take()	&amp;amp; poll(timeout, timeUnit)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Examine&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;element()&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;peek()&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;主要实现
+    &lt;ul&gt;
+      &lt;li&gt;ArrayBlockingQueue：基于数组的有界阻塞队列，必须指定长度&lt;/li&gt;
+      &lt;li&gt;LinkedBlockingQueue: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;SynchronousQueue: 无缓冲区的阻塞队列，&lt;code class=&quot;highlighter-rouge&quot;&gt;put()&lt;/code&gt;要阻塞等待&lt;code class=&quot;highlighter-rouge&quot;&gt;take()&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;PriorityBlockingQueue: 优先级阻塞队列，队列元素必须实现&lt;code class=&quot;highlighter-rouge&quot;&gt;Comparator&lt;/code&gt;接口，基于数组，自动扩展长度&lt;/li&gt;
+      &lt;li&gt;DelayQueue：一个使用优先级队列实现的无界阻塞队列&lt;/li&gt;
+      &lt;li&gt;LinkedTransferQueue：一个由链表结构组成的无界阻塞队列&lt;/li&gt;
+      &lt;li&gt;LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;注意&lt;br /&gt;
+   如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;8-concurrentlinkedqueue&quot;&gt;8. ConcurrentLinkedQueue&lt;/h2&gt;
+&lt;p&gt;非阻塞线程安全的FIFO队列，基于单向链表实现，循环CAS操作实现，由于是根据Node.NEXT是否为NULL来判断是否为TAIL节点，因此
+   队列的元素值不可为NULL。&lt;/p&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Concurrent" /><summary type="html">1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ●没有设置Timeout参数的Object.wait()方法. ●没有设置Timeout参数的Thread.join()方法. ●LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ●Thread.sleep()方法. ●设置了Timeout参数的Object.wait()方法. ●设置了Timeout参数的Thread.join()方法. ●LockSupport.parkNanos()方法. ●LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:</summary></entry><entry><title type="html">Java Collection Frame</title><link href="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame.html" rel="alternate" type="text/html" title="Java Collection Frame" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/java/2018/06/15/java-collection-frame.html">&lt;h2 id=&quot;1-java集合框架图&quot;&gt;1. JAVA集合框架图&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;集合框架
+   &lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.jpg&quot; alt=&quot;集合框架&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;集合框架-简图
+   &lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6-%E7%AE%80%E5%9B%BE.jpg&quot; alt=&quot;集合框架-简图&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;2-arraylistlinkedlistvectorstack&quot;&gt;2. ArrayList、LinkedList、Vector、Stack&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;都是java的可存储重复元素的集合容器,都实现了Collection、List接口&lt;/li&gt;
+  &lt;li&gt;ArrayList是基于数组的可动态扩展的、可存储重复元素的、有默认顺序的集合，非线程安全的，最大元素个数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;个
+由于是基于数组的所以add(E)、get(i)效率较高，set(i,E)、remove(i)、add(i,E)效率较低&lt;/li&gt;
+  &lt;li&gt;LinkedList是基于双向链表的可动态扩展的、可存储重复元素的、非线程安全的有序集合。
+由于是基于链表的所以add(E)、add(i,E)、set(i,E)、remove(i)效率较高，get(i)效率较低&lt;/li&gt;
+  &lt;li&gt;Vector是基于数组的可动态扩展的、可存储重复元素的、线程安全的有序集合
+由于是线程安全的所以效率比上诉的都要低&lt;/li&gt;
+  &lt;li&gt;Stack(栈),继承了Vector,只有push(入栈)、pop(出栈)、peek(查看)等方法实现&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;3-hashsetlinkedhashsettreeset&quot;&gt;3. HashSet、LinkedHashSet、TreeSet&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;都是java的不可存储重复元素的集合容器,都实现了Collection、Set接口&lt;/li&gt;
+  &lt;li&gt;HashSet是不重复的(hashcode去重)、非线程安全的无序集合
+只能放一个null&lt;/li&gt;
+  &lt;li&gt;LinkedHashSet是不重复的(hashcode去重)、非线程安全的有序集合&lt;/li&gt;
+  &lt;li&gt;TreeSet是SortedSet唯一实现类，TreeSet可实现自定义排序(实现Comparable接口)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;4-hashmaphashtableconcurrenthashmapidentityhashmap&quot;&gt;4. HashMap、HashTable、ConcurrentHashMap、IdentityHashMap&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;都是存储形如key-value集合的容器，都实现了Map接口&lt;/li&gt;
+  &lt;li&gt;HashMap是非线程安全的、按key值得hashcode去重的、无序的集合, 能接受key为null&lt;/li&gt;
+  &lt;li&gt;HashTable与HashTable类似，区别在于其实现了同步，效率也相较于HashMap低，不能接受key为null的情况&lt;/li&gt;
+  &lt;li&gt;ConcurrentHashMap是线程安全的、引入了分割(segmentation)，不论它变得多么大，仅仅需要锁定map的某个部分，而其它的线程不需
+要等到迭代完成才能访问map。简而言之在迭代的过程中，ConcurrentHashMap仅仅锁定map的某个部分，而Hashtable则会锁定整个map,
+所以ConcurrentHashMap效率高于HashTable, 不能接受key为null的情况 &lt;br /&gt;
+ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Segment[]分锁，每个Segment内部存放一个或多个HashEntry[]
+每个HashEntry又是一个链表，具体的数据结构如图：&lt;br /&gt;
+&lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/ConcurrentHashMap.jpg&quot; alt=&quot;ConcurrentHashMap结构图&quot; /&gt;&lt;/li&gt;
+  &lt;li&gt;IdentityHashMap基于数组的、区别于HashMap的是比较key值是比较引用相等(形如&lt;code class=&quot;highlighter-rouge&quot;&gt;object1 == object2&lt;/code&gt;)的，HashMap是equals()
+判断是否相等的，能接受key为null&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Collection" /><summary type="html">1. JAVA集合框架图 集合框架 集合框架-简图</summary></entry><entry><title type="html">Ruby Install With Source On CentOS</title><link href="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html" rel="alternate" type="text/html" title="Ruby Install With Source On CentOS" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html">&lt;h2 id=&quot;1-install-openssl&quot;&gt;1. Install OpenSSL&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.openssl.org/source/&quot;&gt;Download OpenSSL Source&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Install OpenSSL&lt;/li&gt;
@@ -22,7 +671,7 @@
  OpenSSL 1.0.2k-fips  26 Jan 2017
  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;h3 id=&quot;2-install-ruby&quot;&gt;2. Install Ruby&lt;/h3&gt;
+&lt;h2 id=&quot;2-install-ruby&quot;&gt;2. Install Ruby&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.ruby-lang.org/en/downloads/&quot;&gt;Download Ruby Source&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Install Ruby&lt;/li&gt;
@@ -54,9 +703,7 @@
  
  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
  2.7.6
- &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Crab2Died</name></author><category term="Ruby" /><category term="Install" /><category term="CentOS" /><summary type="html">Ruby Install with source on CentOS</summary></entry><entry><title type="html">JAVA Monitor Tools</title><link href="http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html" rel="alternate" type="text/html" title="JAVA Monitor Tools" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">&lt;h1 id=&quot;java性能监控与调优&quot;&gt;JAVA性能监控与调优&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;h2 id=&quot;一-jpsjvm-process-status-tool&quot;&gt;一. jps(JVM Process Status Tool)&lt;/h2&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Crab2Died</name></author><category term="Ruby Install" /><category term="CentOS" /><summary type="html">1. Install OpenSSL Download OpenSSL Source Install OpenSSL $ tar -zxvf openssl-1.1.1-pre7.tar.gz $ cd openssl-1.1.1-pre7 $ ./config -fPIC --prefix=/usr/local/openssl enable-shared $ ./config -t $ make &amp;amp;&amp;amp; make install Check install $ openssl version OpenSSL 1.0.2k-fips 26 Jan 2017 2. Install Ruby Download Ruby Source Install Ruby $ tar -zxvf ruby-2.5.1.tar.gz $ cd ruby-2.5.1 $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl // important $ make &amp;amp;&amp;amp; make install Configure environment variable $ vi /etc/profile append -&amp;gt; export PATH=/usr/local/ruby/bin:$PATH $ source /etc/profile Check install $ ruby -v ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux] $ gem -v 2.7.6</summary></entry><entry><title type="html">JAVA Monitor Tools</title><link href="http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html" rel="alternate" type="text/html" title="JAVA Monitor Tools" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">&lt;h2 id=&quot;一-jpsjvm-process-status-tool&quot;&gt;一. jps(JVM Process Status Tool)&lt;/h2&gt;
 &lt;h3 id=&quot;1-介绍&quot;&gt;1. 介绍&lt;/h3&gt;
 &lt;p&gt;类似UNIX的ps命令，列出虚拟机正在运行的进程信息&lt;/p&gt;
 
@@ -224,7 +871,7 @@ Timed_Waiting的等待有时间限制；&lt;br /&gt;
   &lt;li&gt;用jstack获取线程堆栈信息&lt;code class=&quot;highlighter-rouge&quot;&gt;jstack 14232 |grep 37ad&lt;/code&gt;打印如下信息:&lt;br /&gt;
 &lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;VM Periodic Task Thread&quot; os_prio=0 tid=0x00007f772c00f800 nid=0x37ad waiting on condition &lt;/code&gt;&lt;br /&gt;
 通过该日志分析表示该线程在等待某个资源来唤醒&lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="java" /><category term="monitor" /><summary type="html">JAVA性能监控与调优 一. jps(JVM Process Status Tool) 1. 介绍 类似UNIX的ps命令，列出虚拟机正在运行的进程信息 2. 参数 -q: 只输出进程ID -m: 输出主类启动时的参数 -l: 输出主类全名，如果是jar则输出jar路径 -v: 输出虚拟机启动时的JVM参数</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-06-13T21:54:27+08:00</published><updated>2018-06-13T21:54:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="Java Monitor" /><summary type="html">一. jps(JVM Process Status Tool) 1. 介绍 类似UNIX的ps命令，列出虚拟机正在运行的进程信息 2. 参数 -q: 只输出进程ID -m: 输出主类启动时的参数 -l: 输出主类全名，如果是jar则输出jar路径 -v: 输出虚拟机启动时的JVM参数</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2018-06-13T21:54:27+08:00</published><updated>2018-06-13T21:54:27+08:00</updated><id>http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:8181/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
 
 &lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
 

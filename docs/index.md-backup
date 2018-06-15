@@ -11,14 +11,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Crab2Died’s personal blog website." />
 <meta property="og:description" content="Crab2Died’s personal blog website." />
-<link rel="canonical" href="http://localhost:8181/jekyll-blog/index.md-backup" />
-<meta property="og:url" content="http://localhost:8181/jekyll-blog/index.md-backup" />
+<link rel="canonical" href="https://crab2died.github.io/jekyll-blog/index.md-backup" />
+<meta property="og:url" content="https://crab2died.github.io/jekyll-blog/index.md-backup" />
 <meta property="og:site_name" content="Crab2Died Blog" />
 <script type="application/ld+json">
-{"url":"http://localhost:8181/jekyll-blog/index.md-backup","headline":"Crab2Died Blog","author":{"@type":"Person","name":"©2018 Crab2Died"},"description":"Crab2Died’s personal blog website.","@type":"WebPage","@context":"http://schema.org"}</script>
+{"url":"https://crab2died.github.io/jekyll-blog/index.md-backup","headline":"Crab2Died Blog","author":{"@type":"Person","name":"©2018 Crab2Died"},"description":"Crab2Died’s personal blog website.","@type":"WebPage","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:8181/jekyll-blog/feed.xml" title="Crab2Died Blog" /></head>
+  <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://crab2died.github.io/jekyll-blog/feed.xml" title="Crab2Died Blog" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/jekyll-blog/">Crab2Died Blog</a><nav class="site-nav">

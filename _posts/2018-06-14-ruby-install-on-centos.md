@@ -1,6 +1,7 @@
 ---
 layout: post
-title:  "Ruby Install with source on CentOS"
+list_title: Ruby
+title:  "Ruby Install With Source On CentOS"
 date:   2018-06-14 12:45:27 +0800
 author: Crab2Died
 categories: content ruby

@@ -1,5 +1,6 @@
 ---
 layout: post
+list_title: Welcome Page
 title:  "Welcome to Jekyll!"
 date:   2018-06-13 21:54:27 +0800
 author: Crab2Died

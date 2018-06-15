@@ -1,0 +1,13 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+.post-tag{
+  margin-right: 10px;
+  padding: 0 2px;
+  font-size: 12px;
+  color: rgba(17, 43, 68, 0.44);
+  background-color: rgba(39, 112, 173, 0.22);
+}

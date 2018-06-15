@@ -15,22 +15,28 @@
 # in the templates via {{ site.myvariable }}.
 title: Crab2Died Blog
 email: Crab2Died@126.com
+author: ©2018 Crab2Died
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Crab2Died's personal blog website.
 baseurl: "/jekyll-blog" # the subpath of your site, e.g. /blog
 url: "https://crab2died.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 port: 8181
-twitter_username: Crab2Died
-github_username: Crab2Died
 encoding: UTF-8
+
+# twitter_username: Crab2Died
+github_username: Crab2Died
+rss: RSS
+
+paginate: 5
+paginate_path: "/content/page/:num"
 
 # Build settings
 markdown: kramdown
-theme: minima
+# theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-paginate
 
 destination: docs
 

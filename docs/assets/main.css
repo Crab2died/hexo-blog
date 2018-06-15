@@ -309,7 +309,7 @@ table {
  */
 .page-content {
   padding: 30px 0;
-  flex: 1; }
+  flex: 1 0 auto; }
 
 .page-heading {
   font-size: 32px; }
@@ -503,3 +503,10 @@ table {
     color: #008080; }
   .highlight .il {
     color: #099; }
+
+.post-tag {
+  margin-right: 10px;
+  padding: 0 2px;
+  font-size: 12px;
+  color: rgba(17, 43, 68, 0.44);
+  background-color: rgba(39, 112, 173, 0.22); }

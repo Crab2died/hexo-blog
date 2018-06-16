@@ -37,173 +37,7 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home"><!--<div class="home"><h2 class="post-list-heading">Blogs</h2>
-    <ul class="post-list"><li><span class="post-meta">Jun 15, 2018</span>
-        <h3>
-          <a class="post-link" href="/jekyll-blog/content/java/2018/06/15/java-gc.html">
-            Java GC
-          </a><span class="post-tag">Java</span><span class="post-tag">GC</span></h3><h2 id="一-java虚拟机内存区域">一. Java虚拟机内存区域</h2>
-<h3 id="1-运行时数据区">1. 运行时数据区</h3>
-<p><img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png" alt="java运行时数据区" /></p>
-
-</li><li><span class="post-meta">Jun 15, 2018</span>
-        <h3>
-          <a class="post-link" href="/jekyll-blog/content/java/2018/06/15/java-concurrent.html">
-            Java Concurrent
-          </a><span class="post-tag">Java</span><span class="post-tag">Concurrent</span></h3><h2 id="1-java与线程">1. JAVA与线程</h2>
-<h3 id="11-线程的实现">1.1 线程的实现</h3>
-<ol>
-  <li>实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现.</li>
-  <li>JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的.</li>
-</ol>
-
-<h3 id="12-java线程调度">1.2 Java线程调度</h3>
-<ol>
-  <li>线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling)
-和抢占式线程调度(Preemptive ThreadsScheduling)</li>
-  <li>协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上;
-优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞</li>
-  <li>每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时
-间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题.</li>
-  <li>JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY)</li>
-</ol>
-
-<h3 id="13-线程转换状态">1.3 线程转换状态</h3>
-<ol>
-  <li>JAVA线程定义了6个状态:
-    <ul>
-      <li>新建(New):创建后尚未启动的线程处于这种状态.</li>
-      <li>运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在
-等待着CPU为它分配执行时间.</li>
-      <li>无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被<br />
-    其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态:<br />
-    ●没有设置Timeout参数的Object.wait()方法.<br />
-    ●没有设置Timeout参数的Thread.join()方法.<br />
-    ●LockSupport.park()方法.</li>
-      <li>限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后
-它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态:<br />
-    ●Thread.sleep()方法.<br />
-    ●设置了Timeout参数的Object.wait()方法.<br />
-    ●设置了Timeout参数的Thread.join()方法.<br />
-    ●LockSupport.parkNanos()方法.<br />
-    ●LockSupport.parkUntil()方法</li>
-      <li>阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态</li>
-      <li>结束(Terminated):已终止线程的线程状态,线程已经结束执行.</li>
-    </ul>
-  </li>
-  <li>线程状态转换关系图<br />
-<img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/concurrent/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%85%B3%E7%B3%BB.png" alt="线程状态转换关系" /></li>
-</ol>
-
-<h2 id="2-线程安全与锁优化">2. 线程安全与锁优化</h2>
-<h3 id="21-java中的线程安全">2.1 JAVA中的线程安全</h3>
-<ol>
-  <li>共享数据分类
-    <ul>
-      <li>不可变(Immutable):不可变对象一定是线程安全的,典型的final</li>
-      <li>绝对线程安全:</li>
-      <li>相对线程安全: java大部分的线程安全都是相对线程安全的</li>
-      <li>线程兼容:</li>
-      <li>线程对立:</li>
-    </ul>
-  </li>
-</ol>
-
-</li><li><span class="post-meta">Jun 15, 2018</span>
-        <h3>
-          <a class="post-link" href="/jekyll-blog/content/java/2018/06/15/java-collection-frame.html">
-            Java Collection Frame
-          </a><span class="post-tag">Java</span><span class="post-tag">Collection</span></h3><h2 id="1-java集合框架图">1. JAVA集合框架图</h2>
-<ul>
-  <li>集合框架
-   <img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6.jpg" alt="集合框架" /></li>
-  <li>集合框架-简图
-   <img src="https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6-%E7%AE%80%E5%9B%BE.jpg" alt="集合框架-简图" /></li>
-</ul>
-
-</li><li><span class="post-meta">Jun 14, 2018</span>
-        <h3>
-          <a class="post-link" href="/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html">
-            Ruby Install With Source On CentOS
-          </a><span class="post-tag">Ruby Install</span><span class="post-tag">CentOS</span></h3><h2 id="1-install-openssl">1. Install OpenSSL</h2>
-<ul>
-  <li><a href="https://www.openssl.org/source/">Download OpenSSL Source</a></li>
-  <li>Install OpenSSL</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-zxvf</span> openssl-1.1.1-pre7.tar.gz
- <span class="nv">$ </span><span class="nb">cd </span>openssl-1.1.1-pre7
- <span class="nv">$ </span>./config <span class="nt">-fPIC</span> <span class="nt">--prefix</span><span class="o">=</span>/usr/local/openssl enable-shared
- <span class="nv">$ </span>./config <span class="nt">-t</span>
- <span class="nv">$ </span>make <span class="o">&amp;&amp;</span> make <span class="nb">install</span>
- </code></pre></figure>
-
-<ul>
-  <li>Check install</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span>openssl version
- OpenSSL 1.0.2k-fips  26 Jan 2017
- </code></pre></figure>
-
-<h2 id="2-install-ruby">2. Install Ruby</h2>
-<ul>
-  <li><a href="http://www.ruby-lang.org/en/downloads/">Download Ruby Source</a></li>
-  <li>Install Ruby</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span><span class="nb">tar</span> <span class="nt">-zxvf</span> ruby-2.5.1.tar.gz
- <span class="nv">$ </span><span class="nb">cd </span>ruby-2.5.1
- <span class="nv">$ </span>./configure <span class="nt">--prefix</span><span class="o">=</span>/usr/local/ruby <span class="nt">--with-opessl-dir</span><span class="o">=</span>/usr/local/openssl     // important
- <span class="nv">$ </span>make <span class="o">&amp;&amp;</span> make <span class="nb">install</span>
- </code></pre></figure>
-
-<ul>
-  <li>Configure environment variable</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span>vi /etc/profile
- 
- append -&gt; <span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span>/usr/local/ruby/bin:<span class="nv">$PATH</span>
- 
- <span class="nv">$ </span><span class="nb">source</span> /etc/profile
- </code></pre></figure>
-
-<ul>
-  <li>Check install</li>
-</ul>
-
-<figure class="highlight"><pre><code class="language-bash" data-lang="bash"> <span class="nv">$ </span>ruby <span class="nt">-v</span>
- ruby 2.5.1p57 <span class="o">(</span>2018-03-29 revision 63029<span class="o">)</span> <span class="o">[</span>x86_64-linux]
- 
- <span class="nv">$ </span>gem <span class="nt">-v</span>
- 2.7.6
- </code></pre></figure>
-
-</li><li><span class="post-meta">Jun 14, 2018</span>
-        <h3>
-          <a class="post-link" href="/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">
-            JAVA Monitor Tools
-          </a><span class="post-tag">Java Monitor</span></h3><h2 id="一-jpsjvm-process-status-tool">一. jps(JVM Process Status Tool)</h2>
-<h3 id="1-介绍">1. 介绍</h3>
-<p>类似UNIX的ps命令，列出虚拟机正在运行的进程信息</p>
-
-<h3 id="2-参数">2. 参数</h3>
-<ul>
-  <li>-q: 只输出进程ID</li>
-  <li>-m: 输出主类启动时的参数</li>
-  <li>-l: 输出主类全名，如果是jar则输出jar路径</li>
-  <li>-v: 输出虚拟机启动时的JVM参数</li>
-</ul>
-
-</li><li><span class="post-meta">Jun 13, 2018</span>
-        <h3>
-          <a class="post-link" href="/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html">
-            Welcome to Jekyll!
-          </a></h3><p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
-</li></ul></div>
---><h2 class="post-list-heading">Blogs</h2>
+        <div class="home"><h2 class="post-list-heading">Blogs</h2>
     <ul class="post-list"><li><span class="post-meta">Jun 13, 2018</span>
             <h3>
                 <a class="post-link" href="/jekyll-blog/content/demo/2018/06/13/welcome-to-jekyll.html">
@@ -211,32 +45,30 @@
                 </a></h3>
 
 
-            <div class="post-excerpt">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.
+            <div class="post-excerpt text-snapshot">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.
 
- ...</div>
-
+</div>
         </li></ul>
-
 
     <!-- 分页链接 -->
     
     <div class="pagination">
         
-        <a href="/jekyll-blog/">&laquo; Prev</a>
+        <a class="page-content" href="/jekyll-blog/">&laquo; Prev</a>
         
 
         
         
-        <a href="/jekyll-blog/index.html">1</a>
+        <a class="page-content" href="/jekyll-blog/index.html">1</a>
         
         
         
-        <em>2</em>
+        <em class="page-content">2</em>
         
         
 
         
-        <span>Next &raquo;</span>
+        <span class="page-content">Next &raquo;</span>
         
     </div>
     </div>
@@ -255,7 +87,7 @@
           <li class="p-name">©2018 Crab2Died</li><li><a class="u-email" href="mailto:Crab2Died@126.com">Crab2Died@126.com</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>RSS</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>via RSS</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">

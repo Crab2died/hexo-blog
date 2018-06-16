@@ -18,3 +18,16 @@
   font-size: 14px;
   background-color: rgba(0, 1, 1, 0.05);
 }
+.page-content {
+  padding: 1px 5px;
+}
+
+.text-snapshot {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

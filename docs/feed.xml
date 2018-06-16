@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-15T22:34:05+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>©2018 Crab2Died</name></author><entry><title type="html">Java GC</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html" rel="alternate" type="text/html" title="Java GC" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html">&lt;h2 id=&quot;一-java虚拟机内存区域&quot;&gt;一. Java虚拟机内存区域&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-16T15:23:39+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>©2018 Crab2Died</name></author><entry><title type="html">Java GC</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html" rel="alternate" type="text/html" title="Java GC" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html">&lt;h2 id=&quot;一-java虚拟机内存区域&quot;&gt;一. Java虚拟机内存区域&lt;/h2&gt;
 &lt;h3 id=&quot;1-运行时数据区&quot;&gt;1. 运行时数据区&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png&quot; alt=&quot;java运行时数据区&quot; /&gt;&lt;/p&gt;
 
@@ -239,14 +239,41 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;8-垃圾收集器参数&quot;&gt;8. 垃圾收集器参数&lt;/h3&gt;
-&lt;p&gt;|        参数            |                      描述                                      |
-  |:———————–|:————————————————————–|
-  |UseSerialGC             |Client模式下默认,使用Serial+Serial Old组合                       |
-  |UseParNewGC             |ParNew+Serial Old组合                                          |
-  |UseConMarkSweepGC       |ParNew+CMS+Serial Old组合,Serial Old作为CMS失败后备用            |
-  |UseParallelGC           |Server模式默认,Parallel Scavenge+Serial Old(PS Mark Sweep)组合  |
-  |UseParallelOldGC        |Parallel Scavenge+Parallel Old组合                             |
-  |UseG1GC                 |使用G1                                                         |&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;参数&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;描述&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;UseSerialGC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Client模式下默认,使用Serial+Serial Old组合&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;UseParNewGC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;ParNew+Serial Old组合&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;UseConMarkSweepGC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;ParNew+CMS+Serial Old组合,Serial Old作为CMS失败后备用&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;UseParallelGC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Server模式默认,Parallel Scavenge+Serial Old(PS Mark Sweep)组合&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;UseParallelOldGC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Parallel Scavenge+Parallel Old组合&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;UseG1GC&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;使用G1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h2 id=&quot;七-内存分配与回收策略&quot;&gt;七. 内存分配与回收策略&lt;/h2&gt;
 &lt;h3 id=&quot;1-对象优先在eden分配&quot;&gt;1. 对象优先在Eden分配&lt;/h3&gt;
@@ -419,34 +446,36 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 
 &lt;h2 id=&quot;4-java线程池&quot;&gt;4. java线程池&lt;/h2&gt;
 &lt;h3 id=&quot;41-线程池实现类&quot;&gt;4.1 线程池实现类&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      (C)ThreadPoolExecutor ---&amp;gt;  (AC)AbstractExecutorService ---&amp;gt; (I)ExecutorService ---&amp;gt; (I)Executor
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;      &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AC&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AbstractExecutorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExecutorService&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;I&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Executor&lt;/span&gt;
+   &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;42-threadpoolexecutor构造参数说明&quot;&gt;4.2 ThreadPoolExecutor构造参数说明&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    # corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
-    # maximunPoolSize 线程池最大线程数
-    # keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
-    # unit 线程等待时间的单位级
-    # workQueue 任务缓冲队列
-    # threadFactory 线程工厂，用于创建线程
-    # handler 表示拒接处理任务的策略有一下4种：
-    #  - ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
-    #  - ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
-    #  - ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-    #  - ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;corePoolSize&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;workQueue&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maximunPoolSize&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;线程池最大线程数&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keepAliveTime&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;多于核心线程数的空闲线程最长存活时间量级与&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;参数配合使用&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;线程等待时间的单位级&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workQueue&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;任务缓冲队列&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threadFactory&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;线程工厂，用于创建线程&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;表示拒接处理任务的策略有一下&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;种：&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;AbortPolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;丢弃任务并抛出&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RejectedExecutionException&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;异常&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DiscardPolicy&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：也是丢弃任务，但是不抛出异常&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DiscardOldestPolicy&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CallerRunsPolicy&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：由调用线程处理该任务&lt;/span&gt;
     
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-            BlockingQueue&amp;lt;Runnable&amp;gt; workQueue);
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;corePoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maximumPoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keepAliveTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;BlockingQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
  
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-            BlockingQueue&amp;lt;Runnable&amp;gt; workQueue,ThreadFactory threadFactory);
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;corePoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maximumPoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keepAliveTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;BlockingQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThreadFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threadFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
  
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-            BlockingQueue&amp;lt;Runnable&amp;gt; workQueue,RejectedExecutionHandler handler);
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;corePoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maximumPoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keepAliveTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;BlockingQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RejectedExecutionHandler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
  
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-        BlockingQueue&amp;lt;Runnable&amp;gt; workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;corePoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maximumPoolSize&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keepAliveTime&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TimeUnit&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;unit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;BlockingQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Runnable&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workQueue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ThreadFactory&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;threadFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RejectedExecutionHandler&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;h3 id=&quot;43-实现原理&quot;&gt;4.3 实现原理&lt;/h3&gt;
 &lt;ol&gt;
@@ -486,13 +515,16 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
       &lt;li&gt;SynchronousQueue: 该队列不保存提交的任务，而是直接新建队列来执行任务&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;任务拒绝策略
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
-    ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
-    ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-    ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
+  &lt;li&gt;任务拒绝策略&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-java&quot; data-lang=&quot;java&quot;&gt;    &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;AbortPolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;丢弃任务并抛出&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RejectedExecutionException&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;异常&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DiscardPolicy&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：也是丢弃任务，但是不抛出异常&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DiscardOldestPolicy&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ThreadPoolExecutor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CallerRunsPolicy&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：由调用线程处理该任务&lt;/span&gt;
+   &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ol&gt;
   &lt;li&gt;线程池的关闭
     &lt;ul&gt;
       &lt;li&gt;shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务&lt;/li&gt;

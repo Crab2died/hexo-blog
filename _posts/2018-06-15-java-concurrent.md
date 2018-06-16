@@ -107,12 +107,12 @@ tags: [Java, Concurrent]
   
 ## 4. java线程池
 ### 4.1 线程池实现类
-   ```
-      (C)ThreadPoolExecutor --->  (AC)AbstractExecutorService ---> (I)ExecutorService ---> (I)Executor
-   ```
+   {% highlight java %}
+      (C)ThreadPoolExecutor -->  (AC)AbstractExecutorService --> (I)ExecutorService --> (I)Executor
+   {% endhighlight %}
 
 ### 4.2 ThreadPoolExecutor构造参数说明
-   ```
+   {% highlight java %}
     # corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
     # maximunPoolSize 线程池最大线程数
     # keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
@@ -136,7 +136,7 @@ tags: [Java, Concurrent]
  
     public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
         BlockingQueue<Runnable> workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
-   ```
+  {% endhighlight %}
 
 ### 4.3 实现原理
    1. 线程池状态：  
@@ -168,12 +168,12 @@ tags: [Java, Concurrent]
    - SynchronousQueue: 该队列不保存提交的任务，而是直接新建队列来执行任务
    
    5. 任务拒绝策略
-   ```
+   {% highlight java %}
     ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
     ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
     ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
     ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
-   ```
+   {% endhighlight %}
    
    6. 线程池的关闭
    - shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务 

@@ -289,14 +289,41 @@
 </ul>
 
 <h3 id="8-垃圾收集器参数">8. 垃圾收集器参数</h3>
-<p>|        参数            |                      描述                                      |
-  |:———————–|:————————————————————–|
-  |UseSerialGC             |Client模式下默认,使用Serial+Serial Old组合                       |
-  |UseParNewGC             |ParNew+Serial Old组合                                          |
-  |UseConMarkSweepGC       |ParNew+CMS+Serial Old组合,Serial Old作为CMS失败后备用            |
-  |UseParallelGC           |Server模式默认,Parallel Scavenge+Serial Old(PS Mark Sweep)组合  |
-  |UseParallelOldGC        |Parallel Scavenge+Parallel Old组合                             |
-  |UseG1GC                 |使用G1                                                         |</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">参数</th>
+      <th style="text-align: left">描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">UseSerialGC</td>
+      <td style="text-align: left">Client模式下默认,使用Serial+Serial Old组合</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">UseParNewGC</td>
+      <td style="text-align: left">ParNew+Serial Old组合</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">UseConMarkSweepGC</td>
+      <td style="text-align: left">ParNew+CMS+Serial Old组合,Serial Old作为CMS失败后备用</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">UseParallelGC</td>
+      <td style="text-align: left">Server模式默认,Parallel Scavenge+Serial Old(PS Mark Sweep)组合</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">UseParallelOldGC</td>
+      <td style="text-align: left">Parallel Scavenge+Parallel Old组合</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">UseG1GC</td>
+      <td style="text-align: left">使用G1</td>
+    </tr>
+  </tbody>
+</table>
 
 <h2 id="七-内存分配与回收策略">七. 内存分配与回收策略</h2>
 <h3 id="1-对象优先在eden分配">1. 对象优先在Eden分配</h3>
@@ -350,7 +377,7 @@ GC,尽管这次Minor GC是有风险的;如果小于,或者HandlePromotionFailure
           <li class="p-name">©2018 Crab2Died</li><li><a class="u-email" href="mailto:Crab2Died@126.com">Crab2Died@126.com</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>RSS</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>via RSS</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">

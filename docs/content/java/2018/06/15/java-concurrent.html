@@ -186,34 +186,36 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 
 <h2 id="4-java线程池">4. java线程池</h2>
 <h3 id="41-线程池实现类">4.1 线程池实现类</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      (C)ThreadPoolExecutor ---&gt;  (AC)AbstractExecutorService ---&gt; (I)ExecutorService ---&gt; (I)Executor
-</code></pre></div></div>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">      <span class="o">(</span><span class="n">C</span><span class="o">)</span><span class="n">ThreadPoolExecutor</span> <span class="o">--&gt;</span>  <span class="o">(</span><span class="n">AC</span><span class="o">)</span><span class="n">AbstractExecutorService</span> <span class="o">--&gt;</span> <span class="o">(</span><span class="n">I</span><span class="o">)</span><span class="n">ExecutorService</span> <span class="o">--&gt;</span> <span class="o">(</span><span class="n">I</span><span class="o">)</span><span class="n">Executor</span>
+   </code></pre></figure>
 
 <h3 id="42-threadpoolexecutor构造参数说明">4.2 ThreadPoolExecutor构造参数说明</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    # corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
-    # maximunPoolSize 线程池最大线程数
-    # keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
-    # unit 线程等待时间的单位级
-    # workQueue 任务缓冲队列
-    # threadFactory 线程工厂，用于创建线程
-    # handler 表示拒接处理任务的策略有一下4种：
-    #  - ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
-    #  - ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
-    #  - ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-    #  - ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="err">#</span> <span class="n">corePoolSize</span> <span class="err">核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列</span><span class="n">workQueue</span>
+    <span class="err">#</span> <span class="n">maximunPoolSize</span> <span class="err">线程池最大线程数</span>
+    <span class="err">#</span> <span class="n">keepAliveTime</span> <span class="err">多于核心线程数的空闲线程最长存活时间量级与</span><span class="n">unit</span><span class="err">参数配合使用</span>
+    <span class="err">#</span> <span class="n">unit</span> <span class="err">线程等待时间的单位级</span>
+    <span class="err">#</span> <span class="n">workQueue</span> <span class="err">任务缓冲队列</span>
+    <span class="err">#</span> <span class="n">threadFactory</span> <span class="err">线程工厂，用于创建线程</span>
+    <span class="err">#</span> <span class="n">handler</span> <span class="err">表示拒接处理任务的策略有一下</span><span class="mi">4</span><span class="err">种：</span>
+    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">AbortPolicy</span><span class="o">:</span><span class="err">丢弃任务并抛出</span><span class="n">RejectedExecutionException</span><span class="err">异常</span>
+    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardPolicy</span><span class="err">：也是丢弃任务，但是不抛出异常</span>
+    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardOldestPolicy</span><span class="err">：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</span>
+    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">CallerRunsPolicy</span><span class="err">：由调用线程处理该任务</span>
     
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-            BlockingQueue&lt;Runnable&gt; workQueue);
+    <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
+            <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">);</span>
  
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-            BlockingQueue&lt;Runnable&gt; workQueue,ThreadFactory threadFactory);
+    <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
+            <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span><span class="n">ThreadFactory</span> <span class="n">threadFactory</span><span class="o">);</span>
  
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-            BlockingQueue&lt;Runnable&gt; workQueue,RejectedExecutionHandler handler);
+    <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
+            <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span><span class="n">RejectedExecutionHandler</span> <span class="n">handler</span><span class="o">);</span>
  
-    public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
-        BlockingQueue&lt;Runnable&gt; workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
-</code></pre></div></div>
+    <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
+        <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span><span class="n">ThreadFactory</span> <span class="n">threadFactory</span><span class="o">,</span><span class="n">RejectedExecutionHandler</span> <span class="n">handler</span><span class="o">);</span>
+  </code></pre></figure>
 
 <h3 id="43-实现原理">4.3 实现原理</h3>
 <ol>
@@ -253,13 +255,16 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
       <li>SynchronousQueue: 该队列不保存提交的任务，而是直接新建队列来执行任务</li>
     </ul>
   </li>
-  <li>任务拒绝策略
-    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
-    ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
-    ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-    ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
-</code></pre></div>    </div>
-  </li>
+  <li>任务拒绝策略</li>
+</ol>
+
+<figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">AbortPolicy</span><span class="o">:</span><span class="err">丢弃任务并抛出</span><span class="n">RejectedExecutionException</span><span class="err">异常</span>
+    <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardPolicy</span><span class="err">：也是丢弃任务，但是不抛出异常</span>
+    <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardOldestPolicy</span><span class="err">：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</span>
+    <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">CallerRunsPolicy</span><span class="err">：由调用线程处理该任务</span>
+   </code></pre></figure>
+
+<ol>
   <li>线程池的关闭
     <ul>
       <li>shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务</li>
@@ -395,7 +400,7 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
           <li class="p-name">©2018 Crab2Died</li><li><a class="u-email" href="mailto:Crab2Died@126.com">Crab2Died@126.com</a></li></ul>
       </div>
 
-      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>RSS</span></a></li></ul>
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>via RSS</span></a></li></ul>
 </div>
 
       <div class="footer-col footer-col-3">

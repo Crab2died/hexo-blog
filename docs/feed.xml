@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-18T23:24:20+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">DataBase</title><link href="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html" rel="alternate" type="text/html" title="DataBase" /><published>2018-06-18T23:15:27+08:00</published><updated>2018-06-18T23:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html">&lt;h2 id=&quot;一-四大特性ciad&quot;&gt;一. 四大特性(CIAD)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-18T23:34:53+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">DataBase</title><link href="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html" rel="alternate" type="text/html" title="DataBase" /><published>2018-06-18T23:15:27+08:00</published><updated>2018-06-18T23:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html">&lt;h2 id=&quot;一-四大特性ciad&quot;&gt;一. 四大特性(CIAD)&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。&lt;/li&gt;
   &lt;li&gt;一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执
@@ -70,8 +70,7 @@
 &lt;ol&gt;
   &lt;li&gt;悲观锁: 在操作数据时都认为会出现数据冲突，所以每次都会去获取锁，只有获取锁后才能对数据操作。&lt;/li&gt;
   &lt;li&gt;乐观锁: 在操作数据都认为不会发生数据冲突，可以直接操作，一般由用户通过版本号自己实现。&lt;/li&gt;
-  &lt;li&gt;共享锁: 共享锁指的就是对于多个不同的事务，对同一个资源共享同一个锁。在SQL后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;lock in share mode&lt;/code&gt;表示使
-用共享锁。&lt;/li&gt;
+  &lt;li&gt;共享锁: 共享锁指的就是对于多个不同的事务，对同一个资源共享同一个锁。在SQL后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;lock in share mode&lt;/code&gt;表示使用共享锁。&lt;/li&gt;
   &lt;li&gt;排他锁: 排它锁与共享锁相对应，就是指对于多个不同的事务，对同一个资源只能有一把锁。与共享锁类型，在需要执行的
 语句后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;for update&lt;/code&gt;就可以了。&lt;/li&gt;
 &lt;/ol&gt;
@@ -80,8 +79,7 @@
 &lt;ol&gt;
   &lt;li&gt;第一范式(1NF)：强调的是列的原子性，即列不能够再分成其他几列。&lt;/li&gt;
   &lt;li&gt;第二范式(2NF)：一个表必须有一个主键，二是其他列必须完全依赖于主键，而不能依赖主键一部分&lt;/li&gt;
-  &lt;li&gt;第三范式(3NF)：非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列A依赖于非主键列B，非主键列B
-依赖于主键的情况。&lt;/li&gt;
+  &lt;li&gt;第三范式(3NF)：非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列A依赖于非主键列B，非主键列B依赖于主键的情况。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;四-数据库数据结构&quot;&gt;四. 数据库数据结构&lt;/h2&gt;

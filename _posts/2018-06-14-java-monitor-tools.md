@@ -1,6 +1,6 @@
 ---
 layout: post
-list_title: JAVA
+list_title: Java
 title:  "JAVA Monitor Tools"
 date:   2018-06-14 12:45:27 +0800
 author: Crab2Died

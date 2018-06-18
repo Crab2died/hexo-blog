@@ -1,4 +1,121 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-18T23:15:11+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Java Compile and Optimize</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html" rel="alternate" type="text/html" title="Java Compile and Optimize" /><published>2018-06-17T13:15:27+08:00</published><updated>2018-06-17T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html">&lt;h2 id=&quot;1-早期编译期优化&quot;&gt;1. 早期(编译期)优化&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-18T23:20:05+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">DataBase</title><link href="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html" rel="alternate" type="text/html" title="DataBase" /><published>2018-06-18T23:15:27+08:00</published><updated>2018-06-18T23:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html">&lt;h2 id=&quot;一-四大特性ciad&quot;&gt;一. 四大特性(CIAD)&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。&lt;/li&gt;
+  &lt;li&gt;一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执
+行之前和执行之后都必须处于一致性状态。&lt;/li&gt;
+  &lt;li&gt;隔离性(Isolation): 隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，
+不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。&lt;/li&gt;
+  &lt;li&gt;持久性(Durability): 一旦事物提交成功，那么数据库中的数据就是永久改变的，即使系统故障也不会丢失提交的事物。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;二-数据库隔离级别&quot;&gt;二. 数据库隔离级别&lt;/h2&gt;
+&lt;h3 id=&quot;1-不考虑隔离级别造成的问题&quot;&gt;1. 不考虑隔离级别造成的问题&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;更新丢失: 2个事物同时更新一条数据会有一个事物把另一个事物的更新覆盖了，这是因为系统没有任何操作隔离导致的.&lt;/li&gt;
+  &lt;li&gt;脏读: 一个事物读取了另一个事物还未提交事物的数据&lt;/li&gt;
+  &lt;li&gt;不可重复读: 一个事务对同一行数据重复读取两次，但是却得到了不同的结果
+    &lt;ul&gt;
+      &lt;li&gt;虚读: 一个事物去改变数据改变后发现还有数据为按要求改变，是因为另一事物也做了改变的缘故&lt;/li&gt;
+      &lt;li&gt;幻读: 同一个事物内多次查询返回的结果不一致，是因为另一事物对数据进行了改变&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;2-隔离级别低---高&quot;&gt;2. 隔离级别(低 -&amp;gt; 高)&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;Read uncommitted(未授权读取、读未提交)
+    &lt;ul&gt;
+      &lt;li&gt;当一个事物在执行写操作时，则不允许另一事物执行写操作，可执行其他操作，可由排他锁来实现&lt;/li&gt;
+      &lt;li&gt;解决了更新丢失问题，但会出现脏读&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Read committed(授权读取、读提交)
+    &lt;ul&gt;
+      &lt;li&gt;读取数据事物允许其他事物继续访问该数据，但未提交的数据禁止其他事物访问&lt;/li&gt;
+      &lt;li&gt;避免了脏读，但可能会出现幻读&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Repeatable read(可重复读取)
+    &lt;ul&gt;
+      &lt;li&gt;读数据的事物将禁止写事物(可以读事物),写事物将禁止所有其他事物&lt;/li&gt;
+      &lt;li&gt;避免了脏读和不可重复读，但可能会出现幻读&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Serializable(序列化)
+    &lt;ul&gt;
+      &lt;li&gt;事物严格按照顺序一个一个执行&lt;/li&gt;
+      &lt;li&gt;能避免所有情况，但会极大影响系统性能&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;3-扩展&quot;&gt;3. 扩展&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;大多数数据库的默认级别就是Read committed，比如Sql Server , Oracle。&lt;br /&gt;
+  Mysql的默认隔离级别就是Repeatable read。&lt;/li&gt;
+  &lt;li&gt;MySQL数据库隔离级别管理
+    &lt;ul&gt;
+      &lt;li&gt;查看隔离级别: &lt;code class=&quot;highlighter-rouge&quot;&gt;select @@tx_isolation&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;修改隔离级别:  &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set [glogal | session] transaction isolation level 隔离级别名称&lt;/code&gt;&lt;br /&gt;
+如&lt;code class=&quot;highlighter-rouge&quot;&gt;set transaction isolation level read-committed&lt;/code&gt;&lt;br /&gt;
+或者
+&lt;code class=&quot;highlighter-rouge&quot;&gt;set tx_isolation='隔离级别名称'&lt;/code&gt; 如 &lt;code class=&quot;highlighter-rouge&quot;&gt;set tx_isolation = 'read-committed'&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;隔离级别的设置只对当前连接有效&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;4-mysql悲观锁乐观锁共享锁与排他锁&quot;&gt;4. MySQL悲观锁、乐观锁、共享锁与排他锁&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;悲观锁: 在操作数据时都认为会出现数据冲突，所以每次都会去获取锁，只有获取锁后才能对数据操作。&lt;/li&gt;
+  &lt;li&gt;乐观锁: 在操作数据都认为不会发生数据冲突，可以直接操作，一般由用户通过版本号自己实现。&lt;/li&gt;
+  &lt;li&gt;共享锁: 共享锁指的就是对于多个不同的事务，对同一个资源共享同一个锁。在SQL后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;lock in share mode&lt;/code&gt;表示使
+用共享锁。&lt;/li&gt;
+  &lt;li&gt;排他锁: 排它锁与共享锁相对应，就是指对于多个不同的事务，对同一个资源只能有一把锁。与共享锁类型，在需要执行的
+语句后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;for update&lt;/code&gt;就可以了。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;三-数据库的三大范式normal-form&quot;&gt;三. 数据库的三大范式(Normal Form)&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;第一范式(1NF)：强调的是列的原子性，即列不能够再分成其他几列。&lt;/li&gt;
+  &lt;li&gt;第二范式(2NF)：一个表必须有一个主键，二是其他列必须完全依赖于主键，而不能依赖主键一部分&lt;/li&gt;
+  &lt;li&gt;第三范式(3NF)：非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列A依赖于非主键列B，非主键列B
+依赖于主键的情况。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;四-数据库数据结构&quot;&gt;四. 数据库数据结构&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;B+ Tree
+    &lt;ul&gt;
+      &lt;li&gt;相较于B Tree多了一层，只有树的叶子节点存储实际数据，方便了range查询操作&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;五-mysql的myisam与innodb&quot;&gt;五. mysql的MyISAM与InnoDB&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;show engines&lt;/code&gt; 查看当前引擎与默认引擎&lt;/li&gt;
+  &lt;li&gt;设置表引擎 CREATE后面加&lt;code class=&quot;highlighter-rouge&quot;&gt;CREATE TABLE &quot;&quot; () ENGINE=MyISAM&lt;/code&gt; 或 &lt;code class=&quot;highlighter-rouge&quot;&gt;alter table 表名 ENGINE = InnoDB&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;比较
+    &lt;ul&gt;
+      &lt;li&gt;MyISAM不支持事物,InnoDB支持&lt;/li&gt;
+      &lt;li&gt;InnoDB支持行锁定,MyISAM不支持，只支持表锁定&lt;/li&gt;
+      &lt;li&gt;InnoDB支持外键,MyISAM不支持&lt;/li&gt;
+      &lt;li&gt;MyISAM支持全文检索,InnoDB不支持&lt;/li&gt;
+      &lt;li&gt;MyISAM内置一个数据计数器，能很容易得出&lt;code class=&quot;highlighter-rouge&quot;&gt;SELECT COUNT(*) FROM TABLE_NAME&lt;/code&gt;结果&lt;/li&gt;
+      &lt;li&gt;MyISAM索引数据与表数据分离，而InnoDB索引与表数据紧密关联&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;六-sql功能&quot;&gt;六. SQL功能&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;数据定义(DDL)：用于定义SQL模式、基本表、视图和索引的创建和撤消操作&lt;/li&gt;
+  &lt;li&gt;数据操纵(DML)：数据操纵分成数据查询和数据更新两类。数据更新又分成插入、删除、和修改三种操作&lt;/li&gt;
+  &lt;li&gt;数据控制：包括对基本表和视图的授权，完整性规则的描述，事务控制等内容&lt;/li&gt;
+  &lt;li&gt;嵌入式SQL使用规定：涉及到SQL语句嵌入在宿主语言程序中使用的规则&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="DataBase" /><summary type="html">一. 四大特性(CIAD) 原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。 一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执 行之前和执行之后都必须处于一致性状态。 隔离性(Isolation): 隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务， 不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。 持久性(Durability): 一旦事物提交成功，那么数据库中的数据就是永久改变的，即使系统故障也不会丢失提交的事物。 二. 数据库隔离级别 1. 不考虑隔离级别造成的问题 更新丢失: 2个事物同时更新一条数据会有一个事物把另一个事物的更新覆盖了，这是因为系统没有任何操作隔离导致的. 脏读: 一个事物读取了另一个事物还未提交事物的数据 不可重复读: 一个事务对同一行数据重复读取两次，但是却得到了不同的结果 虚读: 一个事物去改变数据改变后发现还有数据为按要求改变，是因为另一事物也做了改变的缘故 幻读: 同一个事物内多次查询返回的结果不一致，是因为另一事物对数据进行了改变 2. 隔离级别(低 -&amp;gt; 高) Read uncommitted(未授权读取、读未提交) 当一个事物在执行写操作时，则不允许另一事物执行写操作，可执行其他操作，可由排他锁来实现 解决了更新丢失问题，但会出现脏读 Read committed(授权读取、读提交) 读取数据事物允许其他事物继续访问该数据，但未提交的数据禁止其他事物访问 避免了脏读，但可能会出现幻读 Repeatable read(可重复读取) 读数据的事物将禁止写事物(可以读事物),写事物将禁止所有其他事物 避免了脏读和不可重复读，但可能会出现幻读 Serializable(序列化) 事物严格按照顺序一个一个执行 能避免所有情况，但会极大影响系统性能 3. 扩展 大多数数据库的默认级别就是Read committed，比如Sql Server , Oracle。 Mysql的默认隔离级别就是Repeatable read。 MySQL数据库隔离级别管理 查看隔离级别: select @@tx_isolation 修改隔离级别: set [glogal | session] transaction isolation level 隔离级别名称 如set transaction isolation level read-committed 或者 set tx_isolation='隔离级别名称' 如 set tx_isolation = 'read-committed' 隔离级别的设置只对当前连接有效</summary></entry><entry><title type="html">Java Compile and Optimize</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html" rel="alternate" type="text/html" title="Java Compile and Optimize" /><published>2018-06-17T13:15:27+08:00</published><updated>2018-06-17T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html">&lt;h2 id=&quot;1-早期编译期优化&quot;&gt;1. 早期(编译期)优化&lt;/h2&gt;
 &lt;h3 id=&quot;1-1-概论&quot;&gt;1-1. 概论&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;前端编译器:Sun的Javac、 Eclipse JDT中的增量式编译器(ECJ)

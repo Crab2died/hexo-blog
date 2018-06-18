@@ -1,6 +1,6 @@
 ---
 layout: post
-list_title: JAVA
+list_title: Java
 title:  "Java Collection Frame"
 date:   2018-06-15 13:15:27 +0800
 author: Crab2Died

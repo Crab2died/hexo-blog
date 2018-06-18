@@ -1,12 +1,13 @@
 ---
 layout: post
-list_title: JAVA
+list_title: Java
 title:  "Java Compile and Optimize"
 date:   2018-06-17 13:15:27 +0800
 author: Crab2Died
 categories: content java
 tags: [Java, JIT, Optimize]
 ---
+
 ## 1. 早期(编译期)优化
 ### 1-1. 概论
 1. 前端编译器:Sun的Javac、 Eclipse JDT中的增量式编译器(ECJ)

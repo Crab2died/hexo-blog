@@ -40,6 +40,68 @@
         <div class="home"><h2 class="post-list-heading">Blogs</h2>
     <ul class="post-list"><li><span class="post-meta">Jun 14, 2018</span>
             <h3>
+                <a class="post-link" href="/jekyll-blog/content/ruby/2018/06/14/ruby-install-on-centos.html">
+                    Ruby Install With Source On CentOS
+                </a><span class="post-tag">Ruby Install</span><span class="post-tag">CentOS</span></h3>
+
+            <div class="post-excerpt text-snapshot">1. Install OpenSSL
+
+  Download OpenSSL Source
+  Install OpenSSL
+
+
+ $ tar -zxvf openssl-1.1.1-pre7.tar.gz
+ $ cd openssl-1.1.1-pre7
+ $ ./config -fPIC --prefix=/usr/local/openssl enable-shared
+ $ ./config -t
+ $ make &amp;&amp; make install
+ 
+
+
+  Check install
+
+
+ $ openssl version
+ OpenSSL 1.0.2k-fips  26 Jan 2017
+ 
+
+2. Install Ruby
+
+  Download Ruby Source
+  Install Ruby
+
+
+ $ tar -zxvf ruby-2.5.1.tar.gz
+ $ cd ruby-2.5.1
+ $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl     // important
+ $ make &amp;&amp; make install
+ 
+
+
+  Configure environment variable
+
+
+ $ vi /etc/profile
+ 
+ append -&gt; export PATH=/usr/local/ruby/bin:$PATH
+ 
+ $ source /etc/profile
+ 
+
+
+  Check install
+
+
+ $ ruby -v
+ ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux]
+ 
+ $ gem -v
+ 2.7.6
+ 
+
+</div>
+        </li><li><span class="post-meta">Jun 14, 2018</span>
+            <h3>
                 <a class="post-link" href="/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">
                     JAVA Monitor Tools
                 </a><span class="post-tag">Java Monitor</span></h3>

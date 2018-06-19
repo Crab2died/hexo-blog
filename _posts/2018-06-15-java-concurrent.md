@@ -29,16 +29,16 @@ tags: [Java, Concurrent]
         等待着CPU为它分配执行时间.
       * 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被  
             其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态:  
-            ●没有设置Timeout参数的Object.wait()方法.  
-            ●没有设置Timeout参数的Thread.join()方法.  
-            ●LockSupport.park()方法.  
+            ● 没有设置Timeout参数的Object.wait()方法.  
+            ● 没有设置Timeout参数的Thread.join()方法.  
+            ● LockSupport.park()方法.  
       * 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后
         它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态:  
-            ●Thread.sleep()方法.  
-            ●设置了Timeout参数的Object.wait()方法.  
-            ●设置了Timeout参数的Thread.join()方法.  
-            ●LockSupport.parkNanos()方法.  
-            ●LockSupport.parkUntil()方法 
+            ● Thread.sleep()方法.  
+            ● 设置了Timeout参数的Object.wait()方法.  
+            ● 设置了Timeout参数的Thread.join()方法.  
+            ● LockSupport.parkNanos()方法.  
+            ● LockSupport.parkUntil()方法 
       * 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 
       * 结束(Terminated):已终止线程的线程状态,线程已经结束执行.
    2. 线程状态转换关系图  
@@ -113,41 +113,41 @@ tags: [Java, Concurrent]
 
 ### 4.2 ThreadPoolExecutor构造参数说明
    {% highlight java %}
-    # corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
-    # maximunPoolSize 线程池最大线程数
-    # keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
-    # unit 线程等待时间的单位级
-    # workQueue 任务缓冲队列
-    # threadFactory 线程工厂，用于创建线程
-    # handler 表示拒接处理任务的策略有一下4种：
-    #  - ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
-    #  - ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
-    #  - ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
-    #  - ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
+    // corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
+    // maximunPoolSize 线程池最大线程数
+    // keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
+    // unit 线程等待时间的单位级
+    // workQueue 任务缓冲队列
+    // threadFactory 线程工厂，用于创建线程
+    // handler 表示拒接处理任务的策略有一下4种：
+    //  - ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
+    //  - ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
+    //  - ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
+    //  - ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
     
     public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
             BlockingQueue<Runnable> workQueue);
- 
+    
     public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
             BlockingQueue<Runnable> workQueue,ThreadFactory threadFactory);
- 
+    
     public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
             BlockingQueue<Runnable> workQueue,RejectedExecutionHandler handler);
- 
+    
     public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
         BlockingQueue<Runnable> workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
-  {% endhighlight %}
+   {% endhighlight %}
 
 ### 4.3 实现原理
    1. 线程池状态：  
-   - RUNNING: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
+   - **RUNNING**: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
    `prestartAllCoreThreads() #创建核心线程`或者`prestartCoreThread() #创建一个核心线程`来初始化线程数)
-   - SHUTDOWN: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用`shutdown()`时从`RUNNING-> SHUTDOWN`
-   - STOP: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用`shutdownNow()`时从
+   - **SHUTDOWN**: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用`shutdown()`时从`RUNNING-> SHUTDOWN`
+   - **STOP**: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用`shutdownNow()`时从
      `RUNNING or SHUTDOWN -> STOP`
-   - TIDYING: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数`terminated()`，用户可重载该方法
+   - **TIDYING**: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数`terminated()`，用户可重载该方法
      实现自己的业务逻辑;状态切换是所有任务终止就进入TIDYING状态
-   - TERMINATED: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态
+   - **TERMINATED**: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态
    
    2. 任务执行过程
    - 当任务提交给线程池时，线程首先判断当前池内线程数是否大于corePoolSize(核心线程数)，如果小于这值就会创建一个新的线程来执行该任务；
@@ -158,8 +158,8 @@ tags: [Java, Concurrent]
      线程数也有超时时间，则当核心线程数内的线程超时时也会被终止，直至线程数为0
    
    3. 线程池中的线程初始化
-   - prestartCoreThread()：初始化一个核心线程
-   - prestartAllCoreThreads()：初始化所有核心线程
+   - `prestartCoreThread()`：初始化一个核心线程
+   - `prestartAllCoreThreads()`：初始化所有核心线程
    - 初始化后线程会执行workQueue的`take()`方法，该方法是阻塞的，直到有任务提交
    
    4. 任务缓存队列及排队策略
@@ -176,12 +176,12 @@ tags: [Java, Concurrent]
    {% endhighlight %}
    
    6. 线程池的关闭
-   - shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务 
-   - shutdownNow(): 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务
+   - `shutdown()`：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务 
+   - `shutdownNow()`: 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务
    
    7. 线程池容量动态调整
-   - setCorePoolSize()：设置核心池大小
-   - setMaximumPoolSize()：设置线程池最大能创建的线程数目大小
+   - `setCorePoolSize()`：设置核心池大小
+   - `setMaximumPoolSize()`：设置线程池最大能创建的线程数目大小
 
 ### 4.4 Executors
    - newFixedThreadPool: 定容量的线程池，核心线程数与最大线程数相等

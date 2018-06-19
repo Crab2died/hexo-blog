@@ -9,15 +9,15 @@
 <meta property="og:title" content="Java Concurrent" />
 <meta name="author" content="Crab2Died" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ●没有设置Timeout参数的Object.wait()方法. ●没有设置Timeout参数的Thread.join()方法. ●LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ●Thread.sleep()方法. ●设置了Timeout参数的Object.wait()方法. ●设置了Timeout参数的Thread.join()方法. ●LockSupport.parkNanos()方法. ●LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:" />
-<meta property="og:description" content="1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ●没有设置Timeout参数的Object.wait()方法. ●没有设置Timeout参数的Thread.join()方法. ●LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ●Thread.sleep()方法. ●设置了Timeout参数的Object.wait()方法. ●设置了Timeout参数的Thread.join()方法. ●LockSupport.parkNanos()方法. ●LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:" />
+<meta name="description" content="1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ● 没有设置Timeout参数的Object.wait()方法. ● 没有设置Timeout参数的Thread.join()方法. ● LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ● Thread.sleep()方法. ● 设置了Timeout参数的Object.wait()方法. ● 设置了Timeout参数的Thread.join()方法. ● LockSupport.parkNanos()方法. ● LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:" />
+<meta property="og:description" content="1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ● 没有设置Timeout参数的Object.wait()方法. ● 没有设置Timeout参数的Thread.join()方法. ● LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ● Thread.sleep()方法. ● 设置了Timeout参数的Object.wait()方法. ● 设置了Timeout参数的Thread.join()方法. ● LockSupport.parkNanos()方法. ● LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:" />
 <link rel="canonical" href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-concurrent.html" />
 <meta property="og:url" content="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-concurrent.html" />
 <meta property="og:site_name" content="Crab2Died Blog" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-06-15T13:15:27+08:00" />
 <script type="application/ld+json">
-{"url":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-concurrent.html","headline":"Java Concurrent","dateModified":"2018-06-15T13:15:27+08:00","datePublished":"2018-06-15T13:15:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-concurrent.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ●没有设置Timeout参数的Object.wait()方法. ●没有设置Timeout参数的Thread.join()方法. ●LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ●Thread.sleep()方法. ●设置了Timeout参数的Object.wait()方法. ●设置了Timeout参数的Thread.join()方法. ●LockSupport.parkNanos()方法. ●LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-concurrent.html","headline":"Java Concurrent","dateModified":"2018-06-15T13:15:27+08:00","datePublished":"2018-06-15T13:15:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-concurrent.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. JAVA与线程 1.1 线程的实现 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的. 1.2 Java线程调度 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling) 和抢占式线程调度(Preemptive ThreadsScheduling) 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上; 优点是实现简单,缺点是线程执行时间不可控制,容易线程阻塞 每个线程将由系统来分配执行时间,线程的切换不由线程本身来决定(在Java中,Thread.yield()可以让出执行时间,但是要获取执行时 间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY) 1.3 线程转换状态 JAVA线程定义了6个状态: 新建(New):创建后尚未启动的线程处于这种状态. 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在 等待着CPU为它分配执行时间. 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被 其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态: ● 没有设置Timeout参数的Object.wait()方法. ● 没有设置Timeout参数的Thread.join()方法. ● LockSupport.park()方法. 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态: ● Thread.sleep()方法. ● 设置了Timeout参数的Object.wait()方法. ● 设置了Timeout参数的Thread.join()方法. ● LockSupport.parkNanos()方法. ● LockSupport.parkUntil()方法 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 结束(Terminated):已终止线程的线程状态,线程已经结束执行. 线程状态转换关系图 2. 线程安全与锁优化 2.1 JAVA中的线程安全 共享数据分类 不可变(Immutable):不可变对象一定是线程安全的,典型的final 绝对线程安全: 相对线程安全: java大部分的线程安全都是相对线程安全的 线程兼容: 线程对立:","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://crab2died.github.io/jekyll-blog/feed.xml" title="Crab2Died Blog" /></head>
@@ -75,16 +75,16 @@
 等待着CPU为它分配执行时间.</li>
       <li>无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被<br />
     其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态:<br />
-    ●没有设置Timeout参数的Object.wait()方法.<br />
-    ●没有设置Timeout参数的Thread.join()方法.<br />
-    ●LockSupport.park()方法.</li>
+    ● 没有设置Timeout参数的Object.wait()方法.<br />
+    ● 没有设置Timeout参数的Thread.join()方法.<br />
+    ● LockSupport.park()方法.</li>
       <li>限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后
 它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态:<br />
-    ●Thread.sleep()方法.<br />
-    ●设置了Timeout参数的Object.wait()方法.<br />
-    ●设置了Timeout参数的Thread.join()方法.<br />
-    ●LockSupport.parkNanos()方法.<br />
-    ●LockSupport.parkUntil()方法</li>
+    ● Thread.sleep()方法.<br />
+    ● 设置了Timeout参数的Object.wait()方法.<br />
+    ● 设置了Timeout参数的Thread.join()方法.<br />
+    ● LockSupport.parkNanos()方法.<br />
+    ● LockSupport.parkUntil()方法</li>
       <li>阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态</li>
       <li>结束(Terminated):已终止线程的线程状态,线程已经结束执行.</li>
     </ul>
@@ -192,43 +192,43 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 
 <h3 id="42-threadpoolexecutor构造参数说明">4.2 ThreadPoolExecutor构造参数说明</h3>
 
-<figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="err">#</span> <span class="n">corePoolSize</span> <span class="err">核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列</span><span class="n">workQueue</span>
-    <span class="err">#</span> <span class="n">maximunPoolSize</span> <span class="err">线程池最大线程数</span>
-    <span class="err">#</span> <span class="n">keepAliveTime</span> <span class="err">多于核心线程数的空闲线程最长存活时间量级与</span><span class="n">unit</span><span class="err">参数配合使用</span>
-    <span class="err">#</span> <span class="n">unit</span> <span class="err">线程等待时间的单位级</span>
-    <span class="err">#</span> <span class="n">workQueue</span> <span class="err">任务缓冲队列</span>
-    <span class="err">#</span> <span class="n">threadFactory</span> <span class="err">线程工厂，用于创建线程</span>
-    <span class="err">#</span> <span class="n">handler</span> <span class="err">表示拒接处理任务的策略有一下</span><span class="mi">4</span><span class="err">种：</span>
-    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">AbortPolicy</span><span class="o">:</span><span class="err">丢弃任务并抛出</span><span class="n">RejectedExecutionException</span><span class="err">异常</span>
-    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardPolicy</span><span class="err">：也是丢弃任务，但是不抛出异常</span>
-    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">DiscardOldestPolicy</span><span class="err">：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</span>
-    <span class="err">#</span>  <span class="o">-</span> <span class="n">ThreadPoolExecutor</span><span class="o">.</span><span class="na">CallerRunsPolicy</span><span class="err">：由调用线程处理该任务</span>
+<figure class="highlight"><pre><code class="language-java" data-lang="java">    <span class="c1">// corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue</span>
+    <span class="c1">// maximunPoolSize 线程池最大线程数</span>
+    <span class="c1">// keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用</span>
+    <span class="c1">// unit 线程等待时间的单位级</span>
+    <span class="c1">// workQueue 任务缓冲队列</span>
+    <span class="c1">// threadFactory 线程工厂，用于创建线程</span>
+    <span class="c1">// handler 表示拒接处理任务的策略有一下4种：</span>
+    <span class="c1">//  - ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常</span>
+    <span class="c1">//  - ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常</span>
+    <span class="c1">//  - ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）</span>
+    <span class="c1">//  - ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务</span>
     
     <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
             <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">);</span>
- 
+    
     <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
             <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span><span class="n">ThreadFactory</span> <span class="n">threadFactory</span><span class="o">);</span>
- 
+    
     <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
             <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span><span class="n">RejectedExecutionHandler</span> <span class="n">handler</span><span class="o">);</span>
- 
+    
     <span class="kd">public</span> <span class="nf">ThreadPoolExecutor</span><span class="o">(</span><span class="kt">int</span> <span class="n">corePoolSize</span><span class="o">,</span><span class="kt">int</span> <span class="n">maximumPoolSize</span><span class="o">,</span><span class="kt">long</span> <span class="n">keepAliveTime</span><span class="o">,</span><span class="n">TimeUnit</span> <span class="n">unit</span><span class="o">,</span>
         <span class="n">BlockingQueue</span><span class="o">&lt;</span><span class="n">Runnable</span><span class="o">&gt;</span> <span class="n">workQueue</span><span class="o">,</span><span class="n">ThreadFactory</span> <span class="n">threadFactory</span><span class="o">,</span><span class="n">RejectedExecutionHandler</span> <span class="n">handler</span><span class="o">);</span>
-  </code></pre></figure>
+   </code></pre></figure>
 
 <h3 id="43-实现原理">4.3 实现原理</h3>
 <ol>
   <li>线程池状态：
     <ul>
-      <li>RUNNING: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
+      <li><strong>RUNNING</strong>: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
    <code class="highlighter-rouge">prestartAllCoreThreads() #创建核心线程</code>或者<code class="highlighter-rouge">prestartCoreThread() #创建一个核心线程</code>来初始化线程数)</li>
-      <li>SHUTDOWN: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用<code class="highlighter-rouge">shutdown()</code>时从<code class="highlighter-rouge">RUNNING-&gt; SHUTDOWN</code></li>
-      <li>STOP: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用<code class="highlighter-rouge">shutdownNow()</code>时从
+      <li><strong>SHUTDOWN</strong>: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用<code class="highlighter-rouge">shutdown()</code>时从<code class="highlighter-rouge">RUNNING-&gt; SHUTDOWN</code></li>
+      <li><strong>STOP</strong>: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用<code class="highlighter-rouge">shutdownNow()</code>时从
 <code class="highlighter-rouge">RUNNING or SHUTDOWN -&gt; STOP</code></li>
-      <li>TIDYING: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数<code class="highlighter-rouge">terminated()</code>，用户可重载该方法
+      <li><strong>TIDYING</strong>: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数<code class="highlighter-rouge">terminated()</code>，用户可重载该方法
 实现自己的业务逻辑;状态切换是所有任务终止就进入TIDYING状态</li>
-      <li>TERMINATED: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态</li>
+      <li><strong>TERMINATED</strong>: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态</li>
     </ul>
   </li>
   <li>任务执行过程
@@ -243,8 +243,8 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
   </li>
   <li>线程池中的线程初始化
     <ul>
-      <li>prestartCoreThread()：初始化一个核心线程</li>
-      <li>prestartAllCoreThreads()：初始化所有核心线程</li>
+      <li><code class="highlighter-rouge">prestartCoreThread()</code>：初始化一个核心线程</li>
+      <li><code class="highlighter-rouge">prestartAllCoreThreads()</code>：初始化所有核心线程</li>
       <li>初始化后线程会执行workQueue的<code class="highlighter-rouge">take()</code>方法，该方法是阻塞的，直到有任务提交</li>
     </ul>
   </li>
@@ -267,14 +267,14 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 <ol>
   <li>线程池的关闭
     <ul>
-      <li>shutdown()：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务</li>
-      <li>shutdownNow(): 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务</li>
+      <li><code class="highlighter-rouge">shutdown()</code>：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务</li>
+      <li><code class="highlighter-rouge">shutdownNow()</code>: 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务</li>
     </ul>
   </li>
   <li>线程池容量动态调整
     <ul>
-      <li>setCorePoolSize()：设置核心池大小</li>
-      <li>setMaximumPoolSize()：设置线程池最大能创建的线程数目大小</li>
+      <li><code class="highlighter-rouge">setCorePoolSize()</code>：设置核心池大小</li>
+      <li><code class="highlighter-rouge">setMaximumPoolSize()</code>：设置线程池最大能创建的线程数目大小</li>
     </ul>
   </li>
 </ol>

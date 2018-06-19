@@ -24,7 +24,7 @@ tags: [Java Monitor]
    
 ### 2. 格式
    jstat[option vmid[interval[s|ms][count]]]
-   如`jstat -class 14232(PID) 520(采样率) 4(采样次数)`
+   如**`jstat -class 14232(PID) 520(采样率) 4(采样次数)`**
    
 ### 3. 参数
    - -class: 监控类加载数量、卸载数量、总空间以及加载所用时间
@@ -99,25 +99,24 @@ tags: [Java Monitor]
    - -m: 如果调用到本地方法时，显示C/C++堆栈信息
    
 ### 4. 日志分析
-   1. 线程分为New、Runnable、Running、Waiting、Timed_Waiting、Blocked、Dead等状态  
-    - New: 当线程对象创建时存在的状态，此时线程不可能执行；  
-    - Runnable：当调用thread.start()后，线程变成为Runnable状态。只要得到CPU，就可以执行；  
-    - Running：线程正在执行；  
-    - Waiting：执行thread.join()或在锁对象调用obj.wait()等情况就会进该状态，表明线程正处于等待某个资源或条件发生来唤醒自己；  
-    - Timed_Waiting：执行Thread.sleep(long)、thread.join(long)或obj.wait(long)等就会进该状态，与Waiting的区别在于
-      Timed_Waiting的等待有时间限制；  
-    - Blocked：如果进入同步方法或同步代码块，没有获取到锁，则会进入该状态；  
-    - Dead：线程执行完毕，或者抛出了未捕获的异常之后，会进入dead状态，表示该线程结束  
-   2. 其次，对于jstack日志，我们要着重关注如下关键信息  
-    - Deadlock：表示有死锁  
-    - Waiting on condition：等待某个资源或条件发生来唤醒自己。具体需要结合jstacktrace来分析，比如线程正在sleep，网络读写繁忙而等待  
-    - Blocked：阻塞  
-    - Waiting on monitor entry：在等待获取锁  
-    - in Object.wait()：获取锁后又执行obj.wait()放弃锁  
-    - 对于Waiting on monitor entry 和 inObject.wait()的详细描述：Monitor是 Java中用以实现线程之间的互斥与协作的主要手段，
-      它可以看成是对象或者Class的锁。每一个对象都有，也仅有一个 monitor。从下图中可以看出，每个 Monitor在某个时刻，只能被一个
-      线程拥有，该线程就是 "Active Thread"，而其它线程都是 "Waiting Thread"，分别在两个队列 "Entry Set"和 "Wait Set"里面
-      等候。在 "Entry Set"中等待的线程状态是"Waiting for monitor entry"，而在 "Wait Set"中等待的线程状态是 "in Object.wait()"
+  1. 线程分为New、Runnable、Running、Waiting、Timed_Waiting、Blocked、Dead等状态  
+   - **New**: 当线程对象创建时存在的状态，此时线程不可能执行；  
+   - **Runnable**：当调用thread.start()后，线程变成为Runnable状态。只要得到CPU，就可以执行；  
+   - **Running**：线程正在执行；  
+   - **Waiting**：执行thread.join()或在锁对象调用obj.wait()等情况就会进该状态，表明线程正处于等待某个资源或条件发生来唤醒自己；  
+   - **Timed_Waiting**：执行Thread.sleep(long)、thread.join(long)或obj.wait(long)等就会进该状态，与Waiting的区别在于Timed_Waiting的等待有时间限制；  
+   - **Blocked**：如果进入同步方法或同步代码块，没有获取到锁，则会进入该状态；  
+   - **Dead**：线程执行完毕，或者抛出了未捕获的异常之后，会进入dead状态，表示该线程结束  
+  2. 其次，对于jstack日志，我们要着重关注如下关键信息  
+   - **Deadlock**：表示有死锁  
+   - **Waiting on condition**：等待某个资源或条件发生来唤醒自己。具体需要结合jstacktrace来分析，比如线程正在sleep，网络读写繁忙而等待  
+   - **Blocked**：阻塞  
+   - **Waiting on monitor entry**：在等待获取锁  
+   - **in Object.wait()**：获取锁后又执行obj.wait()放弃锁  
+   - 对于Waiting on monitor entry 和 inObject.wait()的详细描述：Monitor是 Java中用以实现线程之间的互斥与协作的主要手段，
+     它可以看成是对象或者Class的锁。每一个对象都有，也仅有一个 monitor。从下图中可以看出，每个 Monitor在某个时刻，只能被一个
+     线程拥有，该线程就是 "Active Thread"，而其它线程都是 "Waiting Thread"，分别在两个队列 "Entry Set"和 "Wait Set"里面
+     等候。在 "Entry Set"中等待的线程状态是"Waiting for monitor entry"，而在 "Wait Set"中等待的线程状态是 "in Object.wait()"
       
 ### 5. 附录
    在JDK1.5中在`java.lang.Thread`类中新增了`getAllStackTraces()`方法获取虚拟机所有的线程`StackTraceElement`
@@ -132,18 +131,18 @@ tags: [Java Monitor]
   - 1、远程服务器启动jstatd服务
     创建配置文件jstatd.policy内容为  
     ```
-        grant codebase "file:${java.home}/../lib/tools.jar" {  
-           permission java.security.AllPermission;  
-        };
+    grant codebase "file:${java.home}/../lib/tools.jar" {  
+       permission java.security.AllPermission;  
+    };
     ```  
     启动服务:`jstatd -J-Djava.security.policy=jstatd.policy -p 8701`
   - 2、启动应用参数
     ``` 
-        -Dcom.sun.management.jmxremote=true 
-        -Dcom.sun.management.jmxremote.port=9090 
-        -Dcom.sun.management.jmxremote.ssl=false 
-        -Dcom.sun.management.jmxremote.authenticate=false
-        -Djava.rmi.server.hostname=192.168.0.1
+    -Dcom.sun.management.jmxremote=true 
+    -Dcom.sun.management.jmxremote.port=9090 
+    -Dcom.sun.management.jmxremote.ssl=false 
+    -Dcom.sun.management.jmxremote.authenticate=false
+    -Djava.rmi.server.hostname=192.168.0.1
     ```
   - 3、启动jvisualvm,操作步骤:  
     远程 -> 添加远程主机 -> 添加JMX链接

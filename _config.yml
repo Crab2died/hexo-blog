@@ -43,6 +43,9 @@ plugins:
 
 destination: docs
 
+comment:
+        disqus: Crab2Died
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

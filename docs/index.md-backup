@@ -48,7 +48,7 @@
         <h3>
           <a class="post-link" href="/jekyll-blog/content/database/2018/06/18/database.html">
             Database
-          </a><span class="post-tag">DataBase</span></h3><h2 id="一-四大特性ciad">一. 四大特性(CIAD)</h2>
+          </a><span class="post-tag">Database</span></h3><h2 id="一-四大特性ciad">一. 四大特性(CIAD)</h2>
 <ol>
   <li>原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。</li>
   <li>一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执

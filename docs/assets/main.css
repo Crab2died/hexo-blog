@@ -535,3 +535,9 @@ table {
 
 .post {
   margin-bottom: 50px; }
+
+.gitment-footer-container {
+  display: none; }
+
+.gitment-header-issue-link {
+  display: none; }

@@ -528,3 +528,7 @@ table {
   white-space: normal !important;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; }
+
+.pagination {
+  text-align: right;
+  margin-bottom: 10px; }

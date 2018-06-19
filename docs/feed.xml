@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-19T10:26:19+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">The Interview Experience</title><link href="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html" rel="alternate" type="text/html" title="The Interview Experience" /><published>2018-06-19T09:15:27+08:00</published><updated>2018-06-19T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html">&lt;h2 id=&quot;一-java基础&quot;&gt;一. JAVA基础&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-19T11:32:12+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died Blog</title><subtitle>Crab2Died's personal blog website.</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">The Interview Experience</title><link href="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html" rel="alternate" type="text/html" title="The Interview Experience" /><published>2018-06-19T09:15:27+08:00</published><updated>2018-06-19T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html">&lt;h2 id=&quot;一-java基础&quot;&gt;一. JAVA基础&lt;/h2&gt;
 &lt;h3 id=&quot;1-9种基本数据类型及其封装类所占大小&quot;&gt;1. 9种基本数据类型及其封装类,所占大小&lt;/h3&gt;
 
 &lt;table&gt;
@@ -96,8 +96,8 @@
 
 &lt;h3 id=&quot;5-override与overload&quot;&gt;5. Override与Overload&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;Override是重写:方法名称、参数个数，类型，顺序，返回值类型都是必须和父类方法一致的。它的关系是父子关系。&lt;/li&gt;
-  &lt;li&gt;Overload是重载:方法名称不变，方法参数个数、类型、顺序至少一个不同。它的关系是同一个类，同一个方法名。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Override&lt;/strong&gt;是重写:方法名称、参数个数，类型，顺序，返回值类型都是必须和父类方法一致的。它的关系是父子关系。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Overload&lt;/strong&gt;是重载:方法名称不变，方法参数个数、类型、顺序至少一个不同。它的关系是同一个类，同一个方法名。&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;6-wait与sleep&quot;&gt;6. wait与sleep&lt;/h3&gt;
@@ -111,7 +111,7 @@
 
 &lt;h3 id=&quot;7-java并发&quot;&gt;7. java并发&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/Crab2died/jdepth/blob/master/src/main/java/com/github/jvm/concurrent/JVM%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0.md&quot;&gt;java并发编程&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/jekyll-blog/content/java/2018/06/15/java-concurrent.html&quot;&gt;java并发编程&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;8-interface与abstract类&quot;&gt;8. interface与abstract类&lt;/h3&gt;
@@ -188,7 +188,7 @@
 
 &lt;h3 id=&quot;3-java自动内存管理&quot;&gt;3. java自动内存管理&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/Crab2died/jdepth/blob/master/src/main/java/com/github/jvm/gc/GC.md&quot;&gt;java自动内存管理&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/jekyll-blog/content/java/2018/06/15/java-gc.html&quot;&gt;java自动内存管理&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;其他&quot;&gt;其他&lt;/h2&gt;
@@ -281,7 +281,7 @@
 的资源，形成一个进程等待环路，环路中每一个进程所占有的资源同时被另一个申请，也就是前一个进程占有后一个进程所深情地资源。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;6-mysql索引55版本之前默认myisam引擎55之后默认innodb&quot;&gt;6. MySQL索引(5.5版本之前默认MyISAM引擎，5.5之后默认InnoDB)&lt;/h3&gt;
+&lt;h3 id=&quot;6-mysql索引55之前默认myisam引擎55之后默认innodb&quot;&gt;6. MySQL索引(5.5之前默认MyISAM引擎，5.5之后默认InnoDB)&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;MyISAM使用B-Tree实现主键索引、唯一索引和非主键索引。&lt;/li&gt;
   &lt;li&gt;InnoDB中非主键索引使用的是B-Tree数据结构，而主键索引使用的是B+Tree。&lt;/li&gt;
@@ -320,7 +320,7 @@
   &lt;li&gt;接口分隔原则－Interface Segregation Principle (ISP)&lt;/li&gt;
   &lt;li&gt;单一职责原则－Single Responsibility Principle (SRP)&lt;/li&gt;
   &lt;li&gt;开闭原则－The Open-Closed Principle (OCP)&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Interview" /><summary type="html">一. JAVA基础 1. 9种基本数据类型及其封装类,所占大小</summary></entry><entry><title type="html">Database</title><link href="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html" rel="alternate" type="text/html" title="Database" /><published>2018-06-18T23:15:27+08:00</published><updated>2018-06-18T23:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html">&lt;h2 id=&quot;一-四大特性ciad&quot;&gt;一. 四大特性(CIAD)&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Interview" /><category term="Experience" /><summary type="html">一. JAVA基础 1. 9种基本数据类型及其封装类,所占大小</summary></entry><entry><title type="html">Database</title><link href="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html" rel="alternate" type="text/html" title="Database" /><published>2018-06-18T23:15:27+08:00</published><updated>2018-06-18T23:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html">&lt;h2 id=&quot;一-四大特性ciad&quot;&gt;一. 四大特性(CIAD)&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。&lt;/li&gt;
   &lt;li&gt;一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执
@@ -1184,7 +1184,7 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 &lt;p&gt;公平锁是严格按照FIFO队列获得锁，但带来了大量的线程切换的消耗，非公平锁极大的降低了线程切换带来的消耗，虽然可能造成线程饥饿的情况，
    但也提高了吞吐量。&lt;/p&gt;
 
-&lt;h2 id=&quot;6-synchronized与lock比较&quot;&gt;6. &lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;比较&lt;/h2&gt;
+&lt;h2 id=&quot;6-synchronized与lock比较&quot;&gt;6. synchronized与Lock比较&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;是JVM层面实现的’重量级锁’，可通过监控工具监控&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;的锁定，而且代码出现异常时会自动释放锁&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;是纯JAVA实现的，为多种实现留下空间，可以实现不同的调度算法、性能特性或者锁定语义，&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;必须自己手动的释放锁
@@ -1192,7 +1192,7 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
   &lt;li&gt;当锁竞争激烈时用&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;,锁竞争较弱时用&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;7-阻塞队列blockingqueue&quot;&gt;7. 阻塞队列&lt;code class=&quot;highlighter-rouge&quot;&gt;BlockingQueue&lt;/code&gt;&lt;/h2&gt;
+&lt;h2 id=&quot;7-阻塞队列blockingqueue&quot;&gt;7. 阻塞队列BlockingQueue&lt;/h2&gt;
 &lt;ol&gt;
   &lt;li&gt;阻塞队列是一个FIFO队列&lt;/li&gt;
   &lt;li&gt;主要方法&lt;/li&gt;

@@ -5,7 +5,7 @@ title:  The Interview Experience
 date:   2018-06-19 09:15:27 +0800
 author: Crab2Died
 categories: content interview
-tags: [Java, Interview]
+tags: [Java, Interview, Experience]
 ---
 
 ## 一. JAVA基础
@@ -54,8 +54,8 @@ tags: [Java, Interview]
      断所引用对象的实际类型，根据其实际的类型调用其相应的方法。
 	 
 ### 5. Override与Overload
-   - Override是重写:方法名称、参数个数，类型，顺序，返回值类型都是必须和父类方法一致的。它的关系是父子关系。
-   - Overload是重载:方法名称不变，方法参数个数、类型、顺序至少一个不同。它的关系是同一个类，同一个方法名。
+   - **Override**是重写:方法名称、参数个数，类型，顺序，返回值类型都是必须和父类方法一致的。它的关系是父子关系。
+   - **Overload**是重载:方法名称不变，方法参数个数、类型、顺序至少一个不同。它的关系是同一个类，同一个方法名。
 
 ### 6. wait与sleep
    - wait是Object类的方法；而sleep是Thread类的静态方法。
@@ -65,7 +65,7 @@ tags: [Java, Interview]
    - wait和sleep都可以通过interrupt()方法打断线程的暂停状态，从而使线程立刻抛出InterruptedException(但不建议使用该方法)。
 
 ### 7. java并发
-   - [java并发编程](https://github.com/Crab2died/jdepth/blob/master/src/main/java/com/github/jvm/concurrent/JVM%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0.md)   
+   - [java并发编程](/jekyll-blog/content/java/2018/06/15/java-concurrent.html)   
 
 ### 8. interface与abstract类
    - 抽象类是包含有抽象方法的类(也可以拥有成员变量和普通成员方法)，抽象方法是只有方法声明没有具体实现的方法，所以抽象类不能实例化，是为
@@ -115,7 +115,7 @@ tags: [Java, Interview]
      - 3.本地方法栈中JNI（就是native方法）引用的对象。	 
 
 ### 3. java自动内存管理
-   - [java自动内存管理](https://github.com/Crab2died/jdepth/blob/master/src/main/java/com/github/jvm/gc/GC.md)   
+   - [java自动内存管理](/jekyll-blog/content/java/2018/06/15/java-gc.html)   
 	 
 ## 其他
 ### 1. OSI网络模型
@@ -162,7 +162,7 @@ tags: [Java, Interview]
    - **循环等待条件**：在发生死锁时必然存在一个进程等待队列{P1,P2,…,Pn},其中P1等待P2占有的资源，P2等待P3占有的资源，…，Pn等待P1占有
      的资源，形成一个进程等待环路，环路中每一个进程所占有的资源同时被另一个申请，也就是前一个进程占有后一个进程所深情地资源。	 
 
-### 6. MySQL索引(5.5版本之前默认MyISAM引擎，5.5之后默认InnoDB)
+### 6. MySQL索引(5.5之前默认MyISAM引擎，5.5之后默认InnoDB)
    - MyISAM使用B-Tree实现主键索引、唯一索引和非主键索引。
    - InnoDB中非主键索引使用的是B-Tree数据结构，而主键索引使用的是B+Tree。	 
 

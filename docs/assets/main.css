@@ -532,3 +532,6 @@ table {
 .pagination {
   text-align: right;
   margin-bottom: 10px; }
+
+.post {
+  margin-bottom: 50px; }

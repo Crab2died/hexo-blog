@@ -37,10 +37,17 @@
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <div class="home"><h2 class="post-list-heading">Blogs</h2>
-    <ul class="post-list"><li><span class="post-meta">Jun 18, 2018</span>
+    <ul class="post-list"><li><span class="post-meta">Jun 19, 2018</span>
+        <h3>
+          <a class="post-link" href="/jekyll-blog/content/interview/2018/06/19/interview-experience.html">
+            The Interview Experience
+          </a><span class="post-tag">Java</span><span class="post-tag">Interview</span></h3><h2 id="一-java基础">一. JAVA基础</h2>
+<h3 id="1-9种基本数据类型及其封装类所占大小">1. 9种基本数据类型及其封装类,所占大小</h3>
+
+</li><li><span class="post-meta">Jun 18, 2018</span>
         <h3>
           <a class="post-link" href="/jekyll-blog/content/database/2018/06/18/database.html">
-            DataBase
+            Database
           </a><span class="post-tag">DataBase</span></h3><h2 id="一-四大特性ciad">一. 四大特性(CIAD)</h2>
 <ol>
   <li>原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。</li>

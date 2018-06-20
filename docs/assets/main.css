@@ -531,7 +531,7 @@ table {
 
 .pagination {
   text-align: right;
-  margin-bottom: 10px; }
+  margin: 15px 0; }
 
 .post {
   margin-bottom: 100px; }
@@ -557,3 +557,10 @@ table {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(54, 255, 54, 0.03));
   /* Standard syntax */ }
+
+.post-list-head {
+  font-size: 30px;
+  margin-bottom: 8px; }
+
+.p-title {
+  margin: 8px 0 15px 0; }

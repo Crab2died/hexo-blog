@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-20T11:31:55+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><subtitle>Crab2Died's personal blog website. But, you known, I am also a rookie :)</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">The Interview Experience</title><link href="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html" rel="alternate" type="text/html" title="The Interview Experience" /><published>2018-06-19T09:15:27+08:00</published><updated>2018-06-19T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html">&lt;h2 id=&quot;一-java基础&quot;&gt;一. JAVA基础&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-20T19:18:55+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><subtitle>Crab2Died's personal blog website. But, you known, I am also a rookie :)</subtitle><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">The Interview Experience</title><link href="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html" rel="alternate" type="text/html" title="The Interview Experience" /><published>2018-06-19T09:15:27+08:00</published><updated>2018-06-19T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html">&lt;h2 id=&quot;一-java基础&quot;&gt;一. JAVA基础&lt;/h2&gt;
 &lt;h3 id=&quot;1-9种基本数据类型及其封装类所占大小&quot;&gt;1. 9种基本数据类型及其封装类,所占大小&lt;/h3&gt;
 
 &lt;table&gt;
@@ -1418,7 +1418,7 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 &lt;p&gt;分析jmap生成的堆转储快照(dump文件)&lt;/p&gt;
 
 &lt;h3 id=&quot;2-格式-3&quot;&gt;2. 格式&lt;/h3&gt;
-&lt;p&gt;jhat [-port 7001] &lt;dumpfile&gt;&lt;/dumpfile&gt;&lt;/p&gt;
+&lt;p&gt;jhat [-port 7001] &amp;lt;dumpfile&amp;gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;3-参数-3&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
@@ -1427,7 +1427,7 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
     &lt;file&gt;: dump文件
 &lt;/file&gt;
   &lt;/li&gt;
-  &lt;li&gt;-J&lt;flag&gt;: 运行参数,如`-J-mx512m`&lt;/flag&gt;&lt;/li&gt;
+  &lt;li&gt;-J&lt;flag&gt;: 运行参数,如: -J-mx512m&lt;/flag&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;六-jstackstack-trace-for-java&quot;&gt;六. jstack(Stack Trace for Java)&lt;/h2&gt;

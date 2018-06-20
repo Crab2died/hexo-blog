@@ -76,12 +76,12 @@ tags: [Java Monitor]
    分析jmap生成的堆转储快照(dump文件)
    
 ### 2. 格式
-   jhat [-port 7001] <dumpfile> 
+   jhat [-port 7001] &lt;dumpfile&gt;
    
 ### 3. 参数
    - -port: server端口，可通过host:port访问
    - <file>: dump文件
-   - -J<flag>: 运行参数,如`-J-mx512m`
+   - -J<flag>: 运行参数,如: -J-mx512m
 
 ## 六. jstack(Stack Trace for Java)
 ### 1. 介绍

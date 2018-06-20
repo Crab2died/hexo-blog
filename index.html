@@ -8,7 +8,7 @@ layout: default
     {%- endif -%}
 
     {%- if paginator.total_posts > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Blog List" }}</h2>
+    <div class="post-list-heading post-list-head"><strong>{{ page.list_title | default: "Blog List" }}</strong></div>
     <ul class="post-list">
         {%- for post in paginator.posts -%}
         <li>
@@ -47,7 +47,7 @@ layout: default
 
         {% for page in (1..paginator.total_pages) %}
         {% if page == paginator.page %}
-        <em class="page-content">{{ page }}</em>
+        <span class="page-content">{{ page }}</span>
         {% elsif page == 1 %}
         <a class="page-content" href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
         {% else %}

@@ -8,7 +8,7 @@ layout: default
     {%- endif -%}
 
     {%- if paginator.total_posts > 0 -%}
-    <h2 class="post-list-heading">{{ page.list_title | default: "Blogs" }}</h2>
+    <h2 class="post-list-heading">{{ page.list_title | default: "Blog List" }}</h2>
     <ul class="post-list">
         {%- for post in paginator.posts -%}
         <li>
@@ -17,6 +17,7 @@ layout: default
             {%- if post.author -%}
              <span class="post-meta"> • {{  post.author }} </span>
             {%- endif -%}
+             <!--<span class="post-meta"> • {{  post.content | number_of_words }} words</span>-->
             <h3>
                 <a class="post-link" href="{{ post.url | relative_url }}">
                     <strong>{{ post.title | escape }}</strong>

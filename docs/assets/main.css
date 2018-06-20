@@ -509,13 +509,13 @@ table {
   padding: 2px 5px;
   font-size: 14px;
   font-weight: inherit;
-  color: rgba(0, 0, 0, 0.52);
-  background-color: rgba(0, 1, 1, 0.09); }
+  color: rgba(0, 0, 0, 0.55);
+  background-color: rgba(0, 0, 0, 0.09); }
 
 .post-excerpt {
-  color: rgba(0, 0, 0, 0.51);
+  color: rgba(0, 0, 0, 0.63);
   font-size: 14px;
-  background-color: rgba(17, 17, 17, 0.04); }
+  background-color: rgba(0, 0, 0, 0.02); }
 
 .page-content {
   padding: 1px 5px; }

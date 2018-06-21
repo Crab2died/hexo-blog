@@ -1,9 +1,11 @@
 ---
 layout: post
+_id: 2018061400002
 list_title: Ruby
 title:  "Ruby Install With Source On CentOS"
 date:   2018-06-14 12:45:27 +0800
 author: Crab2Died
+allow_comment: true
 categories: content ruby
 tags: [Ruby Install, CentOS]
 ---

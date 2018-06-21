@@ -1,0 +1,18 @@
+
+<div class="line-post"></div>
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: '{{ page._id }}', // 可选。默认为 location.href
+        owner: 'Crab2Died',
+        repo: 'crab2died.github.io',
+        oauth: {
+            client_id: '2117b548bf34c40984be',
+            client_secret: '2642328e6056dbf7b02951961e5ca481406410ed'
+        }
+    });
+    gitment.render('container')
+</script>

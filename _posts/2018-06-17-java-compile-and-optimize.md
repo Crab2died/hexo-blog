@@ -1,9 +1,11 @@
 ---
 layout: post
+_id: 2018061700001
 list_title: Java
 title:  "Java Compile and Optimize"
 date:   2018-06-17 13:15:27 +0800
 author: Crab2Died
+allow_comment: true
 categories: content java
 tags: [Java, JIT, Optimize]
 ---

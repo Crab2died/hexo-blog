@@ -535,7 +535,7 @@ table {
   margin: 15px 0; }
 
 .post {
-  margin-bottom: 100px; }
+  margin-bottom: 80px; }
 
 .gitment-footer-container {
   display: none; }
@@ -549,15 +549,7 @@ table {
 .line-post {
   height: 2px;
   background: rgba(0, 0, 0, 0.22);
-  /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(60, 255, 60, 0));
-  /* For Safari 5.3d-lines-animation.js to 6.0 */
-  background: -o-linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(54, 255, 54, 0.03));
-  /* For Opera 11.3d-lines-animation.js to 12.0 */
-  background: -moz-linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(54, 255, 54, 0.03));
-  /* For Firefox 3.6 to 15 */
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0.2), rgba(54, 255, 54, 0.03));
-  /* Standard syntax */ }
+  /* For browsers that do not support gradients */ }
 
 .post-list-head {
   color: rgba(0, 0, 0, 0.77);
@@ -566,3 +558,11 @@ table {
 
 .p-title {
   margin: 8px 0 15px 0; }
+
+.post-previous {
+  position: absolute;
+  left: 0; }
+
+.post-next {
+  position: absolute;
+  right: 0; }

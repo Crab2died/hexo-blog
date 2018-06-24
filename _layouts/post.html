@@ -28,6 +28,17 @@ layout: default
 
 </article>
 
+<div style="position: relative; height: 25px; margin-bottom: 5px;">
+
+    {%- if page.next -%}
+    <div class="post-previous"><a href="{{ page.next.url | relative_url }}"><strong>←</strong> Prev Article</a></div>
+    {%- endif -%}
+
+    {%- if page.previous -%}
+    <div class="post-next"><a href="{{ page.previous.url | relative_url }}">Next Article <strong>→</strong></a></div>
+    {%- endif -%}
+
+</div>
 <!--<div id="disqus_thread"></div>-->
 <!--<script>-->
 

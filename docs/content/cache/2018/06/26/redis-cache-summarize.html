@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Redis Cache Summarize | Crab2Died</title>
+<meta name="generator" content="Jekyll v3.8.3" />
+<meta property="og:title" content="Redis Cache Summarize" />
+<meta name="author" content="Crab2Died" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="1. 概述 基于内存的Key-Value存储系统，单线程实现 多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合) redis的value大小可达到1GB(memcach只能达到1MB) 持久化，redis会周期性的将更新的数据写入磁盘   master-slave(主从)同步 3.0后支持分布式存储，去中心化，具有线性伸缩功能 Redis命令大全 2. Redis数据持久化 2.1 RDB(Redis DataBase) SNAPSHOT(快照): save 秒数 写操作次数如save 9000 1表示900s(15min)有一次写操作生成快照，也可save &quot;&quot;表示 每次写操作即生成快照 配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持 配置rdbcompression yes/no表示是否压缩RDB文件 每次回fork一份来重启另一个进程进行持久化 2.2 AOF(Append Only File) 配置appendonly no/yes启用AOF，启动时会触发全量写文件，后面写操作是增量写文件 同步策略配置appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步) 重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小 auto-aof-rewrite-percentage 100 (表示超过文件的百分比) auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)   - AOF文件修复: redis-check-aof --fix appendonly.aof 2.3 缓存失效策 volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰 allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰 allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰 no-enviction（驱逐）：禁止驱逐数据" />
+<meta property="og:description" content="1. 概述 基于内存的Key-Value存储系统，单线程实现 多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合) redis的value大小可达到1GB(memcach只能达到1MB) 持久化，redis会周期性的将更新的数据写入磁盘   master-slave(主从)同步 3.0后支持分布式存储，去中心化，具有线性伸缩功能 Redis命令大全 2. Redis数据持久化 2.1 RDB(Redis DataBase) SNAPSHOT(快照): save 秒数 写操作次数如save 9000 1表示900s(15min)有一次写操作生成快照，也可save &quot;&quot;表示 每次写操作即生成快照 配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持 配置rdbcompression yes/no表示是否压缩RDB文件 每次回fork一份来重启另一个进程进行持久化 2.2 AOF(Append Only File) 配置appendonly no/yes启用AOF，启动时会触发全量写文件，后面写操作是增量写文件 同步策略配置appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步) 重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小 auto-aof-rewrite-percentage 100 (表示超过文件的百分比) auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)   - AOF文件修复: redis-check-aof --fix appendonly.aof 2.3 缓存失效策 volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰 allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰 allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰 no-enviction（驱逐）：禁止驱逐数据" />
+<link rel="canonical" href="http://localhost:8181/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" />
+<meta property="og:url" content="http://localhost:8181/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" />
+<meta property="og:site_name" content="Crab2Died" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-06-26T00:11:27+08:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:8181/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html","headline":"Redis Cache Summarize","dateModified":"2018-06-26T00:11:27+08:00","datePublished":"2018-06-26T00:11:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:8181/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. 概述 基于内存的Key-Value存储系统，单线程实现 多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合) redis的value大小可达到1GB(memcach只能达到1MB) 持久化，redis会周期性的将更新的数据写入磁盘   master-slave(主从)同步 3.0后支持分布式存储，去中心化，具有线性伸缩功能 Redis命令大全 2. Redis数据持久化 2.1 RDB(Redis DataBase) SNAPSHOT(快照): save 秒数 写操作次数如save 9000 1表示900s(15min)有一次写操作生成快照，也可save &quot;&quot;表示 每次写操作即生成快照 配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持 配置rdbcompression yes/no表示是否压缩RDB文件 每次回fork一份来重启另一个进程进行持久化 2.2 AOF(Append Only File) 配置appendonly no/yes启用AOF，启动时会触发全量写文件，后面写操作是增量写文件 同步策略配置appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步) 重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小 auto-aof-rewrite-percentage 100 (表示超过文件的百分比) auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)   - AOF文件修复: redis-check-aof --fix appendonly.aof 2.3 缓存失效策 volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰 allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰 allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰 no-enviction（驱逐）：禁止驱逐数据","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:8181/jekyll-blog/feed.xml" title="Crab2Died" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/jekyll-blog/">Crab2Died</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/jekyll-blog/about.html">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name p-title" itemprop="name headline">Redis Cache Summarize</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-06-26T00:11:27+08:00" itemprop="datePublished">Jun 26, 2018
+      </time>• <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">Crab2Died</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="1-概述">1. 概述</h2>
+<ul>
+  <li>基于内存的Key-Value存储系统，单线程实现</li>
+  <li>多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合)</li>
+  <li>redis的value大小可达到1GB(memcach只能达到1MB)</li>
+  <li>持久化，redis会周期性的将更新的数据写入磁盘  </li>
+  <li>master-slave(主从)同步</li>
+  <li>3.0后支持分布式存储，去中心化，具有线性伸缩功能</li>
+  <li><a href="http://redisdoc.com/index.html">Redis命令大全</a></li>
+</ul>
+
+<h2 id="2-redis数据持久化">2. Redis数据持久化</h2>
+<h3 id="21-rdbredis-database">2.1 RDB(Redis DataBase)</h3>
+<ul>
+  <li>SNAPSHOT(快照): <code class="highlighter-rouge">save 秒数 写操作次数</code>如<code class="highlighter-rouge">save 9000 1</code>表示900s(15min)有一次写操作生成快照，也可<code class="highlighter-rouge">save ""</code>表示
+每次写操作即生成快照</li>
+  <li>配置<code class="highlighter-rouge">stop-writes-on-bgsave-error yes/no</code>当后台生成快照错误是否中断redis写操作的支持</li>
+  <li>配置<code class="highlighter-rouge">rdbcompression yes/no</code>表示是否压缩RDB文件</li>
+  <li>每次回fork一份来重启另一个进程进行持久化</li>
+</ul>
+
+<h3 id="22-aofappend-only-file">2.2 AOF(Append Only File)</h3>
+<ul>
+  <li>配置<code class="highlighter-rouge">appendonly no/yes</code>启用AOF，启动时会触发全量写文件，后面写操作是增量写文件</li>
+  <li>同步策略配置<code class="highlighter-rouge">appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步)</code></li>
+  <li>重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小<br />
+auto-aof-rewrite-percentage 100 (表示超过文件的百分比)<br />
+auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
+   - AOF文件修复: <code class="highlighter-rouge">redis-check-aof --fix appendonly.aof</code></li>
+</ul>
+
+<h3 id="23-缓存失效策">2.3 缓存失效策</h3>
+<ul>
+  <li>volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰</li>
+  <li>volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰</li>
+  <li>volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰</li>
+  <li>allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰</li>
+  <li>allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰</li>
+  <li>no-enviction（驱逐）：禁止驱逐数据</li>
+</ul>
+
+<h3 id="24-比较">2.4 比较</h3>
+<ul>
+  <li>RDB安全性较差、容易丢失最近一次缓存内容，但文件较小，恢复速度较快，是Master/Slave主从复制模式下的最好补充</li>
+  <li>AOF更加安全、数据的完整性较强、但文件较大、恢复速度较慢，IO开支较大，比较影响性能</li>
+  <li>Redis启用默认是脚在AOF文件恢复数据</li>
+</ul>
+
+<h2 id="3-redis集群">3. Redis集群</h2>
+<h3 id="31-分片策略">3.1 分片策略</h3>
+<ul>
+  <li>Redis集群被分为16384个hash slot(hash槽)，集群内每个节点都拥有部分hash槽，使用数据键的CRC16编码对16384取模来
+计算数据对应的hash槽</li>
+  <li>Redis集群新增节点只用把集群中每个节点的部分hash槽移动到新节点中即可</li>
+  <li>Redis集群移除节点也只用把该节点的hash槽移动到其他节点即可</li>
+  <li>Redis集群的扩展与移除节点都是通过一致性Hash算法来实现的</li>
+</ul>
+
+<h3 id="32-架构分析">3.2 架构分析</h3>
+<ul>
+  <li>所有的redis节点彼此互联(PING-PONG 机制),内部使用二进制协议优化传输速度和带宽.</li>
+  <li>节点的fail是通过集群中超过半数的节点检测失效时才生效</li>
+  <li>客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可</li>
+</ul>
+
+  </div><a class="u-url" href="/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" hidden></a>
+
+</article>
+
+<div style="position: relative; height: 25px; margin-bottom: 5px;"><div class="post-next"><a href="/jekyll-blog/content/java/2018/06/25/java-classloader.html">Next Article <strong>→</strong></a></div></div>
+<!--<div id="disqus_thread"></div>-->
+<!--<script>-->
+
+<!--/**-->
+<!--*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.-->
+<!--*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/-->
+<!--/*-->
+<!--var disqus_config = function () {-->
+<!--this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable-->
+<!--this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable-->
+<!--};-->
+<!--*/-->
+<!--(function() { // DON'T EDIT BELOW THIS LINE-->
+<!--var d = document, s = d.createElement('script');-->
+<!--s.src = 'https://crab2died.disqus.com/embed.js';-->
+<!--s.setAttribute('data-timestamp', +new Date());-->
+<!--(d.head || d.body).appendChild(s);-->
+<!--})();-->
+<!--</script>-->
+<!--<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>-->
+<div class="line-post"></div>
+
+<div id="container"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+    var gitment = new Gitment({
+        id: '2018062600001', // 可选。默认为 location.href
+        owner: 'Crab2Died',
+        repo: 'crab2died.github.io',
+        oauth: {
+            client_id: '2117b548bf34c40984be',
+            client_secret: '2642328e6056dbf7b02951961e5ca481406410ed'
+        }
+    });
+    gitment.render('container')
+</script>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/jekyll-blog/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Crab2Died</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Copyright ©2018 Crab2Died</li><li><a class="u-email" href="mailto:Crab2Died@126.com">Crab2Died@126.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/Crab2Died"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#github"></use></svg> <span class="username">Crab2Died</span></a></li><li><a href="/jekyll-blog/feed.xml"><svg class="svg-icon"><use xlink:href="/jekyll-blog/assets/minima-social-icons.svg#rss"></use></svg> <span>via RSS</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Crab2Died Personal Blog.</p>
+      </div>
+    </div>
+
+  </div>
+<script>
+    // baidu tongji
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?669141ef93f4209be04bb674c56cba17";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</footer>
+</body>
+
+</html>

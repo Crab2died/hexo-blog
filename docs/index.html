@@ -11,15 +11,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Crab2Died Personal Blog." />
 <meta property="og:description" content="Crab2Died Personal Blog." />
-<link rel="canonical" href="https://crab2died.github.io/jekyll-blog/" />
-<meta property="og:url" content="https://crab2died.github.io/jekyll-blog/" />
+<link rel="canonical" href="http://localhost:8181/jekyll-blog/" />
+<meta property="og:url" content="http://localhost:8181/jekyll-blog/" />
 <meta property="og:site_name" content="Crab2Died" />
-<link rel="next" href="https://crab2died.github.io/jekyll-blog/content/page/2" />
+<link rel="next" href="http://localhost:8181/jekyll-blog/content/page/2" />
 <script type="application/ld+json">
-{"url":"https://crab2died.github.io/jekyll-blog/","headline":"Crab2Died","author":{"@type":"Person","name":"Copyright ©2018 Crab2Died"},"name":"Crab2Died","description":"Crab2Died Personal Blog.","@type":"WebSite","@context":"http://schema.org"}</script>
+{"url":"http://localhost:8181/jekyll-blog/","headline":"Crab2Died","author":{"@type":"Person","name":"Copyright ©2018 Crab2Died"},"name":"Crab2Died","description":"Crab2Died Personal Blog.","@type":"WebSite","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-  <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://crab2died.github.io/jekyll-blog/feed.xml" title="Crab2Died" /></head>
+  <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:8181/jekyll-blog/feed.xml" title="Crab2Died" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/jekyll-blog/">Crab2Died</a><nav class="site-nav">
@@ -38,7 +38,56 @@
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <div class="home"><div class="post-list-heading post-list-head"><strong>Blog List</strong></div>
-    <ul class="post-list"><li><span class="post-meta">Jun 25, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 276 words</span>-->
+    <ul class="post-list"><li><span class="post-meta">Jun 26, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 114 words</span>-->
+            <h3>
+                <a class="post-link" href="/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">
+                    <strong>Redis Cache Summarize</strong>
+                </a><span class="post-tag"><strong>Cache</strong></span><span class="post-tag"><strong>Redis</strong></span></h3>
+
+            <div class="post-excerpt text-snapshot">1. 概述
+
+  基于内存的Key-Value存储系统，单线程实现
+  多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合)
+  redis的value大小可达到1GB(memcach只能达到1MB)
+  持久化，redis会周期性的将更新的数据写入磁盘  
+  master-slave(主从)同步
+  3.0后支持分布式存储，去中心化，具有线性伸缩功能
+  Redis命令大全
+
+
+2. Redis数据持久化
+2.1 RDB(Redis DataBase)
+
+  SNAPSHOT(快照): save 秒数 写操作次数如save 9000 1表示900s(15min)有一次写操作生成快照，也可save ""表示
+每次写操作即生成快照
+  配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持
+  配置rdbcompression yes/no表示是否压缩RDB文件
+  每次回fork一份来重启另一个进程进行持久化
+
+
+2.2 AOF(Append Only File)
+
+  配置appendonly no/yes启用AOF，启动时会触发全量写文件，后面写操作是增量写文件
+  同步策略配置appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步)
+  重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小
+auto-aof-rewrite-percentage 100 (表示超过文件的百分比)
+auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
+   - AOF文件修复: redis-check-aof --fix appendonly.aof
+
+
+2.3 缓存失效策
+
+  volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰
+  volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰
+  volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰
+  allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰
+  allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰
+  no-enviction（驱逐）：禁止驱逐数据
+
+
+</div>
+            <hr class="post-hr">
+        </li><li><span class="post-meta">Jun 25, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 276 words</span>-->
             <h3>
                 <a class="post-link" href="/jekyll-blog/content/java/2018/06/25/java-classloader.html">
                     <strong>Java Classloader</strong>
@@ -321,18 +370,6 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
 
 </div>
             <hr class="post-hr">
-        </li><li><span class="post-meta">Jun 15, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 508 words</span>-->
-            <h3>
-                <a class="post-link" href="/jekyll-blog/content/java/2018/06/15/java-gc.html">
-                    <strong>Java GC</strong>
-                </a><span class="post-tag"><strong>Java</strong></span><span class="post-tag"><strong>GC</strong></span></h3>
-
-            <div class="post-excerpt text-snapshot">一. Java虚拟机内存区域
-1. 运行时数据区
-
-
-</div>
-            <hr class="post-hr">
         </li></ul>
 
     <!-- 分页链接 -->
@@ -349,6 +386,10 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
         
         
         <a class="page-content" href="/jekyll-blog/content/page/2">2</a>
+        
+        
+        
+        <a class="page-content" href="/jekyll-blog/content/page/3">3</a>
         
         
 

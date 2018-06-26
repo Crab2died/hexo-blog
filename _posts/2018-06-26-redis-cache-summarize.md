@@ -25,7 +25,7 @@ tags: [Cache, Redis]
      每次写操作即生成快照
    - 配置`stop-writes-on-bgsave-error yes/no`当后台生成快照错误是否中断redis写操作的支持
    - 配置`rdbcompression yes/no`表示是否压缩RDB文件
-   - 每次回fork一份来重启另一个进程进行持久化
+   - 每次会fork一份来重启另一个进程进行持久化
    
 ### 2.2 AOF(Append Only File)
    - 配置`appendonly no/yes`启用AOF，启动时会触发全量写文件，后面写操作是增量写文件
@@ -50,7 +50,7 @@ tags: [Cache, Redis]
 
 ## 3. Redis集群
 ### 3.1 分片策略
-   - Redis集群被分为16384个hash slot(hash槽)，集群内每个节点都拥有部分hash槽，使用数据键的CRC16编码对16384取模来
+   - Redis集群被分为16384(2<sup>14</sup>)个hash slot(hash槽)，集群内每个节点都拥有部分hash槽，使用数据键的CRC16编码对16384取模来
      计算数据对应的hash槽
    - Redis集群新增节点只用把集群中每个节点的部分hash槽移动到新节点中即可
    - Redis集群移除节点也只用把该节点的hash槽移动到其他节点即可

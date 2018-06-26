@@ -62,7 +62,7 @@
 每次写操作即生成快照
   配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持
   配置rdbcompression yes/no表示是否压缩RDB文件
-  每次回fork一份来重启另一个进程进行持久化
+  每次会fork一份来重启另一个进程进行持久化
 
 
 2.2 AOF(Append Only File)

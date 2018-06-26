@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-26T14:59:57+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Redis Cache Summarize</title><link href="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" rel="alternate" type="text/html" title="Redis Cache Summarize" /><published>2018-06-26T00:11:27+08:00</published><updated>2018-06-26T00:11:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">&lt;h2 id=&quot;1-概述&quot;&gt;1. 概述&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-26T20:36:01+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Redis Cache Summarize</title><link href="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" rel="alternate" type="text/html" title="Redis Cache Summarize" /><published>2018-06-26T00:11:27+08:00</published><updated>2018-06-26T00:11:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">&lt;h2 id=&quot;1-概述&quot;&gt;1. 概述&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;基于内存的Key-Value存储系统，单线程实现&lt;/li&gt;
   &lt;li&gt;多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合)&lt;/li&gt;
@@ -24,9 +24,9 @@
   &lt;li&gt;配置&lt;code class=&quot;highlighter-rouge&quot;&gt;appendonly no/yes&lt;/code&gt;启用AOF，启动时会触发全量写文件，后面写操作是增量写文件&lt;/li&gt;
   &lt;li&gt;同步策略配置&lt;code class=&quot;highlighter-rouge&quot;&gt;appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步)&lt;/code&gt;&lt;/li&gt;
   &lt;li&gt;重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小&lt;br /&gt;
-auto-aof-rewrite-percentage 100 (表示超过文件的百分比)&lt;br /&gt;
-auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
-   - AOF文件修复: &lt;code class=&quot;highlighter-rouge&quot;&gt;redis-check-aof --fix appendonly.aof&lt;/code&gt;&lt;/li&gt;
+&lt;strong&gt;auto-aof-rewrite-percentage 100 (表示超过文件的百分比)&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;AOF文件修复: &lt;code class=&quot;highlighter-rouge&quot;&gt;redis-check-aof --fix appendonly.aof&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;23-缓存失效策&quot;&gt;2.3 缓存失效策&lt;/h3&gt;
@@ -61,23 +61,23 @@ auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
   &lt;li&gt;所有的redis节点彼此互联(PING-PONG 机制),内部使用二进制协议优化传输速度和带宽.&lt;/li&gt;
   &lt;li&gt;节点的fail是通过集群中超过半数的节点检测失效时才生效&lt;/li&gt;
   &lt;li&gt;客户端与redis节点直连,不需要中间proxy层.客户端不需要连接集群所有节点,连接集群中任何一个可用节点即可&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Crab2Died</name></author><category term="Cache" /><category term="Redis" /><summary type="html">1. 概述 基于内存的Key-Value存储系统，单线程实现 多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合) redis的value大小可达到1GB(memcach只能达到1MB) 持久化，redis会周期性的将更新的数据写入磁盘   master-slave(主从)同步 3.0后支持分布式存储，去中心化，具有线性伸缩功能 Redis命令大全 2. Redis数据持久化 2.1 RDB(Redis DataBase) SNAPSHOT(快照): save 秒数 写操作次数如save 9000 1表示900s(15min)有一次写操作生成快照，也可save &quot;&quot;表示 每次写操作即生成快照 配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持 配置rdbcompression yes/no表示是否压缩RDB文件 每次会fork一份来重启另一个进程进行持久化 2.2 AOF(Append Only File) 配置appendonly no/yes启用AOF，启动时会触发全量写文件，后面写操作是增量写文件 同步策略配置appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步) 重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小 auto-aof-rewrite-percentage 100 (表示超过文件的百分比) auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)   - AOF文件修复: redis-check-aof --fix appendonly.aof 2.3 缓存失效策 volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰 allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰 allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰 no-enviction(驱逐)：禁止驱逐数据</summary></entry><entry><title type="html">Java Classloader</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html" rel="alternate" type="text/html" title="Java Classloader" /><published>2018-06-25T09:15:27+08:00</published><updated>2018-06-25T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html">&lt;h2 id=&quot;1-类加载时机&quot;&gt;1. 类加载时机&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>Crab2Died</name></author><category term="Cache" /><category term="Redis" /><summary type="html">1. 概述 基于内存的Key-Value存储系统，单线程实现 多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合) redis的value大小可达到1GB(memcach只能达到1MB) 持久化，redis会周期性的将更新的数据写入磁盘   master-slave(主从)同步 3.0后支持分布式存储，去中心化，具有线性伸缩功能 Redis命令大全 2. Redis数据持久化 2.1 RDB(Redis DataBase) SNAPSHOT(快照): save 秒数 写操作次数如save 9000 1表示900s(15min)有一次写操作生成快照，也可save &quot;&quot;表示 每次写操作即生成快照 配置stop-writes-on-bgsave-error yes/no当后台生成快照错误是否中断redis写操作的支持 配置rdbcompression yes/no表示是否压缩RDB文件 每次会fork一份来重启另一个进程进行持久化 2.2 AOF(Append Only File) 配置appendonly no/yes启用AOF，启动时会触发全量写文件，后面写操作是增量写文件 同步策略配置appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步) 重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小 auto-aof-rewrite-percentage 100 (表示超过文件的百分比) auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小) AOF文件修复: redis-check-aof --fix appendonly.aof 2.3 缓存失效策 volatile-lru：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰 volatile-ttl：从已设置过期时间的数据集（server.db[i].expires）中挑选将要过期的数据淘汰 volatile-random：从已设置过期时间的数据集（server.db[i].expires）中任意选择数据淘汰 allkeys-lru：从数据集（server.db[i].dict）中挑选最近最少使用的数据淘汰 allkeys-random：从数据集（server.db[i].dict）中任意选择数据淘汰 no-enviction(驱逐)：禁止驱逐数据</summary></entry><entry><title type="html">Java Classloader</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html" rel="alternate" type="text/html" title="Java Classloader" /><published>2018-06-25T09:15:27+08:00</published><updated>2018-06-25T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html">&lt;h2 id=&quot;1-类加载时机&quot;&gt;1. 类加载时机&lt;/h2&gt;
 &lt;h3 id=&quot;11---生命周期&quot;&gt;1.1 - 生命周期&lt;/h3&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                      +-----------------------连接(Linking)-------------------------+
-    加载(Loading) ——&amp;gt; |  验证(Verification) ——&amp;gt; 准备(Preparation) ——&amp;gt; 解析(Resolution)|
-                      +-------------------------------------------------------------+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;                      +-----------------------连接(Linking)---------------------------+
+    加载(Loading) ——&amp;gt; |  验证(Verification) ——&amp;gt; 准备(Preparation) ——&amp;gt; 解析(Resolution) |
+                      +---------------------------------------------------------------+
                                                                             ↓
-                            卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)
+                         卸载(Unloading) &amp;amp;lt;—— 使用(Using) &amp;amp;lt;—— 初始化(Initialization)
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;12---立即初始化主动引用&quot;&gt;1.2 - 立即初始化(主动引用)&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;遇到new、 getstatic、 putstatic或invokestatic这4条字节码指令时&lt;/li&gt;
-  &lt;li&gt;使用java.lang.reflect包的方法对类进行反射调用的时候,如果类没有进行过初始化,则需要先触发其初始化.&lt;/li&gt;
+  &lt;li&gt;遇到&lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;getstatic&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;putstatic&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;invokestatic&lt;/code&gt;这4条字节码指令时&lt;/li&gt;
+  &lt;li&gt;使用&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.reflect&lt;/code&gt;包的方法对类进行反射调用的时候,如果类没有进行过初始化,则需要先触发其初始化.&lt;/li&gt;
   &lt;li&gt;当初始化一个类的时候,如果发现其父类还没有进行过初始化,则需要先触发其父类的初始化.&lt;/li&gt;
-  &lt;li&gt;当虚拟机启动时,用户需要指定一个要执行的主类(包含main()方法的那个类),虚拟机会先初始化这个主类.&lt;/li&gt;
-  &lt;li&gt;当使用JDK 1.7的动态语言支持时,如果一个java.lang.invoke.MethodHandle实例最后的解析结果REF_getStatic、
-REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对应的类没有进行过初始化,则需要先触发其初始化.&lt;/li&gt;
+  &lt;li&gt;当虚拟机启动时,用户需要指定一个要执行的主类(包含&lt;code class=&quot;highlighter-rouge&quot;&gt;main()&lt;/code&gt;方法的那个类),虚拟机会先初始化这个主类.&lt;/li&gt;
+  &lt;li&gt;当使用JDK 1.7的动态语言支持时,如果一个&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.invoke.MethodHandle&lt;/code&gt;实例最后的解析结果&lt;strong&gt;REF_getStatic&lt;/strong&gt;、
+&lt;strong&gt;REF_putStatic&lt;/strong&gt;、&lt;strong&gt;REF_invokeStatic&lt;/strong&gt;的方法句柄,并且这个方法句柄所对应的类没有进行过初始化,则需要先触发其初始化.&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;13---被动加载&quot;&gt;1.3 - 被动加载&lt;/h3&gt;
@@ -94,14 +94,13 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
 &lt;h2 id=&quot;2-类加载过程&quot;&gt;2. 类加载过程&lt;/h2&gt;
 &lt;h3 id=&quot;22---加载&quot;&gt;2.2 - 加载&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;通过一个类的全限定名来获取定义此类的二进制字节流(这一条玩出了很多技术,如:jsp(从其他文件中生成),Applet(从网络中获取),
-  Proxy(运行时计算)).&lt;/li&gt;
+  &lt;li&gt;通过一个类的全限定名来获取定义此类的二进制字节流(这一条玩出了很多技术,如:jsp(从其他文件中生成),Applet(从网络中获取),Proxy(运行时计算)).&lt;/li&gt;
   &lt;li&gt;将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构.&lt;/li&gt;
-  &lt;li&gt;在内存中生成一个代表这个类的java.lang.Class对象,作为方法区这个类的各种数据的访问入口.&lt;br /&gt;
+  &lt;li&gt;在内存中生成一个代表这个类的&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.Class&lt;/code&gt;对象,作为方法区这个类的各种数据的访问入口.&lt;br /&gt;
    &lt;strong&gt;_
    注:
    加载阶段完成后,虚拟机外部的二进制字节流就按照虚拟机所需的格式存储在方法区之中,方法区中的数据存储格式由虚拟机实现自行定义,
-   虚拟机规范未规定此区域的具体数据结构. 然后在内存中实例化一个java.lang.Class类的对象(并没有明确规定是在Java堆中,
+   虚拟机规范未规定此区域的具体数据结构. 然后在内存中实例化一个&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.Class&lt;/code&gt;类的对象(并没有明确规定是在Java堆中,
    对于HotSpot虚拟机而言,Class对象比较特殊,它虽然是对象,但是存放在方法区里面),
    这个对象将作为程序访问方法区中的这些类型数据的外部接口.
    _&lt;/strong&gt;&lt;/li&gt;
@@ -114,7 +113,7 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
 &lt;ol&gt;
   &lt;li&gt;文件格式验证
     &lt;ul&gt;
-      &lt;li&gt;魔数0xCAFEBABE验证&lt;/li&gt;
+      &lt;li&gt;魔数&lt;strong&gt;0xCAFEBABE&lt;/strong&gt;验证&lt;/li&gt;
       &lt;li&gt;主、次版本号验证&lt;/li&gt;
       &lt;li&gt;常量池常量验证&lt;/li&gt;
       &lt;li&gt;UTF-8编码验证&lt;/li&gt;
@@ -124,7 +123,7 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
   &lt;li&gt;元数据验证
     &lt;ul&gt;
       &lt;li&gt;这个类是否有父类&lt;/li&gt;
-      &lt;li&gt;该类是否继承了不能继承的类(如:final类)&lt;/li&gt;
+      &lt;li&gt;该类是否继承了不能继承的类(如:&lt;code class=&quot;highlighter-rouge&quot;&gt;final类&lt;/code&gt;)&lt;/li&gt;
       &lt;li&gt;…&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -140,7 +139,7 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
     &lt;ul&gt;
       &lt;li&gt;符号引用中通过字符串描述的全限定名是否能找到对应的类.&lt;/li&gt;
       &lt;li&gt;在指定类中是否存在符合方法的字段描述符以及简单名称所描述的方法和字段.&lt;/li&gt;
-      &lt;li&gt;符号引用中的类、 字段、 方法的访问性(private、 protected、 public、 default)是否可被当前类访问
+      &lt;li&gt;符号引用中的类、 字段、 方法的访问性(&lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;protected&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;、 &lt;code class=&quot;highlighter-rouge&quot;&gt;default&lt;/code&gt;)是否可被当前类访问
 (不通过将抛一个IncompatibleClassChangeError异常子类).&lt;/li&gt;
       &lt;li&gt;…&lt;/li&gt;
     &lt;/ul&gt;
@@ -159,9 +158,9 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
   &lt;li&gt;直接引用(Direct References)&lt;/li&gt;
   &lt;li&gt;虚拟机对除invokedynamic(动态调用点限定符)指令外的操作进行缓存&lt;/li&gt;
   &lt;li&gt;解析动作主要针对类或接口、 字段、 类方法、 接口方法、 方法类型、 方法句柄和调用点限定符7类符号引用进行,
-分别对应于常量池的CONSTANT_Class_info、CONSTANT_Fieldref_info、 CONSTANT_Methodref_info、
-CONSTANT_InterfaceMethodref_info、 CONSTANT_MethodType_info、
-CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
+分别对应于常量池的&lt;strong&gt;CONSTANT_Class_info&lt;/strong&gt;、&lt;strong&gt;CONSTANT_Fieldref_info&lt;/strong&gt;、 &lt;strong&gt;CONSTANT_Methodref_info&lt;/strong&gt;、
+&lt;strong&gt;CONSTANT_InterfaceMethodref_info&lt;/strong&gt;、 &lt;strong&gt;CONSTANT_MethodType_info&lt;/strong&gt;、&lt;strong&gt;CONSTANT_MethodHandle_info&lt;/strong&gt;
+和&lt;strong&gt;CONSTANT_InvokeDynamic_info&lt;/strong&gt; 7种常量类型
     &lt;ul&gt;
       &lt;li&gt;1)类或接口解析&lt;/li&gt;
       &lt;li&gt;2)字段解析&lt;/li&gt;
@@ -172,13 +171,13 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;2-6---初始化&quot;&gt;2-6 - 初始化&lt;/h3&gt;
-&lt;p&gt;  类加载的最后一步,真正执行java的字节码.&lt;clinit&gt;()方法保证在子类执行之前父类的&lt;clinit&gt;()已执行完毕.虚拟机中第一个被执
-   行的&lt;clinit&gt;()方法的类肯定是java.lang.Object.&lt;clinit&gt;()虚拟机保证只执行一次,多线程时只会有一条线程执行,其他线程阻塞等待.&lt;/clinit&gt;&lt;/clinit&gt;&lt;/clinit&gt;&lt;/clinit&gt;&lt;/p&gt;
+&lt;p&gt;  类加载的最后一步,真正执行java的字节码&lt;code class=&quot;highlighter-rouge&quot;&gt;.&amp;lt;clinit&amp;gt;()&lt;/code&gt;方法保证在子类执行之前父类的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;clinit&amp;gt;()&lt;/code&gt;已执行完毕.虚拟机中第一个被执
+   行的&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;clinit&amp;gt;()&lt;/code&gt;方法的类肯定是&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.Object.&amp;lt;clinit&amp;gt;()&lt;/code&gt;虚拟机保证只执行一次,多线程时只会有一条线程执行,其他线程阻塞等待.&lt;/p&gt;
 
 &lt;h3 id=&quot;2-7---卸载&quot;&gt;2-7 - 卸载&lt;/h3&gt;
 
 &lt;h2 id=&quot;3-类加载器&quot;&gt;3. 类加载器&lt;/h2&gt;
-&lt;p&gt;  描述&lt;br /&gt;
+&lt;p&gt;  &lt;strong&gt;描述&lt;/strong&gt;&lt;br /&gt;
      通过一个类的全限定名来获取描述此类的二进制字节流
    应用:类层次划分、热部署、OSGi(面向Java的动态模型系统)、代码加密等&lt;/p&gt;
 
@@ -186,13 +185,13 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 &lt;p&gt;  相同的类被不同的类加载器加载他们必不相等.&lt;/p&gt;
 
 &lt;h3 id=&quot;3-2---双亲委派模型parents-delegation-model&quot;&gt;3-2 - 双亲委派模型(Parents Delegation Model)&lt;/h3&gt;
-&lt;p&gt;类加载器&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;类加载器&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;启动类加载器(Bootstrap ClassLoader)C++实现、虚拟机一部分
     &lt;ul&gt;
       &lt;li&gt;又称 引导类加载器&lt;/li&gt;
       &lt;li&gt;按名识别,如:rt.jar&lt;/li&gt;
-      &lt;li&gt;负责加载&lt;JAVA_HOME&gt;\lib目录或被参数-Xbootclasspth指定的目录&lt;/JAVA_HOME&gt;&lt;/li&gt;
+      &lt;li&gt;负责加载&amp;lt;JAVA_HOME&amp;gt;\lib目录或被参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-Xbootclasspth&lt;/code&gt;指定的目录&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;其他类加载器, java实现,独立与虚拟机外部,全部继承抽象类java.lang.ClassLoader
@@ -200,7 +199,7 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
       &lt;li&gt;扩展类加载器(Extension ClassLoader)
         &lt;ul&gt;
           &lt;li&gt;由sun.misc.Launcher$ExtClassLoader类实现&lt;/li&gt;
-          &lt;li&gt;负责加载&lt;JAVA_HOME&gt;\lib\ext目录或参数-Djava.ext.dirs所指定目录下的类&lt;/JAVA_HOME&gt;&lt;/li&gt;
+          &lt;li&gt;负责加载&amp;lt;JAVA_HOME&amp;gt;\lib\ext目录或参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-Djava.ext.dirs&lt;/code&gt;所指定目录下的类&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;应用程序类加载器(Application ClassLoader)
@@ -229,9 +228,9 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 
 &lt;h2 id=&quot;4-问题&quot;&gt;4. 问题&lt;/h2&gt;
 &lt;h3 id=&quot;4-1---为什么要用双亲委派类加载&quot;&gt;4-1 - 为什么要用双亲委派类加载&lt;/h3&gt;
-&lt;p&gt;  双亲委派模型可以防止内存中出现多分同样的字节码，如果没有双亲委派模型的话如果用户编写了一个java.lang.Object的同
+&lt;p&gt;  双亲委派模型可以防止内存中出现多分同样的字节码，如果没有双亲委派模型的话如果用户编写了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.Object&lt;/code&gt;的同
    名类放在classpath中，多个类加载器去加载这个类到内存中系统会出现多个不同的Object类，那么类之间的比较结果及类的唯一性将无法
-   保证，而且如果不使用这种模型将给虚拟机带来安全隐患。&lt;/p&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Classloader" /><summary type="html">1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)-------------------------+ 加载(Loading) ——&amp;gt; | 验证(Verification) ——&amp;gt; 准备(Preparation) ——&amp;gt; 解析(Resolution)| +-------------------------------------------------------------+ ↓ 卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)</summary></entry><entry><title type="html">The Interview Experience</title><link href="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html" rel="alternate" type="text/html" title="The Interview Experience" /><published>2018-06-19T09:15:27+08:00</published><updated>2018-06-19T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html">&lt;h2 id=&quot;一-java基础&quot;&gt;一. JAVA基础&lt;/h2&gt;
+   保证，而且如果不使用这种模型将给虚拟机带来安全隐患。&lt;/p&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Classloader" /><summary type="html">1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)---------------------------+ 加载(Loading) ——&amp;gt; | 验证(Verification) ——&amp;gt; 准备(Preparation) ——&amp;gt; 解析(Resolution) | +---------------------------------------------------------------+ ↓ 卸载(Unloading) &amp;amp;lt;—— 使用(Using) &amp;amp;lt;—— 初始化(Initialization)</summary></entry><entry><title type="html">The Interview Experience</title><link href="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html" rel="alternate" type="text/html" title="The Interview Experience" /><published>2018-06-19T09:15:27+08:00</published><updated>2018-06-19T09:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/interview/2018/06/19/interview-experience.html">&lt;h2 id=&quot;一-java基础&quot;&gt;一. JAVA基础&lt;/h2&gt;
 &lt;h3 id=&quot;1-9种基本数据类型及其封装类所占大小&quot;&gt;1. 9种基本数据类型及其封装类,所占大小&lt;/h3&gt;
 
 &lt;table&gt;
@@ -555,12 +554,12 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
   &lt;li&gt;开闭原则－The Open-Closed Principle (OCP)&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="Interview" /><category term="Experience" /><summary type="html">一. JAVA基础 1. 9种基本数据类型及其封装类,所占大小</summary></entry><entry><title type="html">Database</title><link href="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html" rel="alternate" type="text/html" title="Database" /><published>2018-06-18T23:15:27+08:00</published><updated>2018-06-18T23:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/database/2018/06/18/database.html">&lt;h2 id=&quot;一-四大特性ciad&quot;&gt;一. 四大特性(CIAD)&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。&lt;/li&gt;
-  &lt;li&gt;一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执
+  &lt;li&gt;&lt;strong&gt;原子性(Atomicity)&lt;/strong&gt;: 要么全成功，要么全失败，失败会回滚。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;一致性(Consistency)&lt;/strong&gt;: 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执
 行之前和执行之后都必须处于一致性状态。&lt;/li&gt;
-  &lt;li&gt;隔离性(Isolation): 隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，
+  &lt;li&gt;&lt;strong&gt;隔离性(Isolation)&lt;/strong&gt;: 隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，
 不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。&lt;/li&gt;
-  &lt;li&gt;持久性(Durability): 一旦事物提交成功，那么数据库中的数据就是永久改变的，即使系统故障也不会丢失提交的事物。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;持久性(Durability)&lt;/strong&gt;: 一旦事物提交成功，那么数据库中的数据就是永久改变的，即使系统故障也不会丢失提交的事物。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;二-数据库隔离级别&quot;&gt;二. 数据库隔离级别&lt;/h2&gt;
@@ -578,25 +577,25 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 
 &lt;h3 id=&quot;2-隔离级别低---高&quot;&gt;2. 隔离级别(低 -&amp;gt; 高)&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;Read uncommitted(未授权读取、读未提交)
+  &lt;li&gt;&lt;strong&gt;Read uncommitted(未授权读取、读未提交)&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;当一个事物在执行写操作时，则不允许另一事物执行写操作，可执行其他操作，可由排他锁来实现&lt;/li&gt;
       &lt;li&gt;解决了更新丢失问题，但会出现脏读&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Read committed(授权读取、读提交)
+  &lt;li&gt;&lt;strong&gt;Read committed(授权读取、读提交)&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;读取数据事物允许其他事物继续访问该数据，但未提交的数据禁止其他事物访问&lt;/li&gt;
       &lt;li&gt;避免了脏读，但可能会出现幻读&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Repeatable read(可重复读取)
+  &lt;li&gt;&lt;strong&gt;Repeatable read(可重复读取)&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;读数据的事物将禁止写事物(可以读事物),写事物将禁止所有其他事物&lt;/li&gt;
       &lt;li&gt;避免了脏读和不可重复读，但可能会出现幻读&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;Serializable(序列化)
+  &lt;li&gt;&lt;strong&gt;Serializable(序列化)&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;事物严格按照顺序一个一个执行&lt;/li&gt;
       &lt;li&gt;能避免所有情况，但会极大影响系统性能&lt;/li&gt;
@@ -623,18 +622,18 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 
 &lt;h3 id=&quot;4-mysql悲观锁乐观锁共享锁与排他锁&quot;&gt;4. MySQL悲观锁、乐观锁、共享锁与排他锁&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;悲观锁: 在操作数据时都认为会出现数据冲突，所以每次都会去获取锁，只有获取锁后才能对数据操作。&lt;/li&gt;
-  &lt;li&gt;乐观锁: 在操作数据都认为不会发生数据冲突，可以直接操作，一般由用户通过版本号自己实现。&lt;/li&gt;
-  &lt;li&gt;共享锁: 共享锁指的就是对于多个不同的事务，对同一个资源共享同一个锁。在SQL后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;lock in share mode&lt;/code&gt;表示使用共享锁。&lt;/li&gt;
-  &lt;li&gt;排他锁: 排它锁与共享锁相对应，就是指对于多个不同的事务，对同一个资源只能有一把锁。与共享锁类型，在需要执行的
+  &lt;li&gt;&lt;strong&gt;悲观锁&lt;/strong&gt;: 在操作数据时都认为会出现数据冲突，所以每次都会去获取锁，只有获取锁后才能对数据操作。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;乐观锁&lt;/strong&gt;: 在操作数据都认为不会发生数据冲突，可以直接操作，一般由用户通过版本号自己实现。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;共享锁&lt;/strong&gt;: 共享锁指的就是对于多个不同的事务，对同一个资源共享同一个锁。在SQL后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;lock in share mode&lt;/code&gt;表示使用共享锁。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;排他锁&lt;/strong&gt;: 排它锁与共享锁相对应，就是指对于多个不同的事务，对同一个资源只能有一把锁。与共享锁类型，在需要执行的
 语句后面加上&lt;code class=&quot;highlighter-rouge&quot;&gt;for update&lt;/code&gt;就可以了。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;三-数据库的三大范式normal-form&quot;&gt;三. 数据库的三大范式(Normal Form)&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;第一范式(1NF)：强调的是列的原子性，即列不能够再分成其他几列。&lt;/li&gt;
-  &lt;li&gt;第二范式(2NF)：一个表必须有一个主键，二是其他列必须完全依赖于主键，而不能依赖主键一部分&lt;/li&gt;
-  &lt;li&gt;第三范式(3NF)：非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列A依赖于非主键列B，非主键列B依赖于主键的情况。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;第一范式(1NF)&lt;/strong&gt;：强调的是列的原子性，即列不能够再分成其他几列。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;第二范式(2NF)&lt;/strong&gt;：一个表必须有一个主键，二是其他列必须完全依赖于主键，而不能依赖主键一部分&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;第三范式(3NF)&lt;/strong&gt;：非主键列必须直接依赖于主键，不能存在传递依赖。即不能存在：非主键列A依赖于非主键列B，非主键列B依赖于主键的情况。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h2 id=&quot;四-数据库数据结构&quot;&gt;四. 数据库数据结构&lt;/h2&gt;
@@ -664,10 +663,10 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 
 &lt;h2 id=&quot;六-sql功能&quot;&gt;六. SQL功能&lt;/h2&gt;
 &lt;ol&gt;
-  &lt;li&gt;数据定义(DDL)：用于定义SQL模式、基本表、视图和索引的创建和撤消操作&lt;/li&gt;
-  &lt;li&gt;数据操纵(DML)：数据操纵分成数据查询和数据更新两类。数据更新又分成插入、删除、和修改三种操作&lt;/li&gt;
-  &lt;li&gt;数据控制：包括对基本表和视图的授权，完整性规则的描述，事务控制等内容&lt;/li&gt;
-  &lt;li&gt;嵌入式SQL使用规定：涉及到SQL语句嵌入在宿主语言程序中使用的规则&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;数据定义(DDL)&lt;/strong&gt;：用于定义SQL模式、基本表、视图和索引的创建和撤消操作&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;数据操纵(DML)&lt;/strong&gt;：数据操纵分成数据查询和数据更新两类。数据更新又分成插入、删除、和修改三种操作&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;数据控制&lt;/strong&gt;：包括对基本表和视图的授权，完整性规则的描述，事务控制等内容&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;嵌入式SQL使用规定&lt;/strong&gt;：涉及到SQL语句嵌入在宿主语言程序中使用的规则&lt;/li&gt;
 &lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="Database" /><summary type="html">一. 四大特性(CIAD) 原子性(Atomicity): 要么全成功，要么全失败，失败会回滚。 一致性(Consistency): 一致性是指事务必须使数据库从一个一致性状态变换到另一个一致性状态，也就是说一个事务执 行之前和执行之后都必须处于一致性状态。 隔离性(Isolation): 隔离性是当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务， 不能被其他事务的操作所干扰，多个并发事务之间要相互隔离。 持久性(Durability): 一旦事物提交成功，那么数据库中的数据就是永久改变的，即使系统故障也不会丢失提交的事物。 二. 数据库隔离级别 1. 不考虑隔离级别造成的问题 更新丢失: 2个事物同时更新一条数据会有一个事物把另一个事物的更新覆盖了，这是因为系统没有任何操作隔离导致的. 脏读: 一个事物读取了另一个事物还未提交事物的数据 不可重复读: 一个事务对同一行数据重复读取两次，但是却得到了不同的结果 虚读: 一个事物去改变数据改变后发现还有数据为按要求改变，是因为另一事物也做了改变的缘故 幻读: 同一个事物内多次查询返回的结果不一致，是因为另一事物对数据进行了改变 2. 隔离级别(低 -&amp;gt; 高) Read uncommitted(未授权读取、读未提交) 当一个事物在执行写操作时，则不允许另一事物执行写操作，可执行其他操作，可由排他锁来实现 解决了更新丢失问题，但会出现脏读 Read committed(授权读取、读提交) 读取数据事物允许其他事物继续访问该数据，但未提交的数据禁止其他事物访问 避免了脏读，但可能会出现幻读 Repeatable read(可重复读取) 读数据的事物将禁止写事物(可以读事物),写事物将禁止所有其他事物 避免了脏读和不可重复读，但可能会出现幻读 Serializable(序列化) 事物严格按照顺序一个一个执行 能避免所有情况，但会极大影响系统性能 3. 扩展 大多数数据库的默认级别就是Read committed，比如Sql Server , Oracle。 Mysql的默认隔离级别就是Repeatable read。 MySQL数据库隔离级别管理 查看隔离级别: select @@tx_isolation 修改隔离级别: set [glogal | session] transaction isolation level 隔离级别名称 如set transaction isolation level read-committed 或者 set tx_isolation='隔离级别名称' 如 set tx_isolation = 'read-committed' 隔离级别的设置只对当前连接有效</summary></entry><entry><title type="html">Java Compile and Optimize</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html" rel="alternate" type="text/html" title="Java Compile and Optimize" /><published>2018-06-17T13:15:27+08:00</published><updated>2018-06-17T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html">&lt;h2 id=&quot;1-早期编译期优化&quot;&gt;1. 早期(编译期)优化&lt;/h2&gt;
 &lt;h3 id=&quot;1-1-概论&quot;&gt;1-1. 概论&lt;/h3&gt;
 &lt;ol&gt;
@@ -707,7 +706,7 @@ Groovy这类语言的代码也同等享有优化带来的好处&lt;/li&gt;
       &lt;li&gt;标注检查
         &lt;ul&gt;
           &lt;li&gt;检查的内容包括诸如变量使用前是否已被声明、 变量与赋值之间的数据类型是否能够匹配等&lt;/li&gt;
-          &lt;li&gt;常量折叠 如定义了 int a = 1 + 2 会被编译为 int a = 3&lt;/li&gt;
+          &lt;li&gt;常量折叠 如定义了&lt;code class=&quot;highlighter-rouge&quot;&gt; int a = 1 + 2 &lt;/code&gt;会被编译为&lt;code class=&quot;highlighter-rouge&quot;&gt; int a = 3 &lt;/code&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
       &lt;li&gt;数据及控制流分析
@@ -746,18 +745,18 @@ Groovy这类语言的代码也同等享有优化带来的好处&lt;/li&gt;
   &lt;li&gt;解释器与编译器(sun HotSpot虚拟机为例)
     &lt;ul&gt;
       &lt;li&gt;交互模型
-        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     |---------------即时编译-----------↓
+        &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;     +---------------即时编译-----------↓
      ↓                         Client Compiler(C1编译器)
   解释器(Interpreter)               编译器
      ↑                         Server Compiler(C2编译器)
-     |----------------逆优化------------↑
+     +----------------逆优化------------↑
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
       &lt;/li&gt;
       &lt;li&gt;HotSpot虚拟机同时由解释器与编译器搭配使用(成为混合模式(Mixed Model)),
-可添加参数-Xint强制虚拟机使用解释模式(Interpreted Mode),可添加参数-Xcomp强制虚拟机使用编译模式(Compiled Mode)&lt;/li&gt;
-      &lt;li&gt;启动参数-client启用Client Compiler编译器 参数-server启用Server Compiler编译器&lt;/li&gt;
+可添加参数-Xint强制虚拟机使用解释模式(Interpreted Mode),可添加参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-Xcomp&lt;/code&gt;强制虚拟机使用编译模式(Compiled Mode)&lt;/li&gt;
+      &lt;li&gt;启动参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-client&lt;/code&gt;启用Client Compiler编译器 参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-server&lt;/code&gt;启用Server Compiler编译器&lt;/li&gt;
       &lt;li&gt;HotSpot虚拟机还会逐渐启用分层编译(Tiered Compilation)的策略,分层编译的概念在JDK 1.6时期出现,
-JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启用&lt;/li&gt;
+JDK1.7中Server模式中默认开启,之前需配参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:+TieredCompilation&lt;/code&gt;启用&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;编译对象与触发条件
@@ -778,13 +777,13 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
       &lt;/li&gt;
       &lt;li&gt;HotSpot虚拟机是基于计数器的热点探测,有2个计数器:方法调用计数器(Invocation Counter)和回边计数器(Back Edge Counter)
         &lt;ul&gt;
-          &lt;li&gt;方法调用计数器,Client模式下阈值为1500次,Server模式下阈值为1000次,可由参数-XX:CompileThreshold来设置
- -XX:-UseCounterDecay设置关闭热度衰减,-XX:CounterHalfLifeTime参数设置半衰周期的时间,单位是秒&lt;/li&gt;
-          &lt;li&gt;回边计数器,参数-XX:OnStackReplacePercentage来间接调整回边计数器的阈值
- Client模式下阈值计算公式:
- 方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100 默认情况下为13995
- Server模式下阈值计算公式:
- 方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100 
+          &lt;li&gt;方法调用计数器,Client模式下阈值为1500次,Server模式下阈值为1000次,可由参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:CompileThreshold&lt;/code&gt;来设置
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:-UseCounterDecay&lt;/code&gt;设置关闭热度衰减,&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:CounterHalfLifeTime&lt;/code&gt;参数设置半衰周期的时间,单位是秒&lt;/li&gt;
+          &lt;li&gt;回边计数器,参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:OnStackReplacePercentage&lt;/code&gt;来间接调整回边计数器的阈值&lt;br /&gt;
+ Client模式下阈值计算公式:&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100&lt;/code&gt; 默认情况下为13995&lt;br /&gt;
+ Server模式下阈值计算公式:&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100&lt;/code&gt;
  默认情况下为10700&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
@@ -828,7 +827,7 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
           &lt;li&gt;栈上分配(Stack Allocation),如果证明一个对象不会逃逸到方法之外,则可以将对象分配到方法栈帧内存,这样随着栈帧出栈而销毁,极大地降低了GC系统压力&lt;/li&gt;
           &lt;li&gt;同步消除(Synchronization Elimination),如果能证明一个变量不会逃逸出线程,那就可以消除掉同步措施,消除同步带来的消耗&lt;/li&gt;
           &lt;li&gt;标量替换(Scalar Replacement)
- 标量(Scalar),是指一个数据已经无法再分解成更小的数据来表示了,如:int,long,double等
+ 标量(Scalar),是指一个数据已经无法再分解成更小的数据来表示了,如:&lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;long&lt;/code&gt;,&lt;code class=&quot;highlighter-rouge&quot;&gt;double&lt;/code&gt;等
  聚合量(Aggregate),是指一个数据可以被分解,典型的java对象
  如果证明一个对象不被外界访问,又可拆散的话,那程序在调用的时候就不创建该变量,改为创建多个成员变量来代替,
  将对象拆分后,除了可以让对象的成员变量在栈上(栈上存储的数据,有很大的概率会被虚拟机分配至物理机器的高速寄存器中存储)
@@ -838,7 +837,7 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="JIT" /><category term="Optimize" /><summary type="html">1. 早期(编译期)优化 1-1. 概论 前端编译器:Sun的Javac、 Eclipse JDT中的增量式编译器(ECJ) JIT编译器:HotSpot VM的C1、 C2编译器 AOT编译器:GNU Compiler for the Java(GCJ)、 Excelsior JET javac这类编译器几乎不对代码进行性能优化,把性能优化放到了JIT即时编译器内,可为JRuby、 Groovy这类语言的代码也同等享有优化带来的好处 1-2. javac编译 1-2.1. 编译过程 解析与填充符号表过程 词法、语法分析 词法分析是将源代码的字符流转变为标记(Token)集合,单个字符是程序编写过程的最小元素,而标记则是编译过程的最小元素,关键字、 变量名、 字面量、 运算符都可以成为标记 语法分析是根据Token序列构造抽象语法树的过程,抽象语法树(Abstract Syntax Tree,AST)是一种用来描述程序代码语法结构的树形表示方式,语法树的每一个节点都代表着程序 代码中的一个语法结构(Construct),例如包、 类型、 修饰符、 运算符、 接口、 返回值甚至代码注释等都可以是一个语法结构. 填充符号表 符号表(Symbol Table)是由一组符号地址和符号信息构成的表格 在语义分析中,符号表所登记的内容将用于语义检查(如检查一个名字的使用和原先的说明是否一致)和产生中间代码.在目标代码生成阶段,当对符号名进行地址分配时,符号表是地址分配的依据. 插入式注解处理器的注解处理过程 分析与字节码生成过程 标注检查 检查的内容包括诸如变量使用前是否已被声明、 变量与赋值之间的数据类型是否能够匹配等 常量折叠 如定义了 int a = 1 + 2 会被编译为 int a = 3 数据及控制流分析 数据及控制流分析是对程序上下文逻辑更进一步的验证,它可以检查出诸如程序局部变量在使用前是否有赋值、 方法的每条路径是否都有返回值、 是否所有的受查异常都被正确处理了等问题. 语法糖 语法糖:也称糖衣语法,是由英国计算机科学家彼得·约翰·兰达(Peter J.Landin)发明的一个术语, 指在计算机语言中添加的某种语法,这种语法对语言的功能并没有影响,但是更方便程序员使用. 通常来说,使用语法糖能够增加程序的可读性,从而减少程序代码出错的机会. java语法糖:泛型、变长参数、 自动装箱/拆箱等 内部类、 枚举类、 断言语句、 对枚举和字符串(在JDK 1.7中支持) 的switch支持、 try语句中定义和关闭资源(在JDK 1.7中支持)等 泛型:编译器会进行解泛,所以泛型不能进行方法重载 自动装箱、 拆箱与遍历循环 条件编译 if 的条件为常量时编译期会被执行 字节码生成 字节码生成阶段不仅仅是把前面各个步骤所生成的信息(语法树、 符号表)转化成字节码写到磁盘中, 编译器还进行了少量的代码添加和转换工作. 2. 晚期(运行期)优化 2-1. 即时编译器(JIT) 为了提高热点代码的执行效率,在运行时,虚拟机将会把这些代码编译成与本地平台相关的机器码,并进行各种层次的优化, 完成这个任务的编译器称为即时编译器(Just In Time Compiler) 解释器与编译器(sun HotSpot虚拟机为例) 交互模型 |---------------即时编译-----------↓ ↓ Client Compiler(C1编译器) 解释器(Interpreter) 编译器 ↑ Server Compiler(C2编译器) |----------------逆优化------------↑ HotSpot虚拟机同时由解释器与编译器搭配使用(成为混合模式(Mixed Model)), 可添加参数-Xint强制虚拟机使用解释模式(Interpreted Mode),可添加参数-Xcomp强制虚拟机使用编译模式(Compiled Mode) 启动参数-client启用Client Compiler编译器 参数-server启用Server Compiler编译器 HotSpot虚拟机还会逐渐启用分层编译(Tiered Compilation)的策略,分层编译的概念在JDK 1.6时期出现, JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启用 编译对象与触发条件 触发条件 被多次调用的方法 被多次执行的循环体,这个称为栈上替换(On Stack Replacement,简称为OSR编译) 热点代码判定 基于采样的热点探测,周期性检测个线程的栈顶,若某个方法经常在栈顶,则认为是热点方法； 优点是实现简单简单,高效,容易获取方法调用关系,缺点是不能准确判定一个方法的热度 基于计数器的热点探测,虚拟机为每个方法设定计数器,统计方法执行次数,若超过一定阈值则认为是热点方法； 优点是能准确判定一个方法的热度,缺点是要为每个方法建立计数器并维护,实现麻烦,也不能获取方法的调用关系 HotSpot虚拟机是基于计数器的热点探测,有2个计数器:方法调用计数器(Invocation Counter)和回边计数器(Back Edge Counter) 方法调用计数器,Client模式下阈值为1500次,Server模式下阈值为1000次,可由参数-XX:CompileThreshold来设置 -XX:-UseCounterDecay设置关闭热度衰减,-XX:CounterHalfLifeTime参数设置半衰周期的时间,单位是秒 回边计数器,参数-XX:OnStackReplacePercentage来间接调整回边计数器的阈值 Client模式下阈值计算公式: 方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100 默认情况下为13995 Server模式下阈值计算公式: 方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100 默认情况下为10700 编译过程 Client模式下编译过程 Server模式下编译过程 相当复杂 优化技术 公共子表达式消除 经典优化技术,如果一个表达式E已经计算过了,并且从先前的计算到现在E中所有变量的值都没有发生变化, 那么E的这次出现就成为了公共子表达式. 对于这种表达式,没有必要花时间再对它进行计算,只需要直接用前面计算过的表达式结果代替E就可以了 数组边界检查消除 语言相关的其他消除操作还有不少,如自动装箱消除(Autobox Elimination)、 安全点消除(Safepoint Elimination)、消除反射(Dereflection)等 方法内联 虚拟机最重要的优化手段之一,除了消除方法调用的成本之外,它更重要的意义是为其他优化手段建立良好的基础 非虚方法直接内联,虚方法引入了一种名为“类型继承关系分析”(Class Hierarchy Analysis,CHA)的技术, 检查发现没有多个目标版本可供选择,则也可内联,但需准备一个逃生门,即使有多个版本目标也会默认内联,但在调用时要检查, 发现版本目标不一致在取消内联,会从“逃生门”回到解释状态重新执行 逃逸分析(JDK1.6) 当下java最前沿的优化技术 逃逸分析的基本行为就是分析对象动态作用域:当一个对象在方法中被定义后,它可能被外部方法所引用, 例如作为调用参数传递到其他方法中,称为方法逃逸. 甚至还有可能被外部线程访问到, 譬如赋值给类变量或可以在其他线程中访问的实例变量,称为线程逃逸. 栈上分配(Stack Allocation),如果证明一个对象不会逃逸到方法之外,则可以将对象分配到方法栈帧内存,这样随着栈帧出栈而销毁,极大地降低了GC系统压力 同步消除(Synchronization Elimination),如果能证明一个变量不会逃逸出线程,那就可以消除掉同步措施,消除同步带来的消耗 标量替换(Scalar Replacement) 标量(Scalar),是指一个数据已经无法再分解成更小的数据来表示了,如:int,long,double等 聚合量(Aggregate),是指一个数据可以被分解,典型的java对象 如果证明一个对象不被外界访问,又可拆散的话,那程序在调用的时候就不创建该变量,改为创建多个成员变量来代替, 将对象拆分后,除了可以让对象的成员变量在栈上(栈上存储的数据,有很大的概率会被虚拟机分配至物理机器的高速寄存器中存储) 分配和读写之外,还可以为后续进一步的优化手段创建条件 逃逸分析尚不成熟</summary></entry><entry><title type="html">Java GC</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html" rel="alternate" type="text/html" title="Java GC" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html">&lt;h2 id=&quot;一-java虚拟机内存区域&quot;&gt;一. Java虚拟机内存区域&lt;/h2&gt;
+&lt;/ol&gt;</content><author><name>Crab2Died</name></author><category term="Java" /><category term="JIT" /><category term="Optimize" /><summary type="html">1. 早期(编译期)优化 1-1. 概论 前端编译器:Sun的Javac、 Eclipse JDT中的增量式编译器(ECJ) JIT编译器:HotSpot VM的C1、 C2编译器 AOT编译器:GNU Compiler for the Java(GCJ)、 Excelsior JET javac这类编译器几乎不对代码进行性能优化,把性能优化放到了JIT即时编译器内,可为JRuby、 Groovy这类语言的代码也同等享有优化带来的好处 1-2. javac编译 1-2.1. 编译过程 解析与填充符号表过程 词法、语法分析 词法分析是将源代码的字符流转变为标记(Token)集合,单个字符是程序编写过程的最小元素,而标记则是编译过程的最小元素,关键字、 变量名、 字面量、 运算符都可以成为标记 语法分析是根据Token序列构造抽象语法树的过程,抽象语法树(Abstract Syntax Tree,AST)是一种用来描述程序代码语法结构的树形表示方式,语法树的每一个节点都代表着程序 代码中的一个语法结构(Construct),例如包、 类型、 修饰符、 运算符、 接口、 返回值甚至代码注释等都可以是一个语法结构. 填充符号表 符号表(Symbol Table)是由一组符号地址和符号信息构成的表格 在语义分析中,符号表所登记的内容将用于语义检查(如检查一个名字的使用和原先的说明是否一致)和产生中间代码.在目标代码生成阶段,当对符号名进行地址分配时,符号表是地址分配的依据. 插入式注解处理器的注解处理过程 分析与字节码生成过程 标注检查 检查的内容包括诸如变量使用前是否已被声明、 变量与赋值之间的数据类型是否能够匹配等 常量折叠 如定义了 int a = 1 + 2 会被编译为 int a = 3 数据及控制流分析 数据及控制流分析是对程序上下文逻辑更进一步的验证,它可以检查出诸如程序局部变量在使用前是否有赋值、 方法的每条路径是否都有返回值、 是否所有的受查异常都被正确处理了等问题. 语法糖 语法糖:也称糖衣语法,是由英国计算机科学家彼得·约翰·兰达(Peter J.Landin)发明的一个术语, 指在计算机语言中添加的某种语法,这种语法对语言的功能并没有影响,但是更方便程序员使用. 通常来说,使用语法糖能够增加程序的可读性,从而减少程序代码出错的机会. java语法糖:泛型、变长参数、 自动装箱/拆箱等 内部类、 枚举类、 断言语句、 对枚举和字符串(在JDK 1.7中支持) 的switch支持、 try语句中定义和关闭资源(在JDK 1.7中支持)等 泛型:编译器会进行解泛,所以泛型不能进行方法重载 自动装箱、 拆箱与遍历循环 条件编译 if 的条件为常量时编译期会被执行 字节码生成 字节码生成阶段不仅仅是把前面各个步骤所生成的信息(语法树、 符号表)转化成字节码写到磁盘中, 编译器还进行了少量的代码添加和转换工作. 2. 晚期(运行期)优化 2-1. 即时编译器(JIT) 为了提高热点代码的执行效率,在运行时,虚拟机将会把这些代码编译成与本地平台相关的机器码,并进行各种层次的优化, 完成这个任务的编译器称为即时编译器(Just In Time Compiler) 解释器与编译器(sun HotSpot虚拟机为例) 交互模型 +---------------即时编译-----------↓ ↓ Client Compiler(C1编译器) 解释器(Interpreter) 编译器 ↑ Server Compiler(C2编译器) +----------------逆优化------------↑ HotSpot虚拟机同时由解释器与编译器搭配使用(成为混合模式(Mixed Model)), 可添加参数-Xint强制虚拟机使用解释模式(Interpreted Mode),可添加参数-Xcomp强制虚拟机使用编译模式(Compiled Mode) 启动参数-client启用Client Compiler编译器 参数-server启用Server Compiler编译器 HotSpot虚拟机还会逐渐启用分层编译(Tiered Compilation)的策略,分层编译的概念在JDK 1.6时期出现, JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启用 编译对象与触发条件 触发条件 被多次调用的方法 被多次执行的循环体,这个称为栈上替换(On Stack Replacement,简称为OSR编译) 热点代码判定 基于采样的热点探测,周期性检测个线程的栈顶,若某个方法经常在栈顶,则认为是热点方法； 优点是实现简单简单,高效,容易获取方法调用关系,缺点是不能准确判定一个方法的热度 基于计数器的热点探测,虚拟机为每个方法设定计数器,统计方法执行次数,若超过一定阈值则认为是热点方法； 优点是能准确判定一个方法的热度,缺点是要为每个方法建立计数器并维护,实现麻烦,也不能获取方法的调用关系 HotSpot虚拟机是基于计数器的热点探测,有2个计数器:方法调用计数器(Invocation Counter)和回边计数器(Back Edge Counter) 方法调用计数器,Client模式下阈值为1500次,Server模式下阈值为1000次,可由参数-XX:CompileThreshold来设置 -XX:-UseCounterDecay设置关闭热度衰减,-XX:CounterHalfLifeTime参数设置半衰周期的时间,单位是秒 回边计数器,参数-XX:OnStackReplacePercentage来间接调整回边计数器的阈值 Client模式下阈值计算公式: 方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100 默认情况下为13995 Server模式下阈值计算公式: 方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100 默认情况下为10700 编译过程 Client模式下编译过程 Server模式下编译过程 相当复杂 优化技术 公共子表达式消除 经典优化技术,如果一个表达式E已经计算过了,并且从先前的计算到现在E中所有变量的值都没有发生变化, 那么E的这次出现就成为了公共子表达式. 对于这种表达式,没有必要花时间再对它进行计算,只需要直接用前面计算过的表达式结果代替E就可以了 数组边界检查消除 语言相关的其他消除操作还有不少,如自动装箱消除(Autobox Elimination)、 安全点消除(Safepoint Elimination)、消除反射(Dereflection)等 方法内联 虚拟机最重要的优化手段之一,除了消除方法调用的成本之外,它更重要的意义是为其他优化手段建立良好的基础 非虚方法直接内联,虚方法引入了一种名为“类型继承关系分析”(Class Hierarchy Analysis,CHA)的技术, 检查发现没有多个目标版本可供选择,则也可内联,但需准备一个逃生门,即使有多个版本目标也会默认内联,但在调用时要检查, 发现版本目标不一致在取消内联,会从“逃生门”回到解释状态重新执行 逃逸分析(JDK1.6) 当下java最前沿的优化技术 逃逸分析的基本行为就是分析对象动态作用域:当一个对象在方法中被定义后,它可能被外部方法所引用, 例如作为调用参数传递到其他方法中,称为方法逃逸. 甚至还有可能被外部线程访问到, 譬如赋值给类变量或可以在其他线程中访问的实例变量,称为线程逃逸. 栈上分配(Stack Allocation),如果证明一个对象不会逃逸到方法之外,则可以将对象分配到方法栈帧内存,这样随着栈帧出栈而销毁,极大地降低了GC系统压力 同步消除(Synchronization Elimination),如果能证明一个变量不会逃逸出线程,那就可以消除掉同步措施,消除同步带来的消耗 标量替换(Scalar Replacement) 标量(Scalar),是指一个数据已经无法再分解成更小的数据来表示了,如:int,long,double等 聚合量(Aggregate),是指一个数据可以被分解,典型的java对象 如果证明一个对象不被外界访问,又可拆散的话,那程序在调用的时候就不创建该变量,改为创建多个成员变量来代替, 将对象拆分后,除了可以让对象的成员变量在栈上(栈上存储的数据,有很大的概率会被虚拟机分配至物理机器的高速寄存器中存储) 分配和读写之外,还可以为后续进一步的优化手段创建条件 逃逸分析尚不成熟</summary></entry><entry><title type="html">Java GC</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html" rel="alternate" type="text/html" title="Java GC" /><published>2018-06-15T13:15:27+08:00</published><updated>2018-06-15T13:15:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/15/java-gc.html">&lt;h2 id=&quot;一-java虚拟机内存区域&quot;&gt;一. Java虚拟机内存区域&lt;/h2&gt;
 &lt;h3 id=&quot;1-运行时数据区&quot;&gt;1. 运行时数据区&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png&quot; alt=&quot;java运行时数据区&quot; /&gt;&lt;/p&gt;
 
@@ -846,7 +845,7 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
 &lt;ul&gt;
   &lt;li&gt;1、程序计数器是线程内(每个线程都有唯一的、封闭的)一小块内存区域&lt;/li&gt;
   &lt;li&gt;2、计数器指定的是当前虚拟机执行指令的地址&lt;/li&gt;
-  &lt;li&gt;3、当虚拟机执行的是Native方法时,计数器值为空(Undefined),此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError
+  &lt;li&gt;3、当虚拟机执行的是Native方法时,计数器值为空(Undefined),此内存区域是唯一一个在Java虚拟机规范中没有规定任何&lt;code class=&quot;highlighter-rouge&quot;&gt;OutOfMemoryError&lt;/code&gt;
    情况的区域.&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -856,15 +855,15 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
   &lt;li&gt;2、虚拟机栈描述的是java方法执行的内存模型&lt;/li&gt;
   &lt;li&gt;3、每个方法在执行的同时都会创建一个栈帧(Stack Frame)用于存储局部变量表、 操作数栈、 动态链接、 方法出口等信息&lt;/li&gt;
   &lt;li&gt;4、java方法的执行就是入栈与出栈的过程&lt;/li&gt;
-  &lt;li&gt;5、如果虚拟机栈深度超出了虚拟机允许深度将会抛出StackOverflowError异常,现代虚拟机大多数支持动态扩展(也允许固定长度),当虚拟机申
-   请扩展时申请不到足够的内存时,将会抛出OutOfMemoryError异常&lt;/li&gt;
+  &lt;li&gt;5、如果虚拟机栈深度超出了虚拟机允许深度将会抛出&lt;code class=&quot;highlighter-rouge&quot;&gt;StackOverflowError&lt;/code&gt;异常,现代虚拟机大多数支持动态扩展(也允许固定长度),当虚拟机申
+   请扩展时申请不到足够的内存时,将会抛出&lt;code class=&quot;highlighter-rouge&quot;&gt;OutOfMemoryError&lt;/code&gt;异常&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-本地方法栈native-method-stack&quot;&gt;4. 本地方法栈(Native Method Stack)&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;1、为虚拟机调用本地Native方法提供服务&lt;/li&gt;
   &lt;li&gt;2、也有虚拟机(譬如Sun HotSpot虚拟机)直接就把本地方法栈和虚拟机栈合二为一&lt;/li&gt;
-  &lt;li&gt;3、也会抛出StackOverflowError异常和OutOfMemoryError异常&lt;/li&gt;
+  &lt;li&gt;3、也会抛出&lt;code class=&quot;highlighter-rouge&quot;&gt;StackOverflowError&lt;/code&gt;异常和&lt;code class=&quot;highlighter-rouge&quot;&gt;OutOfMemoryError&lt;/code&gt;异常&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;5-java堆java-heap-gc堆&quot;&gt;5. Java堆(Java Heap) GC堆&lt;/h3&gt;
@@ -885,7 +884,7 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
 &lt;ul&gt;
   &lt;li&gt;1、Class文件中除了有类的版本、 字段、 方法、 接口等描述信息外,还有一项信息是常量池(Constant Pool Table),用于存放编译期生成
    的各种字面量和符号引用,这部分内容将在类加载后进入方法区的运行时常量池中存放&lt;/li&gt;
-  &lt;li&gt;2、String.intern()也会放入运行时常量池中&lt;/li&gt;
+  &lt;li&gt;2、&lt;code class=&quot;highlighter-rouge&quot;&gt;String.intern()&lt;/code&gt;也会放入运行时常量池中&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;8-直接内存direct-memory&quot;&gt;8. 直接内存(Direct Memory)&lt;/h3&gt;
@@ -935,10 +934,10 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
 
 &lt;h3 id=&quot;3-引用&quot;&gt;3. 引用&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;1、强引用(Strong Reference): new 关键字&lt;/li&gt;
-  &lt;li&gt;2、软引用(Soft Reference):当要发生内存溢出时会将软引用对象加入回收队列中&lt;/li&gt;
-  &lt;li&gt;3、弱引用(Weak Reference):只能活到下次GC前&lt;/li&gt;
-  &lt;li&gt;4、虚引用(Phantom Reference):幽灵引用或者幻影引用&lt;/li&gt;
+  &lt;li&gt;1、&lt;strong&gt;强引用(Strong Reference)&lt;/strong&gt;: new 关键字&lt;/li&gt;
+  &lt;li&gt;2、&lt;strong&gt;软引用(Soft Reference)&lt;/strong&gt;:当要发生内存溢出时会将软引用对象加入回收队列中&lt;/li&gt;
+  &lt;li&gt;3、&lt;strong&gt;弱引用(Weak Reference)&lt;/strong&gt;:只能活到下次GC前&lt;/li&gt;
+  &lt;li&gt;4、&lt;strong&gt;虚引用(Phantom Reference)&lt;/strong&gt;:幽灵引用或者幻影引用&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-回收方法区&quot;&gt;4. 回收方法区&lt;/h3&gt;
@@ -948,7 +947,7 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
     &lt;ul&gt;
       &lt;li&gt;该类所有的实例都已经被回收,也就是Java堆中不存在该类的任何实例.&lt;/li&gt;
       &lt;li&gt;加载该类的ClassLoader已经被回收.&lt;/li&gt;
-      &lt;li&gt;该类对应的java.lang.Class对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法.&lt;/li&gt;
+      &lt;li&gt;该类对应的&lt;code class=&quot;highlighter-rouge&quot;&gt;java.lang.Class&lt;/code&gt;对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -1019,15 +1018,15 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
 &lt;ul&gt;
   &lt;li&gt;1、Serial收集器的多线程版,其他一样&lt;/li&gt;
   &lt;li&gt;2、是许多虚拟机Server模式下新生代的首选收集器&lt;/li&gt;
-  &lt;li&gt;3、ParNew收集器也是使用-XX:+UseConcMarkSweepGC选项后的默认新生代收集器,也可以使用-XX:+UseParNewGC选项来强制指定它&lt;/li&gt;
-  &lt;li&gt;4、单核下效果不一定比Serial效果好,多核更适合,-XX:ParallelGCThreads参数来限制垃圾收集的线程数&lt;/li&gt;
+  &lt;li&gt;3、ParNew收集器也是使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:+UseConcMarkSweepGC&lt;/code&gt;选项后的默认新生代收集器,也可以使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:+UseParNewGC&lt;/code&gt;选项来强制指定它&lt;/li&gt;
+  &lt;li&gt;4、单核下效果不一定比Serial效果好,多核更适合,&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:ParallelGCThreads&lt;/code&gt;参数来限制垃圾收集的线程数&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;3-parallel-scavenge收集器&quot;&gt;3. Parallel Scavenge收集器&lt;/h3&gt;
 &lt;ul&gt;
   &lt;li&gt;1、新生代收集器,采用复制算法,并行的多线程收集器,吞吐量优先&lt;/li&gt;
   &lt;li&gt;2、追求可控的吞吐量, 吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)&lt;/li&gt;
-  &lt;li&gt;3、控制最大垃圾收集停顿时间的-XX:MaxGCPauseMillis参数以及直接设置吞吐量大小的-XX:GCTimeRatio参数.&lt;/li&gt;
+  &lt;li&gt;3、控制最大垃圾收集停顿时间的&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:MaxGCPauseMillis&lt;/code&gt;参数以及直接设置吞吐量大小的&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:GCTimeRatio&lt;/code&gt;参数.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-serial-old收集器&quot;&gt;4. Serial Old收集器&lt;/h3&gt;
@@ -1053,8 +1052,8 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;3、并发收集、 低停顿,Sun公司的一些官方文档中也称之为并发低停顿收集器&lt;/li&gt;
-  &lt;li&gt;4、-XX：+UseCMSCompactAtFullCollection默认开启，表示CMS进行Full GC的时候开启内存碎片的合并整理，该过程无法并发停顿时间变长&lt;/li&gt;
-  &lt;li&gt;5、-XX：CMSFullGCsBeforeCompaction表示执行多少次不压缩的Full GC后跟着来一次压缩的Full GC，默认是0，每次都压缩&lt;/li&gt;
+  &lt;li&gt;4、&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX：+UseCMSCompactAtFullCollection&lt;/code&gt;默认开启，表示CMS进行Full GC的时候开启内存碎片的合并整理，该过程无法并发停顿时间变长&lt;/li&gt;
+  &lt;li&gt;5、&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX：CMSFullGCsBeforeCompaction&lt;/code&gt;表示执行多少次不压缩的Full GC后跟着来一次压缩的Full GC，默认是0，每次都压缩&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;7-g1收集器&quot;&gt;7. G1收集器&lt;/h3&gt;
@@ -1123,12 +1122,12 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
 
 &lt;h3 id=&quot;2-大对象直接进入老年代&quot;&gt;2. 大对象直接进入老年代&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-XX:PretenureSizeThreshold参数,令大于这个设置值的对象直接在老年代分配,避免大量内存复制&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:PretenureSizeThreshold&lt;/code&gt;参数,令大于这个设置值的对象直接在老年代分配,避免大量内存复制&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;3-长期存活的对象将进入老年代&quot;&gt;3. 长期存活的对象将进入老年代&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;对象晋升老年代的年龄阈值,可以通过参数-XX:MaxTenuringThreshold设置,默认15,每次Minor GC对象没死+1&lt;/li&gt;
+  &lt;li&gt;对象晋升老年代的年龄阈值,可以通过参数&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:MaxTenuringThreshold&lt;/code&gt;设置,默认15,每次Minor GC对象没死+1&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-动态对象年龄判定&quot;&gt;4. 动态对象年龄判定&lt;/h3&gt;
@@ -1220,7 +1219,7 @@ GC,尽管这次Minor GC是有风险的;如果小于,或者HandlePromotionFailure
 如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加强。因
 此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发程序，自旋
 锁在自旋等待后，往往毅然无法获得对应的锁，不仅仅白白浪费了CPU时间，最终还是免不了被挂起的操作 ，反而浪费了系统的资源。在JDK1.6中，
-Java虚拟机提供-XX:+UseSpinning参数来开启自旋锁，使用-XX:PreBlockSpin参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被
+Java虚拟机提供&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:+UseSpinning&lt;/code&gt;参数来开启自旋锁，使用&lt;code class=&quot;highlighter-rouge&quot;&gt;-XX:PreBlockSpin&lt;/code&gt;参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被
 取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。&lt;/li&gt;
   &lt;li&gt;问题：
     &lt;ul&gt;
@@ -1233,14 +1232,14 @@ Java虚拟机提供-XX:+UseSpinning参数来开启自旋锁，使用-XX:PreBlock
 &lt;h3 id=&quot;32-阻塞锁&quot;&gt;3.2 阻塞锁&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;让线程进入阻塞状态进行等待，当获得相应的信号（唤醒，时间） 时，才可以进入线程的准备就绪状态，准备就绪状态的所有线程，通过竞争，进
-入运行状态。JAVA中，能够进入\退出、阻塞状态或包含阻塞锁的方法有 ，synchronized 关键字（其中的重量锁），ReentrantLock，
-Object.wait()\notify()&lt;/li&gt;
+入运行状态。JAVA中，能够进入\退出、阻塞状态或包含阻塞锁的方法有 ，&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 关键字（其中的重量锁），&lt;code class=&quot;highlighter-rouge&quot;&gt;ReentrantLock&lt;/code&gt;，
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Object.wait()\notify() &lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;33-可重入锁&quot;&gt;3.3 可重入锁&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;可重入锁，也叫做递归锁，指的是同一线程 外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，但不受影响。  &lt;br /&gt;
-在JAVA环境下 ReentrantLock 和synchronized 都是 可重入锁&lt;/li&gt;
+在JAVA环境下 &lt;code class=&quot;highlighter-rouge&quot;&gt;ReentrantLock&lt;/code&gt; 和&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt; 都是 可重入锁&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;34-乐观锁和悲观锁&quot;&gt;3.4 乐观锁和悲观锁&lt;/h3&gt;
@@ -1252,15 +1251,15 @@ Object.wait()\notify()&lt;/li&gt;
 &lt;h3 id=&quot;35-轮询锁和定时锁&quot;&gt;3.5 轮询锁和定时锁&lt;/h3&gt;
 &lt;ol&gt;
   &lt;li&gt;由tryLock实现，与无条件获取锁模式相比，它们具有更完善的错误恢复机制。可避免死锁的发生：&lt;br /&gt;
-boolean tryLock()：仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值 true。
+&lt;code class=&quot;highlighter-rouge&quot;&gt;boolean tryLock()&lt;/code&gt;：仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值 true。
 如果锁不可用，则此方法将立即返回值 false。
-boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
+&lt;code class=&quot;highlighter-rouge&quot;&gt;boolean tryLock(long time, TimeUnit unit) throws InterruptedException&lt;/code&gt;：
 如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;36-显示锁和内置锁&quot;&gt;3.6 显示锁和内置锁&lt;/h3&gt;
 &lt;ol&gt;
-  &lt;li&gt;显示锁用Lock来定义、内置锁用synchronized。&lt;/li&gt;
+  &lt;li&gt;显示锁用&lt;code class=&quot;highlighter-rouge&quot;&gt;Lock&lt;/code&gt;来定义、内置锁用&lt;code class=&quot;highlighter-rouge&quot;&gt;synchronized&lt;/code&gt;。&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;37-对象锁和类锁&quot;&gt;3.7 对象锁和类锁&lt;/h3&gt;
@@ -1350,9 +1349,9 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
   &lt;/li&gt;
   &lt;li&gt;任务缓存队列及排队策略
     &lt;ul&gt;
-      &lt;li&gt;ArrayBlockingQueue：基于数组的FIFO阻塞队列,必须有最大容量的参数&lt;/li&gt;
-      &lt;li&gt;LinkedBlockingQueue: 基于链表的FIFO阻塞队列,容量动态扩展&lt;/li&gt;
-      &lt;li&gt;SynchronousQueue: 该队列不保存提交的任务，而是直接新建队列来执行任务&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;ArrayBlockingQueue&lt;/strong&gt;：基于数组的FIFO阻塞队列,必须有最大容量的参数&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;LinkedBlockingQueue&lt;/strong&gt;: 基于链表的FIFO阻塞队列,容量动态扩展&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;SynchronousQueue&lt;/strong&gt;: 该队列不保存提交的任务，而是直接新建队列来执行任务&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;任务拒绝策略&lt;/li&gt;
@@ -1381,12 +1380,12 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 
 &lt;h3 id=&quot;44-executors&quot;&gt;4.4 Executors&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;newFixedThreadPool: 定容量的线程池，核心线程数与最大线程数相等&lt;/li&gt;
-  &lt;li&gt;newSingleThreadExecutor: 单线程线程池，线程池内核心线程数与最大线程数为1&lt;/li&gt;
-  &lt;li&gt;newCachedThreadPool: 无线大小线程池，核心线程数为0，最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;, 缓冲队列为&lt;code class=&quot;highlighter-rouge&quot;&gt;SynchronousQueue&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;newScheduledThreadPool：创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;,内部是
+  &lt;li&gt;&lt;strong&gt;newFixedThreadPool&lt;/strong&gt;: 定容量的线程池，核心线程数与最大线程数相等&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;newSingleThreadExecutor&lt;/strong&gt;: 单线程线程池，线程池内核心线程数与最大线程数为1&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;newCachedThreadPool&lt;/strong&gt;: 无线大小线程池，核心线程数为0，最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;, 缓冲队列为&lt;code class=&quot;highlighter-rouge&quot;&gt;SynchronousQueue&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;newScheduledThreadPool&lt;/strong&gt;：创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;,内部是
 一个DelayedWorkQueue实现&lt;/li&gt;
-  &lt;li&gt;newSingleThreadScheduledExecutor: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;,
+  &lt;li&gt;&lt;strong&gt;newSingleThreadScheduledExecutor&lt;/strong&gt;: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;,
 内部是一个DelayedWorkQueue实现&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1465,13 +1464,13 @@ boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
 &lt;ol&gt;
   &lt;li&gt;主要实现
     &lt;ul&gt;
-      &lt;li&gt;ArrayBlockingQueue：基于数组的有界阻塞队列，必须指定长度&lt;/li&gt;
-      &lt;li&gt;LinkedBlockingQueue: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;SynchronousQueue: 无缓冲区的阻塞队列，&lt;code class=&quot;highlighter-rouge&quot;&gt;put()&lt;/code&gt;要阻塞等待&lt;code class=&quot;highlighter-rouge&quot;&gt;take()&lt;/code&gt;&lt;/li&gt;
-      &lt;li&gt;PriorityBlockingQueue: 优先级阻塞队列，队列元素必须实现&lt;code class=&quot;highlighter-rouge&quot;&gt;Comparator&lt;/code&gt;接口，基于数组，自动扩展长度&lt;/li&gt;
-      &lt;li&gt;DelayQueue：一个使用优先级队列实现的无界阻塞队列&lt;/li&gt;
-      &lt;li&gt;LinkedTransferQueue：一个由链表结构组成的无界阻塞队列&lt;/li&gt;
-      &lt;li&gt;LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;ArrayBlockingQueue&lt;/strong&gt;：基于数组的有界阻塞队列，必须指定长度&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;LinkedBlockingQueue&lt;/strong&gt;: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为&lt;code class=&quot;highlighter-rouge&quot;&gt;Integer.MAX_VALUE&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;SynchronousQueue&lt;/strong&gt;: 无缓冲区的阻塞队列，&lt;code class=&quot;highlighter-rouge&quot;&gt;put()&lt;/code&gt;要阻塞等待&lt;code class=&quot;highlighter-rouge&quot;&gt;take()&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;PriorityBlockingQueue&lt;/strong&gt;: 优先级阻塞队列，队列元素必须实现&lt;code class=&quot;highlighter-rouge&quot;&gt;Comparator&lt;/code&gt;接口，基于数组，自动扩展长度&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;DelayQueue&lt;/strong&gt;：一个使用优先级队列实现的无界阻塞队列&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;LinkedTransferQueue&lt;/strong&gt;：一个由链表结构组成的无界阻塞队列&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;LinkedBlockingDeque&lt;/strong&gt;：一个由链表结构组成的双向阻塞队列&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;注意&lt;br /&gt;
@@ -1638,7 +1637,7 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;h3 id=&quot;3-参数-2&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;-dump&lt;/strong&gt;: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=&lt;filename&gt;, live表示是否只导出存活的对象&lt;/filename&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-dump&lt;/strong&gt;: 生成java堆转存快照, 格式 &lt;code class=&quot;highlighter-rouge&quot;&gt;-dump:[live, ],format=b,file=&amp;lt;filename&amp;gt;&lt;/code&gt;, live表示是否只导出存活的对象&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;-finalizerinfo&lt;/strong&gt;: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;-heap&lt;/strong&gt;: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;-histo&lt;/strong&gt;: 显示堆中对象统计信息，包括类、实例数量及合计容量等&lt;/li&gt;
@@ -1657,7 +1656,7 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;-port&lt;/strong&gt;: server端口，可通过host:port访问&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;&amp;lt;file&amp;gt;&lt;/strong&gt;: dump文件&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;-J&amp;lt;flag&amp;gt;&lt;/strong&gt;: 运行参数,如: -J-mx512m&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-J&amp;lt;flag&amp;gt;&lt;/strong&gt;: 运行参数,如: &lt;code class=&quot;highlighter-rouge&quot;&gt;-J-mx512m&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;六-jstackstack-trace-for-java&quot;&gt;六. jstack(Stack Trace for Java)&lt;/h2&gt;

@@ -9,15 +9,15 @@
 <meta property="og:title" content="Java Classloader" />
 <meta name="author" content="Crab2Died" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)-------------------------+ 加载(Loading) ——&gt; | 验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution)| +-------------------------------------------------------------+ ↓ 卸载(Unloading) &lt;—— 使用(Using) &lt;—— 初始化(Initialization)" />
-<meta property="og:description" content="1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)-------------------------+ 加载(Loading) ——&gt; | 验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution)| +-------------------------------------------------------------+ ↓ 卸载(Unloading) &lt;—— 使用(Using) &lt;—— 初始化(Initialization)" />
+<meta name="description" content="1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)---------------------------+ 加载(Loading) ——&gt; | 验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution) | +---------------------------------------------------------------+ ↓ 卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)" />
+<meta property="og:description" content="1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)---------------------------+ 加载(Loading) ——&gt; | 验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution) | +---------------------------------------------------------------+ ↓ 卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)" />
 <link rel="canonical" href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html" />
 <meta property="og:url" content="https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html" />
 <meta property="og:site_name" content="Crab2Died" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2018-06-25T09:15:27+08:00" />
 <script type="application/ld+json">
-{"url":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html","headline":"Java Classloader","dateModified":"2018-06-25T09:15:27+08:00","datePublished":"2018-06-25T09:15:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)-------------------------+ 加载(Loading) ——&gt; | 验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution)| +-------------------------------------------------------------+ ↓ 卸载(Unloading) &lt;—— 使用(Using) &lt;—— 初始化(Initialization)","@type":"BlogPosting","@context":"http://schema.org"}</script>
+{"url":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html","headline":"Java Classloader","dateModified":"2018-06-25T09:15:27+08:00","datePublished":"2018-06-25T09:15:27+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://crab2died.github.io/jekyll-blog/content/java/2018/06/25/java-classloader.html"},"author":{"@type":"Person","name":"Crab2Died"},"description":"1. 类加载时机 1.1 - 生命周期 +-----------------------连接(Linking)---------------------------+ 加载(Loading) ——&gt; | 验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution) | +---------------------------------------------------------------+ ↓ 卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)","@type":"BlogPosting","@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   <link rel="stylesheet" href="/jekyll-blog/assets/main.css"><link type="application/atom+xml" rel="alternate" href="https://crab2died.github.io/jekyll-blog/feed.xml" title="Crab2Died" /></head>
@@ -50,21 +50,21 @@
   <div class="post-content e-content" itemprop="articleBody">
     <h2 id="1-类加载时机">1. 类加载时机</h2>
 <h3 id="11---生命周期">1.1 - 生命周期</h3>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                      +-----------------------连接(Linking)-------------------------+
-    加载(Loading) ——&gt; |  验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution)|
-                      +-------------------------------------------------------------+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                      +-----------------------连接(Linking)---------------------------+
+    加载(Loading) ——&gt; |  验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution) |
+                      +---------------------------------------------------------------+
                                                                             ↓
-                            卸载(Unloading) &lt;—— 使用(Using) &lt;—— 初始化(Initialization)
+                         卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)
 </code></pre></div></div>
 
 <h3 id="12---立即初始化主动引用">1.2 - 立即初始化(主动引用)</h3>
 <ol>
-  <li>遇到new、 getstatic、 putstatic或invokestatic这4条字节码指令时</li>
-  <li>使用java.lang.reflect包的方法对类进行反射调用的时候,如果类没有进行过初始化,则需要先触发其初始化.</li>
+  <li>遇到<code class="highlighter-rouge">new</code>、 <code class="highlighter-rouge">getstatic</code>、 <code class="highlighter-rouge">putstatic</code>或<code class="highlighter-rouge">invokestatic</code>这4条字节码指令时</li>
+  <li>使用<code class="highlighter-rouge">java.lang.reflect</code>包的方法对类进行反射调用的时候,如果类没有进行过初始化,则需要先触发其初始化.</li>
   <li>当初始化一个类的时候,如果发现其父类还没有进行过初始化,则需要先触发其父类的初始化.</li>
-  <li>当虚拟机启动时,用户需要指定一个要执行的主类(包含main()方法的那个类),虚拟机会先初始化这个主类.</li>
-  <li>当使用JDK 1.7的动态语言支持时,如果一个java.lang.invoke.MethodHandle实例最后的解析结果REF_getStatic、
-REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对应的类没有进行过初始化,则需要先触发其初始化.</li>
+  <li>当虚拟机启动时,用户需要指定一个要执行的主类(包含<code class="highlighter-rouge">main()</code>方法的那个类),虚拟机会先初始化这个主类.</li>
+  <li>当使用JDK 1.7的动态语言支持时,如果一个<code class="highlighter-rouge">java.lang.invoke.MethodHandle</code>实例最后的解析结果<strong>REF_getStatic</strong>、
+<strong>REF_putStatic</strong>、<strong>REF_invokeStatic</strong>的方法句柄,并且这个方法句柄所对应的类没有进行过初始化,则需要先触发其初始化.</li>
 </ol>
 
 <h3 id="13---被动加载">1.3 - 被动加载</h3>
@@ -81,14 +81,13 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
 <h2 id="2-类加载过程">2. 类加载过程</h2>
 <h3 id="22---加载">2.2 - 加载</h3>
 <ol>
-  <li>通过一个类的全限定名来获取定义此类的二进制字节流(这一条玩出了很多技术,如:jsp(从其他文件中生成),Applet(从网络中获取),
-  Proxy(运行时计算)).</li>
+  <li>通过一个类的全限定名来获取定义此类的二进制字节流(这一条玩出了很多技术,如:jsp(从其他文件中生成),Applet(从网络中获取),Proxy(运行时计算)).</li>
   <li>将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构.</li>
-  <li>在内存中生成一个代表这个类的java.lang.Class对象,作为方法区这个类的各种数据的访问入口.<br />
+  <li>在内存中生成一个代表这个类的<code class="highlighter-rouge">java.lang.Class</code>对象,作为方法区这个类的各种数据的访问入口.<br />
    <strong>_
    注:
    加载阶段完成后,虚拟机外部的二进制字节流就按照虚拟机所需的格式存储在方法区之中,方法区中的数据存储格式由虚拟机实现自行定义,
-   虚拟机规范未规定此区域的具体数据结构. 然后在内存中实例化一个java.lang.Class类的对象(并没有明确规定是在Java堆中,
+   虚拟机规范未规定此区域的具体数据结构. 然后在内存中实例化一个<code class="highlighter-rouge">java.lang.Class</code>类的对象(并没有明确规定是在Java堆中,
    对于HotSpot虚拟机而言,Class对象比较特殊,它虽然是对象,但是存放在方法区里面),
    这个对象将作为程序访问方法区中的这些类型数据的外部接口.
    _</strong></li>
@@ -101,7 +100,7 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
 <ol>
   <li>文件格式验证
     <ul>
-      <li>魔数0xCAFEBABE验证</li>
+      <li>魔数<strong>0xCAFEBABE</strong>验证</li>
       <li>主、次版本号验证</li>
       <li>常量池常量验证</li>
       <li>UTF-8编码验证</li>
@@ -111,7 +110,7 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
   <li>元数据验证
     <ul>
       <li>这个类是否有父类</li>
-      <li>该类是否继承了不能继承的类(如:final类)</li>
+      <li>该类是否继承了不能继承的类(如:<code class="highlighter-rouge">final类</code>)</li>
       <li>…</li>
     </ul>
   </li>
@@ -127,7 +126,7 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
     <ul>
       <li>符号引用中通过字符串描述的全限定名是否能找到对应的类.</li>
       <li>在指定类中是否存在符合方法的字段描述符以及简单名称所描述的方法和字段.</li>
-      <li>符号引用中的类、 字段、 方法的访问性(private、 protected、 public、 default)是否可被当前类访问
+      <li>符号引用中的类、 字段、 方法的访问性(<code class="highlighter-rouge">private</code>、 <code class="highlighter-rouge">protected</code>、 <code class="highlighter-rouge">public</code>、 <code class="highlighter-rouge">default</code>)是否可被当前类访问
 (不通过将抛一个IncompatibleClassChangeError异常子类).</li>
       <li>…</li>
     </ul>
@@ -146,9 +145,9 @@ REF_putStatic、REF_invokeStatic的方法句柄,并且这个方法句柄所对�
   <li>直接引用(Direct References)</li>
   <li>虚拟机对除invokedynamic(动态调用点限定符)指令外的操作进行缓存</li>
   <li>解析动作主要针对类或接口、 字段、 类方法、 接口方法、 方法类型、 方法句柄和调用点限定符7类符号引用进行,
-分别对应于常量池的CONSTANT_Class_info、CONSTANT_Fieldref_info、 CONSTANT_Methodref_info、
-CONSTANT_InterfaceMethodref_info、 CONSTANT_MethodType_info、
-CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
+分别对应于常量池的<strong>CONSTANT_Class_info</strong>、<strong>CONSTANT_Fieldref_info</strong>、 <strong>CONSTANT_Methodref_info</strong>、
+<strong>CONSTANT_InterfaceMethodref_info</strong>、 <strong>CONSTANT_MethodType_info</strong>、<strong>CONSTANT_MethodHandle_info</strong>
+和<strong>CONSTANT_InvokeDynamic_info</strong> 7种常量类型
     <ul>
       <li>1)类或接口解析</li>
       <li>2)字段解析</li>
@@ -159,13 +158,13 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 </ul>
 
 <h3 id="2-6---初始化">2-6 - 初始化</h3>
-<p>  类加载的最后一步,真正执行java的字节码.<clinit>()方法保证在子类执行之前父类的<clinit>()已执行完毕.虚拟机中第一个被执
-   行的<clinit>()方法的类肯定是java.lang.Object.<clinit>()虚拟机保证只执行一次,多线程时只会有一条线程执行,其他线程阻塞等待.</clinit></clinit></clinit></clinit></p>
+<p>  类加载的最后一步,真正执行java的字节码<code class="highlighter-rouge">.&lt;clinit&gt;()</code>方法保证在子类执行之前父类的<code class="highlighter-rouge">&lt;clinit&gt;()</code>已执行完毕.虚拟机中第一个被执
+   行的<code class="highlighter-rouge">&lt;clinit&gt;()</code>方法的类肯定是<code class="highlighter-rouge">java.lang.Object.&lt;clinit&gt;()</code>虚拟机保证只执行一次,多线程时只会有一条线程执行,其他线程阻塞等待.</p>
 
 <h3 id="2-7---卸载">2-7 - 卸载</h3>
 
 <h2 id="3-类加载器">3. 类加载器</h2>
-<p>  描述<br />
+<p>  <strong>描述</strong><br />
      通过一个类的全限定名来获取描述此类的二进制字节流
    应用:类层次划分、热部署、OSGi(面向Java的动态模型系统)、代码加密等</p>
 
@@ -173,13 +172,13 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 <p>  相同的类被不同的类加载器加载他们必不相等.</p>
 
 <h3 id="3-2---双亲委派模型parents-delegation-model">3-2 - 双亲委派模型(Parents Delegation Model)</h3>
-<p>类加载器</p>
+<p>  <strong>类加载器</strong></p>
 <ol>
   <li>启动类加载器(Bootstrap ClassLoader)C++实现、虚拟机一部分
     <ul>
       <li>又称 引导类加载器</li>
       <li>按名识别,如:rt.jar</li>
-      <li>负责加载<JAVA_HOME>\lib目录或被参数-Xbootclasspth指定的目录</JAVA_HOME></li>
+      <li>负责加载&lt;JAVA_HOME&gt;\lib目录或被参数<code class="highlighter-rouge">-Xbootclasspth</code>指定的目录</li>
     </ul>
   </li>
   <li>其他类加载器, java实现,独立与虚拟机外部,全部继承抽象类java.lang.ClassLoader
@@ -187,7 +186,7 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
       <li>扩展类加载器(Extension ClassLoader)
         <ul>
           <li>由sun.misc.Launcher$ExtClassLoader类实现</li>
-          <li>负责加载<JAVA_HOME>\lib\ext目录或参数-Djava.ext.dirs所指定目录下的类</JAVA_HOME></li>
+          <li>负责加载&lt;JAVA_HOME&gt;\lib\ext目录或参数<code class="highlighter-rouge">-Djava.ext.dirs</code>所指定目录下的类</li>
         </ul>
       </li>
       <li>应用程序类加载器(Application ClassLoader)
@@ -216,7 +215,7 @@ CONSTANT_MethodHandle_info和CONSTANT_InvokeDynamic_info 7种常量类型
 
 <h2 id="4-问题">4. 问题</h2>
 <h3 id="4-1---为什么要用双亲委派类加载">4-1 - 为什么要用双亲委派类加载</h3>
-<p>  双亲委派模型可以防止内存中出现多分同样的字节码，如果没有双亲委派模型的话如果用户编写了一个java.lang.Object的同
+<p>  双亲委派模型可以防止内存中出现多分同样的字节码，如果没有双亲委派模型的话如果用户编写了一个<code class="highlighter-rouge">java.lang.Object</code>的同
    名类放在classpath中，多个类加载器去加载这个类到内存中系统会出现多个不同的Object类，那么类之间的比较结果及类的唯一性将无法
    保证，而且如果不使用这种模型将给虚拟机带来安全隐患。</p>
 

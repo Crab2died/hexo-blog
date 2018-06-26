@@ -66,7 +66,7 @@ tags: [Java Monitor]
    jmap [option] vmid 
    
 ### 3. 参数
-   - **-dump**: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=<filename>, live表示是否只导出存活的对象
+   - **-dump**: 生成java堆转存快照, 格式 `-dump:[live, ],format=b,file=<filename>`, live表示是否只导出存活的对象
    - **-finalizerinfo**: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效
    - **-heap**: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效
    - **-histo**: 显示堆中对象统计信息，包括类、实例数量及合计容量等
@@ -83,7 +83,7 @@ tags: [Java Monitor]
 ### 3. 参数
    - **-port**: server端口，可通过host:port访问
    - **&lt;file&gt;**: dump文件
-   - **-J&lt;flag&gt;**: 运行参数,如: -J-mx512m
+   - **-J&lt;flag&gt;**: 运行参数,如: `-J-mx512m`
 
 ## 六. jstack(Stack Trace for Java)
 ### 1. 介绍

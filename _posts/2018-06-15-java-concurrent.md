@@ -65,7 +65,7 @@ tags: [Java, Concurrent]
       如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加强。因
       此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发程序，自旋
       锁在自旋等待后，往往毅然无法获得对应的锁，不仅仅白白浪费了CPU时间，最终还是免不了被挂起的操作 ，反而浪费了系统的资源。在JDK1.6中，
-      Java虚拟机提供-XX:+UseSpinning参数来开启自旋锁，使用-XX:PreBlockSpin参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被
+      Java虚拟机提供`-XX:+UseSpinning`参数来开启自旋锁，使用`-XX:PreBlockSpin`参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被
       取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。  
    2. 问题：  
       - 可能白占用CPU时间
@@ -73,12 +73,12 @@ tags: [Java, Concurrent]
       
 ### 3.2 阻塞锁
    1. 让线程进入阻塞状态进行等待，当获得相应的信号（唤醒，时间） 时，才可以进入线程的准备就绪状态，准备就绪状态的所有线程，通过竞争，进
-      入运行状态。JAVA中，能够进入\退出、阻塞状态或包含阻塞锁的方法有 ，synchronized 关键字（其中的重量锁），ReentrantLock，
-      Object.wait()\notify() 
+      入运行状态。JAVA中，能够进入\退出、阻塞状态或包含阻塞锁的方法有 ，`synchronized` 关键字（其中的重量锁），`ReentrantLock`，
+      `Object.wait()\notify() `
 
 ### 3.3 可重入锁
    1. 可重入锁，也叫做递归锁，指的是同一线程 外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，但不受影响。    
-      在JAVA环境下 ReentrantLock 和synchronized 都是 可重入锁
+      在JAVA环境下 `ReentrantLock` 和`synchronized` 都是 可重入锁
 
 ### 3.4 乐观锁和悲观锁
    1. 悲观锁: 每次拿数据都上锁，如行锁、表锁、读锁、写锁
@@ -86,13 +86,13 @@ tags: [Java, Concurrent]
 
 ### 3.5 轮询锁和定时锁
    1. 由tryLock实现，与无条件获取锁模式相比，它们具有更完善的错误恢复机制。可避免死锁的发生：  
-      boolean tryLock()：仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值 true。
+      `boolean tryLock()`：仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值 true。
       如果锁不可用，则此方法将立即返回值 false。
-      boolean tryLock(long time, TimeUnit unit) throws InterruptedException：
+      `boolean tryLock(long time, TimeUnit unit) throws InterruptedException`：
       如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁。
       
 ### 3.6 显示锁和内置锁
-   1. 显示锁用Lock来定义、内置锁用synchronized。
+   1. 显示锁用`Lock`来定义、内置锁用`synchronized`。
    
 ### 3.7 对象锁和类锁
    1. 对象锁是用于实例对象(可有多个实例对象)方法上的
@@ -165,9 +165,9 @@ tags: [Java, Concurrent]
    - 初始化后线程会执行workQueue的`take()`方法，该方法是阻塞的，直到有任务提交
    
    4. 任务缓存队列及排队策略
-   - ArrayBlockingQueue：基于数组的FIFO阻塞队列,必须有最大容量的参数
-   - LinkedBlockingQueue: 基于链表的FIFO阻塞队列,容量动态扩展
-   - SynchronousQueue: 该队列不保存提交的任务，而是直接新建队列来执行任务
+   - **ArrayBlockingQueue**：基于数组的FIFO阻塞队列,必须有最大容量的参数
+   - **LinkedBlockingQueue**: 基于链表的FIFO阻塞队列,容量动态扩展
+   - **SynchronousQueue**: 该队列不保存提交的任务，而是直接新建队列来执行任务
    
    5. 任务拒绝策略
    {% highlight java %}
@@ -186,12 +186,12 @@ tags: [Java, Concurrent]
    - `setMaximumPoolSize()`：设置线程池最大能创建的线程数目大小
 
 ### 4.4 Executors
-   - newFixedThreadPool: 定容量的线程池，核心线程数与最大线程数相等
-   - newSingleThreadExecutor: 单线程线程池，线程池内核心线程数与最大线程数为1
-   - newCachedThreadPool: 无线大小线程池，核心线程数为0，最大线程数为`Integer.MAX_VALUE`, 缓冲队列为`SynchronousQueue`
-   - newScheduledThreadPool：创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为`Integer.MAX_VALUE`,内部是
+   - **newFixedThreadPool**: 定容量的线程池，核心线程数与最大线程数相等
+   - **newSingleThreadExecutor**: 单线程线程池，线程池内核心线程数与最大线程数为1
+   - **newCachedThreadPool**: 无线大小线程池，核心线程数为0，最大线程数为`Integer.MAX_VALUE`, 缓冲队列为`SynchronousQueue`
+   - **newScheduledThreadPool**：创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为`Integer.MAX_VALUE`,内部是
      一个DelayedWorkQueue实现
-   - newSingleThreadScheduledExecutor: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为`Integer.MAX_VALUE`,
+   - **newSingleThreadScheduledExecutor**: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为`Integer.MAX_VALUE`,
      内部是一个DelayedWorkQueue实现  
 
 ## 5. AbstractQueuedSynchronizer
@@ -232,13 +232,13 @@ tags: [Java, Concurrent]
    |Examine  |   element()            |     peek()             |                -                    |
 
    3. 主要实现  
-   - ArrayBlockingQueue：基于数组的有界阻塞队列，必须指定长度
-   - LinkedBlockingQueue: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为`Integer.MAX_VALUE`
-   - SynchronousQueue: 无缓冲区的阻塞队列，`put()`要阻塞等待`take()`
-   - PriorityBlockingQueue: 优先级阻塞队列，队列元素必须实现`Comparator`接口，基于数组，自动扩展长度
-   - DelayQueue：一个使用优先级队列实现的无界阻塞队列
-   - LinkedTransferQueue：一个由链表结构组成的无界阻塞队列
-   - LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列
+   - **ArrayBlockingQueue**：基于数组的有界阻塞队列，必须指定长度
+   - **LinkedBlockingQueue**: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为`Integer.MAX_VALUE`
+   - **SynchronousQueue**: 无缓冲区的阻塞队列，`put()`要阻塞等待`take()`
+   - **PriorityBlockingQueue**: 优先级阻塞队列，队列元素必须实现`Comparator`接口，基于数组，自动扩展长度
+   - **DelayQueue**：一个使用优先级队列实现的无界阻塞队列
+   - **LinkedTransferQueue**：一个由链表结构组成的无界阻塞队列
+   - **LinkedBlockingDeque**：一个由链表结构组成的双向阻塞队列
    
    4. 注意  
    如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。

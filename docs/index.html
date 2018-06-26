@@ -36,7 +36,7 @@
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <div class="home"><div class="post-list-heading post-list-head"><strong>Blog List</strong></div>
-    <ul class="post-list"><li><span class="post-meta">Jun 26, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 114 words</span>-->
+    <ul class="post-list"><li><span class="post-meta">Jun 26, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 112 words</span>-->
             <h3>
                 <a class="post-link" href="/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">
                     <strong>Redis Cache Summarize</strong>
@@ -70,7 +70,7 @@
   重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小
 auto-aof-rewrite-percentage 100 (表示超过文件的百分比)
 auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
-   - AOF文件修复: redis-check-aof --fix appendonly.aof
+  AOF文件修复: redis-check-aof --fix appendonly.aof
 
 
 2.3 缓存失效策
@@ -85,7 +85,7 @@ auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
 
 </div>
             <hr class="post-hr">
-        </li><li><span class="post-meta">Jun 25, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 276 words</span>-->
+        </li><li><span class="post-meta">Jun 25, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 297 words</span>-->
             <h3>
                 <a class="post-link" href="/jekyll-blog/content/java/2018/06/25/java-classloader.html">
                     <strong>Java Classloader</strong>
@@ -93,11 +93,11 @@ auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
 
             <div class="post-excerpt text-snapshot">1. 类加载时机
 1.1 - 生命周期
-                      +-----------------------连接(Linking)-------------------------+
-    加载(Loading) ——&gt; |  验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution)|
-                      +-------------------------------------------------------------+
+                      +-----------------------连接(Linking)---------------------------+
+    加载(Loading) ——&gt; |  验证(Verification) ——&gt; 准备(Preparation) ——&gt; 解析(Resolution) |
+                      +---------------------------------------------------------------+
                                                                             ↓
-                            卸载(Unloading) &lt;—— 使用(Using) &lt;—— 初始化(Initialization)
+                         卸载(Unloading) &amp;lt;—— 使用(Using) &amp;lt;—— 初始化(Initialization)
 
 
 </div>
@@ -189,7 +189,7 @@ set tx_isolation='隔离级别名称' 如 set tx_isolation = 'read-committed'
 
 </div>
             <hr class="post-hr">
-        </li><li><span class="post-meta">Jun 17, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 273 words</span>-->
+        </li><li><span class="post-meta">Jun 17, 2018</span><span class="post-meta"> • Crab2Died </span><!--<span class="post-meta"> • 293 words</span>-->
             <h3>
                 <a class="post-link" href="/jekyll-blog/content/java/2018/06/17/java-compile-and-optimize.html">
                     <strong>Java Compile and Optimize</strong>
@@ -234,7 +234,7 @@ Groovy这类语言的代码也同等享有优化带来的好处
       标注检查
         
           检查的内容包括诸如变量使用前是否已被声明、 变量与赋值之间的数据类型是否能够匹配等
-          常量折叠 如定义了 int a = 1 + 2 会被编译为 int a = 3
+          常量折叠 如定义了 int a = 1 + 2 会被编译为 int a = 3 
         
       
       数据及控制流分析
@@ -273,11 +273,11 @@ Groovy这类语言的代码也同等享有优化带来的好处
   解释器与编译器(sun HotSpot虚拟机为例)
     
       交互模型
-             |---------------即时编译-----------↓
+             +---------------即时编译-----------↓
      ↓                         Client Compiler(C1编译器)
   解释器(Interpreter)               编译器
      ↑                         Server Compiler(C2编译器)
-     |----------------逆优化------------↑
+     +----------------逆优化------------↑
         
       
       HotSpot虚拟机同时由解释器与编译器搭配使用(成为混合模式(Mixed Model)),
@@ -311,7 +311,7 @@ JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启
  Client模式下阈值计算公式:
  方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100 默认情况下为13995
  Server模式下阈值计算公式:
- 方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100 
+ 方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100
  默认情况下为10700
         
       

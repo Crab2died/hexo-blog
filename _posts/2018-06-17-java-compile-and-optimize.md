@@ -32,7 +32,7 @@ tags: [Java, JIT, Optimize]
  3. 分析与字节码生成过程
  * 标注检查
    - 检查的内容包括诸如变量使用前是否已被声明、 变量与赋值之间的数据类型是否能够匹配等
-   - 常量折叠 如定义了 int a = 1 + 2 会被编译为 int a = 3
+   - 常量折叠 如定义了` int a = 1 + 2 `会被编译为` int a = 3 `
  * 数据及控制流分析
    - 数据及控制流分析是对程序上下文逻辑更进一步的验证,它可以检查出诸如程序局部变量在使用前是否有赋值、
      方法的每条路径是否都有返回值、 是否所有的受查异常都被正确处理了等问题.
@@ -56,17 +56,17 @@ tags: [Java, JIT, Optimize]
 2. 解释器与编译器(sun HotSpot虚拟机为例)
  * 交互模型
     ```
-           |---------------即时编译-----------↓
+           +---------------即时编译-----------↓
            ↓                         Client Compiler(C1编译器)
         解释器(Interpreter)               编译器
            ↑                         Server Compiler(C2编译器)
-           |----------------逆优化------------↑
+           +----------------逆优化------------↑
     ```
  * HotSpot虚拟机同时由解释器与编译器搭配使用(成为混合模式(Mixed Model)),
-   可添加参数-Xint强制虚拟机使用解释模式(Interpreted Mode),可添加参数-Xcomp强制虚拟机使用编译模式(Compiled Mode)
- * 启动参数-client启用Client Compiler编译器 参数-server启用Server Compiler编译器
+   可添加参数-Xint强制虚拟机使用解释模式(Interpreted Mode),可添加参数`-Xcomp`强制虚拟机使用编译模式(Compiled Mode)
+ * 启动参数`-client`启用Client Compiler编译器 参数`-server`启用Server Compiler编译器
  * HotSpot虚拟机还会逐渐启用分层编译(Tiered Compilation)的策略,分层编译的概念在JDK 1.6时期出现,
-   JDK1.7中Server模式中默认开启,之前需配参数-XX:+TieredCompilation启用
+   JDK1.7中Server模式中默认开启,之前需配参数`-XX:+TieredCompilation`启用
 3. 编译对象与触发条件
 * 触发条件
   - 被多次调用的方法
@@ -77,13 +77,13 @@ tags: [Java, JIT, Optimize]
   - 基于计数器的热点探测,虚拟机为每个方法设定计数器,统计方法执行次数,若超过一定阈值则认为是热点方法；
     优点是能准确判定一个方法的热度,缺点是要为每个方法建立计数器并维护,实现麻烦,也不能获取方法的调用关系
 * HotSpot虚拟机是基于计数器的热点探测,有2个计数器:方法调用计数器(Invocation Counter)和回边计数器(Back Edge Counter)
-  - 方法调用计数器,Client模式下阈值为1500次,Server模式下阈值为1000次,可由参数-XX:CompileThreshold来设置
-    -XX:-UseCounterDecay设置关闭热度衰减,-XX:CounterHalfLifeTime参数设置半衰周期的时间,单位是秒
-  - 回边计数器,参数-XX:OnStackReplacePercentage来间接调整回边计数器的阈值
-    Client模式下阈值计算公式:
-    方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100 默认情况下为13995
-    Server模式下阈值计算公式:
-    方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100 
+  - 方法调用计数器,Client模式下阈值为1500次,Server模式下阈值为1000次,可由参数`-XX:CompileThreshold`来设置
+    `-XX:-UseCounterDecay`设置关闭热度衰减,`-XX:CounterHalfLifeTime`参数设置半衰周期的时间,单位是秒
+  - 回边计数器,参数`-XX:OnStackReplacePercentage`来间接调整回边计数器的阈值  
+    Client模式下阈值计算公式:  
+    `方法调用计数器阈值(CompileThreshold)×OSR比率(OnStackReplacePercentage)[默认值为933]/100` 默认情况下为13995  
+    Server模式下阈值计算公式:  
+    `方法调用计数器阈值(CompileThreshold)×(OSR比率(OnStackReplacePercentage)[默认值140]-解释器监控比率(InterpreterProfilePercentage)[默认值33]/100`
     默认情况下为10700
 4. 编译过程
   - Client模式下编译过程  
@@ -109,7 +109,7 @@ tags: [Java, JIT, Optimize]
   - 栈上分配(Stack Allocation),如果证明一个对象不会逃逸到方法之外,则可以将对象分配到方法栈帧内存,这样随着栈帧出栈而销毁,极大地降低了GC系统压力
   - 同步消除(Synchronization Elimination),如果能证明一个变量不会逃逸出线程,那就可以消除掉同步措施,消除同步带来的消耗
   - 标量替换(Scalar Replacement)
-    标量(Scalar),是指一个数据已经无法再分解成更小的数据来表示了,如:int,long,double等
+    标量(Scalar),是指一个数据已经无法再分解成更小的数据来表示了,如:`int`,`long`,`double`等
     聚合量(Aggregate),是指一个数据可以被分解,典型的java对象
     如果证明一个对象不被外界访问,又可拆散的话,那程序在调用的时候就不创建该变量,改为创建多个成员变量来代替,
     将对象拆分后,除了可以让对象的成员变量在栈上(栈上存储的数据,有很大的概率会被虚拟机分配至物理机器的高速寄存器中存储)

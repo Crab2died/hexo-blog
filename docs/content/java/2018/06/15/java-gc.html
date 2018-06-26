@@ -56,7 +56,7 @@
 <ul>
   <li>1、程序计数器是线程内(每个线程都有唯一的、封闭的)一小块内存区域</li>
   <li>2、计数器指定的是当前虚拟机执行指令的地址</li>
-  <li>3、当虚拟机执行的是Native方法时,计数器值为空(Undefined),此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError
+  <li>3、当虚拟机执行的是Native方法时,计数器值为空(Undefined),此内存区域是唯一一个在Java虚拟机规范中没有规定任何<code class="highlighter-rouge">OutOfMemoryError</code>
    情况的区域.</li>
 </ul>
 
@@ -66,15 +66,15 @@
   <li>2、虚拟机栈描述的是java方法执行的内存模型</li>
   <li>3、每个方法在执行的同时都会创建一个栈帧(Stack Frame)用于存储局部变量表、 操作数栈、 动态链接、 方法出口等信息</li>
   <li>4、java方法的执行就是入栈与出栈的过程</li>
-  <li>5、如果虚拟机栈深度超出了虚拟机允许深度将会抛出StackOverflowError异常,现代虚拟机大多数支持动态扩展(也允许固定长度),当虚拟机申
-   请扩展时申请不到足够的内存时,将会抛出OutOfMemoryError异常</li>
+  <li>5、如果虚拟机栈深度超出了虚拟机允许深度将会抛出<code class="highlighter-rouge">StackOverflowError</code>异常,现代虚拟机大多数支持动态扩展(也允许固定长度),当虚拟机申
+   请扩展时申请不到足够的内存时,将会抛出<code class="highlighter-rouge">OutOfMemoryError</code>异常</li>
 </ul>
 
 <h3 id="4-本地方法栈native-method-stack">4. 本地方法栈(Native Method Stack)</h3>
 <ul>
   <li>1、为虚拟机调用本地Native方法提供服务</li>
   <li>2、也有虚拟机(譬如Sun HotSpot虚拟机)直接就把本地方法栈和虚拟机栈合二为一</li>
-  <li>3、也会抛出StackOverflowError异常和OutOfMemoryError异常</li>
+  <li>3、也会抛出<code class="highlighter-rouge">StackOverflowError</code>异常和<code class="highlighter-rouge">OutOfMemoryError</code>异常</li>
 </ul>
 
 <h3 id="5-java堆java-heap-gc堆">5. Java堆(Java Heap) GC堆</h3>
@@ -95,7 +95,7 @@
 <ul>
   <li>1、Class文件中除了有类的版本、 字段、 方法、 接口等描述信息外,还有一项信息是常量池(Constant Pool Table),用于存放编译期生成
    的各种字面量和符号引用,这部分内容将在类加载后进入方法区的运行时常量池中存放</li>
-  <li>2、String.intern()也会放入运行时常量池中</li>
+  <li>2、<code class="highlighter-rouge">String.intern()</code>也会放入运行时常量池中</li>
 </ul>
 
 <h3 id="8-直接内存direct-memory">8. 直接内存(Direct Memory)</h3>
@@ -145,10 +145,10 @@
 
 <h3 id="3-引用">3. 引用</h3>
 <ul>
-  <li>1、强引用(Strong Reference): new 关键字</li>
-  <li>2、软引用(Soft Reference):当要发生内存溢出时会将软引用对象加入回收队列中</li>
-  <li>3、弱引用(Weak Reference):只能活到下次GC前</li>
-  <li>4、虚引用(Phantom Reference):幽灵引用或者幻影引用</li>
+  <li>1、<strong>强引用(Strong Reference)</strong>: new 关键字</li>
+  <li>2、<strong>软引用(Soft Reference)</strong>:当要发生内存溢出时会将软引用对象加入回收队列中</li>
+  <li>3、<strong>弱引用(Weak Reference)</strong>:只能活到下次GC前</li>
+  <li>4、<strong>虚引用(Phantom Reference)</strong>:幽灵引用或者幻影引用</li>
 </ul>
 
 <h3 id="4-回收方法区">4. 回收方法区</h3>
@@ -158,7 +158,7 @@
     <ul>
       <li>该类所有的实例都已经被回收,也就是Java堆中不存在该类的任何实例.</li>
       <li>加载该类的ClassLoader已经被回收.</li>
-      <li>该类对应的java.lang.Class对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法.</li>
+      <li>该类对应的<code class="highlighter-rouge">java.lang.Class</code>对象没有在任何地方被引用,无法在任何地方通过反射访问该类的方法.</li>
     </ul>
   </li>
 </ul>
@@ -229,15 +229,15 @@
 <ul>
   <li>1、Serial收集器的多线程版,其他一样</li>
   <li>2、是许多虚拟机Server模式下新生代的首选收集器</li>
-  <li>3、ParNew收集器也是使用-XX:+UseConcMarkSweepGC选项后的默认新生代收集器,也可以使用-XX:+UseParNewGC选项来强制指定它</li>
-  <li>4、单核下效果不一定比Serial效果好,多核更适合,-XX:ParallelGCThreads参数来限制垃圾收集的线程数</li>
+  <li>3、ParNew收集器也是使用<code class="highlighter-rouge">-XX:+UseConcMarkSweepGC</code>选项后的默认新生代收集器,也可以使用<code class="highlighter-rouge">-XX:+UseParNewGC</code>选项来强制指定它</li>
+  <li>4、单核下效果不一定比Serial效果好,多核更适合,<code class="highlighter-rouge">-XX:ParallelGCThreads</code>参数来限制垃圾收集的线程数</li>
 </ul>
 
 <h3 id="3-parallel-scavenge收集器">3. Parallel Scavenge收集器</h3>
 <ul>
   <li>1、新生代收集器,采用复制算法,并行的多线程收集器,吞吐量优先</li>
   <li>2、追求可控的吞吐量, 吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)</li>
-  <li>3、控制最大垃圾收集停顿时间的-XX:MaxGCPauseMillis参数以及直接设置吞吐量大小的-XX:GCTimeRatio参数.</li>
+  <li>3、控制最大垃圾收集停顿时间的<code class="highlighter-rouge">-XX:MaxGCPauseMillis</code>参数以及直接设置吞吐量大小的<code class="highlighter-rouge">-XX:GCTimeRatio</code>参数.</li>
 </ul>
 
 <h3 id="4-serial-old收集器">4. Serial Old收集器</h3>
@@ -263,8 +263,8 @@
     </ul>
   </li>
   <li>3、并发收集、 低停顿,Sun公司的一些官方文档中也称之为并发低停顿收集器</li>
-  <li>4、-XX：+UseCMSCompactAtFullCollection默认开启，表示CMS进行Full GC的时候开启内存碎片的合并整理，该过程无法并发停顿时间变长</li>
-  <li>5、-XX：CMSFullGCsBeforeCompaction表示执行多少次不压缩的Full GC后跟着来一次压缩的Full GC，默认是0，每次都压缩</li>
+  <li>4、<code class="highlighter-rouge">-XX：+UseCMSCompactAtFullCollection</code>默认开启，表示CMS进行Full GC的时候开启内存碎片的合并整理，该过程无法并发停顿时间变长</li>
+  <li>5、<code class="highlighter-rouge">-XX：CMSFullGCsBeforeCompaction</code>表示执行多少次不压缩的Full GC后跟着来一次压缩的Full GC，默认是0，每次都压缩</li>
 </ul>
 
 <h3 id="7-g1收集器">7. G1收集器</h3>
@@ -333,12 +333,12 @@
 
 <h3 id="2-大对象直接进入老年代">2. 大对象直接进入老年代</h3>
 <ul>
-  <li>-XX:PretenureSizeThreshold参数,令大于这个设置值的对象直接在老年代分配,避免大量内存复制</li>
+  <li><code class="highlighter-rouge">-XX:PretenureSizeThreshold</code>参数,令大于这个设置值的对象直接在老年代分配,避免大量内存复制</li>
 </ul>
 
 <h3 id="3-长期存活的对象将进入老年代">3. 长期存活的对象将进入老年代</h3>
 <ul>
-  <li>对象晋升老年代的年龄阈值,可以通过参数-XX:MaxTenuringThreshold设置,默认15,每次Minor GC对象没死+1</li>
+  <li>对象晋升老年代的年龄阈值,可以通过参数<code class="highlighter-rouge">-XX:MaxTenuringThreshold</code>设置,默认15,每次Minor GC对象没死+1</li>
 </ul>
 
 <h3 id="4-动态对象年龄判定">4. 动态对象年龄判定</h3>

@@ -31,9 +31,9 @@ tags: [Cache, Redis]
    - 配置`appendonly no/yes`启用AOF，启动时会触发全量写文件，后面写操作是增量写文件
    - 同步策略配置`appendfsync always(每次写操作都触发同步)/everysec(每秒同步一次)/no(不同步)`
    - 重写(rewrite): 满足条件后触发重写，会对AOF文件内容优化，减少文件大小  
-     auto-aof-rewrite-percentage 100 (表示超过文件的百分比)  
-     auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)
-   - AOF文件修复: `redis-check-aof --fix appendonly.aof`
+     **auto-aof-rewrite-percentage 100 (表示超过文件的百分比)**  
+     **auto-aof-rewrite-min-size 64mb (触发重写的最小文件大小)**
+   - AOF文件修复: `redis-check-aof --fix appendonly.aof`
    
 ### 2.3 缓存失效策
    - **volatile-lru**：从已设置过期时间的数据集（server.db[i].expires）中挑选最近最少使用的数据淘汰

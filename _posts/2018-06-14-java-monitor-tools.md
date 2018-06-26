@@ -15,10 +15,10 @@ tags: [Java Monitor]
    类似UNIX的ps命令，列出虚拟机正在运行的进程信息
    
 ### 2. 参数
-   - -q: 只输出进程ID
-   - -m: 输出主类启动时的参数
-   - -l: 输出主类全名，如果是jar则输出jar路径
-   - -v: 输出虚拟机启动时的JVM参数
+   - **-q**: 只输出进程ID
+   - **-m**: 输出主类启动时的参数
+   - **-l**: 输出主类全名，如果是jar则输出jar路径
+   - **-v**: 输出虚拟机启动时的JVM参数
 
 ## 二. jstat(JVM Statistics Monitoring Tool)
 ### 1. 介绍
@@ -29,18 +29,18 @@ tags: [Java Monitor]
    如**`jstat -class 14232(PID) 520(采样率) 4(采样次数)`**
    
 ### 3. 参数
-   - -class: 监控类加载数量、卸载数量、总空间以及加载所用时间
-   - -gc: 监控java堆状态，包括Eden区，2个survivor区，老年代，永久代的容量、已用空间、GC时间合计等
-   - -gccapacity: 与-gc基本相同，但主要关注java堆各个区域使用到的最大、最小空间
-   - -gcutil: 与-gc基本相同，但主要关注java堆各个区域使用占比
-   - -gccase: 与-gcutil一样，但会额外输出上一次GC的原因
-   - -gcnew: 监控新生代GC状态
-   - -gcnewcapacity: 与-gcnew基本相同，但主要关注的是使用到的最大、最小空间
-   - -gcold: 监控老年代GC状态
-   - -gcoldcapacity: 与-gcold基本相同，但主要关注的是使用道的最大、最小空间
-   - -gcpermcapacity: 输出永久带使用到的最大、最小空间
-   - -compiler: 输出JIT编译过的方法、耗时等信息
-   - -printcompilation: 输出已被JIT编译过的方法
+   - **-class**: 监控类加载数量、卸载数量、总空间以及加载所用时间
+   - **-gc**: 监控java堆状态，包括Eden区，2个survivor区，老年代，永久代容量、已用空间、GC时间合计等
+   - **-gccapacity**: 与-gc基本相同，但主要关注java堆各个区域使用到的最大、最小空间
+   - **-gcutil**: 与-gc基本相同，但主要关注java堆各个区域使用占比
+   - **-gccase**: 与-gcutil一样，但会额外输出上一次GC的原因
+   - **-gcnew**: 监控新生代GC状态
+   - **-gcnewcapacity**: 与-gcnew基本相同，但主要关注的是使用到的最大、最小空间
+   - **-gcold**: 监控老年代GC状态
+   - **-gcoldcapacity**: 与-gcold基本相同，但主要关注的是使用道的最大、最小空间
+   - **-gcpermcapacity**: 输出永久带使用到的最大、最小空间
+   - **-compiler**: 输出JIT编译过的方法、耗时等信息
+   - **-printcompilation**: 输出已被JIT编译过的方法
    
 ## 三. jinfo(Configuration Info for Java)
 ### 1. 介绍
@@ -50,11 +50,11 @@ tags: [Java Monitor]
    jinfo [option] pid 如 `jinfo -flags 14232`
    
 ### 3. 参数
-   - -flag <name>: to print the value of the named VM flag(输出JVM参数名为name的参数信息)
-   - -flag +/-<name>: to enable or disable the named VM flag(添加或除去JVM参数名为name的参数)
-   - -flag <name>=<value>: to set the named VM flag to the given value(设置JVM参数，入-Xmx=1024m)
-   - -flags: to print VM flags(输出JVM启动参数信息)
-   - -sysprops: to print Java system properties(输出`System.getProperties()`信息)
+   - **-flag &lt;name&gt;**: to print the value of the named VM flag. (输出JVM参数名为name的参数信息)
+   - **-flag +/-&lt;name&gt;**: to enable or disable the named VM flag. (添加或除去JVM参数名为name的参数)
+   - **-flag &lt;name&gt;=&lt;value&gt;**: to set the named VM flag to the given value. (设置JVM参数， 如-Xmx=1024m)
+   - **-flags**: to print VM flags. (输出JVM启动参数信息)
+   - **-sysprops**: to print Java system properties. (输出`System.getProperties()`信息)
 
 ## 四. jmap(Memory Map for Java)
 ### 1. 介绍
@@ -66,12 +66,12 @@ tags: [Java Monitor]
    jmap [option] vmid 
    
 ### 3. 参数
-   - -dump: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=<filename>, live表示是否只导出存活的对象
-   - -finalizerinfo: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效
-   - -heap: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效
-   - -histo: 显示堆中对象统计信息，包括类、实例数量及合计容量等
-   - -permstat: 以ClassLoader为统计口径显示永久带内存状态，只在Linux/Solaris平台有效
-   - -F: 当-dump没响应时，使用-F强制生成dump文件，只在Linux/Solaris平台有效
+   - **-dump**: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=<filename>, live表示是否只导出存活的对象
+   - **-finalizerinfo**: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效
+   - **-heap**: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效
+   - **-histo**: 显示堆中对象统计信息，包括类、实例数量及合计容量等
+   - **-permstat**: 以ClassLoader为统计口径显示永久带内存状态，只在Linux/Solaris平台有效
+   - **-F**: 当-dump没响应时，使用-F强制生成dump文件，只在Linux/Solaris平台有效
  
 ## 五. jhat(JVM Heap Analysis Tool)
 ### 1. 介绍
@@ -81,9 +81,9 @@ tags: [Java Monitor]
    jhat [-port 7001] &lt;dumpfile&gt;
    
 ### 3. 参数
-   - -port: server端口，可通过host:port访问
-   - <file>: dump文件
-   - -J<flag>: 运行参数,如: -J-mx512m
+   - **-port**: server端口，可通过host:port访问
+   - **&lt;file&gt;**: dump文件
+   - **-J&lt;flag&gt;**: 运行参数,如: -J-mx512m
 
 ## 六. jstack(Stack Trace for Java)
 ### 1. 介绍
@@ -96,9 +96,9 @@ tags: [Java Monitor]
    jstack [option] vmid 如`jstack -l 14232`
    
 ### 3. 参数
-   - -F: 当正常请求无响应时，强制输出线程堆栈
-   - -l: 除堆栈外，显示关于锁的附加信息
-   - -m: 如果调用到本地方法时，显示C/C++堆栈信息
+   - **-F**: 当正常请求无响应时，强制输出线程堆栈
+   - **-l**: 除堆栈外，显示关于锁的附加信息
+   - **-m**: 如果调用到本地方法时，显示C/C++堆栈信息
    
 ### 4. 日志分析
   1. 线程分为New、Runnable、Running、Waiting、Timed_Waiting、Blocked、Dead等状态  

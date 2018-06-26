@@ -54,10 +54,10 @@
 
 <h3 id="2-参数">2. 参数</h3>
 <ul>
-  <li>-q: 只输出进程ID</li>
-  <li>-m: 输出主类启动时的参数</li>
-  <li>-l: 输出主类全名，如果是jar则输出jar路径</li>
-  <li>-v: 输出虚拟机启动时的JVM参数</li>
+  <li><strong>-q</strong>: 只输出进程ID</li>
+  <li><strong>-m</strong>: 输出主类启动时的参数</li>
+  <li><strong>-l</strong>: 输出主类全名，如果是jar则输出jar路径</li>
+  <li><strong>-v</strong>: 输出虚拟机启动时的JVM参数</li>
 </ul>
 
 <h2 id="二-jstatjvm-statistics-monitoring-tool">二. jstat(JVM Statistics Monitoring Tool)</h2>
@@ -70,18 +70,18 @@
 
 <h3 id="3-参数">3. 参数</h3>
 <ul>
-  <li>-class: 监控类加载数量、卸载数量、总空间以及加载所用时间</li>
-  <li>-gc: 监控java堆状态，包括Eden区，2个survivor区，老年代，永久代的容量、已用空间、GC时间合计等</li>
-  <li>-gccapacity: 与-gc基本相同，但主要关注java堆各个区域使用到的最大、最小空间</li>
-  <li>-gcutil: 与-gc基本相同，但主要关注java堆各个区域使用占比</li>
-  <li>-gccase: 与-gcutil一样，但会额外输出上一次GC的原因</li>
-  <li>-gcnew: 监控新生代GC状态</li>
-  <li>-gcnewcapacity: 与-gcnew基本相同，但主要关注的是使用到的最大、最小空间</li>
-  <li>-gcold: 监控老年代GC状态</li>
-  <li>-gcoldcapacity: 与-gcold基本相同，但主要关注的是使用道的最大、最小空间</li>
-  <li>-gcpermcapacity: 输出永久带使用到的最大、最小空间</li>
-  <li>-compiler: 输出JIT编译过的方法、耗时等信息</li>
-  <li>-printcompilation: 输出已被JIT编译过的方法</li>
+  <li><strong>-class</strong>: 监控类加载数量、卸载数量、总空间以及加载所用时间</li>
+  <li><strong>-gc</strong>: 监控java堆状态，包括Eden区，2个survivor区，老年代，永久代容量、已用空间、GC时间合计等</li>
+  <li><strong>-gccapacity</strong>: 与-gc基本相同，但主要关注java堆各个区域使用到的最大、最小空间</li>
+  <li><strong>-gcutil</strong>: 与-gc基本相同，但主要关注java堆各个区域使用占比</li>
+  <li><strong>-gccase</strong>: 与-gcutil一样，但会额外输出上一次GC的原因</li>
+  <li><strong>-gcnew</strong>: 监控新生代GC状态</li>
+  <li><strong>-gcnewcapacity</strong>: 与-gcnew基本相同，但主要关注的是使用到的最大、最小空间</li>
+  <li><strong>-gcold</strong>: 监控老年代GC状态</li>
+  <li><strong>-gcoldcapacity</strong>: 与-gcold基本相同，但主要关注的是使用道的最大、最小空间</li>
+  <li><strong>-gcpermcapacity</strong>: 输出永久带使用到的最大、最小空间</li>
+  <li><strong>-compiler</strong>: 输出JIT编译过的方法、耗时等信息</li>
+  <li><strong>-printcompilation</strong>: 输出已被JIT编译过的方法</li>
 </ul>
 
 <h2 id="三-jinfoconfiguration-info-for-java">三. jinfo(Configuration Info for Java)</h2>
@@ -93,11 +93,11 @@
 
 <h3 id="3-参数-1">3. 参数</h3>
 <ul>
-  <li>-flag <name>: to print the value of the named VM flag(输出JVM参数名为name的参数信息)</name></li>
-  <li>-flag +/-<name>: to enable or disable the named VM flag(添加或除去JVM参数名为name的参数)</name></li>
-  <li>-flag <name>=<value>: to set the named VM flag to the given value(设置JVM参数，入-Xmx=1024m)</value></name></li>
-  <li>-flags: to print VM flags(输出JVM启动参数信息)</li>
-  <li>-sysprops: to print Java system properties(输出<code class="highlighter-rouge">System.getProperties()</code>信息)</li>
+  <li><strong>-flag &lt;name&gt;</strong>: to print the value of the named VM flag. (输出JVM参数名为name的参数信息)</li>
+  <li><strong>-flag +/-&lt;name&gt;</strong>: to enable or disable the named VM flag. (添加或除去JVM参数名为name的参数)</li>
+  <li><strong>-flag &lt;name&gt;=&lt;value&gt;</strong>: to set the named VM flag to the given value. (设置JVM参数， 如-Xmx=1024m)</li>
+  <li><strong>-flags</strong>: to print VM flags. (输出JVM启动参数信息)</li>
+  <li><strong>-sysprops</strong>: to print Java system properties. (输出<code class="highlighter-rouge">System.getProperties()</code>信息)</li>
 </ul>
 
 <h2 id="四-jmapmemory-map-for-java">四. jmap(Memory Map for Java)</h2>
@@ -111,12 +111,12 @@
 
 <h3 id="3-参数-2">3. 参数</h3>
 <ul>
-  <li>-dump: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=<filename>, live表示是否只导出存活的对象</filename></li>
-  <li>-finalizerinfo: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效</li>
-  <li>-heap: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效</li>
-  <li>-histo: 显示堆中对象统计信息，包括类、实例数量及合计容量等</li>
-  <li>-permstat: 以ClassLoader为统计口径显示永久带内存状态，只在Linux/Solaris平台有效</li>
-  <li>-F: 当-dump没响应时，使用-F强制生成dump文件，只在Linux/Solaris平台有效</li>
+  <li><strong>-dump</strong>: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=<filename>, live表示是否只导出存活的对象</filename></li>
+  <li><strong>-finalizerinfo</strong>: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效</li>
+  <li><strong>-heap</strong>: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效</li>
+  <li><strong>-histo</strong>: 显示堆中对象统计信息，包括类、实例数量及合计容量等</li>
+  <li><strong>-permstat</strong>: 以ClassLoader为统计口径显示永久带内存状态，只在Linux/Solaris平台有效</li>
+  <li><strong>-F</strong>: 当-dump没响应时，使用-F强制生成dump文件，只在Linux/Solaris平台有效</li>
 </ul>
 
 <h2 id="五-jhatjvm-heap-analysis-tool">五. jhat(JVM Heap Analysis Tool)</h2>
@@ -128,12 +128,9 @@
 
 <h3 id="3-参数-3">3. 参数</h3>
 <ul>
-  <li>-port: server端口，可通过host:port访问</li>
-  <li>
-    <file>: dump文件
-</file>
-  </li>
-  <li>-J<flag>: 运行参数,如: -J-mx512m</flag></li>
+  <li><strong>-port</strong>: server端口，可通过host:port访问</li>
+  <li><strong>&lt;file&gt;</strong>: dump文件</li>
+  <li><strong>-J&lt;flag&gt;</strong>: 运行参数,如: -J-mx512m</li>
 </ul>
 
 <h2 id="六-jstackstack-trace-for-java">六. jstack(Stack Trace for Java)</h2>
@@ -148,9 +145,9 @@
 
 <h3 id="3-参数-4">3. 参数</h3>
 <ul>
-  <li>-F: 当正常请求无响应时，强制输出线程堆栈</li>
-  <li>-l: 除堆栈外，显示关于锁的附加信息</li>
-  <li>-m: 如果调用到本地方法时，显示C/C++堆栈信息</li>
+  <li><strong>-F</strong>: 当正常请求无响应时，强制输出线程堆栈</li>
+  <li><strong>-l</strong>: 除堆栈外，显示关于锁的附加信息</li>
+  <li><strong>-m</strong>: 如果调用到本地方法时，显示C/C++堆栈信息</li>
 </ul>
 
 <h3 id="4-日志分析">4. 日志分析</h3>

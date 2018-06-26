@@ -32,7 +32,7 @@ tags: [Ruby Install, CentOS]
  {% highlight bash %}
  $ tar -zxvf ruby-2.5.1.tar.gz
  $ cd ruby-2.5.1
- $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl     // important
+ $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl  # important
  $ make && make install
  {% endhighlight %}
  - Configure environment variable

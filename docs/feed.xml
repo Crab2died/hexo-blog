@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-26T11:31:54+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Redis Cache Summarize</title><link href="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" rel="alternate" type="text/html" title="Redis Cache Summarize" /><published>2018-06-26T00:11:27+08:00</published><updated>2018-06-26T00:11:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">&lt;h2 id=&quot;1-概述&quot;&gt;1. 概述&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-26T14:57:07+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Redis Cache Summarize</title><link href="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" rel="alternate" type="text/html" title="Redis Cache Summarize" /><published>2018-06-26T00:11:27+08:00</published><updated>2018-06-26T00:11:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">&lt;h2 id=&quot;1-概述&quot;&gt;1. 概述&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;基于内存的Key-Value存储系统，单线程实现&lt;/li&gt;
   &lt;li&gt;多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合)&lt;/li&gt;
@@ -1551,7 +1551,7 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt; &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tar&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-zxvf&lt;/span&gt; ruby-2.5.1.tar.gz
  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;ruby-2.5.1
- &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/ruby &lt;span class=&quot;nt&quot;&gt;--with-opessl-dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/openssl     // important
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./configure &lt;span class=&quot;nt&quot;&gt;--prefix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/ruby &lt;span class=&quot;nt&quot;&gt;--with-opessl-dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/openssl  &lt;span class=&quot;c&quot;&gt;# important&lt;/span&gt;
  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
  &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -1575,16 +1575,16 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
  
  &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;
  2.7.6
- &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Crab2Died</name></author><category term="Ruby Install" /><category term="CentOS" /><summary type="html">1. Install OpenSSL Download OpenSSL Source Install OpenSSL $ tar -zxvf openssl-1.1.1-pre7.tar.gz $ cd openssl-1.1.1-pre7 $ ./config -fPIC --prefix=/usr/local/openssl enable-shared $ ./config -t $ make &amp;amp;&amp;amp; make install Check install $ openssl version OpenSSL 1.0.2k-fips 26 Jan 2017 2. Install Ruby Download Ruby Source Install Ruby $ tar -zxvf ruby-2.5.1.tar.gz $ cd ruby-2.5.1 $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl // important $ make &amp;amp;&amp;amp; make install Configure environment variable $ vi /etc/profile append -&amp;gt; export PATH=/usr/local/ruby/bin:$PATH $ source /etc/profile Check install $ ruby -v ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux] $ gem -v 2.7.6</summary></entry><entry><title type="html">JAVA Monitor Tools</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html" rel="alternate" type="text/html" title="JAVA Monitor Tools" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/14/java-monitor-tools</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">&lt;h2 id=&quot;一-jpsjvm-process-status-tool&quot;&gt;一. jps(JVM Process Status Tool)&lt;/h2&gt;
+ &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name>Crab2Died</name></author><category term="Ruby Install" /><category term="CentOS" /><summary type="html">1. Install OpenSSL Download OpenSSL Source Install OpenSSL $ tar -zxvf openssl-1.1.1-pre7.tar.gz $ cd openssl-1.1.1-pre7 $ ./config -fPIC --prefix=/usr/local/openssl enable-shared $ ./config -t $ make &amp;amp;&amp;amp; make install Check install $ openssl version OpenSSL 1.0.2k-fips 26 Jan 2017 2. Install Ruby Download Ruby Source Install Ruby $ tar -zxvf ruby-2.5.1.tar.gz $ cd ruby-2.5.1 $ ./configure --prefix=/usr/local/ruby --with-opessl-dir=/usr/local/openssl # important $ make &amp;amp;&amp;amp; make install Configure environment variable $ vi /etc/profile append -&amp;gt; export PATH=/usr/local/ruby/bin:$PATH $ source /etc/profile Check install $ ruby -v ruby 2.5.1p57 (2018-03-29 revision 63029) [x86_64-linux] $ gem -v 2.7.6</summary></entry><entry><title type="html">JAVA Monitor Tools</title><link href="https://crab2died.github.io/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html" rel="alternate" type="text/html" title="JAVA Monitor Tools" /><published>2018-06-14T12:45:27+08:00</published><updated>2018-06-14T12:45:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/java/2018/06/14/java-monitor-tools</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/java/2018/06/14/java-monitor-tools.html">&lt;h2 id=&quot;一-jpsjvm-process-status-tool&quot;&gt;一. jps(JVM Process Status Tool)&lt;/h2&gt;
 &lt;h3 id=&quot;1-介绍&quot;&gt;1. 介绍&lt;/h3&gt;
 &lt;p&gt;类似UNIX的ps命令，列出虚拟机正在运行的进程信息&lt;/p&gt;
 
 &lt;h3 id=&quot;2-参数&quot;&gt;2. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-q: 只输出进程ID&lt;/li&gt;
-  &lt;li&gt;-m: 输出主类启动时的参数&lt;/li&gt;
-  &lt;li&gt;-l: 输出主类全名，如果是jar则输出jar路径&lt;/li&gt;
-  &lt;li&gt;-v: 输出虚拟机启动时的JVM参数&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-q&lt;/strong&gt;: 只输出进程ID&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-m&lt;/strong&gt;: 输出主类启动时的参数&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-l&lt;/strong&gt;: 输出主类全名，如果是jar则输出jar路径&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-v&lt;/strong&gt;: 输出虚拟机启动时的JVM参数&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;二-jstatjvm-statistics-monitoring-tool&quot;&gt;二. jstat(JVM Statistics Monitoring Tool)&lt;/h2&gt;
@@ -1597,18 +1597,18 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;h3 id=&quot;3-参数&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-class: 监控类加载数量、卸载数量、总空间以及加载所用时间&lt;/li&gt;
-  &lt;li&gt;-gc: 监控java堆状态，包括Eden区，2个survivor区，老年代，永久代的容量、已用空间、GC时间合计等&lt;/li&gt;
-  &lt;li&gt;-gccapacity: 与-gc基本相同，但主要关注java堆各个区域使用到的最大、最小空间&lt;/li&gt;
-  &lt;li&gt;-gcutil: 与-gc基本相同，但主要关注java堆各个区域使用占比&lt;/li&gt;
-  &lt;li&gt;-gccase: 与-gcutil一样，但会额外输出上一次GC的原因&lt;/li&gt;
-  &lt;li&gt;-gcnew: 监控新生代GC状态&lt;/li&gt;
-  &lt;li&gt;-gcnewcapacity: 与-gcnew基本相同，但主要关注的是使用到的最大、最小空间&lt;/li&gt;
-  &lt;li&gt;-gcold: 监控老年代GC状态&lt;/li&gt;
-  &lt;li&gt;-gcoldcapacity: 与-gcold基本相同，但主要关注的是使用道的最大、最小空间&lt;/li&gt;
-  &lt;li&gt;-gcpermcapacity: 输出永久带使用到的最大、最小空间&lt;/li&gt;
-  &lt;li&gt;-compiler: 输出JIT编译过的方法、耗时等信息&lt;/li&gt;
-  &lt;li&gt;-printcompilation: 输出已被JIT编译过的方法&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-class&lt;/strong&gt;: 监控类加载数量、卸载数量、总空间以及加载所用时间&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gc&lt;/strong&gt;: 监控java堆状态，包括Eden区，2个survivor区，老年代，永久代容量、已用空间、GC时间合计等&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gccapacity&lt;/strong&gt;: 与-gc基本相同，但主要关注java堆各个区域使用到的最大、最小空间&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gcutil&lt;/strong&gt;: 与-gc基本相同，但主要关注java堆各个区域使用占比&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gccase&lt;/strong&gt;: 与-gcutil一样，但会额外输出上一次GC的原因&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gcnew&lt;/strong&gt;: 监控新生代GC状态&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gcnewcapacity&lt;/strong&gt;: 与-gcnew基本相同，但主要关注的是使用到的最大、最小空间&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gcold&lt;/strong&gt;: 监控老年代GC状态&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gcoldcapacity&lt;/strong&gt;: 与-gcold基本相同，但主要关注的是使用道的最大、最小空间&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-gcpermcapacity&lt;/strong&gt;: 输出永久带使用到的最大、最小空间&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-compiler&lt;/strong&gt;: 输出JIT编译过的方法、耗时等信息&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-printcompilation&lt;/strong&gt;: 输出已被JIT编译过的方法&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;三-jinfoconfiguration-info-for-java&quot;&gt;三. jinfo(Configuration Info for Java)&lt;/h2&gt;
@@ -1620,11 +1620,11 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;h3 id=&quot;3-参数-1&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-flag &lt;name&gt;: to print the value of the named VM flag(输出JVM参数名为name的参数信息)&lt;/name&gt;&lt;/li&gt;
-  &lt;li&gt;-flag +/-&lt;name&gt;: to enable or disable the named VM flag(添加或除去JVM参数名为name的参数)&lt;/name&gt;&lt;/li&gt;
-  &lt;li&gt;-flag &lt;name&gt;=&lt;value&gt;: to set the named VM flag to the given value(设置JVM参数，入-Xmx=1024m)&lt;/value&gt;&lt;/name&gt;&lt;/li&gt;
-  &lt;li&gt;-flags: to print VM flags(输出JVM启动参数信息)&lt;/li&gt;
-  &lt;li&gt;-sysprops: to print Java system properties(输出&lt;code class=&quot;highlighter-rouge&quot;&gt;System.getProperties()&lt;/code&gt;信息)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-flag &amp;lt;name&amp;gt;&lt;/strong&gt;: to print the value of the named VM flag. (输出JVM参数名为name的参数信息)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-flag +/-&amp;lt;name&amp;gt;&lt;/strong&gt;: to enable or disable the named VM flag. (添加或除去JVM参数名为name的参数)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-flag &amp;lt;name&amp;gt;=&amp;lt;value&amp;gt;&lt;/strong&gt;: to set the named VM flag to the given value. (设置JVM参数， 如-Xmx=1024m)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-flags&lt;/strong&gt;: to print VM flags. (输出JVM启动参数信息)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-sysprops&lt;/strong&gt;: to print Java system properties. (输出&lt;code class=&quot;highlighter-rouge&quot;&gt;System.getProperties()&lt;/code&gt;信息)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;四-jmapmemory-map-for-java&quot;&gt;四. jmap(Memory Map for Java)&lt;/h2&gt;
@@ -1638,12 +1638,12 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;h3 id=&quot;3-参数-2&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-dump: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=&lt;filename&gt;, live表示是否只导出存活的对象&lt;/filename&gt;&lt;/li&gt;
-  &lt;li&gt;-finalizerinfo: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效&lt;/li&gt;
-  &lt;li&gt;-heap: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效&lt;/li&gt;
-  &lt;li&gt;-histo: 显示堆中对象统计信息，包括类、实例数量及合计容量等&lt;/li&gt;
-  &lt;li&gt;-permstat: 以ClassLoader为统计口径显示永久带内存状态，只在Linux/Solaris平台有效&lt;/li&gt;
-  &lt;li&gt;-F: 当-dump没响应时，使用-F强制生成dump文件，只在Linux/Solaris平台有效&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-dump&lt;/strong&gt;: 生成java堆转存快照, 格式 -dump:[live, ],format=b,file=&lt;filename&gt;, live表示是否只导出存活的对象&lt;/filename&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-finalizerinfo&lt;/strong&gt;: 显示在F-Queen里面等待Finalizer线程执行finalize()方法的对象，只在Linux/Solaris平台有效&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-heap&lt;/strong&gt;: 显示java堆详细信息，如使用哪种GC回收器，参数配置、分代状况等信息，只在Linux/Solaris平台有效&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-histo&lt;/strong&gt;: 显示堆中对象统计信息，包括类、实例数量及合计容量等&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-permstat&lt;/strong&gt;: 以ClassLoader为统计口径显示永久带内存状态，只在Linux/Solaris平台有效&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-F&lt;/strong&gt;: 当-dump没响应时，使用-F强制生成dump文件，只在Linux/Solaris平台有效&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;五-jhatjvm-heap-analysis-tool&quot;&gt;五. jhat(JVM Heap Analysis Tool)&lt;/h2&gt;
@@ -1655,12 +1655,9 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;h3 id=&quot;3-参数-3&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-port: server端口，可通过host:port访问&lt;/li&gt;
-  &lt;li&gt;
-    &lt;file&gt;: dump文件
-&lt;/file&gt;
-  &lt;/li&gt;
-  &lt;li&gt;-J&lt;flag&gt;: 运行参数,如: -J-mx512m&lt;/flag&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-port&lt;/strong&gt;: server端口，可通过host:port访问&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&amp;lt;file&amp;gt;&lt;/strong&gt;: dump文件&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-J&amp;lt;flag&amp;gt;&lt;/strong&gt;: 运行参数,如: -J-mx512m&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;六-jstackstack-trace-for-java&quot;&gt;六. jstack(Stack Trace for Java)&lt;/h2&gt;
@@ -1675,9 +1672,9 @@ ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Se
 
 &lt;h3 id=&quot;3-参数-4&quot;&gt;3. 参数&lt;/h3&gt;
 &lt;ul&gt;
-  &lt;li&gt;-F: 当正常请求无响应时，强制输出线程堆栈&lt;/li&gt;
-  &lt;li&gt;-l: 除堆栈外，显示关于锁的附加信息&lt;/li&gt;
-  &lt;li&gt;-m: 如果调用到本地方法时，显示C/C++堆栈信息&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-F&lt;/strong&gt;: 当正常请求无响应时，强制输出线程堆栈&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-l&lt;/strong&gt;: 除堆栈外，显示关于锁的附加信息&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;-m&lt;/strong&gt;: 如果调用到本地方法时，显示C/C++堆栈信息&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-日志分析&quot;&gt;4. 日志分析&lt;/h3&gt;

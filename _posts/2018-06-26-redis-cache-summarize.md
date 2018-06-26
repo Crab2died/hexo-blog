@@ -50,7 +50,7 @@ tags: [Cache, Redis]
 
 ## 3. Redis集群
 ### 3.1 分片策略
-   - Redis集群被分为16384(2<sup>14</sup>)个hash slot(hash槽)，集群内每个节点都拥有部分hash槽，使用数据键的CRC16编码对16384取模来
+   - Redis集群被分为16384({% raw %} $ 2^{14} $ {% endraw %})个hash slot(hash槽)，集群内每个节点都拥有部分hash槽，使用数据键的CRC16编码对16384取模来
      计算数据对应的hash槽
    - Redis集群新增节点只用把集群中每个节点的部分hash槽移动到新节点中即可
    - Redis集群移除节点也只用把该节点的hash槽移动到其他节点即可

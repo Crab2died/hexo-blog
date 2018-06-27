@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-26T20:36:01+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Redis Cache Summarize</title><link href="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" rel="alternate" type="text/html" title="Redis Cache Summarize" /><published>2018-06-26T00:11:27+08:00</published><updated>2018-06-26T00:11:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">&lt;h2 id=&quot;1-概述&quot;&gt;1. 概述&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://crab2died.github.io/jekyll-blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://crab2died.github.io/jekyll-blog/" rel="alternate" type="text/html" /><updated>2018-06-27T18:26:49+08:00</updated><id>https://crab2died.github.io/jekyll-blog/</id><title type="html">Crab2Died</title><author><name>Copyright ©2018 Crab2Died</name></author><entry><title type="html">Redis Cache Summarize</title><link href="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html" rel="alternate" type="text/html" title="Redis Cache Summarize" /><published>2018-06-26T00:11:27+08:00</published><updated>2018-06-26T00:11:27+08:00</updated><id>https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize</id><content type="html" xml:base="https://crab2died.github.io/jekyll-blog/content/cache/2018/06/26/redis-cache-summarize.html">&lt;h2 id=&quot;1-概述&quot;&gt;1. 概述&lt;/h2&gt;
 &lt;ul&gt;
   &lt;li&gt;基于内存的Key-Value存储系统，单线程实现&lt;/li&gt;
   &lt;li&gt;多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合)&lt;/li&gt;
@@ -342,9 +342,9 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;7-java并发&quot;&gt;7. java并发&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/jekyll-blog/content/java/2018/06/15/java-concurrent.html&quot;&gt;java并发编程&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/jekyll-blog/content/java/2018/06/15/java-concurrent.html&quot;&gt;java并发编程&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h3 id=&quot;8-interface与abstract类&quot;&gt;8. interface与abstract类&lt;/h3&gt;
 &lt;ul&gt;
@@ -419,9 +419,9 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;3-java自动内存管理&quot;&gt;3. java自动内存管理&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;/jekyll-blog/content/java/2018/06/15/java-gc.html&quot;&gt;java自动内存管理&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;/jekyll-blog/content/java/2018/06/15/java-gc.html&quot;&gt;java自动内存管理&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
 &lt;h2 id=&quot;其他&quot;&gt;其他&lt;/h2&gt;
 &lt;h3 id=&quot;1-osi网络模型&quot;&gt;1. OSI网络模型&lt;/h3&gt;

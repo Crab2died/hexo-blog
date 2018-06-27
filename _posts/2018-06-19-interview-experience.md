@@ -67,7 +67,7 @@ tags: [Java, Interview, Experience]
    - wait和sleep都可以通过interrupt()方法打断线程的暂停状态，从而使线程立刻抛出InterruptedException(但不建议使用该方法)。
 
 ### 7. java并发
-   - [java并发编程](/jekyll-blog/content/java/2018/06/15/java-concurrent.html)   
+   > [java并发编程](/jekyll-blog/content/java/2018/06/15/java-concurrent.html)   
 
 ### 8. interface与abstract类
    - 抽象类是包含有抽象方法的类(也可以拥有成员变量和普通成员方法)，抽象方法是只有方法声明没有具体实现的方法，所以抽象类不能实例化，是为
@@ -117,7 +117,7 @@ tags: [Java, Interview, Experience]
      - 3.本地方法栈中JNI（就是native方法）引用的对象。	 
 
 ### 3. java自动内存管理
-   - [java自动内存管理](/jekyll-blog/content/java/2018/06/15/java-gc.html)   
+   > [java自动内存管理](/jekyll-blog/content/java/2018/06/15/java-gc.html)   
 	 
 ## 其他
 ### 1. OSI网络模型

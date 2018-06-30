@@ -17,7 +17,7 @@ tags: [Java, Classloader]
     加载(Loading) ——> |  验证(Verification) ——> 准备(Preparation) ——> 解析(Resolution) |
                       +---------------------------------------------------------------+
                                                                             ↓
-                         卸载(Unloading) &lt;—— 使用(Using) &lt;—— 初始化(Initialization)
+                                卸载(Unloading) <—— 使用(Using) <—— 初始化(Initialization)
 ```
 
 ### 1.2 - 立即初始化(主动引用)  

@@ -10,7 +10,7 @@ categories: content java
 tags: [Java, JMM]
 ---
 
-## 1. 内存模型
+## 1. 内存模型(JMM)
  ![内存模型](https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/concurrent/java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B.png)
 
 ## 2. 内存间的交互操作
@@ -72,7 +72,7 @@ tags: [Java, JMM]
   先发生的线程对修改了共享变量的值、发送了消息或调用了方法会被后发生的线程所观察到  
 
 ### 2.9 先行发生(happens-before)规则
-  《JSR-133:Java Memory Model and Thread Specification》定义了如下happens-before规则。 
+   《JSR-133:Java Memory Model and Thread Specification》定义了如下happens-before规则。 
   - 1、程序顺序规则：一个线程中的每个操作，happens-before于该线程中的任意后续操作。
   - 2、监视器锁规则：对一个锁的解锁，happens-before于随后对这个锁的加锁。
   - 3、volatile变量规则：对一个volatile域的写，happens-before于任意后续对这个volatile域的读。

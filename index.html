@@ -8,7 +8,7 @@ layout: default
     {%- endif -%}
 
     {%- if paginator.total_posts > 0 -%}
-    <div class="post-list-heading post-list-head"><strong>{{ page.list_title | default: "Blog List" }}</strong></div>
+    <div class="post-list-heading post-list-head"><strong>{{ page.list_title | default: "Articles" }}</strong></div>
     <ul class="post-list">
         {%- for post in paginator.posts -%}
         <li>

@@ -52,3 +52,22 @@ tags: [REST, HTTP]
      - 表示资源集合时，使用复数形式     如: blogs
      - 子资源关系表示   示例: /blog/100/comments
      - 为减少URI层级深度,引入适当的参数查询
+  2. Request Method  (资源的CRUD)
+     - GET/HEAD : 查询资源
+       - GET /blog/100
+       - GET /blog/100/comments
+     - POST: 创建资源
+       - POST /blog
+       - POST /blog/100/comment
+     - PUT/PATCH: 更新资源
+       - PUT /blog/100
+       - PUT /blog/100/comment/1
+     - DELETE: 删除资源
+       - DELETE /blog/100
+       - DELETE /blog/100/comment/1
+  3. Response
+     - 一般地，返回JSON数据而不是XML
+     - 不过滤API返回的空格，支持gzip/deflate压缩,Content-Encoding: gzip/deflate
+     - 统一的返回格式，错误码信息等
+     - ![HTTP status](/jekyll-blog/images/posts/http-status.png)
+     

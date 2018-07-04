@@ -70,4 +70,32 @@ tags: [REST, HTTP]
      - 不过滤API返回的空格，支持gzip/deflate压缩,Content-Encoding: gzip/deflate
      - 统一的返回格式，错误码信息等
      - ![HTTP status](/jekyll-blog/images/posts/http-status.png)
-     
+     - 常见HTTP status
+       - 200   OK - 对成功的GET、PUT、PATCH或DELETE操作进行响应。也可以被用在不创建新资源的POST操作上
+       - 201   Created - 对创建新资源的POST操作进行响应。应该带着指向新资源地址的Location header
+       - 204   No Content - 对不会返回响应体的成功请求进行响应（比如DELETE请求）
+       - 304   Not Modified - HTTP缓存header生效的时候用
+       - 400   Bad Request - 请求异常，比如请求中的body无法解析
+       - 401   Unauthorized - 没有进行认证或者认证非法。当API通过浏览器访问的时候，可以用来弹出一个认证对话框
+       - 403   Forbidden - 当认证成功，但是认证过的用户没有访问资源的权限
+       - 404   Not Found - 当一个不存在的资源被请求
+       - 405   Method Not Allowed - 所请求的HTTP方法不允许当前认证用户访问
+       - 410   Gone - 表示当前请求的资源不再可用。当调用老版本API的时候很有用
+       - 415   Unsupported Media Type - 如果请求中的内容类型是错误的
+       - 422   Unprocessable Entity - 用来表示校验错误
+       - 429   Too Many Requests - 由于请求频次达到上限而被拒绝访问
+  4. 认证
+     - RESTful API无状态的，每个请求都要自带凭证。
+     - 使用基于SSL来保证传输安全的OAauth 2
+  5. 缓存
+  6. HATEOAS (Hypermedia as the Engine of Application State)
+  7. HTTP Request Method覆盖
+     - 一些老的HTTP Client只支持GET、POST请求，为了兼容这些Client，API需要覆盖HTTP方法，一般做法是HTTP POST请求会有一个
+       X-HTTP-Method-Override请求头，其值为PUT,PATCH,DELETE之一,以此兼容请求。
+  8. 限制速度
+     - 避免请求泛滥，HTTP引入状态码429(Too Many Requests)
+     - 一般地，是返回头信息(依照twitter的命名规则)
+       - X-Rate-Limit-Limit :当前时间段允许的并发请求数
+       - X-Rate-Limit-Remaining:当前时间段保留的请求数。
+       - X-Rate-Limit-Reset:重置时间(秒)
+       - Retry-After:下一次访问应该等待的时间(秒)

@@ -69,7 +69,12 @@ tags: [REST, HTTP]
      - 一般地，返回JSON数据而不是XML
      - 不过滤API返回的空格，支持gzip/deflate压缩,Content-Encoding: gzip/deflate
      - 统一的返回格式，错误码信息等
-     - ![HTTP status](/jekyll-blog/images/posts/http-status.png)
+     - |   状态码    |        描述              | 
+       |:----------:|:-------------------------|
+       |     2xx    |请求正常处理并返回          | 
+       |     3xx    |重定向，请求的资源位置发生变化|
+       |     4xx    |客户端发送的请求有误         |
+       |     5xx    |服务器端的错误              |
      - 常见HTTP status
        - 200   OK - 对成功的GET、PUT、PATCH或DELETE操作进行响应。也可以被用在不创建新资源的POST操作上
        - 201   Created - 对创建新资源的POST操作进行响应。应该带着指向新资源地址的Location header

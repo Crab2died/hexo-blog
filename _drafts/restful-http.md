@@ -89,6 +89,18 @@ tags: [REST, HTTP]
      - 使用基于SSL来保证传输安全的OAauth 2
   5. 缓存
   6. HATEOAS (Hypermedia as the Engine of Application State)
+     - 超媒体作为应用状态的引擎，即在返回结果中提供链接,指向其他API,为用户调用提供指引信息。如: 当调用http://api.blog.com 时返回
+       ``` 
+       {
+           "link": {
+               "rel": "collection https://www.blog.com/blogs",
+               "href": "https://api.blog.com/blogs",
+               "title": "List of blogs",
+               "type": "application/vnd.yourformat+json"
+           }
+       }
+       ```
+       rel 表示与该API的关系，href表示指引API的链接，title表示API的标题，type表示接受类型
   7. HTTP Request Method覆盖
      - 一些老的HTTP Client只支持GET、POST请求，为了兼容这些Client，API需要覆盖HTTP方法，一般做法是HTTP POST请求会有一个
        X-HTTP-Method-Override请求头，其值为PUT,PATCH,DELETE之一,以此兼容请求。

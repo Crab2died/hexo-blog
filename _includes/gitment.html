@@ -7,11 +7,11 @@
 <script>
     var gitment = new Gitment({
         id: '{{ page._id }}', // 可选。默认为 location.href
-        owner: 'Crab2Died',
-        repo: 'crab2died.github.io',
+        owner: '{{ site.gitment.owner }}',
+        repo: '{{ site.gitment.repo }}',
         oauth: {
-            client_id: '42913a1fc0807a42aa5c',
-            client_secret: 'db91f2a8a0aef69badfd34ce02b0c7f5148b7592'
+            client_id: '{{ site.gitment.client_id }}',
+            client_secret: '{{ site.gitment.client_secret }}'
         }
     });
     gitment.render('container')

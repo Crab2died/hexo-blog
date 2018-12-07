@@ -30,8 +30,8 @@ recommend:
 
 # Configure website favicon and LOGO
 # 配置网站favicon和网站LOGO
-favicon: /favicon.png
-logo: /medias/logo.png
+favicon: /favicon.ico
+logo: /medias/Dsolvers.png
 
 # The configuration of the second button in the home banner,
 # including the display name of the button, the font awesome icon, and the hyperlink to the button.
@@ -40,7 +40,7 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github-alt
-  url: https://github.com/blinkfox/hexo-theme-matery
+  url: https://github.com/Crab2died
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # 是否激活文章 TOC 功能，并配置TOC支持选中哪些标题类型.
@@ -67,9 +67,9 @@ mathjax:
 # profile in about page, including avatars, career, and personal introductions.
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
-  avatar: /medias/avatar.jpg
+  avatar: /medias/Dsolvers_T200_200_0.png
   career: Software Engineer
-  introduction: If you wish to succeed, you should use persistence as your good friend, experience as your reference, prudence as your brother and hope as your sentry.
+  introduction: No one can make you feel inferior without your consent.
 
 # config my projects informations in about page.
 # If you don't want to display this `My Projects` content, you can deactivate or delete this configuration.
@@ -77,27 +77,27 @@ profile:
 myProjects:
   enable: true
   data:
-    hexo-theme-matery:
+    Excel4J:
       icon: fa-meetup
       iconBackground: 'linear-gradient(to bottom right, #66BB6A 0%, #81C784 100%)'
-      url: http://github.com/blinkfox/hexo-theme-matery
-      desc: This is a Hexo blog theme with 'Material Design' and responsive design.
-    zealt:
+      url: https://github.com/Crab2died/Excel4J
+      desc: Excel operation component based on poi & CSV
+    log4j-redis-appender:
         icon: fa-database
         iconBackground: 'linear-gradient(to bottom right, #F06292 0%, #EF5350 100%)'
-        url: https://github.com/blinkfox/zealot
-        desc: 一个轻量级的SQL和参数动态生成工具库
-    typora-vue-theme:
+        url: https://github.com/Crab2died/log4j-redis-appender
+        desc: log4j appender for push the logs to redis.
+    jdepth:
         icon: fa-file-text-o
         iconBackground: 'linear-gradient(to bottom right, #29B6F6 0%, #1E88E5 100%)'
-        url: https://github.com/blinkfox/typora-vue-theme
-        desc: This is a typora theme inspired by Vue document style.
+        url: https://github.com/Crab2died/jdepth
+        desc: technologies for java
 
 # config my skills informations in about page.
 # If you don't want to display this `My Skills` content, you can deactivate or delete this configuration.
 # 在“关于”页面配置"我的技能"信息，如果你不需要这些信息则可以将其设置为不激活或者将其删除.
 mySkills:
-  enable: true
+  enable: false
   data:
     Java:
       background: 'linear-gradient(to right, #FF0066 0%, #FF00CC 100%)'
@@ -193,7 +193,7 @@ githubLink:
 # 阅读文章的密码验证功能，如要使用此功能请激活该配置项，并在对应文章的Front-matter中写上'password'的键和加密后的密文即可.
 # 请注意：为了保证密码原文不会被泄露到网页中，文章的密码必须是通过'SHA256'加密的，这样就不会被破解.
 verifyPassword:
-  enable: false
+  enable: true
   promptMessage: 请输入访问本文章的密码
   errorMessage: 密码错误，将返回主页！
 

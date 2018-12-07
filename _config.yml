@@ -5,8 +5,8 @@
 # Site
 title: Dsolvers
 subtitle: Crab2Died
-description:
-keywords:
+description: https://crab2died.github.io
+keywords: Crab2Died github
 author: Crab2Died
 language: zh-CN
 timezone:
@@ -35,12 +35,12 @@ titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
-relative_link: false
+post_asset_folder: true
+relative_link: true
 future: true
 highlight:
   enable: false
-  line_number: false
+  line_number: true
   auto_detect: false
   tab_replace:
 
@@ -79,7 +79,8 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/Crab2died/crab2died.github.io.git
+  repo: git@github.com:Crab2died/crab2died.github.io.git
+  branch: master
 
 search:
   path: search.xml
@@ -87,7 +88,7 @@ search:
   content: true
 
 prism_plugin:
-  mode: 'preprocess'    # realtime/preprocess
+  mode: 'realtime'    # realtime/preprocess
   theme: 'tomorrow'
   line_number: false    # default false
   custom_css:

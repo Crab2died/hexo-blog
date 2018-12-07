@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Dsolvers</title>
+  
+  <subtitle>Crab2Died</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://crab2died.github.io/"/>
+  <updated>2018-12-07T17:25:18.092Z</updated>
+  <id>https://crab2died.github.io/</id>
+  
+  <author>
+    <name>Crab2Died</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pseudo Distributed Hbase Install</title>
+    <link href="https://crab2died.github.io/2018/10/26/pseudo-distributed-hbase-install/"/>
+    <id>https://crab2died.github.io/2018/10/26/pseudo-distributed-hbase-install/</id>
+    <published>2018-10-26T13:45:27.000Z</published>
+    <updated>2018-12-07T17:25:18.092Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;h3 id=&quot;Ubuntu、JDK8、Hadoop2-8-5、HBase2-1-0&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="bigdata" scheme="https://crab2died.github.io/categories/bigdata/"/>
+    
+    
+      <category term="big-data" scheme="https://crab2died.github.io/tags/big-data/"/>
+    
+      <category term="hbase" scheme="https://crab2died.github.io/tags/hbase/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Pseudo Distributed Hadoop Install</title>
+    <link href="https://crab2died.github.io/2018/10/26/pseudo-distributed-hadoop-install/"/>
+    <id>https://crab2died.github.io/2018/10/26/pseudo-distributed-hadoop-install/</id>
+    <published>2018-10-26T13:11:27.000Z</published>
+    <updated>2018-12-07T17:25:17.775Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;环境准备&quot;&gt;&lt;a href=&quot;#环境准备&quot; class=&quot;headerlink&quot; title=&quot;环境准备&quot;&gt;&lt;/a&gt;环境准备&lt;/h2&gt;&lt;h3 id=&quot;准备Ubuntu、JDK8、Hadoop2-8-5&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="bigdata" scheme="https://crab2died.github.io/categories/bigdata/"/>
+    
+    
+      <category term="big-data" scheme="https://crab2died.github.io/tags/big-data/"/>
+    
+      <category term="hadoop" scheme="https://crab2died.github.io/tags/hadoop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>typora-vue-theme主题介绍</title>
+    <link href="https://crab2died.github.io/2018/09/07/hello-world/"/>
+    <id>https://crab2died.github.io/2018/09/07/hello-world/</id>
+    <published>2018-09-07T01:25:00.000Z</published>
+    <updated>2018-12-07T16:51:43.944Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="Markdown" scheme="https://crab2died.github.io/categories/Markdown/"/>
+    
+    
+      <category term="Typora" scheme="https://crab2died.github.io/tags/Typora/"/>
+    
+      <category term="Markdown" scheme="https://crab2died.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RESTful HTTP</title>
+    <link href="https://crab2died.github.io/2018/06/27/restful-http/"/>
+    <id>https://crab2died.github.io/2018/06/27/restful-http/</id>
+    <published>2018-06-26T17:11:27.000Z</published>
+    <updated>2018-12-07T17:25:56.005Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-REST由来&quot;&gt;&lt;a href=&quot;#1-REST由来&quot; class=&quot;headerlink&quot; title=&quot;1. REST由来&quot;&gt;&lt;/a&gt;1. REST由来&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;REST(Representational State Transfer
+        
+      
+    
+    </summary>
+    
+      <category term="http" scheme="https://crab2died.github.io/categories/http/"/>
+    
+    
+      <category term="REST" scheme="https://crab2died.github.io/tags/REST/"/>
+    
+      <category term="HTTP" scheme="https://crab2died.github.io/tags/HTTP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Redis Cache Summarize</title>
+    <link href="https://crab2died.github.io/2018/06/26/redis-cache-summarize/"/>
+    <id>https://crab2died.github.io/2018/06/26/redis-cache-summarize/</id>
+    <published>2018-06-26T02:11:27.000Z</published>
+    <updated>2018-12-07T17:25:42.438Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-概述&quot;&gt;&lt;a href=&quot;#1-概述&quot; class=&quot;headerlink&quot; title=&quot;1. 概述&quot;&gt;&lt;/a&gt;1. 概述&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Redis全称: Remote Dictionary
+        
+      
+    
+    </summary>
+    
+      <category term="cache" scheme="https://crab2died.github.io/categories/cache/"/>
+    
+    
+      <category term="Cache" scheme="https://crab2died.github.io/tags/Cache/"/>
+    
+      <category term="Redis" scheme="https://crab2died.github.io/tags/Redis/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Classloader</title>
+    <link href="https://crab2died.github.io/2018/06/25/java-classloader/"/>
+    <id>https://crab2died.github.io/2018/06/25/java-classloader/</id>
+    <published>2018-06-25T01:15:27.000Z</published>
+    <updated>2018-12-07T17:25:17.732Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-类加载时机&quot;&gt;&lt;a href=&quot;#1-类加载时机&quot; class=&quot;headerlink&quot; title=&quot;1. 类加载时机&quot;&gt;&lt;/a&gt;1. 类加载时机&lt;/h2&gt;&lt;h3 id=&quot;1-1-生命周期&quot;&gt;&lt;a href=&quot;#1-1-生命周期&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://crab2died.github.io/categories/java/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="Classloader" scheme="https://crab2died.github.io/tags/Classloader/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>The Interview Experience</title>
+    <link href="https://crab2died.github.io/2018/06/19/interview-experience/"/>
+    <id>https://crab2died.github.io/2018/06/19/interview-experience/</id>
+    <published>2018-06-19T01:15:27.000Z</published>
+    <updated>2018-12-07T17:25:17.903Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一-JAVA基础&quot;&gt;&lt;a href=&quot;#一-JAVA基础&quot; class=&quot;headerlink&quot; title=&quot;一. JAVA基础&quot;&gt;&lt;/a&gt;一. JAVA基础&lt;/h2&gt;&lt;h3 id=&quot;1-9种基本数据类型及其封装类-所占大小&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="interview" scheme="https://crab2died.github.io/categories/interview/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="Interview" scheme="https://crab2died.github.io/tags/Interview/"/>
+    
+      <category term="Experience" scheme="https://crab2died.github.io/tags/Experience/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Database</title>
+    <link href="https://crab2died.github.io/2018/06/18/database/"/>
+    <id>https://crab2died.github.io/2018/06/18/database/</id>
+    <published>2018-06-18T15:15:27.000Z</published>
+    <updated>2018-12-07T17:25:17.681Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一-四大特性-CIAD&quot;&gt;&lt;a href=&quot;#一-四大特性-CIAD&quot; class=&quot;headerlink&quot; title=&quot;一. 四大特性(CIAD)&quot;&gt;&lt;/a&gt;一.
+        
+      
+    
+    </summary>
+    
+      <category term="database" scheme="https://crab2died.github.io/categories/database/"/>
+    
+    
+      <category term="Database" scheme="https://crab2died.github.io/tags/Database/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Compile and Optimize</title>
+    <link href="https://crab2died.github.io/2018/06/17/java-compile-and-optimize/"/>
+    <id>https://crab2died.github.io/2018/06/17/java-compile-and-optimize/</id>
+    <published>2018-06-17T05:15:27.000Z</published>
+    <updated>2018-12-07T17:25:17.798Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-早期-编译期-优化&quot;&gt;&lt;a href=&quot;#1-早期-编译期-优化&quot; class=&quot;headerlink&quot; title=&quot;1. 早期(编译期)优化&quot;&gt;&lt;/a&gt;1. 早期(编译期)优化&lt;/h2&gt;&lt;h3 id=&quot;1-1-概论&quot;&gt;&lt;a href=&quot;#1-1-概论&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://crab2died.github.io/categories/java/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="JIT" scheme="https://crab2died.github.io/tags/JIT/"/>
+    
+      <category term="Optimize" scheme="https://crab2died.github.io/tags/Optimize/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Collection Frame</title>
+    <link href="https://crab2died.github.io/2018/06/15/java-collection-frame/"/>
+    <id>https://crab2died.github.io/2018/06/15/java-collection-frame/</id>
+    <published>2018-06-15T05:15:27.000Z</published>
+    <updated>2018-12-07T17:25:18.117Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-JAVA集合框架图&quot;&gt;&lt;a href=&quot;#1-JAVA集合框架图&quot; class=&quot;headerlink&quot; title=&quot;1. JAVA集合框架图&quot;&gt;&lt;/a&gt;1. JAVA集合框架图&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;集合框架&lt;br&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://crab2died.github.io/categories/java/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="Collection" scheme="https://crab2died.github.io/tags/Collection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java GC</title>
+    <link href="https://crab2died.github.io/2018/06/15/java-gc/"/>
+    <id>https://crab2died.github.io/2018/06/15/java-gc/</id>
+    <published>2018-06-15T05:15:27.000Z</published>
+    <updated>2018-12-07T17:25:17.825Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一-Java虚拟机内存区域&quot;&gt;&lt;a href=&quot;#一-Java虚拟机内存区域&quot; class=&quot;headerlink&quot; title=&quot;一. Java虚拟机内存区域&quot;&gt;&lt;/a&gt;一. Java虚拟机内存区域&lt;/h2&gt;&lt;h3 id=&quot;1-运行时数据区&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+      <category term="content java" scheme="https://crab2died.github.io/categories/content-java/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="GC" scheme="https://crab2died.github.io/tags/GC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Concurrent</title>
+    <link href="https://crab2died.github.io/2018/06/15/java-concurrent/"/>
+    <id>https://crab2died.github.io/2018/06/15/java-concurrent/</id>
+    <published>2018-06-15T04:15:27.000Z</published>
+    <updated>2018-12-07T17:32:01.639Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-JAVA与线程&quot;&gt;&lt;a href=&quot;#1-JAVA与线程&quot; class=&quot;headerlink&quot; title=&quot;1. JAVA与线程&quot;&gt;&lt;/a&gt;1. JAVA与线程&lt;/h2&gt;&lt;h3 id=&quot;1-1-线程的实现&quot;&gt;&lt;a href=&quot;#1-1-线程的实现&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://crab2died.github.io/categories/java/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="Concurrent" scheme="https://crab2died.github.io/tags/Concurrent/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java Memory Model</title>
+    <link href="https://crab2died.github.io/2018/06/15/java-memory-model/"/>
+    <id>https://crab2died.github.io/2018/06/15/java-memory-model/</id>
+    <published>2018-06-15T03:11:27.000Z</published>
+    <updated>2018-12-07T17:25:17.996Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;1-内存模型-JMM&quot;&gt;&lt;a href=&quot;#1-内存模型-JMM&quot; class=&quot;headerlink&quot; title=&quot;1. 内存模型(JMM)&quot;&gt;&lt;/a&gt;1. 内存模型(JMM)&lt;/h2&gt;&lt;p&gt; &lt;img
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://crab2died.github.io/categories/java/"/>
+    
+    
+      <category term="Java" scheme="https://crab2died.github.io/tags/Java/"/>
+    
+      <category term="JMM" scheme="https://crab2died.github.io/tags/JMM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JAVA Monitor Tools</title>
+    <link href="https://crab2died.github.io/2018/06/14/java-monitor-tools/"/>
+    <id>https://crab2died.github.io/2018/06/14/java-monitor-tools/</id>
+    <published>2018-06-14T04:45:27.000Z</published>
+    <updated>2018-12-07T17:25:18.040Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;一-jps-JVM-Process-Status-Tool&quot;&gt;&lt;a href=&quot;#一-jps-JVM-Process-Status-Tool&quot; class=&quot;headerlink&quot; title=&quot;一. jps(JVM Process Status
+        
+      
+    
+    </summary>
+    
+      <category term="java" scheme="https://crab2died.github.io/categories/java/"/>
+    
+    
+      <category term="Java Monitor" scheme="https://crab2died.github.io/tags/Java-Monitor/"/>
+    
+  </entry>
+  
+</feed>

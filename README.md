@@ -1,1 +1,0 @@
-# [SITE LINK](https://crab2died.github.io/jekyll-blog/)

@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Java Collection Frame"
-date:   2018-06-15 13:15:27
+title: Java Collection Frame
+img: /images/java-collection-frame/ConcurrentHashMap.png
+date: 2018-06-15 13:15:27 +0800
 author: Crab2Died
-categories: java
+categories: Java
 tags: 
   - Java
   - Collection
@@ -41,6 +42,6 @@ tags:
      所以ConcurrentHashMap效率高于HashTable, 不能接受key为null的情况   
      ConcurrentHashMap实现锁分段技术是通过可重入锁ReentrantLock实现Segment[]分锁，每个Segment内部存放一个或多个HashEntry[]
      每个HashEntry又是一个链表，具体的数据结构如图：  
-     ![ConcurrentHashMap结构图](https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/collections/ConcurrentHashMap.jpg)
+     ![ConcurrentHashMap结构图](/images/java-collection-frame/ConcurrentHashMap.png)
   5. IdentityHashMap基于数组的、区别于HashMap的是比较key值是比较引用相等(形如`object1 == object2`)的，HashMap是equals()
      判断是否相等的，能接受key为null

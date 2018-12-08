@@ -1,21 +1,22 @@
 ---
 layout: post
-title:  "RESTful HTTP"
-date:   2018-06-27 01:11:27 +0800
+title: RESTful HTTP
+img: /images/net/restful_api.jpeg
+date: 2018-06-27 01:11:27 +0800
 author: Crab2Died
-categories: http
+categories: HTTP
 tags: 
   - REST
   - HTTP
 ---
 
-## 1. REST由来
+## 一 REST由来
   1. REST(Representational State Transfer 表征性状态转移)
   2. 2000年Roy Fielding的博士论文中首次提出
   3. REST是架构风格，是设计思想，不是标准也不是协议
   4. REST强调组件交互的可伸缩性、接口的通用性、组件的独立部署、以及用来减少交互延迟、增强安全性、封装遗留系统的中间组件
 
-## 2. REST特点
+## 二 REST特点
   1. 服务端(server)与客户端(client)解耦
      - 简化服务端的可伸缩性，提高客户端便捷性
   2. 面向资源，每一个资源都有唯一(CRUD等操作不会变)的标识符
@@ -34,7 +35,7 @@ tags:
   7. 按需代码(Code-On-Demand)
      - 提升系统可扩展性
 
-## 3. 为什么要遵循REST
+## 三 为什么要遵循REST
   1. 可更高效利用缓存来提高响应速度
   2. 通讯本身的无状态性可以让不同的服务器的处理一系列请求中的不同请求，提高服务器的扩展性
   3. 浏览器即可作为客户端，简化软件需求
@@ -42,7 +43,7 @@ tags:
   5. 不需要额外的资源发现机制
   6. 在软件技术演进中的长期的兼容性更好
 
-## 4. RESTful最佳实践
+## 四 RESTful最佳实践
   1. URI规则
      - 版本化(其一)   如: /api/v1
      - 使用名词，而不是动词  如: blog
@@ -67,12 +68,6 @@ tags:
      - 一般地，返回JSON数据而不是XML
      - 不过滤API返回的空格，支持gzip/deflate压缩,Content-Encoding: gzip/deflate
      - 统一的返回格式，错误码信息等
-     - |   状态码    |        描述              | 
-       |:----------:|:-------------------------|
-       |     2xx    |请求正常处理并返回          | 
-       |     3xx    |重定向，请求的资源位置发生变化|
-       |     4xx    |客户端发送的请求有误         |
-       |     5xx    |服务器端的错误              |
      - 常见HTTP status
        - **200   OK** - 对成功的GET、PUT、PATCH或DELETE操作进行响应。也可以被用在不创建新资源的POST操作上
        - **201   Created** - 对创建新资源的POST操作进行响应。应该带着指向新资源地址的Location header

@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Database"
-date:   2018-06-18 23:15:27
-categories: database
+title: Database
+img: /images/db/mysql_logo.png
+date: 2018-06-18 23:15:27 +0800
+categories: Database
 tags: Database
 ---
 
@@ -42,10 +43,8 @@ tags: Database
    2. MySQL数据库隔离级别管理  
       * 查看隔离级别: `select @@tx_isolation`  
       * 修改隔离级别:    
-      `set [glogal | session] transaction isolation level 隔离级别名称`  
-      如`set transaction isolation level read-committed`  
-      或者
-      `set tx_isolation='隔离级别名称'` 如 `set tx_isolation = 'read-committed'`  
+      `set [glogal | session] transaction isolation level 隔离级别名称`如`set transaction isolation level read-committed`  
+      或者`set tx_isolation='隔离级别名称'` 如 `set tx_isolation = 'read-committed'`
    3. 隔离级别的设置只对当前连接有效  
 
 ### 4. MySQL悲观锁、乐观锁、共享锁与排他锁

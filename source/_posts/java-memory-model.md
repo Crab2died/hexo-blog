@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Java Memory Model"
-date:   2018-06-15 11:11:27 +0800
+title: Java Memory Model
+img: /images/material/super_computer.jpg
+date: 2018-06-15 11:11:27 +0800
 author: Crab2Died
-categories: java
+categories: Java
 tags: 
   - Java
   - JMM
@@ -54,7 +55,7 @@ tags:
    &emsp;&emsp;volatile不仅保证了共享变量的可见性，还通过内存屏障保证了代码执行顺序与程序顺序相同，通过内存屏障来使变量不被指令重排优化
    
 ### 2.4. long和double的非原子性协定
-  &emsp;&emsp;读写操作可分为2次32位操作,所以一定不是原子操作  
+  读写操作可分为2次32位操作,所以一定不是原子操作  
   **_注：现在商用虚拟机本身几乎都已经实现了原子操作,所以不用volatile修饰符_**
   
 ### 2.5 原子性

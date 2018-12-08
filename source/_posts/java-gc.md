@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Java GC"
-date:   2018-06-15 13:15:27 +0800
+title: Java GC
+img: /images/java/java_01.jpg
+date: 2018-06-15 13:15:27 +0800
 author: Crab2Died
-categories: content java
+categories: Java
 tags: 
   - Java
   - GC

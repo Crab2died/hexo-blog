@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Redis Cache Summarize"
-date:   2018-06-26 10:11:27 +0800
+title: Redis Cache Summarize
+img: /images/db/redis.jpeg
+date: 2018-06-26 10:11:27 +0800
 author: Crab2Died
-categories: cache
+categories: Cache
 tags: 
   - Cache
   - Redis

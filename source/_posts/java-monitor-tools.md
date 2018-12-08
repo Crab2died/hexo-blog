@@ -1,10 +1,12 @@
 ---
 layout: post
-title:  "JAVA Monitor Tools"
-date:   2018-06-14 12:45:27 +0800
+title: JAVA Monitor Tools
+img: /images/material/tech_tool.png
+date: 2018-06-14 12:45:27 +0800
 author: Crab2Died
-categories: java
+categories: Java
 tags: 
+  - Java
   - Java Monitor
 ---
 

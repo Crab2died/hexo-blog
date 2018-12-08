@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Java Concurrent"
-date:   2018-06-15 12:15:27 +0800
+title: Java Concurrent
+img: /images/material/maoxian.png
+date: 2018-06-15 12:15:27 +0800
 author: Crab2Died
-categories: java
+categories: Java
 tags: 
   - Java
   - Concurrent
@@ -26,20 +27,17 @@ tags:
 ### 1.3 线程转换状态
    1. JAVA线程定义了6个状态:  
       * 新建(New):创建后尚未启动的线程处于这种状态.
-      * 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在
-        等待着CPU为它分配执行时间.
-      * 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被  
-            其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态:  
-            ● 没有设置Timeout参数的Object.wait()方法.  
-            ● 没有设置Timeout参数的Thread.join()方法.  
-            ● LockSupport.park()方法.  
-      * 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后
-        它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态:  
-            ● Thread.sleep()方法.  
-            ● 设置了Timeout参数的Object.wait()方法.  
-            ● 设置了Timeout参数的Thread.join()方法.  
-            ● LockSupport.parkNanos()方法.  
-            ● LockSupport.parkUntil()方法 
+      * 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在等待着CPU为它分配执行时间.
+      * 无限期等待(Waiting):处于这种状态的线程不会被分配CPU执行时间,它们要等待被其他线程显式地唤醒. 以下方法会让线程陷入无限期的等待状态:  
+        ● 没有设置Timeout参数的Object.wait()方法.  
+        ● 没有设置Timeout参数的Thread.join()方法.  
+        ● LockSupport.park()方法.  
+      * 限期等待(Timed Waiting):处于这种状态的线程也不会被分配CPU执行时间,不过无须等待被其他线程显式地唤醒,在一定时间之后它们会由系统自动唤醒. 以下方法会让线程进入限期等待状态:  
+        ● Thread.sleep()方法.  
+        ● 设置了Timeout参数的Object.wait()方法.  
+        ● 设置了Timeout参数的Thread.join()方法.  
+        ● LockSupport.parkNanos()方法.  
+        ● LockSupport.parkUntil()方法 
       * 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 
       * 结束(Terminated):已终止线程的线程状态,线程已经结束执行.
    2. 线程状态转换关系图  
@@ -60,12 +58,12 @@ tags:
    
 ## 3. 锁介绍
 ### 3.1 自旋锁
-   1. 自旋锁可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环，（即所谓的自旋，就是自己执行空循环），若在若干个空循环后，线程
-      如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加强。因
-      此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发程序，自旋
-      锁在自旋等待后，往往毅然无法获得对应的锁，不仅仅白白浪费了CPU时间，最终还是免不了被挂起的操作 ，反而浪费了系统的资源。在JDK1.6中，
-      Java虚拟机提供`-XX:+UseSpinning`参数来开启自旋锁，使用`-XX:PreBlockSpin`参数来设置自旋锁等待的次数。在JDK1.7开始，自旋锁的参数被
-      取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。  
+   1. 自旋锁可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环，（即所谓的自旋，就是自己执行空循环），若在若干个空循环后，线
+      程如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加
+      强。因此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发
+      程序，自旋锁在自旋等待后，往往毅然无法获得对应的锁，不仅仅白白浪费了CPU时间，最终还是免不了被挂起的操作 ，反而浪费了系统的资源。
+      在JDK1.6中，Java虚拟机提供`-XX:+UseSpinning`参数来开启自旋锁，使用`-XX:PreBlockSpin`参数来设置自旋锁等待的次数。在JDK1.7
+      开始，自旋锁的参数被取消，虚拟机不再支持由用户配置自旋锁，自旋锁总是会执行，自旋锁次数也由虚拟机自动调整。  
    2. 问题：  
       - 可能白占用CPU时间
       - 死锁问题，自己占用锁，还在等待锁释放
@@ -85,10 +83,8 @@ tags:
 
 ### 3.5 轮询锁和定时锁
    1. 由tryLock实现，与无条件获取锁模式相比，它们具有更完善的错误恢复机制。可避免死锁的发生：  
-      `boolean tryLock()`：仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值 true。
-      如果锁不可用，则此方法将立即返回值 false。
-      `boolean tryLock(long time, TimeUnit unit) throws InterruptedException`：
-      如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁。
+     `boolean tryLock()`:仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值true。如果锁不可用，则此方法将立即返回值false。
+     `boolean tryLock(long time, TimeUnit unit) throws InterruptedException`:如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁。
       
 ### 3.6 显示锁和内置锁
    1. 显示锁用`Lock`来定义、内置锁用`synchronized`。
@@ -108,12 +104,12 @@ tags:
   
 ## 4. java线程池
 ### 4.1 线程池实现类
-```      
+  ```      
    (C)ThreadPoolExecutor -->  (AC)AbstractExecutorService --> (I)ExecutorService --> (I)Executor
-```
+  ```
 
 ### 4.2 ThreadPoolExecutor构造参数说明
-```
+  ```
     // corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
     // maximunPoolSize 线程池最大线程数
     // keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用
@@ -137,7 +133,7 @@ tags:
     
     public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,TimeUnit unit,
         BlockingQueue<Runnable> workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
-```
+  ```
 
 ### 4.3 实现原理
    1. 线程池状态：  
@@ -169,12 +165,12 @@ tags:
    - **SynchronousQueue**: 该队列不保存提交的任务，而是直接新建队列来执行任务
    
    5. 任务拒绝策略
-```
+  ```
     ThreadPoolExecutor.AbortPolicy:丢弃任务并抛出RejectedExecutionException异常
     ThreadPoolExecutor.DiscardPolicy：也是丢弃任务，但是不抛出异常
     ThreadPoolExecutor.DiscardOldestPolicy：丢弃队列最前面的任务，然后重新尝试执行任务（重复此过程）
     ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
-```
+  ```
    
    6. 线程池的关闭
    - `shutdown()`：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务 
@@ -211,8 +207,7 @@ tags:
    - `CountDownLatch.countDown()`实现锁计数-1，直到减至0是，唤醒`CountDownLatch.await()`等待线程
 
 ### 5.3 公平锁和非公平锁
-   公平锁是严格按照FIFO队列获得锁，但带来了大量的线程切换的消耗，非公平锁极大的降低了线程切换带来的消耗，虽然可能造成线程饥饿的情况，
-   但也提高了吞吐量。
+   公平锁是严格按照FIFO队列获得锁，但带来了大量的线程切换的消耗，非公平锁极大的降低了线程切换带来的消耗，虽然可能造成线程饥饿的情况，但也提高了吞吐量。
 
 ## 6. synchronized与Lock比较
    1. `synchronized`是JVM层面实现的'重量级锁'，可通过监控工具监控`synchronized`的锁定，而且代码出现异常时会自动释放锁
@@ -223,12 +218,12 @@ tags:
 ## 7. 阻塞队列BlockingQueue
    1. 阻塞队列是一个FIFO队列
    2. 主要方法   
-
-   |   Ops   |    Throws Exception    |      Special Value     |           Blocks Times Out          |
-   |:-------:|:----------------------:|:----------------------:|:-----------------------------------:|
-   |Insert   |    add(o)              |     offer(o)           |put(o) & offer(o, timeout, timeUnit) |  
-   |Remove   |   remove(o)            |     poll()             |take()	& poll(timeout, timeUnit)    |
-   |Examine  |   element()            |     peek()             |                -                    |
+   
+|   Ops   |    Throws Exception    |      Special Value     |           Blocks Times Out          |
+|:-------:|:----------------------:|:----------------------:|:-----------------------------------:|
+|Insert   |    add(o)              |     offer(o)           |put(o) & offer(o, timeout, timeUnit) |  
+|Remove   |   remove(o)            |     poll()             |take()	& poll(timeout, timeUnit)     |
+|Examine  |   element()            |     peek()             |                -                    |
 
    3. 主要实现  
    - **ArrayBlockingQueue**：基于数组的有界阻塞队列，必须指定长度
@@ -243,6 +238,5 @@ tags:
    如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。
    
 ## 8. ConcurrentLinkedQueue
-   非阻塞线程安全的FIFO队列，基于单向链表实现，循环CAS操作实现，由于是根据Node.NEXT是否为NULL来判断是否为TAIL节点，因此
-   队列的元素值不可为NULL。
+   非阻塞线程安全的FIFO队列，基于单向链表实现，循环CAS操作实现，由于是根据Node.NEXT是否为NULL来判断是否为TAIL节点，因此队列的元素值不可为NULL。
    

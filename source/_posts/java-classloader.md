@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Java Classloader"
-date:   2018-06-25 09:15:27
+title: Java Classloader
+img: /images/java/class_loader.png
+date: 2018-06-25 09:15:27 +0800
 author: Crab2Died
-categories: java
+categories: Java
 tags: 
   - Java 
   - Classloader
@@ -12,11 +13,11 @@ tags:
 ## 1. 类加载时机
 ### 1.1 - 生命周期
 ```
-                      +-----------------------连接(Linking)---------------------------+
-    加载(Loading) ——> |  验证(Verification) ——> 准备(Preparation) ——> 解析(Resolution) |
-                      +---------------------------------------------------------------+
+                      +-------------------------连接(Linking)----------------------------+
+   加载(Loading) -->  |  验证(Verification) --> 准备(Preparation) --> 解析(Resolution)   |
+                      +------------------------------------------------------------------+
                                                                             ↓
-                                卸载(Unloading) <—— 使用(Using) <—— 初始化(Initialization)
+                                卸载(Unloading) <-- 使用(Using) <-- 初始化(Initialization)
 ```
 
 ### 1.2 - 立即初始化(主动引用)  
@@ -125,11 +126,11 @@ tags:
 
    双亲委派模型图
    ```
-                                                     自定义类加载器(CustomClassLoader)
-                                                    //
-    启动类加载器 <= 扩展类加载器 <= 应用程序加载器 <==
-                                                    \\
-                                                     自定义类加载器(CustomClassLoader)
+                                                       自定义类加载器(CustomClassLoader)
+                                                      /
+     启动类加载器 <-- 扩展类加载器 <-- 应用程序加载器 <--
+                                                      \
+                                                       自定义类加载器(CustomClassLoader)
    ```
    &emsp;&emsp;双亲委派模型的工作过程是:如果一个类加载器收到了类加载的请求,它首先不会自己去尝试加载这个类,而
    是把这个请求委派给父类加载器去完成,每一个层次的类加载器都是如此,因此所有的加载请求最终都应该传送到顶层的启动类加载器中,

@@ -40,7 +40,7 @@ indexbtn:
   enable: true
   name: Github
   icon: fa-github-alt
-  url: https://github.com/Crab2died
+  url: https://github.com/Dsolvers
 
 # Whether to activate the Post TOC, and Configure which title types are supported by TOC support.
 # 是否激活文章 TOC 功能，并配置TOC支持选中哪些标题类型.
@@ -136,7 +136,7 @@ postCalendar: true
 # Gitalk 评论模块的配置，默认为不激活
 gitalk:
   enable: false
-  owner:
+  owner: Crab2Died
   repo:
   oauth:
     clientId:

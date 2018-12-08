@@ -5,8 +5,8 @@
 # Site
 title: Dsolvers
 subtitle: Crab2Died
-description: https://crab2died.github.io
-keywords: Crab2Died github
+description: https://dsolvers.github.io
+keywords: Crab2Died dsolvers github Excel4J blog 螃蟹以死
 author: Crab2Died
 language: zh-CN
 timezone:
@@ -79,7 +79,7 @@ theme: hexo-theme-matery
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:Crab2died/crab2died.github.io.git
+  repo: git@github.com:Dsolvers/dsolvers.github.io.git
   branch: master
 
 search:

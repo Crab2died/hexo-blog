@@ -30,7 +30,17 @@ REST强调组件交互的">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4e3c395cdc534ee945d4e8f65ecd911d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><script src="/js/prism.js"></script></head>
 
 </head>
 
@@ -181,7 +191,7 @@ REST强调组件交互的">
 <a href="mailto:Crab2Died@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
     <i class="fa fa-envelope-open"></i>
 </a>
-<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">-->
+<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: " data-position="top" data-delay="50">-->
     <!--<i class="fa fa-qq"></i>-->
 <!--</a>-->
 
@@ -442,14 +452,14 @@ REST强调组件交互的">
 </ul>
 </li>
 <li>HATEOAS (Hypermedia as the Engine of Application State)<ul>
-<li>超媒体作为应用状态的引擎，即在返回结果中提供链接,指向其他API,为用户调用提供指引信息。如: 当调用<a href="http://api.blog.com" target="_blank" rel="noopener">http://api.blog.com</a> 时返回<pre><code class="json">{
-    &quot;link&quot;: {
-        &quot;rel&quot;: &quot;collection https://www.blog.com/blogs&quot;,
-        &quot;href&quot;: &quot;https://api.blog.com/blogs&quot;,
-        &quot;title&quot;: &quot;List of blogs&quot;,
-        &quot;type&quot;: &quot;application/vnd.yourformat+json&quot;
-    }
-}
+<li>超媒体作为应用状态的引擎，即在返回结果中提供链接,指向其他API,为用户调用提供指引信息。如: 当调用<a href="http://api.blog.com" target="_blank" rel="noopener">http://api.blog.com</a> 时返回<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"link"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"rel"</span><span class="token operator">:</span> <span class="token string">"collection https://www.blog.com/blogs"</span><span class="token punctuation">,</span>
+        <span class="token property">"href"</span><span class="token operator">:</span> <span class="token string">"https://api.blog.com/blogs"</span><span class="token punctuation">,</span>
+        <span class="token property">"title"</span><span class="token operator">:</span> <span class="token string">"List of blogs"</span><span class="token punctuation">,</span>
+        <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"application/vnd.yourformat+json"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
 rel 表示与该API的关系，href表示指引API的链接，title表示API的标题，type表示接受类型</li>
 </ul>
@@ -774,26 +784,28 @@ rel 表示与该API的关系，href表示指引API的链接，title表示API的�
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="../../../10/26/pseudo-distributed-hadoop-install/">
+                <a href="../../../08/27/spring-intergration-websocket/">
                     <div class="card-image">
                         
-                        <img src="/images/hadoop/hadoop_logo_01.png" class="responsive-img" alt="Pseudo Distributed Hadoop Install">
+                        <img src="/images/net/web.png" class="responsive-img" alt="Spring Integration Websocket">
                         
-                        <span class="card-title">Pseudo Distributed Hadoop Install</span>
+                        <span class="card-title">Spring Integration Websocket</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一 环境准备准备Ubuntu、JDK8、Hadoop2.8.5   安装Ubuntu https://www.ubuntu.com/download/desktop   安装JDK,修改环境变量 https://www.oracle.com</div>
+                    <div class="summary">一. 依赖（这里只列举了websocket相关依赖）    &lt;!-- spring webSocket依赖 -->
+    &lt;dependency>
+        &lt;groupId>org.springframework</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-26
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-08-27
                         </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="../../../../../categories/Big-Data/" class="post-category" target="_blank">
-                                    Big Data
+                            <a href="../../../../../categories/Websocket/" class="post-category" target="_blank">
+                                    Websocket
                                 </a>
                             
                             
@@ -803,12 +815,16 @@ rel 表示与该API的关系，href表示指引API的链接，title表示API的�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="../../../../../tags/Big-Data/" target="_blank">
-                        <span class="chip bg-color">Big Data</span>
+                    <a href="../../../../../tags/Java/" target="_blank">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="../../../../../tags/Hadoop/" target="_blank">
-                        <span class="chip bg-color">Hadoop</span>
+                    <a href="../../../../../tags/Spring/" target="_blank">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="../../../../../tags/Websocket/" target="_blank">
+                        <span class="chip bg-color">Websocket</span>
                     </a>
                     
                 </div>
@@ -876,7 +892,7 @@ Redis全称: Remote Dictionary Server
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright &copy;2018 Dsolvers
+            Copyright &copy;2017 - 2018 Crab2Died. All Rights Reserved.
         </div>
         <div class="col s12 m4 l4 social-link"><a href="https://github.com/Crab2Died" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
     <i class="fa fa-github"></i>
@@ -884,7 +900,7 @@ Redis全称: Remote Dictionary Server
 <a href="mailto:Crab2Died@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
     <i class="fa fa-envelope-open"></i>
 </a>
-<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">-->
+<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: " data-position="top" data-delay="50">-->
     <!--<i class="fa fa-qq"></i>-->
 <!--</a>-->
 

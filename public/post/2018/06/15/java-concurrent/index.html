@@ -30,7 +30,17 @@ JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系�
     <link rel="stylesheet" type="text/css" href="/css/my.css">
 
     <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
-</head>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4e3c395cdc534ee945d4e8f65ecd911d";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><script src="/js/prism.js"></script></head>
 
 </head>
 
@@ -181,7 +191,7 @@ JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系�
 <a href="mailto:Crab2Died@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
     <i class="fa fa-envelope-open"></i>
 </a>
-<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">-->
+<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: " data-position="top" data-delay="50">-->
     <!--<i class="fa fa-qq"></i>-->
 <!--</a>-->
 
@@ -859,20 +869,22 @@ ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="../java-gc/">
+                <a href="../java-collection-frame/">
                     <div class="card-image">
                         
-                        <img src="/images/java/java_01.jpg" class="responsive-img" alt="Java GC">
+                        <img src="/images/java-collection-frame/ConcurrentHashMap.png" class="responsive-img" alt="Java Collection Frame">
                         
-                        <span class="card-title">Java GC</span>
+                        <span class="card-title">Java Collection Frame</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">一. Java虚拟机内存区域1. 运行时数据区   
-2. 程序计数器(Program Counter Register)
-1、程序计数器是线程内(每个线程都有唯一的、封闭的)一小块内存区域
-2、计数器指定的是当前虚拟机执行指令的地址
-3、</div>
+                    <div class="summary">1. JAVA集合框架图
+集合框架
+集合框架-简图
+
+2. ArrayList、LinkedList、Vector、Stack
+都是java的可存储重复元素的集合容器,都实现了Collection、List接口
+ArrayList是基于数组</div>
                     <div class="publish-info">
                         <span class="publish-date">
                             <i class="fa fa-clock-o fa-fw icon-date"></i>2018-06-15
@@ -896,8 +908,8 @@ ThreadPoolExecutor.CallerRunsPolicy：由调用线程处理该任务
                         <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="../../../../../tags/GC/" target="_blank">
-                        <span class="chip bg-color">GC</span>
+                    <a href="../../../../../tags/Collection/" target="_blank">
+                        <span class="chip bg-color">Collection</span>
                     </a>
                     
                 </div>
@@ -965,7 +977,7 @@ unlock(解锁)：作用于主内存的变量,它把一个处于锁定状态的�
 <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            Copyright &copy;2018 Dsolvers
+            Copyright &copy;2017 - 2018 Crab2Died. All Rights Reserved.
         </div>
         <div class="col s12 m4 l4 social-link"><a href="https://github.com/Crab2Died" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
     <i class="fa fa-github"></i>
@@ -973,7 +985,7 @@ unlock(解锁)：作用于主内存的变量,它把一个处于锁定状态的�
 <a href="mailto:Crab2Died@126.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
     <i class="fa fa-envelope-open"></i>
 </a>
-<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">-->
+<!--<a href="#!" class="tooltipped" data-tooltip="QQ联系我: " data-position="top" data-delay="50">-->
     <!--<i class="fa fa-qq"></i>-->
 <!--</a>-->
 

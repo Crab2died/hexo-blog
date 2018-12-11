@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Collection Frame
-img: /images/java-collection-frame/ConcurrentHashMap.png
+thumbnail: /images/java-collection-frame/ConcurrentHashMap.png
 date: 2018-06-15 13:15:27 +0800
 author: Crab2Died
 categories: Java

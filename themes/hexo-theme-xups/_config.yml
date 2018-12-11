@@ -1,0 +1,140 @@
+#############################
+# Xups for Hexo 主题配置文件
+# Jelon
+# https://jelon.top
+#############################
+
+#----------------------------
+# 头部导航
+#----------------------------
+menu:
+  home:
+    name: 首页
+    link: /
+    icon: fa fa-home
+  lab:
+    name: 归档
+    link: /archives/
+    icon: fa fa-archive
+  about:
+    name: 关于
+    link: /about/
+    icon: fa fa-user-circle-o
+  rss:
+    name: RSS
+    link: /atom.xml
+    icon: fa fa-rss
+
+#----------------------------
+# 副导航
+#----------------------------
+subnav:
+  github: "#"
+  weibo: "#"
+  rss: "#"
+  zhihu: "#"
+
+#----------------------------
+# RSS
+#----------------------------
+rss: /atom.xml
+
+#----------------------------
+# Favicon
+#----------------------------
+favicon: /favicon.ico
+
+#----------------------------
+# 头像url
+#----------------------------
+avatar: /dsolvers.png
+
+#----------------------------
+# 是否开启分享
+#----------------------------
+share: true
+
+#----------------------------
+# 侧栏是否显示微博秀
+#----------------------------
+weibo_show:
+  enable: true
+  code: <iframe width="100%" height="380" class="share_self"  frameborder="0" scrolling="no" src="https://widget.weibo.com/weiboshow/index.php?language=&width=0&height=380&fansRow=2&ptype=1&speed=0&skin=1&isTitle=1&noborder=1&isWeibo=1&isFans=0&uid=5600773173&verifier=c2cee795&dpc=1"></iframe>
+
+#----------------------------
+# 是否开启评论
+#----------------------------
+comment:
+  enable: true
+  owner: Crab2Died
+  repo: blog-comments
+  client_id: 2117b548bf34c40984be
+  client_secret: 2642328e6056dbf7b02951961e5ca481406410ed
+
+#----------------------------
+# 是否开启云标签
+#----------------------------
+tagcloud: true
+
+#----------------------------
+# 友情链接
+#----------------------------
+friends:
+  enable: true
+  list:
+    1:
+      name: 我的Github
+      title: 我的Github
+      link: https://github.com/Crab2died
+    2:
+      name: 开源中国
+      title: 开源中国
+      link: https://www.oschina.net/
+
+#----------------------------
+# 头部链接
+#----------------------------
+head_links:
+  enable: true
+  list:
+    sup:
+      0:
+        name: Github
+        link: https://github.com/Crab2died
+      last:
+        name: Gitee
+        link: https://gitee.com/Crab2Died
+    sub:
+      sinaweibo:
+        name: 新浪微博
+        link: http://weibo.com/Crab2Died
+      qqweibo:
+        name: Facebook
+        link: #
+#----------------------------
+# SEO
+#----------------------------
+SEO:
+  keywords: Crab2Died 螃蟹以死 Dsolvers Excel4J
+  description: Crab2Died 螃蟹以死 Dsolvers Excel4J
+
+#----------------------------
+# 百度分析
+#----------------------------
+baidu_analytics: true
+
+#----------------------------
+# 高亮样式
+#----------------------------
+highlight_theme: normal
+#----------------------------
+# CDN
+# 如: //7xs305.com1.z0.glb.clouddn.com/
+# 主要以下两个目录进行 cdn 存储
+#   - img 图片资源下的 thumbnail 目录
+#   - css 样式资源下的 fonts 目录
+#----------------------------
+CDN:
+
+local_search:
+  enable: true

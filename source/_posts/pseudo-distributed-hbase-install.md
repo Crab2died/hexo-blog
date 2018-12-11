@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pseudo Distributed Hbase Install
-img: /images/hbase/hbase_logo_01.png
+thumbnail: /images/hbase/hbase_logo_00.png
 date: 2018-10-26 21:45:27 +0800
 author: Crab2Died
 categories: Big Data

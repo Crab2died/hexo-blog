@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Pseudo Distributed Hadoop Install
-img: /images/hadoop/hadoop_logo_01.png
+thumbnail: /images/hadoop/hadoop_logo.jpg
 date: 2018-10-26 21:11:27 +0800
 author: Crab2Died
 categories: Big Data

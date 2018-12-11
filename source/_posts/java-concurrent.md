@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Concurrent
-img: /images/material/maoxian.png
+thumbnail: /images/material/maoxian.png
 date: 2018-06-15 12:15:27 +0800
 author: Crab2Died
 categories: Java

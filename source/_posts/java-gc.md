@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java GC
-img: /images/java/java_01.jpg
+thumbnail: /images/java/java_01.jpg
 date: 2018-06-15 13:15:27 +0800
 author: Crab2Died
 categories: Java

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Database
-img: /images/db/mysql_logo.png
+thumbnail: /images/db/mysql_logo.png
 date: 2018-06-18 23:15:27 +0800
 categories: Database
 tags: Database

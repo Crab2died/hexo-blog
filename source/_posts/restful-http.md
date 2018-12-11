@@ -1,7 +1,7 @@
 ---
 layout: post
 title: RESTful HTTP
-img: /images/net/restful_api.jpeg
+thumbnail: /images/net/restful_api.jpeg
 date: 2018-06-27 01:11:27 +0800
 author: Crab2Died
 categories: HTTP

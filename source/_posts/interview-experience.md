@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The Interview Experience
-img: /images/material/book.jpg
+thumbnail: /images/material/book.jpg
 date: 2018-06-19 09:15:27 +0800
 author: Crab2Died
 categories: Interview

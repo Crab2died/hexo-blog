@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Classloader
-img: /images/java/class_loader.png
+thumbnail: /images/java/class_loader.png
 date: 2018-06-25 09:15:27 +0800
 author: Crab2Died
 categories: Java

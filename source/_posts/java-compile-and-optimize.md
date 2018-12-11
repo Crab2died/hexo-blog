@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Compile and Optimize
-img: /images/material/gaoxiao.png
+thumbnail: /images/material/gaoxiao.png
 date: 2018-06-17 13:15:27 +0800
 author: Crab2Died
 categories: Java

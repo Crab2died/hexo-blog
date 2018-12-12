@@ -23,6 +23,7 @@ menu:
   rss:
     name: RSS
     link: /atom.xml
+    tab: true
     icon: fa fa-rss
 
 #----------------------------
@@ -101,22 +102,28 @@ head_links:
       0:
         name: Github
         link: https://github.com/Crab2died
+      1:
+        name: Dsolvers
+        link: https://dsolvers.github.io
       last:
         name: Gitee
         link: https://gitee.com/Crab2Died
     sub:
-      sinaweibo:
+      weibo:
         name: 新浪微博
         link: http://weibo.com/Crab2Died
-      qqweibo:
+      facebook:
         name: Facebook
         link: #
+      email:
+        name: E-mail
+        link: mailto:Crab2Died@126.com
 #----------------------------
 # SEO
 #----------------------------
 SEO:
-  keywords: Crab2Died 螃蟹以死 Dsolvers Excel4J
-  description: Crab2Died 螃蟹以死 Dsolvers Excel4J
+  keywords: Crab2Died 螃蟹以死 Dsolvers Excel4J Github blog java develop
+  description: Crab2Died 螃蟹以死 Dsolvers Excel4J Github blog java develop
 
 #----------------------------
 # 百度分析

@@ -66,7 +66,7 @@
         }
     };
 
-    if ($('.local-search').size()) {
+    if ($('.local-search').size() && isMobile) {
         $.getScript('/js/search.js', function() {
             searchFunc("/search.xml", 'local-search-input', 'local-search-result');
         });

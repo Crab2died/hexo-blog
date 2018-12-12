@@ -83,8 +83,9 @@ tags:
 
 ### 3.5 轮询锁和定时锁
    1. 由tryLock实现，与无条件获取锁模式相比，它们具有更完善的错误恢复机制。可避免死锁的发生：  
-     `boolean tryLock()`:仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值true。如果锁不可用，则此方法将立即返回值false。
-     `boolean tryLock(long time, TimeUnit unit) throws InterruptedException`:如果锁在给定的等待时间内空闲，并且当前线程未被中断，则获取锁。
+     `boolean tryLock()`:仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值true。如果锁不可用，则此方法将立即返回
+     值false。`boolean tryLock(long time, TimeUnit unit) throws InterruptedException`:如果锁在给定的等待时间内空闲，并且当前
+     线程未被中断，则获取锁。
       
 ### 3.6 显示锁和内置锁
    1. 显示锁用`Lock`来定义、内置锁用`synchronized`。
@@ -137,32 +138,32 @@ tags:
 
 ### 4.3 实现原理
    1. 线程池状态：  
-   - **RUNNING**: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
-   `prestartAllCoreThreads() #创建核心线程`或者`prestartCoreThread() #创建一个核心线程`来初始化线程数)
-   - **SHUTDOWN**: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用`shutdown()`时从`RUNNING-> SHUTDOWN`
-   - **STOP**: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用`shutdownNow()`时从
-     `RUNNING or SHUTDOWN -> STOP`
-   - **TIDYING**: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数`terminated()`，用户可重载该方法
-     实现自己的业务逻辑;状态切换是所有任务终止就进入TIDYING状态
-   - **TERMINATED**: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态
+     - **RUNNING**: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
+       `prestartAllCoreThreads() #创建核心线程`或者`prestartCoreThread() #创建一个核心线程`来初始化线程数)
+     - **SHUTDOWN**: 线程处于SHUTDOWN状态时,不接收新任务,但能处理已添加的任务;状态切换调用`shutdown()`时从`RUNNING-> SHUTDOWN`
+     - **STOP**: 线程处于STOP状态时，不接收新任务，不处理已添加任务，并会终止正在执行的任务;状态切换调用`shutdownNow()`时从
+       `RUNNING or SHUTDOWN -> STOP`
+     - **TIDYING**: 当所有任务已终止，任务数量为0时，线程池会进入TIDYING状态，并且会执行钩子函数`terminated()`，用户可重载该方法
+       实现自己的业务逻辑;状态切换是所有任务终止就进入TIDYING状态
+     - **TERMINATED**: 线程池彻底终止状态;状态切换是TIDYING的钩子函数执行完毕后进入TERMINATED状态
    
    2. 任务执行过程
-   - 当任务提交给线程池时，线程首先判断当前池内线程数是否大于corePoolSize(核心线程数)，如果小于这值就会创建一个新的线程来执行该任务；
-   - 当线程数大于核心线程数时，则会尝试将任务放入缓冲队列(workQueue)内，若添加成功，则该任务会被等待的空闲线程取去执行，若添加失败，
-     则会尝试创建新的线程去执行该任务；
-   - 如果线程池内线程数达到了maximumPoolSize(最大线程数)时，则会采取handler(拒绝策略)处理
-   - 如果线程池内的线程数大于corePoolSize时，当线程空闲超时keepAliveTime时，线程将被终止，直到线程数等于corePoolSize；如果允许核心
-     线程数也有超时时间，则当核心线程数内的线程超时时也会被终止，直至线程数为0
+     - 当任务提交给线程池时，线程首先判断当前池内线程数是否大于corePoolSize(核心线程数)，如果小于这值就会创建一个新的线程来执行该任务；
+     - 当线程数大于核心线程数时，则会尝试将任务放入缓冲队列(workQueue)内，若添加成功，则该任务会被等待的空闲线程取去执行，
+       若添加失败，则会尝试创建新的线程去执行该任务；
+     - 如果线程池内线程数达到了maximumPoolSize(最大线程数)时，则会采取handler(拒绝策略)处理
+     - 如果线程池内的线程数大于corePoolSize时，当线程空闲超时keepAliveTime时，线程将被终止，直到线程数等于corePoolSize；
+       如果允许核心线程数也有超时时间，则当核心线程数内的线程超时时也会被终止，直至线程数为0
    
    3. 线程池中的线程初始化
-   - `prestartCoreThread()`：初始化一个核心线程
-   - `prestartAllCoreThreads()`：初始化所有核心线程
-   - 初始化后线程会执行workQueue的`take()`方法，该方法是阻塞的，直到有任务提交
+     - `prestartCoreThread()`：初始化一个核心线程
+     - `prestartAllCoreThreads()`：初始化所有核心线程
+     - 初始化后线程会执行workQueue的`take()`方法，该方法是阻塞的，直到有任务提交
    
    4. 任务缓存队列及排队策略
-   - **ArrayBlockingQueue**：基于数组的FIFO阻塞队列,必须有最大容量的参数
-   - **LinkedBlockingQueue**: 基于链表的FIFO阻塞队列,容量动态扩展
-   - **SynchronousQueue**: 该队列不保存提交的任务，而是直接新建队列来执行任务
+     - **ArrayBlockingQueue**：基于数组的FIFO阻塞队列,必须有最大容量的参数
+     - **LinkedBlockingQueue**: 基于链表的FIFO阻塞队列,容量动态扩展
+     - **SynchronousQueue**: 该队列不保存提交的任务，而是直接新建队列来执行任务
    
    5. 任务拒绝策略
   ```
@@ -173,12 +174,12 @@ tags:
   ```
    
    6. 线程池的关闭
-   - `shutdown()`：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务 
-   - `shutdownNow()`: 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务
+     - `shutdown()`：不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务 
+     - `shutdownNow()`: 立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务
    
    7. 线程池容量动态调整
-   - `setCorePoolSize()`：设置核心池大小
-   - `setMaximumPoolSize()`：设置线程池最大能创建的线程数目大小
+     - `setCorePoolSize()`：设置核心池大小
+     - `setMaximumPoolSize()`：设置线程池最大能创建的线程数目大小
 
 ### 4.4 Executors
    - **newFixedThreadPool**: 定容量的线程池，核心线程数与最大线程数相等
@@ -226,13 +227,13 @@ tags:
 |Examine  |   element()            |     peek()             |                -                    |
 
    3. 主要实现  
-   - **ArrayBlockingQueue**：基于数组的有界阻塞队列，必须指定长度
-   - **LinkedBlockingQueue**: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为`Integer.MAX_VALUE`
-   - **SynchronousQueue**: 无缓冲区的阻塞队列，`put()`要阻塞等待`take()`
-   - **PriorityBlockingQueue**: 优先级阻塞队列，队列元素必须实现`Comparator`接口，基于数组，自动扩展长度
-   - **DelayQueue**：一个使用优先级队列实现的无界阻塞队列
-   - **LinkedTransferQueue**：一个由链表结构组成的无界阻塞队列
-   - **LinkedBlockingDeque**：一个由链表结构组成的双向阻塞队列
+     - **ArrayBlockingQueue**：基于数组的有界阻塞队列，必须指定长度
+     - **LinkedBlockingQueue**: 基于链表的有界阻塞队列，长度可指定也可动态扩张，默认长度为`Integer.MAX_VALUE`
+     - **SynchronousQueue**: 无缓冲区的阻塞队列，`put()`要阻塞等待`take()`
+     - **PriorityBlockingQueue**: 优先级阻塞队列，队列元素必须实现`Comparator`接口，基于数组，自动扩展长度
+     - **DelayQueue**：一个使用优先级队列实现的无界阻塞队列
+     - **LinkedTransferQueue**：一个由链表结构组成的无界阻塞队列
+     - **LinkedBlockingDeque**：一个由链表结构组成的双向阻塞队列
    
    4. 注意  
    如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。

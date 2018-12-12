@@ -109,7 +109,7 @@ tags:
   ```
 
 ### 4.2 ThreadPoolExecutor构造参数说明
-  ```
+  ```java
     // corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
     // maximunPoolSize 线程池最大线程数
     // keepAliveTime 多于核心线程数的空闲线程最长存活时间量级与unit参数配合使用

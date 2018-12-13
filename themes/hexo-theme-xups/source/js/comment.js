@@ -226,7 +226,7 @@ if (!window['String']['prototype']['trim']) {
           '<div class="com-avatar"><img id="JELON__loginAvatar" src="/img/unsigned_avatar.jpg" alt="avatar"></div>',
           '<div class="com-text">',
             '<div class="main">',
-              '<textarea class="text-area-edited show" id="JELON__editBox" placeholder="欢迎评论！"></textarea>',
+              '<textarea class="text-area-edited show" id="JELON__editBox" placeholder="留下您的评论！"></textarea>',
               '<div class="text-area-preview" id="JELON__previewBox"></div>',
             '</div>',
             '<div class="switch">',

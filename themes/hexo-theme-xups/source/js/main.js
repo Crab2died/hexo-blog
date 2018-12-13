@@ -1,4 +1,28 @@
 /*! echo-js v1.7.3 | (c) 2016 @toddmotto | https://github.com/toddmotto/echo */
+
+
+// 移动设备侦测
+var isMobile = {
+    Android: function () {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function () {
@@ -42,28 +66,6 @@
             echo.render();
             poll = null;
         }, delay);
-    };
-
-    // 移动设备侦测
-    var isMobile = {
-        Android: function () {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function () {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function () {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function () {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function () {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function () {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
     };
 
     if ($('.local-search').size() && isMobile) {
@@ -183,6 +185,9 @@ JELON = deepCopy(JELON, {
     name: 'JELON',
     version: '0.0.2',
     init: function () {
+        if (isMobile) {
+            $("#local-search").show();
+        }
         this.toggleMenu();
         this.backToTop();
 
@@ -233,6 +238,7 @@ JELON = deepCopy(JELON, {
             }
         };
     },
+
 });
 
 /**

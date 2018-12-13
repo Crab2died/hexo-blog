@@ -32,7 +32,7 @@ tags:
      sudo vi /etc/hosts
      # 添加 
      本机ip   crab2died
-   ```   
+   ```
 ## 二 安装Hadoop
 ### 1. 解压Hadoop
    ```bash
@@ -57,7 +57,7 @@ tags:
 ### 4. 伪分布式配置
 #### 4.1 进入`${HADOOP_HOME}/etc/hadoop`目录中，修改以下文件
 ##### 4.1.1 修改 hadoop-env.sh  
-      将`export JAVA_HOME=${JAVA_HOME}`改成`export JAVA_HOME=/usr/local/jdk1.8.0_181  # JDK根目录`
+   将`export JAVA_HOME=${JAVA_HOME}`改成`export JAVA_HOME=/usr/local/jdk1.8.0_181  # JDK根目录`
 ##### 4.1.2 修改 core-site.xml    
    ```xml
      <configuration>
@@ -71,7 +71,7 @@ tags:
              <value>hdfs://crab2died:9000</value>
          </property>
      </configuration>
-   ```  
+   ```
 ##### 4.1.3 修改 hdfs-site.xml
    ```xml
      <configuration>

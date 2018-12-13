@@ -130,21 +130,21 @@ tags:
   官方在VisualVM的软件说明中写上了“All-in-One”的描述字样，预示着它除了运行监视、 故障处理外，还提供了很多其他方面的功能。
   
 ### 远程监控
-  - 1、远程服务器启动jstatd服务
-    创建配置文件jstatd.policy内容为  
+  - 1、远程服务器启动jstatd服务  
+    创建配置文件jstatd.policy内容为
     ```
-    grant codebase "file:${java.home}/../lib/tools.jar" {  
-       permission java.security.AllPermission;  
-    };
-    ```  
+      grant codebase "file:${java.home}/../lib/tools.jar" {  
+         permission java.security.AllPermission;  
+      };
+    ```
     启动服务:`jstatd -J-Djava.security.policy=jstatd.policy -p 8701`
   - 2、启动应用参数
-    ``` 
-    -Dcom.sun.management.jmxremote=true 
-    -Dcom.sun.management.jmxremote.port=9090 
-    -Dcom.sun.management.jmxremote.ssl=false 
-    -Dcom.sun.management.jmxremote.authenticate=false
-    -Djava.rmi.server.hostname=192.168.0.1
+    ```
+      -Dcom.sun.management.jmxremote=true 
+      -Dcom.sun.management.jmxremote.port=9090 
+      -Dcom.sun.management.jmxremote.ssl=false 
+      -Dcom.sun.management.jmxremote.authenticate=false
+      -Djava.rmi.server.hostname=192.168.0.1
     ```
   - 3、启动jvisualvm,操作步骤:  
     远程 -> 添加远程主机 -> 添加JMX链接

@@ -185,7 +185,7 @@ JELON = deepCopy(JELON, {
     name: 'JELON',
     version: '0.0.2',
     init: function () {
-        if (isMobile) {
+        if (!isMobile) {
             $("#local-search").show();
         }
         this.toggleMenu();

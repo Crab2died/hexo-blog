@@ -4,11 +4,12 @@
         <h3 class="post-title"><span><%= post.title %></span></h3>
     </header>
     <p class="post-meta text-center">
-        <%- post.author || 'Crab2Died' %> &nbsp;
-        <i class="fa fa-calendar"></i>&nbsp;
+        <i class="fa fa-edit"></i>
+        <%- post.author || 'Crab2Died' %> &nbsp;&nbsp;
+        <i class="fa fa-calendar"></i>
         <%- partial('post/date', { date_format: 'YYYY-MM-DD' }) %>
         <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-        <span id="busuanzi_container_page_pv"> &nbsp;<i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span>
+        <span id="busuanzi_container_page_pv"> &nbsp;&nbsp; <i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span>
     </p>
     <div class="post-content">
         <%- post.content %>

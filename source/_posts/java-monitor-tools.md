@@ -1,7 +1,7 @@
 ---
 layout: post
 title: JAVA Monitor Tools
-thumbnail: /images/material/tech_tool.png
+thumbnail: /images/material/tech_tool.jpg
 date: 2018-06-14 12:45:27 +0800
 author: Crab2Died
 categories: Java

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Spring Integration Websocket
-thumbnail: /images/net/web.png
+thumbnail: /images/net/web.jpg
 date: 2018-08-27 01:11:27 +0800
 author: Crab2Died
 categories: Websocket

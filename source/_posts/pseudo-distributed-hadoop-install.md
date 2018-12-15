@@ -152,7 +152,7 @@ tags:
      1722 DataNode
      1732 SecondrayNameNode     
    ```
-### 8. 查看HDFS管理界面:  
+### 8. 查看HDFS管理界面  
    [http://crab2died:50070](http://crab2died:50070)
-### 9. 查看YARN管理界面:  
+### 9. 查看YARN管理界面  
    [http://crab2died:8088](http://crab2died:8088)

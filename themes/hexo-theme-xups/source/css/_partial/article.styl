@@ -4,6 +4,7 @@
 .article-nav
   padding-bottom 10px
   color #888
+
 .article-share
   padding 0 0 15px
   .share-area
@@ -40,14 +41,25 @@
         background-position 0 -98px
       &.douban
         background-position 0 -324px
+
 .body
   box-shadow 0 1px 5px rgba(0, 0, 0, .08)
+
 .article
   padding-top 0 !important
   padding-bottom 10px
   border-bottom 0
+  figure
+    margin 0
+    padding 10px 15px
+
+.post-content
+  h1, h2, h3, h4, h5, h6
+    margin 10px 0
+
 .comments
   margin-top 20px
+
 .page-navigator
   margin 1em 0
   padding 0 20px
@@ -73,3 +85,23 @@
     display inline-block
     margin-right 10px
     padding 3px 0
+
+// 目录
+.article-toc
+  overflow-y auto;
+  overflow-x hidden
+  position: fixed;
+  margin-top 5px
+  border-left 1px solid #9da29c
+  left 15px
+  top 10%
+  max-height 80%
+  width 220px
+  font-size 13px
+  ol
+    list-style-type none
+    padding-inline-start 15px
+  .post-toc-text
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;

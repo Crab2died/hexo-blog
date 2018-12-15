@@ -49,7 +49,7 @@ var searchFunc = function (path, search_id, content_id) {
                                 if (index_content < 0) {
                                     index_content = 0;
                                 }
-                                if (i == 0) {
+                                if (i === 0) {
                                     first_occur = index_content;
                                 }
                                 // content_index.push({index_content:index_content, keyword_len:keyword_len});
@@ -71,7 +71,7 @@ var searchFunc = function (path, search_id, content_id) {
                                 start = 0;
                             }
 
-                            if (start == 0) {
+                            if (start === 0) {
                                 end = 100;
                             }
 
@@ -100,8 +100,8 @@ var searchFunc = function (path, search_id, content_id) {
             });
         }
     });
-    $(document).on('click', '#local-search-close', function() {
+    $(document).on('click', '#local-search-close', function () {
         $('#local-search-input').val('');
         $('#local-search-result').html('');
     });
-}
+};

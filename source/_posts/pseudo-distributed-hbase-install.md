@@ -80,9 +80,9 @@ tags:
       1285 HMaster
       1312 HRegionServer
    ```
-### 4. 查看HBase管理界面:  
+### 4. 查看HBase管理界面  
    [http://crab2died:16030](http://crab2died:16030)
-### 5. 进入命令行管理:  
+### 5. 进入命令行管理  
    ```bash
       hbase shell
    ```

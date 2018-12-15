@@ -69,11 +69,10 @@ var isMobile = {
     };
 
     if ($('.local-search').size() && isMobile) {
-        $.getScript('/js/search.js', function() {
+        $.getScript('/js/search.js', function () {
             searchFunc("/search.xml", 'local-search-input', 'local-search-result');
         });
-    };
-
+    }
     echo.init = function (opts) {
         opts = opts || {};
         var offsetAll = opts.offset || 0;
@@ -181,15 +180,25 @@ function deepCopy(c, p) {
  * @type {{init, toggleMenu}}
  */
 var JELON = window.JELON || {};
+toc = $("#post-toc"),
 JELON = deepCopy(JELON, {
     name: 'JELON',
     version: '0.0.2',
-    init: function () {
-        if (!isMobile) {
-            $("#local-search").show();
+    showToc: function (scrollTop) {
+        if (scrollTop / clientHeight >= 0.4) {
+            toc.removeClass("post-toc-top");
+            toc.addClass("post-toc-not-top");
+        } else {
+            toc.removeClass("post-toc-not-top");
+            toc.addClass("post-toc-top");
         }
+    },
+    init: function () {
         this.toggleMenu();
         this.backToTop();
+
+        toc.removeClass("post-toc-top");
+        toc.addClass("post-toc-not-top");
 
         echo.init({
             offset: 50,
@@ -237,7 +246,7 @@ JELON = deepCopy(JELON, {
                 }
             }
         };
-    },
+    }
 
 });
 

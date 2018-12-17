@@ -12,10 +12,10 @@ tags:
 
 ## 一 环境准备
 ### 1. Ubuntu、JDK8、Hadoop2.8.5、HBase2.1.0
-   [安装Ubuntu https://www.ubuntu.com/download/desktop](https://www.ubuntu.com/download/desktop);
-   [安装JDK,修改环境变量 https://www.oracle.com/technetwork/java/javase/downloads/index.html](https://www.oracle.com/technetwork/java/javase/downloads/index.html);
-   [安装Hadoop2.8.5 http://hadoop.apache.org/](http://hadoop.apache.org/)
-   [下载HBase2.1.0 http://hbase.apache.org/](http://hbase.apache.org/)
+   - [安装Ubuntu https://www.ubuntu.com/download/desktop](https://www.ubuntu.com/download/desktop)  
+   - [安装JDK,修改环境变量 https://www.oracle.com/technetwork/java/javase/downloads/index.html](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+   - [安装Hadoop2.8.5 http://hadoop.apache.org/](http://hadoop.apache.org/)  
+   - [下载HBase2.1.0 http://hbase.apache.org/](http://hbase.apache.org/)
 
 ### 2. 其他准备
    部署Hadoop详见: [Hadoop 伪分布式部署](/posts/2018/10/26/pseudo-distributed-hadoop-install/)

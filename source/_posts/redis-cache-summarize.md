@@ -10,7 +10,7 @@ tags:
   - Redis
 ---
 
-## 1. 概述  
+## 1 概述  
    - Redis全称: Remote Dictionary Server
    - 基于内存的Key-Value存储系统，单线程实现  
    - 多样的数据类型，支持的数据类型有：string(字符串)、hash(哈希)、list(链表)、set(集合)、zset(sorted set有序集合) 
@@ -20,7 +20,7 @@ tags:
    - 3.0后支持分布式存储，去中心化，具有线性伸缩功能
    - [Redis命令大全](http://redisdoc.com/index.html)
    
-## 2. Redis数据持久化
+## 2 Redis数据持久化
 ### 2.1 RDB(Redis DataBase)
    - SNAPSHOT(快照): `save 秒数 写操作次数`如`save 9000 1`表示900s(15min)有一次写操作生成快照，也可`save ""`表示
      每次写操作即生成快照
@@ -49,7 +49,7 @@ tags:
    - **allkeys-random**：从数据集（server.db[i].dict）中任意选择数据淘汰
    - **no-enviction**：禁止驱逐数据
 
-## 3. Redis集群
+## 3 Redis集群
 ### 3.1 分片策略
    - Redis集群被分为16384(2<sup>14</sup>)个hash slot(hash槽)，集群内每个节点都拥有部分hash槽，使用数据键的CRC16编码对16384取模来
      计算数据对应的hash槽，Redis最大节点数为16384

@@ -41,7 +41,7 @@ tags:
       * 阻塞(Blocked):该状态程序在等待获取一个排他锁，程序在同步时会在该状态 
       * 结束(Terminated):已终止线程的线程状态,线程已经结束执行.
    2. 线程状态转换关系图  
-      ![线程状态转换关系](https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/concurrent/%E7%BA%BF%E7%A8%8B%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E5%85%B3%E7%B3%BB.png)
+      ![线程状态转换关系](/images/java/thread_status_transfer.png)
    
 ## 2. 线程安全与锁优化
 ### 2.1 JAVA中的线程安全
@@ -190,7 +190,7 @@ tags:
    - **newSingleThreadScheduledExecutor**: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为`Integer.MAX_VALUE`,
      内部是一个DelayedWorkQueue实现  
 
-## 5. AbstractQueuedSynchronizer
+## 5 AbstractQueuedSynchronizer
    内部类：
    - ConditionObject：
    - Node：存放线程信息队列
@@ -210,13 +210,13 @@ tags:
 ### 5.3 公平锁和非公平锁
    公平锁是严格按照FIFO队列获得锁，但带来了大量的线程切换的消耗，非公平锁极大的降低了线程切换带来的消耗，虽然可能造成线程饥饿的情况，但也提高了吞吐量。
 
-## 6. synchronized与Lock比较
+## 6 synchronized与Lock比较
    1. `synchronized`是JVM层面实现的'重量级锁'，可通过监控工具监控`synchronized`的锁定，而且代码出现异常时会自动释放锁
    2. `Lock`是纯JAVA实现的，为多种实现留下空间，可以实现不同的调度算法、性能特性或者锁定语义，`Lock`必须自己手动的释放锁
       形如`finally{lock.unlock();}`
    3. 当锁竞争激烈时用`Lock`,锁竞争较弱时用`synchronized`
 
-## 7. 阻塞队列BlockingQueue
+## 7 阻塞队列BlockingQueue
    1. 阻塞队列是一个FIFO队列
    2. 主要方法   
    
@@ -238,6 +238,6 @@ tags:
    4. 注意  
    如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。
    
-## 8. ConcurrentLinkedQueue
+## 8 ConcurrentLinkedQueue
    非阻塞线程安全的FIFO队列，基于单向链表实现，循环CAS操作实现，由于是根据Node.NEXT是否为NULL来判断是否为TAIL节点，因此队列的元素值不可为NULL。
    

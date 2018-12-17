@@ -1,4 +1,4 @@
-var searchFunc = function (path, search_id, content_id) {
+var searchFunc = function (path, search_id, content_id, contextPath) {
     'use strict';
     var BTN = "<i id='local-search-close'><i class='fa fa-close'></i></i>";
     $.ajax({
@@ -33,7 +33,7 @@ var searchFunc = function (path, search_id, content_id) {
                     }
                     var data_title = data.title.trim().toLowerCase();
                     var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                    var data_url = "https://crab2died.github.io/" + data.url;
+                    var data_url = contextPath + decodeURIComponent(data.url);
                     var index_title = -1;
                     var index_content = -1;
                     var first_occur = -1;

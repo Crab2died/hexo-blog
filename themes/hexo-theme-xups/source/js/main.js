@@ -70,7 +70,7 @@ var isMobile = {
 
     if ($('.local-search').size() && isMobile) {
         $.getScript('/js/search.js', function () {
-            searchFunc("/search.xml", 'local-search-input', 'local-search-result');
+            searchFunc("/search.xml", 'local-search-input', 'local-search-result', root.location.origin);
         });
     }
     echo.init = function (opts) {

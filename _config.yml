@@ -87,6 +87,17 @@ search:
   format: html
   limit: 10000
 
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: false
+  smartLists: true
+  smartypants: true
+  modifyAnchors: ''
+  autolink: true
+
 feed:
   type: atom
   path: atom.xml

@@ -1,5 +1,0 @@
-<% if (post.archive && post.archive.length) { %>
-  <% post.archive.forEach(function(tag, i) { %>
-    <%- link_to(tag.path, tag.name) %><% if (i != post.tags.length - 1) { %> | <% } %>
-  <% }); %>
-<% } %>

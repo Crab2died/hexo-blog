@@ -5,7 +5,6 @@
                 最近动态
             <% } else if (pagination == 3) { %>
                 文章归档
-                <!-- 文章归档，可以根据日期分类 -->
             <% } else if (pagination == 4) { %>
                 <%- page.category %> 分类下的文章
             <% } else if (pagination == 5) { %>
@@ -13,6 +12,9 @@
             <% } %>
         </strong>
     </h3>
+    <% if (pagination == 3) { %>
+      <%- list_archives({type: "monthly", order: -1, format: "YYYY年MM月", class: "archive", separator:" "}) %>
+    <% } %>
     <% page.posts.each(function(post) { %>
         <%- partial('post/post-item', { post: post }) %>
     <% }) %>

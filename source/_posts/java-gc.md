@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java GC
-thumbnail: /images/java/java_01.jpg
+thumbnail: /images/java/java_runtime.png
 date: 2018-06-15 13:15:27 +0800
 author: Crab2Died
 categories: Java
@@ -13,7 +13,7 @@ tags:
 
 ## 一 Java虚拟机内存区域
 ### 1 运行时数据区
-   ![java运行时数据区](https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png)
+   ![java运行时数据区](/images/java/java_runtime.png)
 
 ### 2 程序计数器(Program Counter Register)
    - 1、程序计数器是线程内(每个线程都有唯一的、封闭的)一小块内存区域
@@ -63,9 +63,9 @@ tags:
    
 ### 3 对象的访问定位
    - 1、句柄访问  
-      ![句柄访问对象](https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/gc/%E5%8F%A5%E6%9F%84%E8%AE%BF%E9%97%AE.png)
+      ![句柄访问对象](/images/java/object_handle_access.png)
    - 2、直接指针访问   
-      ![直接指针访问](https://raw.githubusercontent.com/Crab2died/jdepth/master/src/main/java/com/github/jvm/gc/%E7%9B%B4%E6%8E%A5%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE.png)  
+      ![直接指针访问](/images/java/direct_pointer_access.png)
    
 ## 三 垃圾回收与内存分配
 ### 1 引用计数法(虚拟机未使用)

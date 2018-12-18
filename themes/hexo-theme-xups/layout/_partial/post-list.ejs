@@ -13,13 +13,13 @@
         </strong>
     </h3>
     <% if (pagination == 3) { %>
-      <%- list_archives({type: "monthly", order: -1, format: "YYYY年MM月", class: "archive", separator:" "}) %>
+      <%- partial('widget/archive') %>
     <% } %>
     <% page.posts.each(function(post) { %>
         <%- partial('post/post-item', { post: post }) %>
     <% }) %>
 
-    <% if (page.total >= 1){ %>
+    <% if (page.total > 1){ %>
     <nav class="page-navigator">
         <%- paginator({
             prev_text: '前一页',

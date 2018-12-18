@@ -23,7 +23,7 @@
     <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
     <meta name="keywords" content="<%- theme.SEO.keywords %>" >
-    <meta name="description" content="<%- theme.SEO.description %>" >
+    <meta name="description" content="<% if(page.content){ %><%- page.content.replace(/<\/?.+?>/g, "").replace(/[\n\r]/g,"").substr(0, 2048) %> <% } else { %><%- theme.SEO.keywords %><% } %>" >
 
     <% if (theme.rss) { %>
     <link rel="alternative" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml" >

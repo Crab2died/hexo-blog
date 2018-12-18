@@ -30,7 +30,7 @@ tags:
    ```
 ### 2. 配置HBase环境变量
    ```bash
-      export HBASE_HOME=//usr/local/hbase-2.1.0
+      export HBASE_HOME=/usr/local/hbase-2.1.0
       export HBASE_CONF_DIR=${HBASE_HOME}/conf
       export HBASE_CLASS_PATH=${HBASE_CONF_DIR}
       export PATH=$PATH:${HBASE_HOME}/bin

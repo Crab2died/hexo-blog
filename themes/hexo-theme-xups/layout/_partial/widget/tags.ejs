@@ -1,12 +1,12 @@
 <!-- 文章标签 -->
 <div class="widget-bd tag-wrap">
   <%
-  site.tags.forEach(function (tag, index) {
-    if (index < 39) {
+  site.tags.sort('length', -1).forEach(function (tag, index) {
+    if (index < 15) {
   %>
-    <a class="tag-item" href="<%= url_for(tag.path) %>" title="<%= tag.name %>"><%- tag.name %> (<%- tag.length %>)</a>
+    <a class="tag-item-link" href="<%= url_for(tag.path) %>" title="<%= tag.name %> (<%- tag.length %>)"><%- tag.name %> (<%- tag.length %>)</a>
   <%
     }
-  }); 
+  });
   %>
 </div>

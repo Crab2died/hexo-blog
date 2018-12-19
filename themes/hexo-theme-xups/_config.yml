@@ -91,10 +91,6 @@ friends:
   enable: true
   list:
     1:
-      name: 我的Github
-      title: 我的Github
-      link: https://github.com/Crab2died
-    2:
       name: 开源中国
       title: 开源中国
       link: https://www.oschina.net/

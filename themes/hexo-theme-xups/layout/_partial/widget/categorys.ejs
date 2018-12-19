@@ -1,7 +1,7 @@
 <!-- 文章分类 -->
 <ul class="widget-bd">
     <% site.categories.sort('length', -1).forEach(function(cat, index){
-    if (index < 10) {
+    if (index < 5) {
     %>
     <li>
         <a href="<%= url_for(cat.path) %>"><%= cat.name %></a>

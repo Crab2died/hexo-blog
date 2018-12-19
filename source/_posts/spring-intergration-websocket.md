@@ -4,11 +4,11 @@ title: Spring Integration Websocket
 thumbnail: /images/net/web.jpg
 date: 2018-08-27 01:11:27 +0800
 author: Crab2Died
-categories: Websocket
+categories: Web Socket
 tags: 
   - Java
   - Spring
-  - Websocket
+  - Web Socket
 ---
 
 # 一 依赖（这里只列举了websocket相关依赖）

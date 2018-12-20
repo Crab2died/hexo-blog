@@ -23,6 +23,30 @@ var isMobile = {
     }
 };
 
+
+var days = ["日", "一", "二", "三", "四", "五", "六"];
+
+function showDT() {
+    var currentDT = new Date();
+    var y, m, date, day, hs, ms, ss, theDateStr;
+    y = currentDT.getFullYear(); //四位整数表示的年份
+    m = currentDT.getMonth(); //月
+    m = m < 10 ? ('0' + m) : m;
+    date = currentDT.getDate(); //日
+    date = date < 10 ? ('0' + date) : date;
+    day = currentDT.getDay(); //星期
+    hs = currentDT.getHours(); //时
+    hs = hs < 10 ? ('0' + hs) : hs;
+    ms = currentDT.getMinutes(); //分
+    ms = ms < 10 ? ('0' + ms) : ms;
+    ss = currentDT.getSeconds(); //秒
+    ss = ss < 10 ? ('0' + ss) : ss;
+    theDateStr = y + "年" + m + "月" + date + "日 星期" + days[day] + " " + hs + ":" + ms + ":" + ss;
+    document.getElementById("theClock").innerHTML = theDateStr;
+    // setTimeout 在执行时,是在载入后延迟指定时间后,去执行一次表达式,仅执行一次
+    window.setTimeout(showDT, 1000);
+}
+
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function () {
@@ -73,6 +97,10 @@ var isMobile = {
             searchFunc("/search.xml", 'local-search-input', 'local-search-result', root.location.origin);
         });
     }
+    ;
+
+    showDT();
+
     echo.init = function (opts) {
         opts = opts || {};
         var offsetAll = opts.offset || 0;
@@ -181,74 +209,74 @@ function deepCopy(c, p) {
  */
 var JELON = window.JELON || {};
 toc = $("#post-toc"),
-JELON = deepCopy(JELON, {
-    name: 'JELON',
-    version: '0.0.2',
-    showToc: function (scrollTop) {
-        if (scrollTop / clientHeight >= 0.4) {
+    JELON = deepCopy(JELON, {
+        name: 'JELON',
+        version: '0.0.2',
+        showToc: function (scrollTop) {
+            if (scrollTop / clientHeight >= 0.4) {
+                toc.removeClass("post-toc-top");
+                toc.addClass("post-toc-not-top");
+            } else {
+                toc.removeClass("post-toc-not-top");
+                toc.addClass("post-toc-top");
+            }
+        },
+        init: function () {
+            this.toggleMenu();
+            this.backToTop();
+
             toc.removeClass("post-toc-top");
             toc.addClass("post-toc-not-top");
-        } else {
-            toc.removeClass("post-toc-not-top");
-            toc.addClass("post-toc-top");
-        }
-    },
-    init: function () {
-        this.toggleMenu();
-        this.backToTop();
 
-        toc.removeClass("post-toc-top");
-        toc.addClass("post-toc-not-top");
-
-        echo.init({
-            offset: 50,
-            throttle: 250,
-            unload: false,
-            callback: function (element, op) {
-                //console.log(element, 'has been', op + 'ed')
-            }
-        });
-    },
-    $: function (str) {
-        return /^(\[object HTML)[a-zA-Z]*(Element\])$/.test(Object.prototype.toString.call(str)) ? str : document.getElementById(str);
-    },
-    toggleMenu: function () {
-        var _this = this,
-            $menu = _this.$(_this.name + '__menu');
-        _this.$(_this.name + '__btnDropNav').onclick = function () {
-            if ($menu.className.indexOf('hidden') === -1) {
-                $menu.className += ' hidden';
-            } else {
-                $menu.className = $menu.className.replace(/\s*hidden\s*/, '');
-            }
-
-        };
-    },
-    backToTop: function () {
-        var _this = this;
-        if (typeof _this.$(_this.name + '__backToTop') === 'undefined') return;
-        window.onscroll = window.onresize = function () {
-            if (document.documentElement.scrollTop + document.body.scrollTop > 0) {
-                _this.$(_this.name + '__backToTop').style.display = 'block';
-            } else {
-                _this.$(_this.name + '__backToTop').style.display = 'none';
-            }
-        };
-        _this.$(_this.name + '__backToTop').onclick = function () {
-            var Timer = setInterval(GoTop, 10);
-
-            function GoTop() {
-                if (document.documentElement.scrollTop + document.body.scrollTop < 1) {
-                    clearInterval(Timer)
-                } else {
-                    document.documentElement.scrollTop /= 1.1;
-                    document.body.scrollTop /= 1.1
+            echo.init({
+                offset: 50,
+                throttle: 250,
+                unload: false,
+                callback: function (element, op) {
+                    //console.log(element, 'has been', op + 'ed')
                 }
-            }
-        };
-    }
+            });
+        },
+        $: function (str) {
+            return /^(\[object HTML)[a-zA-Z]*(Element\])$/.test(Object.prototype.toString.call(str)) ? str : document.getElementById(str);
+        },
+        toggleMenu: function () {
+            var _this = this,
+                $menu = _this.$(_this.name + '__menu');
+            _this.$(_this.name + '__btnDropNav').onclick = function () {
+                if ($menu.className.indexOf('hidden') === -1) {
+                    $menu.className += ' hidden';
+                } else {
+                    $menu.className = $menu.className.replace(/\s*hidden\s*/, '');
+                }
 
-});
+            };
+        },
+        backToTop: function () {
+            var _this = this;
+            if (typeof _this.$(_this.name + '__backToTop') === 'undefined') return;
+            window.onscroll = window.onresize = function () {
+                if (document.documentElement.scrollTop + document.body.scrollTop > 0) {
+                    _this.$(_this.name + '__backToTop').style.display = 'block';
+                } else {
+                    _this.$(_this.name + '__backToTop').style.display = 'none';
+                }
+            };
+            _this.$(_this.name + '__backToTop').onclick = function () {
+                var Timer = setInterval(GoTop, 10);
+
+                function GoTop() {
+                    if (document.documentElement.scrollTop + document.body.scrollTop < 1) {
+                        clearInterval(Timer)
+                    } else {
+                        document.documentElement.scrollTop /= 1.1;
+                        document.body.scrollTop /= 1.1
+                    }
+                }
+            };
+        }
+
+    });
 
 /**
  * 程序入口

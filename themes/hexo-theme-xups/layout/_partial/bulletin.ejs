@@ -1,12 +1,15 @@
 <% if(theme.bulletin.enable) { %>
 
   <div class="bulletin">
-    <div class="bulletin-icon"><strong style="color: #ebd829; width: 50px"><i class="fa fa-volume-up"></i></strong></div>
+    <!--<div class="bulletin-icon"><strong style="color: #ebd829; width: 50px"><i class="fa fa-volume-up"></i></strong></div>-->
     <div class="bulletin-content">
-      <marquee direction="left" behavior="scroll" scrollamount=8 scrolldelay=1 align="middle" bgcolor="#ffffff" hspace=20 vspace=0
+      <marquee direction="left" behavior="scroll" scrollamount=8 scrolldelay=1 align="bottom" bgcolor="#ffffff" hspace=20 vspace=0
              onmouseover=this.stop() onmouseout=this.start()>
       <%- theme.bulletin.content %>
     </marquee></div>
+    <div id="theClock" class="bulletin-clock">
+
+    </div>
   </div>
 
 <% } %>

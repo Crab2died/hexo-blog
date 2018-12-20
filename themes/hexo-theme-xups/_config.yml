@@ -69,6 +69,10 @@ revolvermaps:
   enable: true
   code: <script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0f0wajt7j79&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;bv=80" async="async">
 
+bulletin:
+  enable: true
+  content: "欢迎！更多信息可以访问我Github: https://github.com/Crab2died"
+
 #----------------------------
 # 是否开启评论
 #----------------------------

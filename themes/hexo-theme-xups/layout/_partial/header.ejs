@@ -15,7 +15,7 @@
                 <a href="<%= url_for(theme.menu[i].link) %>" <% if (theme.menu[i].tab) { %>target="_blank" <% } %> title="<%= theme.menu[i].name %>" class="<%= theme.menu[i].icon %>">&nbsp;<%= theme.menu[i].name %></a>
             </li>
             <% } %>
-            <li class="item"><%- partial('_partial/search') %></li>
+            <li class="item search-item"><%- partial('_partial/search') %></li>
         </ul>
         <div class="profile clearfix">
             <div class="feeds fl">

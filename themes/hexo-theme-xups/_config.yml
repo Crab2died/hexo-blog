@@ -71,7 +71,7 @@ revolvermaps:
 
 bulletin:
   enable: true
-  content: "欢迎访问Crab2Died的个人站点，希望你能有所收获！(^_^)"
+  content: "欢迎访问Crab2Died的个人站点！(^_^)"
 
 #----------------------------
 # 是否开启评论

@@ -2,8 +2,8 @@
 layout: post
 title: Excel4J
 date: 2018-04-16 20:15:27 +0800
+thumbnail: /images/material/excel4j.png
 categories: Excel4J
-description: Excel operation component based on poi & CSV
 tags: 
   - Java
   - Excel4J

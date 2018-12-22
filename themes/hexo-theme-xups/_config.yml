@@ -67,7 +67,7 @@ weibo_show:
 #----------------------------
 revolvermaps:
   enable: true
-  code: <script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0f0wajt7j79&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;bv=80" async="async">
+  code: <script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0f0wajt7j79&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=95&amp;v0=60&amp;z=12&amp;rx=30&amp;lx=-40&amp;ly=0&amp;hi=50&amp;he=5" async="async"></script>
 
 bulletin:
   enable: true

@@ -23,9 +23,12 @@
         <%- post.content %>
     </div>
 
-    <!-- 目录 -->
+  <!-- 目录 -->
+  <div class="catalog">
+    <%- toc(page.content, {list_number: false}) %>
+  </div>
 
-    <p class="post-meta">
+  <p class="post-meta">
         <span class="post-cat">分类：
             <%-
             list_categories(post.categories, {

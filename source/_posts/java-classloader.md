@@ -13,13 +13,7 @@ tags:
 
 ## 1. 类加载时机
 ### 1.1 生命周期
-```
-                      +-------------------------连接(Linking)----------------------------+
-   加载(Loading) -->  |  验证(Verification) --> 准备(Preparation) --> 解析(Resolution)    |
-                      +------------------------------------------------------------------+
-                                                                            ↓
-                                卸载(Unloading) <-- 使用(Using) <-- 初始化(Initialization)
-```
+   ![生命周期](/images/java/class_loader.png)
 
 ### 1.2 立即初始化(主动引用)  
    1. 遇到`new`、 `getstatic`、 `putstatic`或`invokestatic`这4条字节码指令时

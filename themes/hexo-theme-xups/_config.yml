@@ -99,7 +99,7 @@ friends:
       title: 知乎
       link: https://www.zhihu.com/
     2:
-      name: SegmentFault 思否
+      name: SegmentFault
       title: SegmentFault 思否
       link: https://segmentfault.com/
     3:
@@ -132,9 +132,9 @@ head_links:
       weibo:
         name: 新浪微博
         link: http://weibo.com/Crab2Died
-      facebook:
-        name: Facebook
-        link: #
+      zhihu:
+        name: 知乎
+        link: https://www.zhihu.com/people/crab2died
       email:
         name: E-mail
         link: mailto:Crab2Died@126.com

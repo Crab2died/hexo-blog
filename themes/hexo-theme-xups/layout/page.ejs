@@ -10,6 +10,8 @@
             <%- partial('_custom/lab', { page: page, post: page }) %>
         <% } else if (page.pageid && page.pageid == 'comment') { %>
             <%- partial('_custom/comment', { page: page, post: page }) %>
+        <% } else if (page.pageid && page.pageid == 'download') { %>
+            <%- partial('_custom/download', { page: page, post: page }) %>
         <% } else { %>
             <%- page.content %>
         <% } %>

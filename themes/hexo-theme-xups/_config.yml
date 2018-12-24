@@ -20,6 +20,10 @@ menu:
     name: 关于
     link: /about/
     icon: fa fa-user-circle-o
+#  download:
+#    name: 下载
+#    link: /download/
+#    icon: fa fa-link
   rss:
     name: RSS
     link: /atom.xml

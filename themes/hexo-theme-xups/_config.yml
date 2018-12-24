@@ -95,9 +95,22 @@ friends:
   enable: true
   list:
     1:
+      name: 知乎
+      title: 知乎
+      link: https://www.zhihu.com/
+    2:
+      name: SegmentFault 思否
+      title: SegmentFault 思否
+      link: https://segmentfault.com/
+    3:
+      name: InfoQ
+      title: InfoQ
+      link: https://www.infoq.cn/
+    4:
       name: 开源中国
       title: 开源中国
       link: https://www.oschina.net/
+
 
 #----------------------------
 # 头部链接

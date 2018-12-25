@@ -18,7 +18,7 @@ tags:
    - [下载HBase2.1.0 http://hbase.apache.org/](http://hbase.apache.org/)
 
 ### 2. 其他准备
-   部署Hadoop详见: [Hadoop 伪分布式部署](/posts/2018/10/26/pseudo-distributed-hadoop-install/)
+   部署Hadoop详见: [Hadoop 伪分布式部署](/2018/10/26/pseudo-distributed-hadoop-install/)
    
 ## 二 部署HBase
 ### 1. 解压HBase
@@ -68,7 +68,7 @@ tags:
       # 成功则会返回版本信息
    ```
 ## 三 启动HBase
-### 1. 先启动Hadoop,详见: [Hadoop 伪分布式部署](/posts/2018/10/26/pseudo-distributed-hadoop-install/)
+### 1. 先启动Hadoop,详见: [Hadoop 伪分布式部署](/2018/10/26/pseudo-distributed-hadoop-install/)
 ### 2. 启动HBase
    ```bash
       start-hbase.sh 

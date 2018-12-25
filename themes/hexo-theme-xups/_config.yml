@@ -69,7 +69,7 @@ revolvermaps:
 
 bulletin:
   enable: true
-  content: "欢迎访问Crab2Died的个人站点！(^_^)"
+  content: "欢迎访问Crab2Died的个人站点 (^_^)"
 
 #----------------------------
 # 是否开启评论
@@ -93,8 +93,8 @@ friends:
   enable: true
   list:
     1:
-      name: 知乎
-      title: 知乎
+      name: 知 乎
+      title: 知 乎
       link: https://www.zhihu.com/
     2:
       name: SegmentFault
@@ -131,7 +131,7 @@ head_links:
         name: 新浪微博
         link: http://weibo.com/Crab2Died
       zhihu:
-        name: 知乎
+        name: 知 乎
         link: https://www.zhihu.com/people/crab2died
       email:
         name: E-mail

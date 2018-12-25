@@ -1,29 +1,5 @@
 /*! echo-js v1.7.3 | (c) 2016 @toddmotto | https://github.com/toddmotto/echo */
 
-
-// 移动设备侦测
-var isMobile = {
-    Android: function () {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function () {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function () {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function () {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function () {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function () {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-
-
 var days = ["日", "一", "二", "三", "四", "五", "六"];
 
 function showDT() {
@@ -92,7 +68,7 @@ function showDT() {
         }, delay);
     };
 
-    if ($('.local-search').size() && isMobile) {
+    if ($('.local-search').size()) {
         $.getScript('/js/search.js', function () {
             searchFunc("/search.xml", 'local-search-input', 'local-search-result', root.location.origin);
         });

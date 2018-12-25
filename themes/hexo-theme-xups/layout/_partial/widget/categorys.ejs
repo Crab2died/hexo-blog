@@ -1,11 +1,11 @@
 <!-- 文章分类 -->
 <ul class="widget-bd">
-    <% site.categories.sort('length', -1).forEach(function(cat, index){
-    if (index < 5) {
-    %>
+  <% site.categories.sort('length', -1).forEach(function(cat, index){
+  if (index < 5) {
+  %>
     <li>
-        <a href="<%= url_for(cat.path) %>"><%= cat.name %></a>
-        <span class="badge" style="position: relative; float: right; margin-right: 5px; font-weight: bold">(<%= cat.length %>)</span>
+      <span class="badge">(<%= cat.length %>)</span>
+      <a href="<%= url_for(cat.path) %>"><%= cat.name %></a>
     </li>
-    <% }}); %>
+  <% }}); %>
 </ul>

@@ -67,14 +67,15 @@ revolvermaps:
   enable: true
   code: <script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0f0wajt7j79&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=95&amp;v0=60&amp;z=12&amp;rx=30&amp;lx=-40&amp;ly=0&amp;hi=50&amp;he=5" async="async"></script>
 
-ad_nav_1:
-  enable: false
-  image:
-  link:
+ad_nav_top:
+  enable: true
+  title: 网易云课堂6周年庆
+  image: /images/ad/163_ad.png
+  link: https://study.163.com/topics/sixth_anniversary/
 
 bulletin:
   enable: true
-  content: "欢迎访问Crab2Died的个人站点 ^v^"
+  content: "欢迎访问Crab2Died的个人站点 ^_^"
 
 #----------------------------
 # 是否开启评论

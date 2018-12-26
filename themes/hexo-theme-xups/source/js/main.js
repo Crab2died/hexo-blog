@@ -26,9 +26,8 @@ function showDT() {
 var cookie = {
     set: function (key, val, time) {//设置cookie方法
         var date = new Date(); //获取当前时间
-        var expiresDays = time;  //将date设置为n天以后的时间
-        date.setTime(date.getTime() + expiresDays * 1000); //格式化为cookie识别的时间
-        document.cookie = key + "=" + val + ";expires=" + date.toGMTString();  //设置cookie
+        date.setTime(date.getTime() + time * 1000); //格式化为cookie识别的时间
+        document.cookie = key + "=" + val + ";path=/;expires=" + date.toGMTString();  //设置cookie
     },
     get: function (key) {//获取cookie方法
         /*获取cookie参数*/
@@ -223,75 +222,75 @@ function deepCopy(c, p) {
  * @type {{init, toggleMenu}}
  */
 var JELON = window.JELON || {};
-toc = $("#post-toc"),
-    JELON = deepCopy(JELON, {
-        name: 'JELON',
-        version: '0.0.2',
-        showToc: function (scrollTop) {
-            if (scrollTop / clientHeight >= 0.4) {
-                toc.removeClass("post-toc-top");
-                toc.addClass("post-toc-not-top");
-            } else {
-                toc.removeClass("post-toc-not-top");
-                toc.addClass("post-toc-top");
-            }
-        },
-        init: function () {
-            this.toggleMenu();
-            this.backToTop();
-
+toc = $("#post-toc");
+JELON = deepCopy(JELON, {
+    name: 'JELON',
+    version: '0.0.2',
+    showToc: function (scrollTop) {
+        if (scrollTop / clientHeight >= 0.4) {
             toc.removeClass("post-toc-top");
             toc.addClass("post-toc-not-top");
-
-            echo.init({
-                offset: 50,
-                throttle: 250,
-                unload: false,
-                callback: function (element, op) {
-                    //console.log(element, 'has been', op + 'ed')
-                }
-            });
-        },
-        $: function (str) {
-            return /^(\[object HTML)[a-zA-Z]*(Element\])$/.test(Object.prototype.toString.call(str)) ? str : document.getElementById(str);
-        },
-        toggleMenu: function () {
-            var _this = this,
-                $menu = _this.$(_this.name + '__menu');
-            _this.$(_this.name + '__btnDropNav').onclick = function () {
-                if ($menu.className.indexOf('hidden') === -1) {
-                    $menu.className += ' hidden';
-                } else {
-                    $menu.className = $menu.className.replace(/\s*hidden\s*/, '');
-                }
-
-            };
-        },
-        backToTop: function () {
-            var _this = this;
-            if (typeof _this.$(_this.name + '__backToTop') === 'undefined') return;
-            window.onscroll = window.onresize = function () {
-                if (document.documentElement.scrollTop + document.body.scrollTop > 0) {
-                    _this.$(_this.name + '__backToTop').style.display = 'block';
-                } else {
-                    _this.$(_this.name + '__backToTop').style.display = 'none';
-                }
-            };
-            _this.$(_this.name + '__backToTop').onclick = function () {
-                var Timer = setInterval(GoTop, 10);
-
-                function GoTop() {
-                    if (document.documentElement.scrollTop + document.body.scrollTop < 1) {
-                        clearInterval(Timer)
-                    } else {
-                        document.documentElement.scrollTop /= 1.1;
-                        document.body.scrollTop /= 1.1
-                    }
-                }
-            };
+        } else {
+            toc.removeClass("post-toc-not-top");
+            toc.addClass("post-toc-top");
         }
+    },
+    init: function () {
+        this.toggleMenu();
+        this.backToTop();
 
-    });
+        toc.removeClass("post-toc-top");
+        toc.addClass("post-toc-not-top");
+
+        echo.init({
+            offset: 50,
+            throttle: 250,
+            unload: false,
+            callback: function (element, op) {
+                //console.log(element, 'has been', op + 'ed')
+            }
+        });
+    },
+    $: function (str) {
+        return /^(\[object HTML)[a-zA-Z]*(Element\])$/.test(Object.prototype.toString.call(str)) ? str : document.getElementById(str);
+    },
+    toggleMenu: function () {
+        var _this = this,
+            $menu = _this.$(_this.name + '__menu');
+        _this.$(_this.name + '__btnDropNav').onclick = function () {
+            if ($menu.className.indexOf('hidden') === -1) {
+                $menu.className += ' hidden';
+            } else {
+                $menu.className = $menu.className.replace(/\s*hidden\s*/, '');
+            }
+
+        };
+    },
+    backToTop: function () {
+        var _this = this;
+        if (typeof _this.$(_this.name + '__backToTop') === 'undefined') return;
+        window.onscroll = window.onresize = function () {
+            if (document.documentElement.scrollTop + document.body.scrollTop > 0) {
+                _this.$(_this.name + '__backToTop').style.display = 'block';
+            } else {
+                _this.$(_this.name + '__backToTop').style.display = 'none';
+            }
+        };
+        _this.$(_this.name + '__backToTop').onclick = function () {
+            var Timer = setInterval(GoTop, 10);
+
+            function GoTop() {
+                if (document.documentElement.scrollTop + document.body.scrollTop < 1) {
+                    clearInterval(Timer)
+                } else {
+                    document.documentElement.scrollTop /= 1.1;
+                    document.body.scrollTop /= 1.1
+                }
+            }
+        };
+    }
+
+});
 
 /**
  * 程序入口

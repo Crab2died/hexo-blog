@@ -1,5 +1,12 @@
 <!-- 侧栏部分 -->
 <aside class="sidebar">
+
+    <% if (theme.ad_nav_1.enable) { %>
+    <section class="widget">
+      <%- partial('widget/ad_1') %>
+    </section>
+    <% } %>
+
     <section class="widget">
         <h3 class="widget-hd"><strong>热门分类</strong></h3>
         <%- partial('widget/categorys') %>

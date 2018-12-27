@@ -73,6 +73,12 @@ ad_nav_top:
   image: /images/ad/163_ad.png
   link: https://study.163.com/topics/sixth_anniversary/
 
+ad_nav_bottom:
+  enable: true
+  title: 网易云课堂6周年庆
+  image: /images/ad/163_ad.png
+  link: https://study.163.com/topics/sixth_anniversary/
+
 bulletin:
   enable: true
   content: "欢迎访问Crab2Died的个人站点 ^_^"

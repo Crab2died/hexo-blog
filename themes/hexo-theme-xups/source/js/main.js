@@ -107,10 +107,16 @@ var closeAd = function (id) {
         });
     }
 
-    // 广告
-    var cookieVal = cookie.get("cookie:ad-nav-top");
-    if (cookieVal !== 'ad-nav-top') {
+    // 广告 上边栏
+    var cookieValTop = cookie.get("cookie:ad-nav-top");
+    if (cookieValTop !== 'ad-nav-top') {
         $("#ad-nav-top").show();
+    }
+
+    // 广告 下边栏
+    var cookieValBottom = cookie.get("cookie:ad-nav-bottom");
+    if (cookieValBottom !== 'ad-nav-bottom') {
+        $("#ad-nav-bottom").show();
     }
 
     showDT();

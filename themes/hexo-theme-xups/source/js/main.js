@@ -121,13 +121,16 @@ var closeAd = function (id) {
 
     // 文章图片放大
     $(".post-content img").click(function () {
-        var a = $("<a href='" + this.getAttribute('src') + "' target='_blank'>").get(0);
+        var a = $("<a href='" + this.getAttribute('src') + "' target='_blank'> title='" + this.getAttribute('alt') + "'").get(0);
         var e = document.createEvent('MouseEvents');
         e.initEvent('click', true, true);
         a.dispatchEvent(e);
     });
 
+    // 时间显示
     showDT();
+
+    console.log("%c%s","color: yellow; background: green; font-size: 28px; font-weight: bold","来了，老弟 =_=！");
 
     echo.init = function (opts) {
         opts = opts || {};

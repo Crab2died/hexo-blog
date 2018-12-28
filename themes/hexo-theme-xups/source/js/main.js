@@ -119,6 +119,14 @@ var closeAd = function (id) {
         $("#ad-nav-bottom").show();
     }
 
+    // 文章图片放大
+    $(".post-content img").click(function () {
+        var a = $("<a href='" + this.getAttribute('src') + "' target='_blank'>").get(0);
+        var e = document.createEvent('MouseEvents');
+        e.initEvent('click', true, true);
+        a.dispatchEvent(e);
+    });
+
     showDT();
 
     echo.init = function (opts) {

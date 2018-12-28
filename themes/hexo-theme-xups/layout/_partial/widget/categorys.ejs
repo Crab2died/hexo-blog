@@ -3,7 +3,7 @@
   <% site.categories.sort('length', -1).forEach(function(cat, index){
   if (index < 5) {
   %>
-    <li>
+    <li title="<%= cat.name %>">
       <span class="badge">(<%= cat.length %>)</span>
       <a href="<%= url_for(cat.path) %>"><%= cat.name %></a>
     </li>

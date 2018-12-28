@@ -56,6 +56,23 @@ var closeAd = function (id) {
     cookie.set("cookie:" + id, id, 60 * 30);
 };
 
+// 二维码
+var qrcode = function (id, root) {
+    new QRCode(document.getElementById(id), {
+        text: root,
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+};
+
+var wechatShare = function (id, root) {
+    qrcode(id, root);
+    $("#" + id).show();
+};
+
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         define(function () {
@@ -107,6 +124,8 @@ var closeAd = function (id) {
         });
     }
 
+    qrcode("qrcode", root.location.href);
+
     // 广告 上边栏
     var cookieValTop = cookie.get("cookie:ad-nav-top");
     if (cookieValTop !== 'ad-nav-top') {
@@ -130,7 +149,7 @@ var closeAd = function (id) {
     // 时间显示
     showDT();
 
-    console.log("%c%s","color: yellow; background: green; font-size: 28px; font-weight: bold","来了，老弟 =_=！");
+    console.log("%c%s", "color: yellow; background: green; font-size: 28px; font-weight: bold", "来了，老弟 =_=！");
 
     echo.init = function (opts) {
         opts = opts || {};

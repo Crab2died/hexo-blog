@@ -80,6 +80,24 @@ var wechatShare = function (id, href) {
     $("." + id).show();
 };
 
+// 显示网站二维码
+var siteQrMouseOver = function () {
+
+    var X = $('#site-qr').offset().top;
+    var Y = $('#site-qr').offset().left;
+    $("#site-qr-pop").empty();
+    qrcode("site-qr-pop", document.location.origin, 180);
+    $("#site-qr-pop").css({"top": (X + 60) + "px", "left": (Y - 80) + "px"});
+    $("#site-qr-pop").show();
+};
+
+// 隐藏网站二维码
+var siteQrMouseOut = function () {
+
+    $("#site-qr-pop").hide();
+    $("#site-qr-pop").empty();
+};
+
 particlesJS('particles-js', {
     particles: {
         color: '#009b27',
@@ -179,7 +197,6 @@ particlesJS('particles-js', {
     }
 
     qrcode("site-qr", root.location.origin, 50);
-
 
     // 广告 上边栏
     var cookieValTop = cookie.get("cookie:ad-nav-top");

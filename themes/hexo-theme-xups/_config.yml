@@ -81,7 +81,7 @@ ad_nav_bottom:
 
 bulletin:
   enable: true
-  content: "欢迎访问Crab2Died的个人站点 ^_^"
+  content: "欢迎访问Crab2Died的个人站点 - <span class='c-green'>Happy New Year ^_^</span> "
 
 #----------------------------
 # 是否开启评论

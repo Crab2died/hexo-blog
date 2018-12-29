@@ -57,21 +57,64 @@ var closeAd = function (id) {
 };
 
 // 二维码
-var qrcode = function (id, root) {
+var qrcode = function (id, root, size) {
+    size = size || 128;
     new QRCode(document.getElementById(id), {
         text: root,
-        width: 128,
-        height: 128,
+        width: size,
+        height: size,
         colorDark: "#000000",
         colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.H
     });
 };
 
-var wechatShare = function (id, root) {
-    qrcode(id, root);
-    $("#" + id).show();
-};
+particlesJS('particles-js', {
+    particles: {
+        color: '#adadad',
+        shape: 'circle', // "circle", "edge" or "triangle"
+        opacity: 1,
+        size: 4,
+        size_random: true,
+        nb: 150,
+        line_linked: {
+            enable_auto: true,
+            distance: 100,
+            color: '#c8c8c8',
+            opacity: 1,
+            width: 1,
+            condensed_mode: {
+                enable: false,
+                rotateX: 600,
+                rotateY: 600
+            }
+        },
+        anim: {
+            enable: true,
+            speed: 1
+        }
+    },
+    interactivity: {
+        enable: true,
+        mouse: {
+            distance: 300
+        },
+        detect_on: 'canvas', // "canvas" or "window"
+        mode: 'grab',
+        line_linked: {
+            opacity: .5
+        },
+        events: {
+            onclick: {
+                enable: true,
+                mode: 'push', // "push" or "remove"
+                nb: 4
+            }
+        }
+    },
+    /* Retina Display Support */
+    retina_detect: true
+});
 
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -124,7 +167,9 @@ var wechatShare = function (id, root) {
         });
     }
 
-    qrcode("qrcode", root.location.href);
+    qrcode("site-qr", root.location.origin, 50);
+
+    // qrcode("wechat-share", root.location.href);
 
     // 广告 上边栏
     var cookieValTop = cookie.get("cookie:ad-nav-top");

@@ -56,6 +56,10 @@ var closeAd = function (id) {
     cookie.set("cookie:" + id, id, 60 * 30);
 };
 
+var closeShare = function (clazz) {
+    $("." + clazz).hide();
+};
+
 // 二维码
 var qrcode = function (id, root, size) {
     size = size || 128;
@@ -69,9 +73,16 @@ var qrcode = function (id, root, size) {
     });
 };
 
+var wechatShare = function (id, href) {
+
+    $("#wechat-share").empty();
+    qrcode("wechat-share", href, 180);
+    $("." + id).show();
+};
+
 particlesJS('particles-js', {
     particles: {
-        color: '#adadad',
+        color: '#009b27',
         shape: 'circle', // "circle", "edge" or "triangle"
         opacity: 1,
         size: 3,
@@ -80,7 +91,7 @@ particlesJS('particles-js', {
         line_linked: {
             enable_auto: true,
             distance: 100,
-            color: '#c8c8c8',
+            color: '#2bd93f',
             opacity: 1,
             width: 1,
             condensed_mode: {
@@ -169,7 +180,6 @@ particlesJS('particles-js', {
 
     qrcode("site-qr", root.location.origin, 50);
 
-    // qrcode("wechat-share", root.location.href);
 
     // 广告 上边栏
     var cookieValTop = cookie.get("cookie:ad-nav-top");

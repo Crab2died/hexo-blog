@@ -43,13 +43,33 @@
         background-position 0 -324px
 
 .wechat-show
-  .close-show
+  display none
+  width 200px
+  height 270px
+  position fixed
+  z-index 9
+  background-color #efefef
+  top calc((100% - 410px) / 2)
+  left calc((100% - 230px) / 2)
+  padding 15px
+  border 1px
+  .wx-header
+    font-size 14px
+    font-weight bold
+    text-align left
+    line-height 16px
+    position relative
+    color #000
+    padding 5px 8px
+  .wx-close
     position absolute
     right 0
-    width 10px
-    height 10px
-    background-color #ff815a
-    opacity 0.65
+    &:hover
+      cursor pointer
+  .wx-footer
+    text-align center
+    font-size 12px
+    padding 5px 8px
 
 .body
   box-shadow 0 1px 5px rgba(0, 0, 0, .08)

@@ -83,11 +83,10 @@ var wechatShare = function (id, href) {
 // 显示网站二维码
 var siteQrMouseOver = function () {
 
+    $('#site-qr').removeAttr("title");
     var X = $('#site-qr').offset().top;
     var Y = $('#site-qr').offset().left;
-    $("#site-qr-pop").empty();
-    qrcode("site-qr-pop", document.location.origin, 180);
-    $("#site-qr-pop").css({"top": (X + 60) + "px", "left": (Y - 80) + "px"});
+    $("#site-qr-pop").css({"top": (X + 60) + "px", "left": (Y - 160) + "px"});
     $("#site-qr-pop").show();
 };
 
@@ -95,12 +94,11 @@ var siteQrMouseOver = function () {
 var siteQrMouseOut = function () {
 
     $("#site-qr-pop").hide();
-    $("#site-qr-pop").empty();
 };
 
 particlesJS('particles-js', {
     particles: {
-        color: '#009b27',
+        color: '#b7b7b7',
         shape: 'circle', // "circle", "edge" or "triangle"
         opacity: 1,
         size: 3,
@@ -109,7 +107,7 @@ particlesJS('particles-js', {
         line_linked: {
             enable_auto: true,
             distance: 100,
-            color: '#2bd93f',
+            color: '#cacaca',
             opacity: 1,
             width: 1,
             condensed_mode: {
@@ -196,7 +194,9 @@ particlesJS('particles-js', {
         });
     }
 
+    // 生成二维码
     qrcode("site-qr", root.location.origin, 50);
+    qrcode("site-qr-pop", document.location.origin, 180);
 
     // 广告 上边栏
     var cookieValTop = cookie.get("cookie:ad-nav-top");

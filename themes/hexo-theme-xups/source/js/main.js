@@ -73,6 +73,11 @@ var qrcode = function (id, root, size) {
     });
 };
 
+// 关闭文章放大图
+var closeImgShow = function () {
+    $("#img-show").remove();
+};
+
 var wechatShare = function (id, href) {
 
     $("#wechat-share").empty();
@@ -211,11 +216,13 @@ particlesJS('particles-js', {
     }
 
     // 文章图片放大
-    $(".post-content img").click(function () {
-        var a = $("<a href='" + this.getAttribute('src') + "' target='_blank'> title='" + this.getAttribute('alt') + "'").get(0);
-        var e = document.createEvent('MouseEvents');
-        e.initEvent('click', true, true);
-        a.dispatchEvent(e);
+    $(".article img").click(function () {
+        // var a = $("<a href='" + this.getAttribute('src') + "' target='_blank'> title='" + this.getAttribute('alt') + "'").get(0);
+        // var e = document.createEvent('MouseEvents');
+        // e.initEvent('click', true, true);
+        // a.dispatchEvent(e);
+        var a = "<div onclick='closeImgShow()' id='img-show'><img src='" + this.getAttribute('src') + "' style='margin: auto auto'/></div>";
+        $('body').append(a);
     });
 
     // 时间显示

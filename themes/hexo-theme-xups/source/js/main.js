@@ -75,7 +75,7 @@ var qrcode = function (id, root, size) {
 
 // 关闭文章放大图
 var closeImgShow = function () {
-    $("#img-show").remove();
+    $(".img-show").remove();
 };
 
 var wechatShare = function (id, href) {
@@ -221,7 +221,7 @@ particlesJS('particles-js', {
         // var e = document.createEvent('MouseEvents');
         // e.initEvent('click', true, true);
         // a.dispatchEvent(e);
-        var a = "<div onclick='closeImgShow()' id='img-show'><img src='" + this.getAttribute('src') + "' style='margin: auto auto'/></div>";
+        var a = "<div onclick='closeImgShow()' class='img-show'><img class='img-show-item' src='" + this.getAttribute('src') + "' style='margin: auto auto'/></div>";
         $('body').append(a);
     });
 

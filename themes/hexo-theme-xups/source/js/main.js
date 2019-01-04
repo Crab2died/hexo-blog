@@ -201,7 +201,7 @@ particlesJS('particles-js', {
 
     // 生成二维码
     qrcode("site-qr", root.location.origin, 50);
-    qrcode("site-qr-pop", document.location.origin, 180);
+    qrcode("site-qr-pop", document.location.origin, 160);
 
     // 广告 上边栏
     var cookieValTop = cookie.get("cookie:ad-nav-top");

@@ -3,10 +3,9 @@
 
     <% if (page.content && theme.toc) { %>
     <section class="widget toc-widget">
-      <!--<h3 class="widget-hd"><strong>文章目录</strong></h3>-->
+      <h3 class="widget-hd"><strong>文章目录</strong></h3>
       <!-- 目录 -->
       <div class="toc">
-        <h3 class="widget-hd"><strong>文章目录</strong></h3>
         <%- toc(page.content, {list_number: false, class: "post-toc"}) %>
       </div>
     </section>

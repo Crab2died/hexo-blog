@@ -80,7 +80,8 @@ var closeImgShow = function () {
     if (!_con.is(e.target) && _con.has(e.target).length === 0) {
         $(".img-show").remove();
         // 启用滚动条
-        document.body.parentNode.style.overflowY = "auto";
+        //document.body.parentNode.style.overflowY = "auto";
+        $(document).unbind("scroll.unable");
     }
 };
 
@@ -230,7 +231,11 @@ particlesJS('particles-js', {
         var a = "<div onclick='closeImgShow()' class='img-show'><img class='img-show-item' src='" + this.getAttribute('src') + "' style='margin: auto auto'/></div>";
         $('body').append(a);
         // 禁用滚动条
-        document.body.parentNode.style.overflowY = "hidden";
+        //document.body.parentNode.style.overflowY = "hidden";
+        var top = $(document).scrollTop();
+        $(document).on('scroll.unable',function () {
+            $(document).scrollTop(top);
+        })
     });
 
     // 时间显示

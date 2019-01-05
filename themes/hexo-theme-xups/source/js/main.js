@@ -75,9 +75,13 @@ var qrcode = function (id, root, size) {
 
 // 关闭文章放大图
 var closeImgShow = function () {
-    $(".img-show").remove();
-    // 启用滚动条
-    document.body.parentNode.style.overflowY = "auto";
+    var e = window.event || arguments[0];
+    var _con = $('.img-show-item');   // 设置目标区域
+    if (!_con.is(e.target) && _con.has(e.target).length === 0) {
+        $(".img-show").remove();
+        // 启用滚动条
+        document.body.parentNode.style.overflowY = "auto";
+    }
 };
 
 var wechatShare = function (id, href) {

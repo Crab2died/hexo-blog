@@ -10,7 +10,7 @@ tags:
   - Hadoop
 ---
 
-## 一 环境准备
+## 一. 环境准备
 ### 准备Ubuntu、JDK8、Hadoop2.8.5
    - [安装Ubuntu https://www.ubuntu.com/download/desktop](https://www.ubuntu.com/download/desktop)   
    - [安装JDK,修改环境变量 https://www.oracle.com/technetwork/java/javase/downloads/index.html](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
@@ -19,8 +19,8 @@ tags:
 ### 其他准备
 #### 1. 更新apt `sudo apt-get update`
 #### 2. SSH安装，配置无密码SSH登入
-##### 2.1 SSH安装 `sudo apt-get install openssh-server`
-##### 2.2 配置SSH无密码登入
+##### 2.1. SSH安装 `sudo apt-get install openssh-server`
+##### 2.2. 配置SSH无密码登入
    ```bash
      cd ~/.ssh/                            # 若没有该目录，请先执行一次ssh crab2died
      ssh-keygen -t rsa                     # 会有提示，都按回车就可以
@@ -33,7 +33,7 @@ tags:
      # 添加 
      本机ip   crab2died
    ```
-## 二 安装Hadoop
+## 二. 安装Hadoop
 ### 1. 解压Hadoop
    ```bash
      cd ~
@@ -55,10 +55,10 @@ tags:
      hadoop version    # 成功会返回版本信息
    ```
 ### 4. 伪分布式配置
-#### 4.1 进入`${HADOOP_HOME}/etc/hadoop`目录中，修改以下文件
-##### 4.1.1 修改 hadoop-env.sh  
+#### 4.1. 进入`${HADOOP_HOME}/etc/hadoop`目录中，修改以下文件
+##### 4.1.1. 修改 hadoop-env.sh  
    将`export JAVA_HOME=${JAVA_HOME}`改成`export JAVA_HOME=/usr/local/jdk1.8.0_181  # JDK根目录`
-##### 4.1.2 修改 core-site.xml    
+##### 4.1.2. 修改 core-site.xml    
    ```xml
      <configuration>
          <property>
@@ -72,7 +72,7 @@ tags:
          </property>
      </configuration>
    ```
-##### 4.1.3 修改 hdfs-site.xml
+##### 4.1.3. 修改 hdfs-site.xml
    ```xml
      <configuration>
         <property>
@@ -101,7 +101,7 @@ tags:
         </property>
      </configuration>
    ```
-##### 4.1.4 先复制`cp mapred-site.xml.template mapred-site.xml`,再修改 mapred-site.xml
+##### 4.1.4. 先复制`cp mapred-site.xml.template mapred-site.xml`,再修改 mapred-site.xml
    ```xml
      <configuration>
          <property>
@@ -110,7 +110,7 @@ tags:
          </property>
      </configuration>
    ```
-##### 4.1.5 修改 yarn-site.xml
+##### 4.1.5. 修改 yarn-site.xml
    ```xml
      <configuration>
         <property>
@@ -132,13 +132,13 @@ tags:
      hdfs namenode -format
    ```
 ### 6. 启动集群
-#### 6.1 启动HDFS集群
+#### 6.1. 启动HDFS集群
    ```bash
      hadoop-daemon.sh start namenode
      hadoop-daemon.sh start datanode
      hadoop-daemon.sh start secondarynamenode  # 伪分布式才有
    ```
-#### 6.2 启动YARN
+#### 6.2. 启动YARN
    ```bash
      yarn-daemon.sh start resourcemanager
      yarn-daemon.sh start nodemanager

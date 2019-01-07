@@ -11,11 +11,11 @@ tags:
 ---
 
 ## 1. JAVA与线程
-### 1.1 线程的实现
+### 1.1. 线程的实现
    1. 实现方式:使用内核线程实现、 使用用户线程实现和使用用户线程加轻量级进程混合实现.
    2. JDK1.2之前是基于用户线程实现的，JDK1.2及以后是基于操作系统原生线程模型实现的.
    
-### 1.2 Java线程调度
+### 1.2. Java线程调度
    1. 线程调度是指系统为线程分配处理器使用权的过程,主要调度方式有两种,分别是协同式线程调度(Cooperative Threads-Scheduling)
       和抢占式线程调度(Preemptive ThreadsScheduling)
    2. 协同式线程调度:线程的执行时间由线程本身来控制,线程把自己的工作执行完了之后,要主动通知系统切换到另外一个线程上;
@@ -24,7 +24,7 @@ tags:
       间的话,线程本身是没有什么办法的);优点是线程的执行时间是系统可控的,也不会有一个线程导致整个进程阻塞的问题.
    4. JAVA线程有10个优先级(Thread.MIN_PRIORITY至Thread.MAX_PRIORITY)
    
-### 1.3 线程转换状态
+### 1.3. 线程转换状态
    1. JAVA线程定义了6个状态:  
       * 新建(New):创建后尚未启动的线程处于这种状态.
       * 运行(Runable):Runable包括了操作系统线程状态中的Running和Ready,也就是处于此状态的线程有可能正在执行,也有可能正在等待着CPU为它分配执行时间.
@@ -44,7 +44,7 @@ tags:
       ![线程状态转换关系](/images/java/thread_status_transfer.png)
    
 ## 2. 线程安全与锁优化
-### 2.1 JAVA中的线程安全
+### 2.1. JAVA中的线程安全
    1. 共享数据分类
       * 不可变(Immutable):不可变对象一定是线程安全的,典型的final
       * 绝对线程安全:
@@ -52,12 +52,12 @@ tags:
       * 线程兼容:
       * 线程对立:
 
-### 2.2 synchronized的优化
+### 2.2. synchronized的优化
    1. synchronized自JDK1.6后引入偏向锁和轻量级锁后大大提升了并发的性能
    2. synchronized锁升级`偏向锁 -> 轻量级锁 -> 重量级锁` 所以在锁高竞争下Lock性能更高
    
 ## 3. 锁介绍
-### 3.1 自旋锁
+### 3.1. 自旋锁
    1. 自旋锁可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环，（即所谓的自旋，就是自己执行空循环），若在若干个空循环后，线
       程如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。使用自旋锁后，线程被挂起的几率相对减少，线程执行的连贯性相对加
       强。因此，对于那些锁竞争不是很激烈，锁占用时间很短的并发线程，具有一定的积极意义，但对于锁竞争激烈，单线程锁占用很长时间的并发
@@ -68,48 +68,48 @@ tags:
       - 可能白占用CPU时间
       - 死锁问题，自己占用锁，还在等待锁释放
       
-### 3.2 阻塞锁
+### 3.2. 阻塞锁
    1. 让线程进入阻塞状态进行等待，当获得相应的信号（唤醒，时间） 时，才可以进入线程的准备就绪状态，准备就绪状态的所有线程，通过竞争，进
       入运行状态。JAVA中，能够进入\退出、阻塞状态或包含阻塞锁的方法有 ，`synchronized` 关键字（其中的重量锁），`ReentrantLock`，
       `Object.wait()\notify() `
 
-### 3.3 可重入锁
+### 3.3. 可重入锁
    1. 可重入锁，也叫做递归锁，指的是同一线程 外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，但不受影响。    
       在JAVA环境下 `ReentrantLock` 和`synchronized` 都是 可重入锁
 
-### 3.4 乐观锁和悲观锁
+### 3.4. 乐观锁和悲观锁
    1. 悲观锁: 每次拿数据都上锁，如行锁、表锁、读锁、写锁
    2. 乐观锁: 每次拿数据都不上锁，只是在修改前验证下数据在此期间有无更新，如版本号控制
 
-### 3.5 轮询锁和定时锁
+### 3.5. 轮询锁和定时锁
    1. 由tryLock实现，与无条件获取锁模式相比，它们具有更完善的错误恢复机制。可避免死锁的发生：  
      `boolean tryLock()`:仅在调用时锁为空闲状态才获取该锁。如果锁可用，则获取锁，并立即返回值true。如果锁不可用，则此方法将立即返回
      值false。`boolean tryLock(long time, TimeUnit unit) throws InterruptedException`:如果锁在给定的等待时间内空闲，并且当前
      线程未被中断，则获取锁。
       
-### 3.6 显示锁和内置锁
+### 3.6. 显示锁和内置锁
    1. 显示锁用`Lock`来定义、内置锁用`synchronized`。
    
-### 3.7 对象锁和类锁
+### 3.7. 对象锁和类锁
    1. 对象锁是用于实例对象(可有多个实例对象)方法上的
    2. 类锁是作用于对象的静态方法和Class(一个类只有一个Class对象)对象上的
 
-### 3.8 互斥锁
+### 3.8. 互斥锁
    1. 互斥锁, 指的是一次最多只能有一个线程持有的锁。如Java的Lock
    
 ### 3.9 锁粗化
    1. 将多个连续的锁操作合并成一个整体的锁
 
-### 3.10 锁消除
+### 3.10. 锁消除
    1. 通过逃逸分析，能证明堆上数据不会逃逸出当前线程，则认为是线程安全的，不必要加锁操作
   
 ## 4. java线程池
-### 4.1 线程池实现类
+### 4.1. 线程池实现类
   ```      
    (C)ThreadPoolExecutor -->  (AC)AbstractExecutorService --> (I)ExecutorService --> (I)Executor
   ```
 
-### 4.2 ThreadPoolExecutor构造参数说明
+### 4.2. ThreadPoolExecutor构造参数说明
   ```java
     // corePoolSize 核心线程数，当任务多于核心线程数时会进入缓冲阻塞队列workQueue
     // maximunPoolSize 线程池最大线程数
@@ -136,7 +136,7 @@ tags:
         BlockingQueue<Runnable> workQueue,ThreadFactory threadFactory,RejectedExecutionHandler handler);
   ```
 
-### 4.3 实现原理
+### 4.3. 实现原理
    1. 线程池状态：  
      - **RUNNING**: 线程池初始化时就是RUNNING状态，表示线程池能够接受任务并处理，并且线程池中线程数默认为0(可以通过调用方法
        `prestartAllCoreThreads() #创建核心线程`或者`prestartCoreThread() #创建一个核心线程`来初始化线程数)
@@ -181,7 +181,7 @@ tags:
      - `setCorePoolSize()`：设置核心池大小
      - `setMaximumPoolSize()`：设置线程池最大能创建的线程数目大小
 
-### 4.4 Executors
+### 4.4. Executors
    - **newFixedThreadPool**: 定容量的线程池，核心线程数与最大线程数相等
    - **newSingleThreadExecutor**: 单线程线程池，线程池内核心线程数与最大线程数为1
    - **newCachedThreadPool**: 无线大小线程池，核心线程数为0，最大线程数为`Integer.MAX_VALUE`, 缓冲队列为`SynchronousQueue`
@@ -190,12 +190,12 @@ tags:
    - **newSingleThreadScheduledExecutor**: 创建一个ScheduledThreadPoolExecutor定时执行线程池,最大线程数为`Integer.MAX_VALUE`,
      内部是一个DelayedWorkQueue实现  
 
-## 5 AbstractQueuedSynchronizer
+## 5. AbstractQueuedSynchronizer
    内部类：
    - ConditionObject：
    - Node：存放线程信息队列
         
-### 5.1 AQS之ReentrantLock独占锁源码分析
+### 5.1. AQS之ReentrantLock独占锁源码分析
    - [AbstractQueuedSynchronizer独占锁](http://www.infoq.com/cn/articles/jdk1.8-abstractqueuedsynchronizer)
    - `ReentrantLock.lock()`保证在`ReentrantLock.unlock()`之间的代码只有一个线程在执行；ReentrantLock为可重入锁，它有一个与
      锁相关的获取计数器，如果拥有锁的某个线程再次得到锁，那么获取计数器就加1，然后锁需要被释放两次才能获得真正释放。
@@ -203,20 +203,20 @@ tags:
    - 构造方法有公平锁和非公平锁，公平锁与非公平锁的区别在于公平锁在尝试获取锁时会放入等待队列的后面，获取锁的顺序是按先后顺序执行的，
      而非公平锁在尝试获取锁时首先会去尝试获取锁，若获取失败在进入等待队列按顺序执行。
    
-### 5.2 AQS之CountDownLatch共享锁源码分析
+### 5.2. AQS之CountDownLatch共享锁源码分析
    - [AbstractQueuedSynchronizer共享锁](http://www.infoq.com/cn/articles/java8-abstractqueuedsynchronizer)
    - `CountDownLatch.countDown()`实现锁计数-1，直到减至0是，唤醒`CountDownLatch.await()`等待线程
 
-### 5.3 公平锁和非公平锁
+### 5.3. 公平锁和非公平锁
    公平锁是严格按照FIFO队列获得锁，但带来了大量的线程切换的消耗，非公平锁极大的降低了线程切换带来的消耗，虽然可能造成线程饥饿的情况，但也提高了吞吐量。
 
-## 6 synchronized与Lock比较
+## 6. synchronized与Lock比较
    1. `synchronized`是JVM层面实现的'重量级锁'，可通过监控工具监控`synchronized`的锁定，而且代码出现异常时会自动释放锁
    2. `Lock`是纯JAVA实现的，为多种实现留下空间，可以实现不同的调度算法、性能特性或者锁定语义，`Lock`必须自己手动的释放锁
       形如`finally{lock.unlock();}`
    3. 当锁竞争激烈时用`Lock`,锁竞争较弱时用`synchronized`
 
-## 7 阻塞队列BlockingQueue
+## 7. 阻塞队列BlockingQueue
    1. 阻塞队列是一个FIFO队列
    2. 主要方法   
    
@@ -238,6 +238,6 @@ tags:
    4. 注意  
    如果是无界阻塞队列，队列不可能会出现满的情况，所以使用put或offer方法永远不会被阻塞，而且使用offer方法时，该方法永远返回true。
    
-## 8 ConcurrentLinkedQueue
+## 8. ConcurrentLinkedQueue
    非阻塞线程安全的FIFO队列，基于单向链表实现，循环CAS操作实现，由于是根据Node.NEXT是否为NULL来判断是否为TAIL节点，因此队列的元素值不可为NULL。
    

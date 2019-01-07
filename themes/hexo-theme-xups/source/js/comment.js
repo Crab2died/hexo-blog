@@ -281,7 +281,7 @@ if (!window['String']['prototype']['trim']) {
                             '<li class="item">',
                             '<div class="user-avatar">',
                             '<a target="_blank" href="' + list[i].user.html_url + '">',
-                            '<img src="' + list[i].user.avatar_url + '" alt="user-avatar">',
+                            '<img src="' + list[i].user.avatar_url + '" alt="user">',
                             '</a>',
                             '</div>',
                             '<div class="user-comment">',

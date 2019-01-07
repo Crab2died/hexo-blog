@@ -11,7 +11,7 @@ tags:
   - Web Socket
 ---
 
-# 一 依赖（这里只列举了websocket相关依赖）
+# 一. 依赖（这里只列举了websocket相关依赖）
 
 ```xml
     <!-- spring webSocket依赖 -->
@@ -41,9 +41,9 @@ tags:
     </dependency>
 ```
 
-# 二 WebSocket服务端
+# 二. WebSocket服务端
 
-#### 2.1 核心代码
+#### 2.1. 核心代码
 
 ```java
 package com.github.websocket.server;
@@ -220,7 +220,7 @@ public class WSServer {
 
 ```
 
-#### 2.2 HttpSessionConfigurator类
+#### 2.2. HttpSessionConfigurator类
 
 ```java
 package com.github.websocket.configuration;
@@ -251,7 +251,7 @@ public class HttpSessionConfigurator extends Configurator {
 
 ```
 
-#### 2.3 Msg消息体
+#### 2.3. Msg消息体
 
 ```java
 package com.github.websocket.msg;
@@ -361,7 +361,7 @@ public class Msg {
 
 ```
 
-# 三 客户端（HTML5）
+# 三. 客户端（HTML5）
 
 ```html
 <!DOCTYPE html>

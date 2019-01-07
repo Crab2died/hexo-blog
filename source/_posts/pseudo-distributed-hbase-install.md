@@ -10,7 +10,7 @@ tags:
   - HBase 
 ---
 
-## 一 环境准备
+## 一. 环境准备
 ### 1. Ubuntu、JDK8、Hadoop2.8.5、HBase2.1.0
    - [安装Ubuntu https://www.ubuntu.com/download/desktop](https://www.ubuntu.com/download/desktop)  
    - [安装JDK,修改环境变量 https://www.oracle.com/technetwork/java/javase/downloads/index.html](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
@@ -20,7 +20,7 @@ tags:
 ### 2. 其他准备
    部署Hadoop详见: [Hadoop 伪分布式部署](/2018/10/26/pseudo-distributed-hadoop-install/)
    
-## 二 部署HBase
+## 二. 部署HBase
 ### 1. 解压HBase
    ```bash
       cd ~
@@ -67,7 +67,7 @@ tags:
       hbase version
       # 成功则会返回版本信息
    ```
-## 三 启动HBase
+## 三. 启动HBase
 ### 1. 先启动Hadoop,详见: [Hadoop 伪分布式部署](/2018/10/26/pseudo-distributed-hadoop-install/)
 ### 2. 启动HBase
    ```bash

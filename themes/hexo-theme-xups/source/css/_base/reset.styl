@@ -5,22 +5,29 @@
   color c-fff
   background-color #f99
   opacity .8
+
 ::-webkit-scrollbar
   width 7px
   height 4px
+
 ::-webkit-scrollbar-thumb
   border-radius 4px
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .15)
   background rgba(0, 0, 0, .15)
+
 ::-webkit-scrollbar-track
   background rgba(0, 0, 0, .06)
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.06)
+
 body
-  font 14px/1.5 "Microsoft Yahei", "微软雅黑", Arial, "宋体"
+  font 14px / 1.5 "Microsoft Yahei", "微软雅黑", Arial, "宋体"
   color c-666
-  -webkit-overflow-scrolling touch    // iOS下支持弹性滚动
-  -webkit-font-smoothing antialiased  // 优化字体渲染、让页面字体更精更清楚
+  -webkit-overflow-scrolling touch // iOS下支持弹性滚动
+  -webkit-font-smoothing antialiased // 优化字体渲染、让页面字体更精更清楚
   -webkit-text-size-adjust 100%
   -ms-text-size-adjust 100%
   text-rendering optimizelegibility
+
 a
   color c-666
   text-decoration none
@@ -30,14 +37,19 @@ a
     color c-666
   &:hover
     color #ff5e52
+
 hr
   border-top 1px solid c-eee
+
 .fl
   float left
+
 .fr
   float right
+
 .text-center
   text-center()
+
 .clearfix
   zoom 1
   &:after

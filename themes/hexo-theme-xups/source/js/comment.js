@@ -22,7 +22,7 @@ if (!window['String']['prototype']['trim']) {
         API_HOST: 'https://api.github.com'
     };
     var queryUrl = function (key, url, uncode) {
-        url = url || location.href;
+        url = url || location.href.split("#")[0];
         var reg = new RegExp('(\\?|&|#|&amp;)' + key + '=([^?&#]*)');
         var result = url.match(reg);
         if (uncode) {
@@ -653,11 +653,11 @@ if (!window['String']['prototype']['trim']) {
                     // 如果还没有创建 issue，先创建 issue
                     JL.Requests.createIssue({
                         title: document.title,
-                        body: location.href,
-                        labels: [(JL.options.label || location.href)]
+                        body: location.href.split("#")[0],
+                        labels: [(JL.options.label || location.href.split("#")[0])]
                     }, function (res) {
                         if (res.number) {
-                            JL.issueNumber = res.number
+                            JL.issueNumber = res.number;
                             JL.Requests.createComment(JL.issueNumber, {
                                 body: body
                             }, function (json) {
@@ -698,8 +698,8 @@ if (!window['String']['prototype']['trim']) {
             JL.Renders.loading.create();
             JL.Requests.createIssue({
                 title: document.title,
-                body: location.href,
-                labels: [(JL.options.label || location.href)]
+                body: location.href.split("#")[0],
+                labels: [(JL.options.label || location.href.split("#")[0])]
             }, function (json) {
                 if (json.number) {
                     JL.issueNumber = json.number;

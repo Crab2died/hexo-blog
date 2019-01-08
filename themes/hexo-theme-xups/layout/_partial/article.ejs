@@ -1,16 +1,16 @@
 <!-- 文章 -->
 <article class="post article">
-    <header class="text-center">
-        <h3 class="post-title"><span><%= post.title %></span></h3>
-    </header>
-    <p class="post-meta text-center">
-        <i class="fa fa-edit"></i>
-        <%- post.author || 'Crab2Died' %> &nbsp;&nbsp;
-        <i class="fa fa-calendar"></i>
-        <%- partial('post/date', { date_format: 'YYYY-MM-DD' }) %>
-        <!--<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
-        <span id="busuanzi_container_page_pv"> &nbsp;&nbsp; <i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span>
-    </p>
+  <img src="<%= post.thumbnail %>" style="display: none"/>
+  <header class="text-center">
+    <h3 class="post-title"><span><%= post.title %></span></h3>
+  </header>
+  <p class="post-meta text-center">
+    <i class="fa fa-edit"></i>
+    <%- post.author || 'Crab2Died' %> &nbsp;&nbsp;
+    <i class="fa fa-calendar"></i>
+    <%- partial('post/date', {date_format: 'YYYY-MM-DD'}) %>
+    <span id="busuanzi_container_page_pv"> &nbsp;&nbsp; <i class="fa fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span></span>
+  </p>
 
   <p class="copyright_label">
     <span class="copyright_title">版权声明: </span>
@@ -19,9 +19,9 @@
       <span class="copyright_link"><%- post_url %></span>
       </span>
   </p>
-    <div class="post-content">
-        <%- post.content %>
-    </div>
+  <div class="post-content">
+    <%- post.content %>
+  </div>
 
   <!-- 目录 -->
   <div class="catalog">
@@ -30,24 +30,24 @@
 
   <p class="post-meta">
         <span class="post-cat">分类：
-            <%-
-            list_categories(post.categories, {
-                show_count: false,
-                class: 'cat',
-                style: 'none',
-                separator: '|'
-            })
-            %>
+          <%-
+          list_categories(post.categories, {
+            show_count: false,
+            class: 'cat',
+            style: 'none',
+            separator: '|'
+          })
+          %>
         </span>
-        <span class="post-tags">
+    <span class="post-tags">
             标签：
-            <%- partial('post/tag') %>
+      <%- partial('post/tag') %>
         </span>
-    </p>
+  </p>
 </article>
 <!-- 分享按钮 -->
 <%- partial('post/share') %>
 
-<%- partial('post/nav', { post: post }) %>
+<%- partial('post/nav', {post: post}) %>
 <!-- 文章评论 -->
 <%- partial('post/comment') %>

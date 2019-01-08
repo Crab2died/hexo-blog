@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Concurrent
-thumbnail: /images/java/juc.png
+thumbnail: /images/java/thread_status_transfer.png
 date: 2018-06-15 12:15:27 +0800
 author: Crab2Died
 categories: Java

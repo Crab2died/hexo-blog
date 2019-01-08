@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Memory Model
-thumbnail: /images/material/super_computer.jpg
+thumbnail: /images/java/jmm.png
 date: 2018-06-15 11:11:27 +0800
 author: Crab2Died
 categories: Java

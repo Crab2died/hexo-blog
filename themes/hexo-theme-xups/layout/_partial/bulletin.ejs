@@ -3,9 +3,13 @@
   <div class="bulletin">
     <!--<div class="bulletin-icon"><strong style="color: #ebd829; width: 50px"><i class="fa fa-volume-up"></i></strong></div>-->
     <div class="bulletin-content">
-      <marquee direction="left" behavior="scroll" scrollamount=7 scrolldelay=0 align="bottom" bgcolor="#ffffff" hspace=20 vspace=0
-             onmouseover=this.stop() onmouseout=this.start()>
-      <%- theme.bulletin.content %>
+      <% if(theme.bulletin.is_roll) { %>
+        <marquee direction="left" behavior="scroll" scrollamount=7 scrolldelay=0 align="bottom" bgcolor="#ffffff" hspace=20 vspace=0
+               onmouseover=this.stop() onmouseout=this.start()>
+        <%- theme.bulletin.content %>
+      <% } else { %>
+          <span><%- theme.bulletin.content %></span>
+      <% } %>
     </marquee></div>
     <div id="theClock" class="bulletin-clock">
 

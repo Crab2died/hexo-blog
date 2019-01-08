@@ -108,52 +108,53 @@ var siteQrMouseOut = function () {
     $("#site-qr-pop").hide();
 };
 
-particlesJS('particles-js', {
-    particles: {
-        color: '#b7b7b7',
-        shape: 'circle', // "circle", "edge" or "triangle"
-        opacity: 1,
-        size: 3,
-        size_random: true,
-        nb: 150,
-        line_linked: {
-            enable_auto: true,
-            distance: 100,
-            color: '#cacaca',
-            opacity: 1,
-            width: 1,
-            condensed_mode: {
-                enable: false,
-                rotateX: 600,
-                rotateY: 600
-            }
-        },
-        anim: {
-            enable: true,
-            speed: 1
-        }
-    },
-    interactivity: {
-        enable: true,
-        mouse: {
-            distance: 300
-        },
-        detect_on: 'canvas', // "canvas" or "window"
-        mode: 'grab',
-        line_linked: {
-            opacity: .5
-        },
-        events: {
-            onclick: {
-                enable: true,
-                mode: 'push', // "push" or "remove"
-                nb: 4
-            }
-        }
-    },
-    /* Retina Display Support */
-    retina_detect: true
-});
+// 背景particles
+// particlesJS('particles-js', {
+//     particles: {
+//         color: '#b7b7b7',
+//         shape: 'circle', // "circle", "edge" or "triangle"
+//         opacity: 1,
+//         size: 3,
+//         size_random: true,
+//         nb: 150,
+//         line_linked: {
+//             enable_auto: true,
+//             distance: 100,
+//             color: '#cacaca',
+//             opacity: 1,
+//             width: 1,
+//             condensed_mode: {
+//                 enable: false,
+//                 rotateX: 600,
+//                 rotateY: 600
+//             }
+//         },
+//         anim: {
+//             enable: true,
+//             speed: 1
+//         }
+//     },
+//     interactivity: {
+//         enable: true,
+//         mouse: {
+//             distance: 300
+//         },
+//         detect_on: 'canvas', // "canvas" or "window"
+//         mode: 'grab',
+//         line_linked: {
+//             opacity: .5
+//         },
+//         events: {
+//             onclick: {
+//                 enable: true,
+//                 mode: 'push', // "push" or "remove"
+//                 nb: 4
+//             }
+//         }
+//     },
+//     /* Retina Display Support */
+//     retina_detect: true
+// });
 
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -207,7 +208,7 @@ particlesJS('particles-js', {
     }
 
     // 生成二维码
-    qrcode("site-qr", root.location.origin, 50);
+    qrcode("site-qr", root.location.origin, 46);
     qrcode("site-qr-pop", root.location.origin, 160);
 
     // 广告 上边栏
@@ -233,7 +234,7 @@ particlesJS('particles-js', {
         // 禁用滚动条
         //document.body.parentNode.style.overflowY = "hidden";
         var top = $(document).scrollTop();
-        $(document).on('scroll.unable',function () {
+        $(document).on('scroll.unable', function () {
             $(document).scrollTop(top);
         })
     });

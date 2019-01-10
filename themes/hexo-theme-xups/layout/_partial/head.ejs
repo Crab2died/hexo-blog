@@ -21,9 +21,11 @@
     }
     %>
     <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" >
-    <meta name="keywords" content="<%- theme.SEO.keywords %>" >
-    <meta name="description" content="<% if(page.content){ %><%- page.content.replace(/<\/?.+?>/g, "").replace(/[\n\r]/g,"").substr(0, 2048) %> <% } else { %><%- theme.SEO.keywords %><% } %>" >
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="keywords" content="<%- theme.SEO.keywords %>" />
+    <meta itemprop="name" content="<%- page.title | config.title %>" />
+    <meta itemprop="image" content="<%- config.url %><% if (page.thumbnail) { %><%- page.thumbnail %> <% } else { %><%- url_for('img/logo/crab2died-585.png') %><% } %> "/>
+    <meta itemprop="description" name="description"  content="<% if(page.content){ %><%- page.content.replace(/<\/?.+?>/g, "").replace(/[\n\r]/g, "").substr(0, 350) %> <% } else { %><%- theme.SEO.keywords %><% } %>" />
 
     <% if (theme.rss) { %>
     <link rel="alternative" href="<%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml" >
@@ -41,4 +43,5 @@
     <%- js('js/jquery/jquery-2.2.0.min.js') %>
     <%- js('js/qrcode.min.js') %>
     <%- js('js/particles.js') %>
+    <%- js('js/qq/share.js') %>
 </head>

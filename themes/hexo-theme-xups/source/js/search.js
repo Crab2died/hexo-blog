@@ -31,8 +31,8 @@ var searchFunc = function (path, search_id, content_id, contextPath) {
                     if (!data.title || data.title.trim() === '') {
                         data.title = "Untitled";
                     }
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                    var data_title = data.title.trim();
+                    var data_content = data.content.trim().replace(/<[^>]+>/g, "");
                     var data_url = contextPath + decodeURIComponent(data.url);
                     var index_title = -1;
                     var index_content = -1;
@@ -40,8 +40,8 @@ var searchFunc = function (path, search_id, content_id, contextPath) {
                     // only match artiles with not empty contents
                     if (data_content !== '') {
                         keywords.forEach(function (keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
+                            index_title = data_title.toLowerCase().indexOf(keyword);
+                            index_content = data_content.toLowerCase().indexOf(keyword);
 
                             if (index_title < 0 && index_content < 0) {
                                 isMatch = false;

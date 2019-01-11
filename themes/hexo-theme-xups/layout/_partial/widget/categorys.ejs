@@ -5,7 +5,7 @@
   %>
     <li title="<%= cat.name %>">
       <span class="badge">(<%= cat.length %>)</span>
-      <a href="<%= url_for(cat.path) %>"><%= cat.name %></a>
+      <a href="<%= url_for(cat.path) %>"><b><%= cat.name %></b></a>
     </li>
   <% }}); %>
 </ul>

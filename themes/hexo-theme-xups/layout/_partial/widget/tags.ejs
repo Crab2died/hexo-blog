@@ -4,8 +4,10 @@
   site.tags.sort('length', -1).forEach(function (tag, index) {
   if (index < 15) {
   %>
-    <a class="tag-item-link" href="<%= url_for(tag.path) %>" title="<%= tag.name %> <%- tag.length %>篇"><%- tag.name %>
-      (<%- tag.length %>)</a>
+    <a class="tag-item-link" href="<%= url_for(tag.path) %>" title="<%= tag.name %> <%- tag.length %>篇">
+      <b><%- tag.name %></b>
+      (<%- tag.length %>)
+    </a>
   <%
   } });
   %>

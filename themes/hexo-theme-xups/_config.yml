@@ -81,8 +81,8 @@ ad_nav_bottom:
 
 bulletin:
   enable: true
-  is_roll: false
-  content: ""
+  is_roll: true
+  content: "欢迎加入 - AWS云技术探讨交流群： 657284458"
 
 #----------------------------
 # 是否开启评论

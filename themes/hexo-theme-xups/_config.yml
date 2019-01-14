@@ -69,20 +69,20 @@ revolvermaps:
 
 ad_nav_top:
   enable: false
-  title: 网易云课堂6周年庆
-  image: /images/ad/163_ad.png
-  link: https://study.163.com/topics/sixth_anniversary/
+  title:
+  image:
+  link:
 
 ad_nav_bottom:
   enable: false
-  title: 网易云课堂6周年庆
-  image: /images/ad/163_ad.png
-  link: https://study.163.com/topics/sixth_anniversary/
+  title:
+  image:
+  link:
 
 bulletin:
   enable: true
   is_roll: true
-  content: "欢迎加入 - AWS云技术探讨交流群： 657284458"
+  content: ""
 
 #----------------------------
 # 是否开启评论

@@ -6,7 +6,6 @@ date: 2019-01-02 22:15:27 +0800
 categories: Elasticsearch
 tags: 
   - Elasticsearch
-  - Performance Optimization
 ---
 ## 一 部署配置优化篇
 ### 1. Master Node和Data Node设置

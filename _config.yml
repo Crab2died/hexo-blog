@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Crab2Died
+title: Seek Pie
 subtitle: 螃蟹以死
 description: 螃蟹以死(Crab2Died)的个人博客，分享学习、工作的经验总结。涉及软件开发，大数据开发，分布式系统，微服务，前端开发等。
 keywords: Crab2Died 螃蟹以死 Dsolvers Excel4J Github blog java develop
@@ -110,6 +110,6 @@ feed:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:Crab2died/crab2died.github.io.git
+  repo: git@github.com:Crab2died/seekpie.git
   branch: master
 

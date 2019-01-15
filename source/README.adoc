@@ -1,4 +1,2 @@
-[NOTE]
-====
+
 https://www.seekpie.com[www.seekpie.com]
-====

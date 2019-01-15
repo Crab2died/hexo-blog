@@ -25,15 +25,6 @@ menu:
 #    icon: fa fa-link
 
 #----------------------------
-# 副导航
-#----------------------------
-subnav:
-  github: "#"
-  weibo: "#"
-  rss: "#"
-  zhihu: "#"
-
-#----------------------------
 # RSS
 #----------------------------
 rss: /atom.xml
@@ -134,8 +125,8 @@ head_links:
         name: GitHub
         link: https://github.com/Crab2died
       1:
-        name: Dsolvers
-        link: https://dsolvers.github.io
+        name: Seek Pie
+        link: https://github.com/seek-pie
       last:
         name: Gitee
         link: https://gitee.com/Crab2Died

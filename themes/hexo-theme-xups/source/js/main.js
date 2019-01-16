@@ -225,14 +225,9 @@ var siteQrMouseOut = function () {
 
     // 文章图片放大
     $(".article img").click(function () {
-        // var a = $("<a href='" + this.getAttribute('src') + "' target='_blank'> title='" + this.getAttribute('alt') + "'").get(0);
-        // var e = document.createEvent('MouseEvents');
-        // e.initEvent('click', true, true);
-        // a.dispatchEvent(e);
         var a = "<div onclick='closeImgShow()' class='img-show'><img class='img-show-item' src='" + this.getAttribute('src') + "' style='margin: auto auto'/></div>";
         $('body').append(a);
         // 禁用滚动条
-        //document.body.parentNode.style.overflowY = "hidden";
         var top = $(document).scrollTop();
         $(document).on('scroll.unable', function () {
             $(document).scrollTop(top);

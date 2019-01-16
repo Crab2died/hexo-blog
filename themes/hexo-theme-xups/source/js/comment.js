@@ -229,7 +229,7 @@ if (!window['String']['prototype']['trim']) {
                 '<div class="com-avatar"><img id="JELON__loginAvatar" src="/img/unsigned_avatar.jpg" alt="avatar"></div>',
                 '<div class="com-text">',
                 '<div class="main">',
-                '<textarea class="text-area-edited show" id="JELON__editBox" placeholder="留下您的评论！"></textarea>',
+                '<textarea class="text-area-edited show" id="JELON__editBox" placeholder="今天过得如何，梦想是不是更远了？"></textarea>',
                 '<div class="text-area-preview" id="JELON__previewBox"></div>',
                 '</div>',
                 '<div class="switch">',
@@ -629,7 +629,7 @@ if (!window['String']['prototype']['trim']) {
             var accessToken = localStorage.getItem(constants.ACCESS_TOKEN_KEY);
             var userInfo = localStorage.getItem(constants.USER_INFO_KEY);
             if (!accessToken || !userInfo) {
-                alert('请先登录哦..!^_^');
+                alert('请先登录哦.. !^_^');
                 return;
             }
             var body = $('JELON__editBox').value.trim();

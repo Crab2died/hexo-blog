@@ -8,9 +8,11 @@
   width 100%
   min-height 689px
   background-color #ffffff
+
 .content-main
   margin-right 350px
   padding 20px
+
 /*!
  * Post
  */
@@ -58,7 +60,7 @@
   .post-content
     position relative
     color c-666
-    h1,h2,h3,h4,h5,h6
+    h1, h2, h3, h4, h5, h6
       padding-right 20px
     p
       margin 0 20px 0 0
@@ -79,14 +81,15 @@
       &:hover
         .thumbnail
           transform scale(1.4)
-          -ms-transform scale(1.4) 	/* IE 9 */
-          -moz-transform scale(1.4) 	/* Firefox */
+          -ms-transform scale(1.4) /* IE 9 */
+          -moz-transform scale(1.4) /* Firefox */
           -webkit-transform scale(1.4) /* Safari 和 Chrome */
-          -o-transform scale(1.4) 	/* Opera */
+          -o-transform scale(1.4) /* Opera */
           transition all .75s
           -moz-transition all .75s /* Firefox 4 */
           -webkit-transition all .75s /* Safari 和 Chrome */
-          -o-transition all .75s /* Opera */
+          -o-transition all .75s
+      /* Opera */
       .thumbnail
         width 200px
         height 140px
@@ -94,7 +97,8 @@
         transition all .75s
         -moz-transition all .75s /* Firefox 4 */
         -webkit-transition all .75s /* Safari 和 Chrome */
-        -o-transition all .75s /* Opera */
+        -o-transition all .75s
+      /* Opera */
       a:after
         content ""
         position absolute
@@ -102,8 +106,8 @@
         top 0
         width 140px
         height 140px
-        background-image -moz-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0))
-        background-image -webkit-linear-gradient(0deg,rgba(255,255,255,0),rgba(255,255,255,.5),rgba(255,255,255,0))
+        background-image -moz-linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .5), rgba(255, 255, 255, 0))
+        background-image -webkit-linear-gradient(0deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .5), rgba(255, 255, 255, 0))
         transform skewx(-25deg)
         -o-transform skewx(-25deg)
         -moz-transform skewx(-25deg)
@@ -126,7 +130,7 @@
       border none
       color c-fff
       background-color #51cc87
-      opacity .8.5
+      opacity .8 .5
       &:hover
         opacity .75
         background-color #1faeff

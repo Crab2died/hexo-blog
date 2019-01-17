@@ -65,8 +65,7 @@ tags:
          }
      }  
     '
-  ```
-  ```bash
+
     # 或在mapping的settings中加入设置
     "settings": {"refresh_interval": "30s"}
   ```
@@ -95,7 +94,7 @@ tags:
   尽量避免使用Script，如需使用建议使用painless脚本。
 
 ### 6. 合理的分片数
-  Elasticsearch创建index后分片数就不可更改，建议每个分片大小在20~30G左右，每GB堆内存的分片数最大控制在20个左右(如堆内存为8G的Node最多存放160个分片)，在存储LOG这种
+  Elasticsearch创建index后分片数就不可更改，建议每个分片大小在20~30G左右，每GB堆内存的分片数最大控制在20个左右(如堆内存为8G的Node最多存放160个分片)，在存储log这种
   读少写多的场景可适当调高。
 
 ### 7. 设计路由(Routing)
@@ -114,8 +113,7 @@ tags:
          }
      }  
     '     
-  ```
-  ```bash
+
     # 或在mapping的settings中加入设置
     "settings": {"max_result_window": 20000}
   ```

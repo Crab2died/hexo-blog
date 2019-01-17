@@ -21,7 +21,7 @@
     }
     %>
     <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.3, maximum-scale=1, user-scalable=0" />
     <meta name="keywords" content="<%- theme.SEO.keywords %>" />
     <meta itemprop="name" content="<%- page.title | config.title %>" />
     <meta itemprop="image" content="<%- config.url %><% if (page.thumbnail) { %><%- page.thumbnail %> <% } else { %><%- url_for('img/logo/crab2died-585.png') %><% } %> "/>

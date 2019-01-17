@@ -202,20 +202,39 @@
       font-size 10px
       text-align center
 
-#JELON__editBox::-webkit-input-placeholder
-  color #de5a57
-  font-size 28px
-  font-family "宋体"
-  text-align center
+placeholder()
+  &::-webkit-input-placeholder
+    color rgba(255, 0, 0, 0.5)
+    font-size 28px
+    font-family "宋体"
+    text-align center
+    line-height 90px
+  &::-moz-placeholder
+    color rgba(255, 0, 0, 0.5)
+    font-size 28px
+    font-family "宋体"
+    text-align center
+    line-height 90px
+  &::-ms-input-placeholder
+    color rgba(255, 0, 0, 0.5)
+    font-family "宋体"
+    font-size 28px
+    text-align center
+    line-height 90px
 
-#JELON__editBox::-moz-placeholder
-  color #de5a57
-  font-size 28px
-  font-family "宋体"
-  text-align center
-
-#JELON__editBox:-ms-input-placeholder
-  color #de5a57
-  font-family "宋体"
-  font-size 28px
-  text-align center
+placeholder-limit()
+  &::-webkit-input-placeholder
+    color rgba(255, 0, 0, 0.5)
+    font-size 12px
+    text-align center
+    line-height 80px
+  &::-moz-placeholder
+    color rgba(255, 0, 0, 0.5)
+    font-size 12px
+    text-align center
+    line-height 80px
+  &::-ms-input-placeholder
+    color rgba(255, 0, 0, 0.5)
+    font-size 12px
+    text-align center
+    line-height 80px

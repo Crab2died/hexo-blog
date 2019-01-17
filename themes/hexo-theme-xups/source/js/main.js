@@ -237,7 +237,7 @@ var siteQrMouseOut = function () {
     // 时间显示
     showDT();
 
-    console.log("%c%s", "color: yellow; background: green; font-size: 28px; font-weight: bold", "来了，老弟 =_=！");
+    console.log("%c%s", "color: yellow; background: green; font-size: 28px; font-weight: bold", "来了，小老弟 =_=！");
 
     echo.init = function (opts) {
         opts = opts || {};

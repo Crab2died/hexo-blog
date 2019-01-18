@@ -108,6 +108,34 @@ var siteQrMouseOut = function () {
     $("#site-qr-pop").hide();
 };
 
+
+// 访问地图
+var _2d = '<script type="text/javascript" src="//ra.revolvermaps.com/0/0/4.js?i=0f0wajt7j79&amp;m=0&amp;h=165&amp;c=ff0000&amp;r=0" async="async"></script>';
+var _3d = '<script type="text/javascript" src="//ra.revolvermaps.com/0/0/8.js?i=0f0wajt7j79&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=0&amp;bv=95&amp;v0=30&amp;z=12&amp;rx=30&amp;lx=-40&amp;ly=0&amp;hi=50&amp;he=5" async="async"></script>';
+var switchMap = function (mapStyle) {
+    if (mapStyle === '3D') {
+        $(".revolvermaps").html(_3d);
+        $(".revolvermaps").attr('map-style', '3D');
+        $(".map-switch").text('2D');
+        $(".map-switch").attr("title", "切换至2D地图");
+        cookie.set('cookie:visit-map-style', "3D");
+    } else {
+        $(".revolvermaps").html(_2d);
+        $(".revolvermaps").attr('map-style', '2D');
+        $(".map-switch").text('3D');
+        $(".map-switch").attr("title", "切换至3D地图");
+        cookie.set('cookie:visit-map-style', "2D");
+    }
+};
+
+var switchMapStyle = function () {
+
+    var mapStyle = $(".revolvermaps").attr('map-style');
+    // 取反值
+    mapStyle = mapStyle ==="2D" ? "3D" : "2D";
+    switchMap(mapStyle);
+};
+
 // 背景particles
 // particlesJS('particles-js', {
 //     particles: {
@@ -221,6 +249,12 @@ var siteQrMouseOut = function () {
     var cookieValBottom = cookie.get("cookie:ad-nav-bottom");
     if (cookieValBottom !== 'ad-nav-bottom') {
         $("#ad-nav-bottom").show();
+    }
+
+    // 访问地图
+    if ($(".widget").hasClass("visit-map")) {
+        var mapStyle = cookie.get("cookie:visit-map-style");
+        switchMap(mapStyle)
     }
 
     // 文章图片放大

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.seekpie.com/sitemap.xml
-Sitemap: https://www.oschina.net/baidusitemap.xml
+Sitemap: https://www.seekpie.com/baidusitemap.xml

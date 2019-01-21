@@ -30,8 +30,9 @@
     <% } %>
 
     <% if (theme.revolvermaps.enable) { %>
-    <section class="widget">
-        <h3 class="widget-hd"><strong>当前访客</strong></h3>
+    <section class="widget visit-map">
+        <h3 class="widget-hd"  style="display: inline-block"><strong>当前访客</strong></h3>
+        <div class="map-switch-btn"><a href="javascript:switchMapStyle()" class="map-switch">...</a></div>
         <%- partial('widget/revolvermaps') %>
     </section>
     <% } %>

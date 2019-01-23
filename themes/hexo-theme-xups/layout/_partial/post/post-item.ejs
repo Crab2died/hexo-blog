@@ -29,11 +29,13 @@
 
     <div class="post-content">
         <div class="post-excerpt">
-            <% if (index == true) { %>
+            <p>
+              <% if (index == true) { %>
                 <% var content = post.description || post.content.replace(/<\/?.+?>/g, "") %>
                 <%- post.description || post.excerpt || content.substr(0, 350) %>
                 <% if (content.length > 350) { %> ... <% } %>
-            <% } %>
+              <% } %>
+            </p>
             <p class="more">
                 <a href="<%- url_for(post.permalink) %>">阅读剩下更多</a>
             </p>

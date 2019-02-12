@@ -79,10 +79,15 @@ bulletin:
 #----------------------------
 comment:
   enable: true
-  owner: Crab2Died
-  repo: blog-comments
-  client_id: 2117b548bf34c40984be
-  client_secret: 2642328e6056dbf7b02951961e5ca481406410ed
+  option: valine
+  valine:
+    app_id: YqkqeWEuSVqoIvx1A76uF5TJ-gzGzoHsz
+    app_key: ShY2FjmnHMgnqQwak3AcwdMW
+  github:
+    owner: Crab2Died
+    repo: blog-comments
+    client_id: 2117b548bf34c40984be
+    client_secret: 2642328e6056dbf7b02951961e5ca481406410ed
 
 #----------------------------
 # 是否开启云标签

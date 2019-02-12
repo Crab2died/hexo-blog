@@ -1,15 +1,33 @@
 <% if (theme.comment.enable) { %>
-  <%- js('js/comment') %>
+
   <div id="comments" class="comment">
   </div>
-  <script>
-  JELON.Comment({
-    container: 'comments',
-    label: '<%- post.slug %>' || '<%- post.path %>',
-    owner: '<%- theme.comment.owner %>',
-    repo: '<%- theme.comment.repo %>',
-    clientId: '<%- theme.comment.client_id %>',
-    clientSecret: '<%- theme.comment.client_secret %>'
-  });
-  </script>
+
+  <% if (theme.comment.option === "valine") { %>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script>
+        new Valine({
+            el: '#comments',
+            appId: '<%- theme.comment.valine.app_id %>',
+            appKey: '<%- theme.comment.valine.app_key %>',
+            avatar: 'identicon',
+            lang: 'zh-cn',
+            placeholder: '今天过得怎样，梦想是不是更远了？',
+            verify: true
+        })
+    </script>
+  <% } else if (theme.comment.option === "github") { %>
+    <%- js('js/comment') %>
+    <script>
+        JELON.Comment({
+            container: 'comments',
+            label: '<%- post.slug %>' || '<%- post.path %>',
+            owner: '<%- theme.comment.github.owner %>',
+            repo: '<%- theme.comment.github.repo %>',
+            clientId: '<%- theme.comment.github.client_id %>',
+            clientSecret: '<%- theme.comment.github.client_secret %>'
+        });
+    </script>
+  <% } %>
 <% } %>

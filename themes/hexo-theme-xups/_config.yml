@@ -73,9 +73,9 @@ ad_nav_bottom:
 
 # 公告
 bulletin:
-  enable: false
+  enable: true
   is_roll: true
-  content: "新年新气象，学习不能忘"
+  content: "欢迎访问螃蟹以死(Crab2Died)的个人站点！ ^_^"
 
 #----------------------------
 # 是否开启评论

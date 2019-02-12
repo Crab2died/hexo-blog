@@ -57,22 +57,25 @@ weibo_show:
 revolvermaps:
   enable: true
 
+# 右边栏广告(上)
 ad_nav_top:
   enable: false
   title:
   image:
   link:
 
+# 右边栏广告(下)
 ad_nav_bottom:
   enable: false
   title:
   image:
   link:
 
+# 公告
 bulletin:
-  enable: true
+  enable: false
   is_roll: true
-  content: ""
+  content: "新年新气象，学习不能忘"
 
 #----------------------------
 # 是否开启评论

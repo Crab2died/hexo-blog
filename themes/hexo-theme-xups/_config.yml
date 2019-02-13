@@ -75,7 +75,7 @@ ad_nav_bottom:
 bulletin:
   enable: true
   is_roll: true
-  content: "欢迎访问螃蟹以死(Crab2Died)的个人站点！ ^_^"
+  content: ""
 
 #----------------------------
 # 是否开启评论

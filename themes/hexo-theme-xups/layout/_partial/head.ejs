@@ -41,6 +41,9 @@
     <![endif]-->
     <%- partial('baidu-analytics') %>
     <%- partial('baidu-zhanzhang') %>
+    <% if (theme.google_ads) { %>
+    <%- partial('widget/google-ads') %>
+    <% } %>
     <%- js('js/jquery/jquery-2.2.0.min.js') %>
     <%- js('js/qrcode.min.js') %>
     <%- js('js/particles.js') %>

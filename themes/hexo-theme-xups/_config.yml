@@ -57,6 +57,9 @@ weibo_show:
 revolvermaps:
   enable: true
 
+# 是否开启google广告
+google_ads: true
+
 # 右边栏广告(上)
 ad_nav_top:
   enable: false

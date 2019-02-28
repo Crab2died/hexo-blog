@@ -78,7 +78,7 @@ ad_nav_bottom:
 bulletin:
   enable: true
   is_roll: true
-  content: ""
+  content: "<img src='/img/blackcat.gif' style='height:18px'/> 逆水行舟，不进则退 <img src='/img/blackcat.gif' style='height:18px'/>"
 
 #----------------------------
 # 是否开启评论

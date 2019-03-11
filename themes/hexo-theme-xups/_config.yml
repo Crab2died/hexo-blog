@@ -62,23 +62,23 @@ google_ads: true
 
 # 右边栏广告(上)
 ad_nav_top:
-  enable: false
-  title:
-  image:
-  link:
+  enable: true
+  title: Linux性能优化实战
+  image: https://static001.geekbang.org/resource/image/d1/98/d18c39596b48e7c729dc19e12a2b6698.jpg
+  link: https://time.geekbang.org/column/intro/140
 
 # 右边栏广告(下)
 ad_nav_bottom:
-  enable: false
-  title:
-  image:
-  link:
+  enable: true
+  title: 开年Hi购季
+  image: /images/ad/aliyun_kainianhi.png
+  link: https://www.aliyun.com/acts/product-section-2019/home
 
 # 公告
 bulletin:
   enable: true
   is_roll: true
-  content: "<img src='/img/blackcat.gif' style='height:18px'/> 逆水行舟，不进则退 <img src='/img/blackcat.gif' style='height:18px'/>"
+  content: ""
 
 #----------------------------
 # 是否开启评论
@@ -107,9 +107,9 @@ friends:
   enable: true
   list:
     1:
-      name: 知 乎
-      title: 知 乎
-      link: https://www.zhihu.com/
+      name: 酷 壳
+      title: 酷 壳
+      link: https://coolshell.cn/
     2:
       name: SegmentFault
       title: SegmentFault

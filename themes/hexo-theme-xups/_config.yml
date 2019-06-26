@@ -62,7 +62,7 @@ google_ads: true
 
 # 右边栏广告(上)
 ad_nav_top:
-  enable: true
+  enable: false
   title: Linux性能优化实战
   image: https://static001.geekbang.org/resource/image/d1/98/d18c39596b48e7c729dc19e12a2b6698.jpg
   link: https://time.geekbang.org/column/intro/140
@@ -70,9 +70,9 @@ ad_nav_top:
 # 右边栏广告(下)
 ad_nav_bottom:
   enable: false
-  title: 开年Hi购季
-  image: /images/ad/aliyun_kainianhi.png
-  link: https://www.aliyun.com/acts/product-section-2019/home
+  title:
+  image:
+  link:
 
 # 公告
 bulletin:

@@ -57,6 +57,12 @@ weibo_show:
 revolvermaps:
   enable: true
 
+#----------------------------
+# Postcard
+#----------------------------
+postcard:
+  enable: true
+
 # 是否开启google广告
 google_ads: true
 

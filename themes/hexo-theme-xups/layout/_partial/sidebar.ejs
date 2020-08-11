@@ -37,6 +37,13 @@
     </section>
     <% } %>
 
+    <% if (theme.postcard.enable) { %>
+    <section class="widget visit-map">
+      <h3 class="widget-hd"  style="display: inline-block"><strong>螃蟹以死</strong></h3>
+      <%- partial('widget/postcard') %>
+    </section>
+    <% } %>
+
     <% if (theme.weibo_show.enable) { %>
     <!-- 我的微博 -->
     <section class="widget">
